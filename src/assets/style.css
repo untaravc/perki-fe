@@ -1,0 +1,12 @@
+:root {
+    --bg-theme-accent: linear-gradient(90deg, rgba(90, 212, 91, 1) 0%, rgba(7, 226, 136, 1) 100%);
+    --bg-theme: linear-gradient(163deg, rgba(6, 2, 1, 1) 0%, rgba(33, 53, 112, 1) 100%);
+}
+
+.bg-theme-accent {
+    background: var(--bg-theme-accent);
+}
+
+.bg-theme {
+    background: var(--bg-theme);
+}
