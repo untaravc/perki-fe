@@ -2,18 +2,15 @@
     <div class="max-w-screen-lg m-auto py-6">
         <Carousel :settings="settings" :autoplay="3000" :wrapAround="true" :breakpoints="breakpoints">
             <Slide v-for="slide in 6" :key="slide">
-                <div class="carousel__item bg-blue-300">{{ slide }}</div>
+                <div class="carousel__item">
+                    <img src="/storage/logo/jcu_color.png" class="h-12 grayscale skew-x-3" alt="jcu-sponsor">
+                </div>
             </Slide>
-
-<!--            <template #addons>-->
-<!--                <Navigation />-->
-<!--            </template>-->
         </Carousel>
     </div>
 </template>
 
 <script>
-// If you are using PurgeCSS, make sure to whitelist the carousel CSS classes
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
@@ -27,7 +24,7 @@ export default {
     },
     data: () => ({
         settings: {
-            itemsToShow: 1,
+            itemsToShow: 3,
             snapAlign: 'center',
         },
         breakpoints: {

@@ -1,13 +1,13 @@
 <template>
     <nav class="px-2 sm:px-4 py-4 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 dark:border-gray-600"
-         :class="scrollPosition > 60 ? 'bg-blue-100 border-b border-blue-200' : ''">
+         :class="scrollPosition > 60 ? 'bg-blue-200 border-b border-blue-100' : ''">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center">
                 <img src="/storage/logo/jcu_color.png" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <div class="flex md:order-2">
-                <router-link to="/"
+                <router-link to="/register"
                              class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
                         <div class="mr-2">Daftar</div>
@@ -30,7 +30,7 @@
                 <ul
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-cyan-900 md:bg-transparent">
                     <li>
-                        <a href="#"
+                        <a href="/"
                            class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                            aria-current="page">Home</a>
                     </li>

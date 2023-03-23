@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-blue-100">
+    <div class="bg-gradient-to-br from-blue-200 to-blue-50">
         <Header></Header>
         <router-view></router-view>
         <Footer></Footer>
