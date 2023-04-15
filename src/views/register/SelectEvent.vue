@@ -211,7 +211,7 @@ export default {
                 transaction_number: this.$route.query.transaction_number
             }).then((data)=>{
                     if(data.status){
-
+                        this.$router.push('/payment?transaction_number=' + this.$route.query.transaction_number)
                     } else {
                         this.toaster({title: data.message, icon: 'warning'})
                     }

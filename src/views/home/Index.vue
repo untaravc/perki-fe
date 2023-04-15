@@ -1,10 +1,13 @@
 <template>
     <div>
         <Hero></Hero>
-        <Sponsors class="border-t"></Sponsors>
+        <Sponsors></Sponsors>
         <Video></Video>
-        <Speakers></Speakers>
+        <div class="bg-gradient-to-br from-[#193460] to-[#0a0009]">
+            <Speakers></Speakers>
+        </div>
         <Schedules></Schedules>
+        <Pricing></Pricing>
     </div>
 </template>
 
@@ -14,8 +17,9 @@ import Video from './Video.vue'
 import Speakers from './Speakers.vue'
 import Schedules from './Schedules.vue'
 import Sponsors from './Sponsors.vue'
+import Pricing from "@/views/home/Pricing.vue";
 
 export default {
-    components: {Hero, Video, Speakers, Schedules, Sponsors}
+    components: {Pricing, Hero, Video, Speakers, Schedules, Sponsors}
 }
 </script>

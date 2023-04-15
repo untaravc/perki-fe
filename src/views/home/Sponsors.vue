@@ -1,9 +1,9 @@
 <template>
-    <div class="max-w-screen-lg m-auto py-6">
+    <div class="max-w-screen-lg m-auto py-6 bg-indigo-200 rounded-lg">
         <Carousel :settings="settings" :autoplay="3000" :wrapAround="true" :breakpoints="breakpoints">
             <Slide v-for="slide in 6" :key="slide">
                 <div class="carousel__item">
-                    <img src="/storage/logo/jcu_color.png" class="h-12 grayscale skew-x-3" alt="jcu-sponsor">
+                    <img src="/storage/logo/jcu_color.png" class="h-12 skew-x-3" alt="jcu-sponsor">
                 </div>
             </Slide>
         </Carousel>

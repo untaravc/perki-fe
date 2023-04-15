@@ -35,19 +35,14 @@
                            aria-current="page">Home</router-link>
                     </li>
                     <li>
-                        <a href="#"
-                           class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Paket</a>
-                    </li>
-                    <li>
-                        <a href="#"
+                        <a href="/schedule"
                            class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                            aria-current="page">Jadwal</a>
                     </li>
                     <li>
                         <router-link to="/login"
                            class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Daftar</router-link>
+                           aria-current="page">Informasi</router-link>
                     </li>
                 </ul>
             </div>

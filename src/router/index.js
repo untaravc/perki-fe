@@ -8,6 +8,8 @@ import ProfileInfo from '../views/profile/Info.vue'
 import ProfileEvents from '../views/profile/Events.vue'
 import ProfileTransactions from '../views/profile/Transactions.vue'
 import SelectEvent from '../views/register/SelectEvent.vue'
+import Payment from '../views/payment/Index.vue'
+import Schedule from '../views/schedule/Index.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -28,17 +30,27 @@ const router = createRouter({
 					component: Register,
 				},
 				{
-					path: '/register/event',
-					name: 'select-event',
-					component: SelectEvent,
-				},
-				{
 					path: '/login',
 					name: 'login',
 					component: Login,
 					meta: {
 						guard: 'guest'
 					}
+				},
+				{
+					path: '/register/event',
+					name: 'select-event',
+					component: SelectEvent,
+				},
+				{
+					path: '/payment',
+					name: 'payment',
+					component: Payment,
+				},
+				{
+					path: '/schedule',
+					name: 'schedule',
+					component: Schedule,
 				},
 				{
 					path: '/profile',
