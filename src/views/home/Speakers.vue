@@ -1,19 +1,19 @@
 <template>
-    <div class="max-w-screen-lg m-auto p-10">
-        <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
+    <div class="max-w-screen-lg m-auto p-1">
+        <div class="text-4xl font-bold mb-1 text-center">
             PEMBICARA
         </div>
         <div class="text-small text-slate-600 mb-5 text-center">
             Pembicara adalah pada ahli dalam bidang Kardiologi dan Kedokteran Vaskular serta bidang-bidang terkait baik tingkat lokal maupun nasional
         </div>
         <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
-            <div class="group" v-for="speaker in count">
-                <div style="padding-bottom: 100%"
-                     class="w-full bg-purple-300 bg-cover rounded-md bg-center bg-no-repeat bg-[url('https://picsum.photos/200/300')]">
+            <div class="group" v-for="data in data_content">
+                <div style="padding-bottom: 100%" :style="'background-image: url(' + data.image +')'"
+                     class="w-full bg-purple-300 bg-cover rounded-md bg-center bg-no-repeat">
                 </div>
                 <div>
-                    <h4 class="font-bold text-lg">Budi Satria Isman</h4>
-                    <div class="text-xs text-neutral-material-700">President Commisioner</div>
+                    <h4 class="font-bold text-lg">{{data.name}}</h4>
+                    <div class="text-xs text-neutral-material-700">{{data.desc}}</div>
                 </div>
             </div>
         </div>
@@ -24,8 +24,20 @@
 export default {
     data() {
         return {
-            count: 8
+            count: 8,
+            data_content:[]
         }
+    },
+    methods:{
+        loadSpeaker(){
+            this.apiGet('pub/speakers')
+                .then((data)=>{
+                    this.data_content = data.result
+                })
+        }
+    },
+    created() {
+        this.loadSpeaker()
     }
 }
 </script>

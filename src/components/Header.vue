@@ -30,9 +30,9 @@
                 <ul
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-cyan-900 md:bg-transparent">
                     <li>
-                        <a href="/"
+                        <router-link to="/"
                            class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Home</a>
+                           aria-current="page">Home</router-link>
                     </li>
                     <li>
                         <a href="#"
@@ -45,9 +45,9 @@
                            aria-current="page">Jadwal</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <router-link to="/login"
                            class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Daftar</a>
+                           aria-current="page">Daftar</router-link>
                     </li>
                 </ul>
             </div>

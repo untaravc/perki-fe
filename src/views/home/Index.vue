@@ -1,14 +1,10 @@
 <template>
     <div>
         <Hero></Hero>
-        <Sponsors class="border-blue-50 border-t"></Sponsors>
-        <div class="bg-blue-50">
-            <Video></Video>
-        </div>
+        <Sponsors class="border-t"></Sponsors>
+        <Video></Video>
         <Speakers></Speakers>
-        <div class="bg-slate-100">
-            <Schedules></Schedules>
-        </div>
+        <Schedules></Schedules>
     </div>
 </template>
 
@@ -20,6 +16,6 @@ import Schedules from './Schedules.vue'
 import Sponsors from './Sponsors.vue'
 
 export default {
-    components: { Hero, Video, Speakers, Schedules, Sponsors }
+    components: {Hero, Video, Speakers, Schedules, Sponsors}
 }
 </script>

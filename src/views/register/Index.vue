@@ -1,59 +1,57 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-16">
-        <div class="grid gap-4 md:grid-cols-2 py-16 px-2">
+        <div class="flex justify-center items-center my-6" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl">
                 <div>
                     <img src="/storage/logo/jcu_color.png" alt="" class="h-16 mb-2">
                 </div>
-                <div class="font-semibold text-xl">Registrasi Akun</div>
-                <div class="text-sm">Daftar dengan email atau dengan gmail dengan sekali klik.</div>
-                <div class="grid gap-2 md:grid-cols-2 mt-3">
-                    <div>
-                        <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Nama depan<span
-                            class="text-red-600">*</span></label>
-                        <input type="text" id="first_name" placeholder="ex. Jhon" autofocus
-                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                    </div>
-                    <div>
-                        <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900">Nama belakang<span
-                            class="text-red-600">*</span></label>
-                        <input type="text" id="last_name" placeholder="ex. Doe"
-                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                    </div>
+                <div class="font-semibold text-xl">Registrasi Event</div>
+                <div class="text-sm">Daftar dengan email atau dengan gmail.</div>
+                <div class="mt-3">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama lengkap<span
+                        class="text-red-600">*</span></label>
+                    <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                 </div>
                 <div class="grid gap-2 md:grid-cols-2 mt-3">
                     <div>
                         <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Asal Kota, Provinsi
                             <span
                                 class="text-red-600">*</span></label>
-                        <input type="text" id="address" placeholder="ex. Sleman, DI Yogyakarta"
+                        <input type="text" id="address" placeholder="ex. Sleman, DI Yogyakarta" v-model="form.city"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                     </div>
                     <div>
                         <label for="institution" class="block mb-2 text-sm font-medium text-gray-900">Institusi <span
                             class="text-red-600">*</span></label>
                         <input type="text" id="institution" placeholder="ex. Universitas Gadjah Mada"
+                               v-model="form.institution"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                     </div>
                 </div>
                 <div class="mt-3">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Tipe Peserta<span
+                    <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Tipe Peserta<span
                         class="text-red-600">*</span></label>
-                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="job_type" v-model="form.job_type_code"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>== Pilih ==</option>
-                        <option value="student">Mahasiswa / Residen</option>
-                        <option value="medical">Perawat / Petugas Medis</option>
-                        <option value="dr">Dokter Umum</option>
-                        <option value="drsp">Dokter Spesialis</option>
+                        <option :value="job.code" :key="job.code" v-for="job in data_raw.job_types">{{ job.name }}
+                        </option>
                     </select>
+                </div>
+                <div class="mt-3">
+                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone <span
+                        class="text-red-600">*</span></label>
+                    <input type="tel" id="phone" placeholder="ex. 081234567890" v-model="form.phone"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                 </div>
                 <div class="mt-3">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-Mail <span
                         class="text-red-600">*</span></label>
-                    <input type="text" id="email" placeholder="ex. mail@example.com"
+                    <input type="text" id="email" placeholder="ex. mail@example.com" v-model="form.email"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                 </div>
-                <div class="grid gap-2 md:grid-cols-2 mt-3">
+                <div class="grid gap-2 md:grid-cols-2 mt-3" v-if="!logged_in">
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password <span
                             class="text-red-600">*</span></label>
@@ -91,155 +89,16 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <div class="flex items-center">
-                        <input id="checked-checkbox" v-model="referral_code" type="checkbox" value=""
-                               class="w-4 h-4 text-blue-600 bg-gray-100 rounded">
-                        <label for="checked-checkbox" class="ml-2 text-sm font-medium text-gray-900">Saya memiliki kode
-                            Referal</label>
-                    </div>
-                </div>
-                <div class="mt-3" v-if="referral_code">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Kode Referal
-                        (opsional)</label>
-                    <input type="text" id="email"
-                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                </div>
-                <div class="mt-3">
                     <button @click="registerEmail"
                             class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                         Daftar
                     </button>
-                    <button
-                        class="inline-block w-full text-base relative text-neutral-700 text-center px-8 py-2.5 text-center rounded-full border hover:bg-neutral-100">
+                    <button v-if="!logged_in"
+                            class="inline-block w-full text-base relative text-neutral-700 text-center px-8 py-2.5 text-center rounded-full border hover:bg-neutral-100">
                         <img src="/storage/img/google-logo.png"
                              class="absolute top-1/2 left-3 xl:left-4 -translate-y-1/2 aspect-square w-5 xl:w-7" alt="">
                         <span>Lanjutkan dengan Google</span>
                     </button>
-                </div>
-            </div>
-            <div>
-                <div class="p-6 border-slate-100 bg-white rounded-xl">
-                    <div class="font-semibold text-xl mb-6">Pilih Paket</div>
-                    <div class="text-slate-600 text-sm mb-2">
-                        Anda masuk dalam kategori harga <b>dokter umum.</b>
-                    </div>
-                    <div class="rounded-lg bg-blue-50 p-4 border cursor-pointer hover:bg-blue-100 mb-3"
-                         @click="selected = 1">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <div class="mb-3">
-                                    <div class="font-semibold text-blue-900 flex">
-                                        <unicon name="angle-right-b"></unicon>
-                                        Workshop Full Day
-                                    </div>
-                                    <div class="ml-6 text-xs mb-1">
-                                        Jumat, 1 September 2023 08:00 WIB
-                                    </div>
-                                </div>
-                                <div class="text-sm ml-6 font-semibold text-blue-700">
-                                    Rp 1.250.000
-                                </div>
-                            </div>
-                            <div>
-                                <unicon v-if="selected === 1" name="check" width="35" height="35"></unicon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded-lg bg-blue-50 p-4 border cursor-pointer hover:bg-blue-100 mb-3"
-                         @click="selected = 2">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <div class="mb-1">
-                                    <div class="font-semibold text-blue-900 flex">
-                                        <unicon name="angle-right-b"></unicon>
-                                        Symposium
-                                    </div>
-                                    <div class="ml-6 text-xs mb-1">
-                                        Jumat, 1 September 2023 08:00 WIB
-                                    </div>
-                                </div>
-                                <div class="mb-1">
-                                    <div class="font-semibold text-blue-900 flex">
-                                        <unicon name="angle-right-b"></unicon>
-                                        Workshop Halfday
-                                    </div>
-                                    <div class="ml-6 text-xs mb-1">
-                                        Jumat, 2 September 2023 08:00 WIB
-                                    </div>
-                                </div>
-                                <div class="text-sm ml-6 font-semibold text-blue-700">
-                                    Rp 3.000.000
-                                </div>
-                            </div>
-                            <div>
-                                <unicon v-if="selected === 2" name="check" width="35" height="35"></unicon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded-lg bg-blue-50 p-4 border cursor-pointer hover:bg-blue-100 mb-3"
-                         @click="selected = 3">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <div class="mb-1">
-                                    <div class="font-semibold text-blue-900 flex">
-                                        <unicon name="angle-right-b"></unicon>
-                                        Symposium
-                                    </div>
-                                    <div class="ml-6 text-xs mb-1">
-                                        Jumat, 1 September 2023 08:00 WIB
-                                    </div>
-                                </div>
-                                <div class="mb-1">
-                                    <div class="font-semibold text-blue-900 flex">
-                                        <unicon name="angle-right-b"></unicon>
-                                        Workshop Halfday
-                                    </div>
-                                    <div class="ml-6 text-xs mb-1">
-                                        Jumat, 2 September 2023 08:00 WIB
-                                    </div>
-                                </div>
-                                <div class="mb-1">
-                                    <div class="font-semibold text-blue-900 flex">
-                                        <unicon name="angle-right-b"></unicon>
-                                        Workshop Fullday
-                                    </div>
-                                    <div class="ml-6 text-xs mb-1">
-                                        Jumat, 3 September 2023 08:00 WIB
-                                    </div>
-                                </div>
-                                <div class="text-sm ml-6 font-semibold text-blue-700">
-                                    Rp 4.000.000
-                                </div>
-                            </div>
-                            <div>
-                                <unicon v-if="selected === 3" name="check" width="35" height="35"></unicon>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-1">
-                        <div class="flex justify-between">
-                            <div class="text-md">Subtotal</div>
-                            <div class="text-md text-right">Rp {{ $filters.currency(price) }}</div>
-                        </div>
-                        <div class="flex justify-between">
-                            <div class="text-md">Potongan</div>
-                            <div class="text-md text-right">Rp 50.000</div>
-                        </div>
-                        <div class="flex justify-between">
-                            <div class="text-md">Early bird</div>
-                            <div class="text-md text-right">Rp 250.000</div>
-                        </div>
-                        <div class="flex justify-between border-t">
-                            <div class="text-lg font-semibold">Total</div>
-                            <div class="text-lg font-semibold text-right">Rp {{ $filters.currency(price) }}</div>
-                        </div>
-                    </div>
-                    <div>
-                        <button disabled
-                                class="text-slate-600 w-full mb-2 bg-slate-100 hover:bg-slate-200 rounded-full text-base px-8 py-2.5 text-center">
-                            Lengkapi pendaftaran sebelum memilih paket.
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -248,30 +107,70 @@
 
 <script>
 export default {
-    components: {},
     data() {
         return {
             eye_icon: false,
             referral_code: false,
-            selected: 1,
+            data_raw: {
+                job_types: []
+            },
+            logged_in: false,
+            data_valid: false,
+            form: {
+                id: '',
+                name: '',
+                phone: '',
+                email: '',
+                institution: '',
+                city: '',
+                job_type_code: '',
+            }
         }
     },
     methods: {
-        registerEmail() {
+        loadJobType() {
+            this.apiGet('pub/get-job-types')
+                .then((data) => {
+                    this.data_raw.job_types = data.result
+                })
+        },
+        getProfile() {
+            this.authGet('pub/profile')
+                .then((data) => {
+                    if (data.status) {
+                        let res = data.result
+                        this.logged_in = true;
 
+                        this.form.name = res.name
+                        this.form.email = res.email
+                        this.form.city = res.city
+                        this.form.institution = res.institution
+                        this.form.job_type_code = res.job_type_code
+                        this.form.phone = res.phone
+                    }
+                })
+        },
+        registerEmail() {
+            this.authPost('pub/register', this.form)
+                .then((data)=>{
+                    if(data.status){
+                        let trx = data.result.transaction
+                        if(trx){
+                            this.$router.push('register/event?transaction_number=' + trx.number);
+                        }
+                    }
+                })
+        },
+    },
+    created() {
+        this.loadJobType();
+
+        if (localStorage.getItem('perki_user_token')) {
+            this.getProfile()
         }
     },
-    computed: {
-        price() {
-            switch (this.selected) {
-                case 1:
-                    return 1250000 - 50000
-                case 2:
-                    return 3000000 - 50000
-                case 3:
-                    return 4000000 - 50000
-            }
-        }
+    watch: {
+
     }
 }
 </script>

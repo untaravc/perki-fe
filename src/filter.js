@@ -2,7 +2,11 @@ import moment from 'moment';
 
 const config = {
     currency(value) {
-        return value.toLocaleString('id-ID')
+        if(isNaN(value)){
+            return value;
+        } else {
+            return value.toLocaleString('id-ID')
+        }
     },
     capitalize(value){
         const words = value.split(" ");
@@ -32,6 +36,16 @@ const config = {
     formatDate(value) {
         if (value) {
             return moment(value).format("DD MMM YYYY");
+        }
+    },
+    formatDayDateTime(value) {
+        if (value) {
+            moment.updateLocale("en",{
+                weekdays : [
+                    "Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"
+                ],
+            })
+            return moment(value).format("dddd, DD MMM HH:mm");
         }
     },
     formatDateTime(value) {
