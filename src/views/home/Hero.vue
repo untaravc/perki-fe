@@ -1,7 +1,8 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-16">
         <div class="grid md:grid-cols-5 lg:gap-6 mb-12 mt-20">
-            <div class="md:order-2 rounded-lg md:col-span-2 relative bg-contain h-96 bg-center bg-no-repeat w-full" :class="`bg-[url('` + data_content[index]['poster'] + `')]`"></div>
+            <div class="md:order-2 rounded-lg md:col-span-2 relative bg-contain h-96 bg-center bg-no-repeat w-full"
+                 :style="`background-image: url('` + data_content[index]['poster'] + `')`"></div>
             <div class="md:col-span-3 md:order-1">
                 <div class="m-5 bg-blue-300 rounded-full py-1 px-8 italic text-sm inline-block">
                     {{data_content[index]['date']}}
@@ -40,6 +41,7 @@ export default {
     data(){
         return {
             index: 0,
+            interval: '',
             data_content:[
                 {
                     title: "Jogja Cardiology Update",
@@ -49,8 +51,13 @@ export default {
                 },
                 {
                     title: "12 Symposium & 8 Workshop",
-                    subtitle: "Integrating Technology In Cardiovascular Disease Management: Towards A Harmonic Fusion",
-                    date: "Yogyakarta, 1-3 September 2023",
+                    subtitle: "in Conjunction with: The Sixth Jogja International Cardiovascular Topic Series (Jincartos)",
+                    date: "Tentrem Hotel, Yogyakarta",
+                    poster: '/storage/img/1st_announcement.jpg',
+                },{
+                    title: "The Sixth JINCARTOS",
+                    subtitle: "Jogja International Cardiovascular Topic Series: Scientific Breakthrough in Hearth Rhythm Disorder",
+                    date: "Tentrem Hotel, Yogyakarta",
                     poster: '/storage/img/1st_announcement.jpg',
                 }
             ]
@@ -64,6 +71,7 @@ export default {
             } else {
                 this.index = 0
             }
+            clearInterval(this.interval)
         },
         prev(){
             if(this.index > 0){
@@ -71,10 +79,11 @@ export default {
             } else {
                 this.index = this.data_content.length - 1;
             }
+            clearInterval(this.interval)
         }
     },
     mounted() {
-        setInterval(()=>{
+        this.interval = setInterval(()=>{
             this.next()
         }, 5000)
     }

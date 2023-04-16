@@ -8,19 +8,21 @@
             </div>
             <div class="grid gap-4 md:grid-cols-4">
                 <div class="p-6 border-slate-100 bg-white rounded-xl">
-                    <router-link to="/profile/info" class="flex my-3 cursor-pointer">
-                        <unicon name="user" height="20px" fill="blue"></unicon>
-                        <div class="ml-2 text-blue-700 font-bold">Profil</div>
+                    <router-link to="/profile/info" class="flex my-3 cursor-pointer" @click="active = 'info'">
+                        <unicon name="user" height="20px" :fill="active === 'info' ? 'darkblue' : ''"></unicon>
+                        <div class="ml-2">Profil</div>
                     </router-link>
-                    <router-link to="/profile/events" class="flex my-3 cursor-pointer">
-                        <unicon name="youtube" height="20px"></unicon>
+                    <router-link to="/profile/events" class="flex my-3 cursor-pointer" @click="active = 'events'">
+                        <unicon name="youtube" height="20px" :fill="active === 'events' ? 'darkblue' : ''"></unicon>
                         <div class="ml-2">Event Saya</div>
                     </router-link>
-                    <router-link to="/profile/transactions" class="flex my-3 cursor-pointer">
-                        <unicon name="shopping-cart" height="20px"></unicon>
+                    <router-link to="/profile/transactions" class="flex my-3 cursor-pointer"
+                                 @click="active = 'transactions'">
+                        <unicon name="shopping-cart" height="20px"
+                                :fill="active === 'transactions' ? 'darkblue' : ''"></unicon>
                         <div class="ml-2">Transaksi</div>
                     </router-link>
-                    <div class="flex my-3 cursor-pointer">
+                    <div class="flex my-3 cursor-pointer" @click="logout">
                         <unicon name="signout" height="20px"></unicon>
                         <div class="ml-2">Keluar</div>
                     </div>
@@ -38,8 +40,27 @@
 export default {
     data() {
         return {
-
+            active: ''
         }
     },
+    methods: {
+        logout() {
+            if (confirm('Logout?')) {
+                this.authPost('pub/logout')
+                    .then((data)=>{
+                        if(data.status){
+                            localStorage.removeItem('perki_user_token')
+                            this.$router.push('/')
+                        }
+                    })
+            }
+        }
+    }
 }
 </script>
+<style>
+.router-link-exact-active {
+    color: darkblue;
+    font-weight: bold;
+}
+</style>

@@ -60,7 +60,14 @@ const mixin = {
                 .then(({ data }) => {
                     response = data;
                 }).catch((e) => {
-                    let rc = e.response.message;
+                    let rc = e.response.status;
+                    if (rc === 401) {
+                        window.location = '/login'
+                        localStorage.removeItem('perki_user_token');
+                    } else if (rc === 422) {
+                        response = e.response.data
+                    }
+                    return response;
                 })
 
             return response;
@@ -166,7 +173,7 @@ const mixin = {
             return response;
         },
         setHeader() {
-            let ls_token = localStorage.user_token
+            let ls_token = localStorage.perki_user_token
             return {
                 headers: {
                     Authorization: 'Bearer ' + ls_token,
@@ -208,22 +215,6 @@ const mixin = {
                 filter[key_filter] = query[key_filter]
             }
             return filter;
-        },
-        hasError(field, value = 'bool') {
-            if (value === 'bool') {
-                return this.form_errors.some((err) => {
-                    return err["field"] === field;
-                })
-            } else {
-                let obj = this.form_errors.find((err) => {
-                    return err["field"] === field;
-                })
-                if (obj) {
-                    return obj.message
-                } else {
-                    return 'data tidak sesuai.'
-                }
-            }
         },
         setDefaultForm(form) {
             this.default_form = Object.assign({}, form);

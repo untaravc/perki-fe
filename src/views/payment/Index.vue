@@ -1,7 +1,7 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-20">
+    <div class="max-w-screen-lg m-auto pt-20 pb-12">
         <div class="flex justify-center items-center" style="min-height: calc(100vh - 195px);">
-            <div class="p-6 border-slate-100 bg-white rounded-xl text-center min-w-[375px] lg:min-w-[450px]">
+            <div class="p-6 border-slate-100 bg-white rounded-xl text-center min-w-[425px] lg:min-w-[450px]">
                 <div class="text-xl mb-4">Selesaikan Pembayaran</div>
                 <div class="text-2xl text-[#F78F2D] mb-2 font-semibold">
                     Rp {{$filters.currency(transaction.total)}}
@@ -9,9 +9,9 @@
                 <div class="text-md">Batas akhir pembayaran</div>
                 <div class="text-xl mb-4">{{ $filters.formatDayDateTime(transaction.last_time)}}</div>
                 <div class="border rounded-tr-md flex justify-between rounded-tl-md p-3 bg-slate-50">
-                    <div class="text-base">Transfer Bank</div>
+                    <div class="text-base font-semibold">Transfer Bank</div>
                     <div>
-                        Img
+                        <img style="max-height: 25px" src="/storage/logo/Mandiri_logo.png" alt="">
                     </div>
                 </div>
                 <div class="border rounded-br-md rounded-bl-md text-left p-3 mb-4">
@@ -24,6 +24,7 @@
                                 <unicon name="copy" height="18px"></unicon>
                             </div>
                         </div>
+                        <div class="text-sm mt-1 italic">Bank Mandiri an. <b>PERKI Yogyakarta</b></div>
                     </div>
                     <div class="mb-3">
                         <div class="text-sm mb-1">Nominal</div>

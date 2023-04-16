@@ -9,9 +9,11 @@ import {
 	uniCheckThinline,
 	uniCheckSquare,
 	uniCopy,
+	uniClock,
 	uniEnvelope,
 	uniFile,
 	uniLayerGroupMonochrome,
+	uniLocationPoint,
 	uniPhone,
 	uniPlay,
 	uniShoppingCart,
@@ -19,6 +21,7 @@ import {
 	uniSquare,
 	uniTimes,
 	uniUser,
+	uniUserMd,
 	uniYoutube,
 } from 'vue-unicons/dist/icons'
 
@@ -33,9 +36,11 @@ export default [
 	uniCheckThinline,
 	uniCheckSquare,
 	uniCopy,
+	uniClock,
 	uniEnvelope,
 	uniFile,
 	uniLayerGroupMonochrome,
+	uniLocationPoint,
 	uniPhone,
 	uniPlay,
 	uniShoppingCart,
@@ -43,5 +48,6 @@ export default [
 	uniSquare,
 	uniTimes,
 	uniUser,
+	uniUserMd,
 	uniYoutube,
 ]

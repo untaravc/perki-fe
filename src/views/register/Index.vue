@@ -12,6 +12,9 @@
                         class="text-red-600">*</span></label>
                     <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                    <small class="text-xs text-red-600 italic" v-if="parseErrors('name')">
+                        {{ parseErrors('name', 'val') }}
+                    </small>
                 </div>
                 <div class="grid gap-2 md:grid-cols-2 mt-3">
                     <div>
@@ -20,6 +23,9 @@
                                 class="text-red-600">*</span></label>
                         <input type="text" id="address" placeholder="ex. Sleman, DI Yogyakarta" v-model="form.city"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                        <small class="text-xs text-red-600 italic" v-if="parseErrors('city')">
+                            {{ parseErrors('city', 'val') }}
+                        </small>
                     </div>
                     <div>
                         <label for="institution" class="block mb-2 text-sm font-medium text-gray-900">Institusi <span
@@ -27,6 +33,9 @@
                         <input type="text" id="institution" placeholder="ex. Universitas Gadjah Mada"
                                v-model="form.institution"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                        <small class="text-xs text-red-600 italic" v-if="parseErrors('institution')">
+                            {{ parseErrors('institution', 'val') }}
+                        </small>
                     </div>
                 </div>
                 <div class="mt-3">
@@ -38,25 +47,34 @@
                         <option :value="job.code" :key="job.code" v-for="job in data_raw.job_types">{{ job.name }}
                         </option>
                     </select>
+                    <small class="text-xs text-red-600 italic" v-if="parseErrors('job_type_code')">
+                        {{ parseErrors('job_type_code', 'val') }}
+                    </small>
                 </div>
                 <div class="mt-3">
                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone <span
                         class="text-red-600">*</span></label>
                     <input type="tel" id="phone" placeholder="ex. 081234567890" v-model="form.phone"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                    <small class="text-xs text-red-600 italic" v-if="parseErrors('phone')">
+                        {{ parseErrors('phone', 'val') }}
+                    </small>
                 </div>
                 <div class="mt-3">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-Mail <span
                         class="text-red-600">*</span></label>
                     <input type="text" id="email" placeholder="ex. mail@example.com" v-model="form.email"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                    <small class="text-xs text-red-600 italic" v-if="parseErrors('email')">
+                        {{ parseErrors('email', 'val') }}
+                    </small>
                 </div>
                 <div class="grid gap-2 md:grid-cols-2 mt-3" v-if="!logged_in">
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password <span
                             class="text-red-600">*</span></label>
                         <div class="relative">
-                            <input :type="eye_icon ? 'text' : 'password'" id="password"
+                            <input :type="eye_icon ? 'text' : 'password'" id="password" v-model="form.password"
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                             <button type="button" class="p-2 show-password absolute top-1/2 right-2 -translate-y-1/2"
                                     @click="eye_icon = !eye_icon">
@@ -84,21 +102,24 @@
                         <label for="password-confirmation" class="block mb-2 text-sm font-medium text-gray-900">Konfirmasi
                             Password <span
                                 class="text-red-600">*</span></label>
-                        <input type="password" id="password-confirmation"
+                        <input type="password" id="password-confirmation" v-model="form.password_confirmation"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                     </div>
+                    <small class="text-xs text-red-600 italic" v-if="parseErrors('password')">
+                        {{ parseErrors('password', 'val') }}
+                    </small>
                 </div>
                 <div class="mt-3">
                     <button @click="registerEmail"
                             class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                         Daftar
                     </button>
-                    <button v-if="!logged_in"
-                            class="inline-block w-full text-base relative text-neutral-700 text-center px-8 py-2.5 text-center rounded-full border hover:bg-neutral-100">
-                        <img src="/storage/img/google-logo.png"
-                             class="absolute top-1/2 left-3 xl:left-4 -translate-y-1/2 aspect-square w-5 xl:w-7" alt="">
-                        <span>Lanjutkan dengan Google</span>
-                    </button>
+                    <!--                    <button v-if="!logged_in"-->
+                    <!--                            class="inline-block w-full text-base relative text-neutral-700 text-center px-8 py-2.5 text-center rounded-full border hover:bg-neutral-100">-->
+                    <!--                        <img src="/storage/img/google-logo.png"-->
+                    <!--                             class="absolute top-1/2 left-3 xl:left-4 -translate-y-1/2 aspect-square w-5 xl:w-7" alt="">-->
+                    <!--                        <span>Lanjutkan dengan Google</span>-->
+                    <!--                    </button>-->
                 </div>
             </div>
         </div>
@@ -118,13 +139,16 @@ export default {
             data_valid: false,
             form: {
                 id: '',
-                name: '',
-                phone: '',
-                email: '',
-                institution: '',
-                city: '',
-                job_type_code: '',
-            }
+                name: 'aliakbar',
+                phone: '123123123123',
+                email: 'vyvy1777@gmail.com',
+                institution: 'PGRI',
+                city: 'Lampung',
+                job_type_code: 'DRSP',
+                password: '12341234',
+                password_confirmation: '12341234',
+            },
+            form_errors: []
         }
     },
     methods: {
@@ -151,16 +175,34 @@ export default {
                 })
         },
         registerEmail() {
-            this.authPost('pub/register', this.form)
-                .then((data)=>{
-                    if(data.status){
+            this.apiPost('pub/register', this.form, this.setHeader())
+                .then((data) => {
+                    if (data.status) {
                         let trx = data.result.transaction
-                        if(trx){
+                        localStorage.setItem('perki_user_token', data.result.token)
+                        if (trx) {
                             this.$router.push('register/event?transaction_number=' + trx.number);
                         }
+                    } else {
+                        this.form_errors = data.errors
+                        console.log(data)
                     }
                 })
         },
+        parseErrors(field, type = 'status') {
+            let has = false;
+            let message = '';
+            if (this.form_errors[field]) {
+                message = this.form_errors[field][0];
+                has = true;
+            }
+
+            if (type === 'status') {
+                return has;
+            } else {
+                return message;
+            }
+        }
     },
     created() {
         this.loadJobType();
@@ -169,8 +211,6 @@ export default {
             this.getProfile()
         }
     },
-    watch: {
-
-    }
+    watch: {}
 }
 </script>

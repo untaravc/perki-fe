@@ -4,7 +4,7 @@
         <div class="p-6 border-slate-100 bg-white rounded-xl">
             <div class="grid gap-2 grid-cols-5">
                 <div>
-                    <div style="padding-bottom: 100%"
+                    <div style="padding-bottom: 100%" :style="`backgroud-image:url(`+ profile.image +`)`"
                          class="w-full bg-purple-300 bg-cover rounded-md bg-center bg-no-repeat">
                     </div>
                     <div class="text-center text-blue-800">
@@ -12,14 +12,22 @@
                     </div>
                 </div>
                 <div class="col-span-4 pl-4">
-                    <div class="text-xl mb-3">{{ profile.name }}</div>
-                    <div class="text-base flex items-center">
-                        <unicon name="envelope" height="20px"></unicon>
-                        <div class="ml-3">{{ profile.email }}</div>
+                    <div class="text-2xl font-bold mb-3">{{ profile.name }}</div>
+                    <div class="text-sm flex items-center mb-1">
+                        <unicon name="envelope" height="16px"></unicon>
+                        <div class="ml-1">{{ profile.email }}</div>
                     </div>
-                    <div class="text-base flex items-center">
+                    <div class="text-sm flex items-center mb-1">
                         <unicon name="phone" height="20px"></unicon>
-                        <div class="ml-3">{{ profile.phone }}</div>
+                        <div class="ml-1">{{ profile.phone }}</div>
+                    </div>
+                    <div class="text-sm flex items-center mb-1">
+                        <unicon name="user-md" height="20px"></unicon>
+                        <div class="ml-1">{{ profile.job_label }}</div>
+                    </div>
+                    <div class="text-sm flex items-center mb-1">
+                        <unicon name="location-point" height="20px"></unicon>
+                        <div class="ml-1">{{ profile.city }}</div>
                     </div>
                 </div>
             </div>

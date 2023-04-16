@@ -10,6 +10,7 @@ import ProfileTransactions from '../views/profile/Transactions.vue'
 import SelectEvent from '../views/register/SelectEvent.vue'
 import Payment from '../views/payment/Index.vue'
 import Schedule from '../views/schedule/Index.vue'
+import Speakers from '../views/speakers/Index.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -53,6 +54,11 @@ const router = createRouter({
 					component: Schedule,
 				},
 				{
+					path: '/speakers',
+					name: 'speakers',
+					component: Speakers,
+				},
+				{
 					path: '/profile',
 					name: 'profile',
 					component: Profile,
@@ -82,11 +88,11 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
 	let has_token = localStorage.getItem('perki_user_token')
 
-	// if (to.meta.guard === "guest" && has_token) {
-	// 	return next({name: 'profile-info'})
-	// } else {
+	if (to.meta.guard === "guest" && has_token) {
+		return next({name: 'profile-info'})
+	} else {
 		return next()
-	// }
+	}
 })
 
 export default router

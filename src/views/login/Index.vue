@@ -10,13 +10,13 @@
                 <div class="mt-3">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-Mail <span
                         class="text-red-600">*</span></label>
-                    <input type="email" id="email" placeholder="ex. mail@example.com"
+                    <input type="email" id="email" placeholder="ex. mail@example.com" v-model="form.email"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                 </div>
                 <div class="mt-3">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password <span
                         class="text-red-600">*</span></label>
-                    <input type="password" id="password" placeholder="********"
+                    <input type="password" id="password" placeholder="********" v-model="form.password"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                 </div>
                 <div class="mt-3">
@@ -41,9 +41,25 @@ import {GoogleLogin} from "vue3-google-login";
 
 export default {
     components: {GoogleLogin},
+    data() {
+        return {
+            form: {
+                email: '',
+                password: '',
+            }
+        }
+    },
     methods: {
         login() {
-
+            this.apiPost('pub/login', this.form)
+                .then((data)=>{
+                    if(data.status){
+                        localStorage.setItem('perki_user_token', data.result.token)
+                        this.$router.push('profile/info')
+                    } else {
+                        alert(data.message)
+                    }
+                })
         },
         loginByGoogle(callback) {
             this.apiPost('pub/login-by-google', {
@@ -51,12 +67,16 @@ export default {
             }).then((data) => {
                 if (data.status) {
                     localStorage.setItem('perki_user_token', data.result.token)
-                    if(this.$route.query.to){
+                    let destination = this.$route.query.to
+                    if (destination) {
                         this.$router.push(this.$route.query.to)
+                        console.log('to')
+                    } else {
+                        console.log('info')
+                        this.$router.push('/profile/info')
                     }
                 }
             })
-            console.log(callback)
         }
     }
 }
