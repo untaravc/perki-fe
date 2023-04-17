@@ -31,11 +31,11 @@ const mixin = {
         }
     },
     created: function () {
-        // if (process.env.VUE_APP_MODE === 'local') {
+        if (import.meta.env.VITE_MODE === 'local') {
             this.base_api = 'http://localhost:8000/api/'
-        // } else {
-        //     this.base_api = 'https://src.perki-jogja.com/api/'
-        // }
+        } else {
+            this.base_api = 'https://src.perki-jogja.com/api/'
+        }
     },
     methods: {
         async apiGet(uri, params) {
