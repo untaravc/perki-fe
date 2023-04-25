@@ -28,11 +28,11 @@
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
-                    class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-cyan-900 md:bg-transparent">
+                    class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
                     <li>
-                        <router-link to="/"
+                        <a href="/"
                            class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Home</router-link>
+                           aria-current="page">Home</a>
                     </li>
                     <li>
                         <a href="/#schedule"
@@ -40,9 +40,9 @@
                            aria-current="page">Jadwal</a>
                     </li>
                     <li>
-                        <router-link to="/login"
+                        <a href="/login"
                            class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Event Saya</router-link>
+                           aria-current="page">Event Saya</a>
                     </li>
                 </ul>
             </div>

@@ -13,7 +13,7 @@
                         <div class="ml-2">Profil</div>
                     </router-link>
                     <router-link to="/profile/events" class="flex my-3 cursor-pointer" @click="active = 'events'">
-                        <unicon name="youtube" height="20px" :fill="active === 'events' ? 'darkblue' : ''"></unicon>
+                        <unicon name="youtube" height="20px" :fill="active === 'events' ? 'blue' : ''"></unicon>
                         <div class="ml-2">Event Saya</div>
                     </router-link>
                     <router-link to="/profile/transactions" class="flex my-3 cursor-pointer"
@@ -61,6 +61,6 @@ export default {
 <style>
 .router-link-exact-active {
     color: darkblue;
-    font-weight: bold;
+    font-weight: 500;
 }
 </style>

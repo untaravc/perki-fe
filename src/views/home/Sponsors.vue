@@ -1,4 +1,5 @@
 <template>
+    <div class="px-2">
     <div class="max-w-screen-lg m-auto py-6 bg-indigo-200 rounded-lg">
         <Carousel :settings="settings" :autoplay="3000" :wrapAround="true" :breakpoints="breakpoints">
             <Slide v-for="slide in 6" :key="slide">
@@ -7,6 +8,7 @@
                 </div>
             </Slide>
         </Carousel>
+    </div>
     </div>
 </template>
 
@@ -24,7 +26,7 @@ export default {
     },
     data: () => ({
         settings: {
-            itemsToShow: 3,
+            itemsToShow: 1,
             snapAlign: 'center',
         },
         breakpoints: {

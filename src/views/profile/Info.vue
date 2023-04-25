@@ -7,7 +7,7 @@
                     <div style="padding-bottom: 100%" :style="`backgroud-image:url(`+ profile.image +`)`"
                          class="w-full bg-purple-300 bg-cover rounded-md bg-center bg-no-repeat">
                     </div>
-                    <div class="text-center text-blue-800">
+                    <div class="text-center text-sm cursor-pointer text-blue-800">
                         Ganti Foto
                     </div>
                 </div>

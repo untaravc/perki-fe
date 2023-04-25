@@ -51,13 +51,13 @@ export default {
                 },
                 {
                     title: "12 Symposium & 8 Workshop",
-                    subtitle: "in Conjunction with: The Sixth Jogja International Cardiovascular Topic Series (Jincartos)",
+                    subtitle: "Jogja Cardiology Update in Conjunction with Jogja International Cardiovascular Topic Series",
                     date: "Tentrem Hotel, Yogyakarta",
                     poster: '/storage/img/1st_announcement.jpg',
                 },{
                     title: "The Sixth JINCARTOS",
                     subtitle: "Jogja International Cardiovascular Topic Series: Scientific Breakthrough in Hearth Rhythm Disorder",
-                    date: "Tentrem Hotel, Yogyakarta",
+                    date: "12 Symposium & 8 Workshop",
                     poster: '/storage/img/1st_announcement.jpg',
                 }
             ]

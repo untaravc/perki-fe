@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-24 pb-12">
+    <div class="max-w-screen-lg m-auto pt-24 pb-12 px-2">
         <div class="text-4xl font-bold mb-1 text-center text-white">
             PEMBICARA
         </div>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <router-link to="/speakers">
-            <div class="bg-slate-500 p-1 text-center w-full rounded mt-4 text-slate-200 cursor-pointer">Selengkapnya
+            <div class="bg-blue-500 p-1 text-center w-full rounded mt-4 text-slate-200 cursor-pointer">Selengkapnya
             </div>
         </router-link>
     </div>

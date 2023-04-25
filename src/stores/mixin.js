@@ -55,8 +55,7 @@ const mixin = {
         },
         async apiPost(uri, data = {}) {
             let response = '';
-            await this.$axios.post(this.base_api + uri, data, {
-            })
+            await this.$axios.post(this.base_api + uri, data, this.setHeader())
                 .then(({ data }) => {
                     response = data;
                 }).catch((e) => {
@@ -174,12 +173,17 @@ const mixin = {
         },
         setHeader() {
             let ls_token = localStorage.perki_user_token
-            return {
-                headers: {
-                    Authorization: 'Bearer ' + ls_token,
-                    Accept: 'application/json'
+            if(ls_token){
+                return {
+                    headers: {
+                        Authorization: 'Bearer ' + ls_token,
+                        Accept: 'application/json'
+                    }
                 }
+            } else {
+                return {}
             }
+
         },
         toaster({ title = 'Success!', icon = 'success' }) {
             Swal.fire({

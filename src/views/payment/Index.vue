@@ -4,10 +4,10 @@
             <div class="p-6 border-slate-100 bg-white rounded-xl text-center min-w-[425px] lg:min-w-[450px]">
                 <div class="text-xl mb-4">Selesaikan Pembayaran</div>
                 <div class="text-2xl text-[#F78F2D] mb-2 font-semibold">
-                    Rp {{$filters.currency(transaction.total)}}
+                    Rp {{ $filters.currency(transaction.total) }}
                 </div>
                 <div class="text-md">Batas akhir pembayaran</div>
-                <div class="text-xl mb-4">{{ $filters.formatDayDateTime(transaction.last_time)}}</div>
+                <div class="text-xl mb-4">{{ $filters.formatDayDateTime(transaction.last_time) }}</div>
                 <div class="border rounded-tr-md flex justify-between rounded-tl-md p-3 bg-slate-50">
                     <div class="text-base font-semibold">Transfer Bank</div>
                     <div>
@@ -20,7 +20,7 @@
                         <div
                             class="rounded border-orange-400 border-2 justify-between shadow-inner flex px-3 py-2 border">
                             <div>282983928</div>
-                            <div class="cursor-pointer">
+                            <div class="cursor-pointer" @click="copyText('282983928', 'Nomor Rekening')">
                                 <unicon name="copy" height="18px"></unicon>
                             </div>
                         </div>
@@ -31,33 +31,42 @@
                         <div
                             class="rounded border-orange-400 border-2 justify-between shadow-inner flex px-3 py-2 border">
                             <div>Rp {{ $filters.currency(transaction.total) }}</div>
-                            <div class="cursor-pointer">
+                            <div class="cursor-pointer" @click="copyText(transaction.total, 'Nominal')">
                                 <unicon name="copy" height="18px"></unicon>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-2 mb-3">
+                <div class="mb-3">
                     <button @click="toggleModal"
-                            class="border font-semibold rounded-full py-3 border-slate-800 hover:bg-blue-800 hover:text-white">
+                            class="border font-semibold rounded-full py-2 w-full border-slate-800 hover:bg-blue-800 hover:text-white">
                         Lihat Detail
                     </button>
-                    <button @click="show_proof = true"
-                            class="border font-semibold rounded-full py-3 bg-blue-800 border-slate-800 hover:bg-blue-900 text-white">
-                        Kirim Bukti Transfer
-                    </button>
                 </div>
-                <div v-show="show_proof">
+                <div v-show="!show_proof">
                     <label for="file_upload">
-                        <div class="bg-slate-200 h-36 w-full cursor-pointer rounded flex justify-center items-center">
-                            <div>
+                        <div
+                            class="bg-slate-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
+                            <page-loader v-model:active="upload_loader" loader="dots" :is-full-page="false"/>
+                            <div v-if="!upload_loader">
                                 <unicon name="file" fill="grey"></unicon>
                                 <div class="text-sm italic text-slate-600">Pilih file bukti transfer</div>
                             </div>
                         </div>
                     </label>
-                    <input type="file" hidden id="file_upload">
+                    <input type="file" accept="application/pdf,image/*" hidden id="file_upload" @change="uploadFile">
                 </div>
+                <div v-show="show_proof" class="flex justify-center bg-slate-200 p-2" >
+                    <a :href="transaction.transfer_proof" target="_blank">
+                    <img :src="transaction.transfer_proof" alt="" class="max-h-52">
+                    </a>
+                </div>
+                <label for="file_upload" v-show="show_proof">
+                    <div
+                        class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-800 border-slate-800 hover:bg-blue-900 text-white">
+                        Upload Ulang
+                    </div>
+                </label>
             </div>
         </div>
         <div id="defaultModal" tabindex="-1" aria-hidden="true"
@@ -78,7 +87,7 @@
                     <div class="p-6 space-y-6">
                         <div class="p-2" v-for="detail in transaction.transaction_details">
                             <div>
-                                {{detail.event_name}}
+                                {{ detail.event_name }}
                             </div>
                         </div>
                     </div>
@@ -93,9 +102,11 @@ export default {
     data() {
         return {
             modal: '',
-            show_proof: true,
+            show_proof: false,
+            upload_loader: false,
             transaction: {
-                transaction_details: []
+                transaction_details: [],
+                transfer_proof: '',
             },
         }
     },
@@ -107,7 +118,51 @@ export default {
             this.authGet('pub/transaction/' + this.$route.query.transaction_number)
                 .then((data) => {
                     this.transaction = data.result
+                    if(this.transaction.transfer_proof){
+                        this.show_proof = true
+                    }
                 })
+        },
+        copyText(copy_text, text = null) {
+            navigator.clipboard.writeText(copy_text);
+            this.toaster({title: text + ' disalin'})
+        },
+        uploadFile() {
+            let file = document.getElementById("file_upload").files[0];
+            if (file) {
+                this.upload_loader = true;
+                let form_data = new FormData();
+
+                form_data.append('file', file)
+                form_data.append('model', 'transaction')
+                form_data.append('model_id', this.transaction.id)
+                form_data.append('title', 'Bukti Transfer ' + this.transaction.number)
+
+                this.authPost('pub/upload-file', form_data)
+                    .then((data) => {
+                        if (data.status) {
+                            this.transaction.transfer_proof = data.result.link;
+                            this.uploadTransferProof()
+                            this.show_proof = true
+                        }
+                    }).catch((e) => {
+                    this.upload_loader = false;
+                });
+            }
+        },
+        uploadTransferProof() {
+            this.authPost('pub/transaction-transfer-proof', {
+                transaction_id: this.transaction.id,
+                transfer_proof_link: this.transaction.transfer_proof
+            })
+                .then((data)=>{
+                    if(data.status){
+                        this.upload_loader = false;
+                        this.loadData()
+                    }
+                }).catch(()=>{
+
+            })
         }
     },
     mounted() {

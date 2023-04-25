@@ -1,6 +1,6 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-16">
-        <div class="flex justify-center items-center my-6" style="min-height: calc(100vh - 195px);">
+    <div class="max-w-screen-lg m-auto pt-16 px-2">
+        <div class="my-6" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl">
                 <div>
                     <img src="/storage/logo/jcu_color.png" alt="" class="h-16 mb-2">
@@ -16,7 +16,7 @@
                         {{ parseErrors('name', 'val') }}
                     </small>
                 </div>
-                <div class="grid gap-2 md:grid-cols-2 mt-3">
+                <div class="grid gap-2 sm:grid-cols-2 mt-3">
                     <div>
                         <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Asal Kota, Provinsi
                             <span
@@ -69,7 +69,7 @@
                         {{ parseErrors('email', 'val') }}
                     </small>
                 </div>
-                <div class="grid gap-2 md:grid-cols-2 mt-3" v-if="!logged_in">
+                <div class="grid gap-2 sm:grid-cols-2 mt-3" v-if="!logged_in">
                     <div>
                         <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password <span
                             class="text-red-600">*</span></label>
@@ -110,9 +110,10 @@
                     </small>
                 </div>
                 <div class="mt-3">
-                    <button @click="registerEmail"
+                    <button @click="registerEmail" :disabled="disabled"
                             class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
-                        Daftar
+                        <BtnLoader v-if="disabled"></BtnLoader>
+                        <span v-if="!disabled">Daftar</span>
                     </button>
                     <!--                    <button v-if="!logged_in"-->
                     <!--                            class="inline-block w-full text-base relative text-neutral-700 text-center px-8 py-2.5 text-center rounded-full border hover:bg-neutral-100">-->
@@ -130,6 +131,7 @@
 export default {
     data() {
         return {
+            disabled: false,
             eye_icon: false,
             referral_code: false,
             data_raw: {
@@ -139,14 +141,14 @@ export default {
             data_valid: false,
             form: {
                 id: '',
-                name: 'aliakbar',
-                phone: '123123123123',
-                email: 'vyvy1777@gmail.com',
-                institution: 'PGRI',
-                city: 'Lampung',
-                job_type_code: 'DRSP',
-                password: '12341234',
-                password_confirmation: '12341234',
+                name: '',
+                phone: '',
+                email: '',
+                institution: '',
+                city: '',
+                job_type_code: '',
+                password: '',
+                password_confirmation: '',
             },
             form_errors: []
         }
@@ -175,7 +177,8 @@ export default {
                 })
         },
         registerEmail() {
-            this.apiPost('pub/register', this.form, this.setHeader())
+            this.disabled = true
+            this.apiPost('pub/register', this.form)
                 .then((data) => {
                     if (data.status) {
                         let trx = data.result.transaction
@@ -185,9 +188,11 @@ export default {
                         }
                     } else {
                         this.form_errors = data.errors
-                        console.log(data)
                     }
-                })
+                    this.disabled = false
+                }).catch(()=>{
+                    this.disabled = false
+            })
         },
         parseErrors(field, type = 'status') {
             let has = false;

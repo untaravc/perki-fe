@@ -13,7 +13,15 @@
             </div>
             <div class="p-5 flex justify-between">
                 <div>
-                    <div class="font-semibold">{{ trx.number }}</div>
+                    <div class="font-semibold cursor-pointer underline text-blue-700 hover:text-blue-800">
+                        <router-link v-if="trx.status === 100"
+                                     :to="'/register/event?transaction_number=' + trx.number">{{ trx.number }}
+                        </router-link>
+                        <router-link v-if="trx.status === 110 || trx.status === 120"
+                                     :to="'/payment?transaction_number=' + trx.number">{{ trx.number }}
+                        </router-link>
+                        <span class="font-semibold" v-else>{{ trx.number }}</span>
+                    </div>
                     <div class="ml-4">
                         <ul class="list-disc">
                             <li class="text-sm" v-for="detail in trx.transaction_details">

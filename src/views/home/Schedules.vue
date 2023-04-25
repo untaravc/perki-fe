@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-24" id="schedule">
+    <div class="max-w-screen-lg m-auto pt-24 px-2" id="schedule">
         <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
             JADWAL ACARA
         </div>
@@ -7,24 +7,24 @@
             Jogja Cardiology Update 2023 in conjunction with The Sixth Jogja International Cardiovascular Topik Series
         </div>
         <div class="grid grid-cols-3">
-            <div @click="selected = 1"
-                 class="bg-yellow-400 text-white py-3 text-center rounded-tl-lg cursor-pointer hover:bg-yellow-500 group transition duration-200">
+            <div @click="selected = 1" :class="selected === 1 ? 'bg-yellow-400' : 'bg-slate-500'"
+                 class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:bg-yellow-500 group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     JUMAT
                     <span :class="selected === 1 ? 'max-w-full' : 'max-w-0'"
                           class="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-white"></span>
                 </div>
             </div>
-            <div @click="selected = 2"
-                 class="bg-cyan-500 text-white py-3 text-center cursor-pointer hover:bg-cyan-600 group transition duration-200">
+            <div @click="selected = 2" :class="selected === 2 ? 'bg-cyan-500' : 'bg-slate-500'"
+                 class="text-white py-3 text-center cursor-pointer hover:bg-cyan-600 group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     SABTU
                     <span :class="selected === 2 ? 'max-w-full' : 'max-w-0'"
                           class="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-white"></span>
                 </div>
             </div>
-            <div @click="selected = 3"
-                 class="bg-indigo-600 text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:bg-indigo-700 group transition duration-200">
+            <div @click="selected = 3" :class="selected === 3 ? 'bg-indigo-600 ' : 'bg-slate-500'"
+                 class="text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:bg-indigo-700 group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     MINGGU
                     <span :class="selected === 3 ? 'max-w-full' : 'max-w-0'"
@@ -111,7 +111,7 @@
         <div v-if="selected === 3" class="p-2 border-b border-slate-900">
             <div class="grid grid-cols-7">
                 <div class="col-span-1 row-span-4">
-                    {{ $filters.formatTime("2023-09-02 13:00:00") }}
+                    {{ $filters.formatTime("2023-09-02 08:00:00") }}
                     -
                     {{ $filters.formatTime("2023-09-02 16:00:00") }}
                 </div>

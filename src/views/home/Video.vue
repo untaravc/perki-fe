@@ -11,7 +11,7 @@
           </div>
       </div>
       <div class="text-center mt-8">
-        <div class="text-base text-slate-500 my-3">For a long time, web developers have had to rely on obscure CSS tricks to embed responsive YouTube videos on their website.</div>
+        <div class="text-base text-slate-500 my-3"></div>
       </div>
     </div>
   </div>
