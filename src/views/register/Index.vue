@@ -5,10 +5,10 @@
                 <div>
                     <img src="/storage/logo/jcu_color.png" alt="" class="h-16 mb-2">
                 </div>
-                <div class="font-semibold text-xl">Registrasi Event</div>
-                <div class="text-sm">Daftar dengan email atau dengan gmail.</div>
+                <div class="font-semibold text-xl">Register Event</div>
+                <div class="text-sm">Create your account to register event.</div>
                 <div class="mt-3">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama lengkap<span
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name<span
                         class="text-red-600">*</span></label>
                     <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="grid gap-2 sm:grid-cols-2 mt-3">
                     <div>
-                        <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Asal Kota, Provinsi
+                        <label for="address" class="block mb-2 text-sm font-medium text-gray-900">City, Province
                             <span
                                 class="text-red-600">*</span></label>
                         <input type="text" id="address" placeholder="ex. Sleman, DI Yogyakarta" v-model="form.city"
@@ -28,7 +28,7 @@
                         </small>
                     </div>
                     <div>
-                        <label for="institution" class="block mb-2 text-sm font-medium text-gray-900">Institusi <span
+                        <label for="institution" class="block mb-2 text-sm font-medium text-gray-900">Institution <span
                             class="text-red-600">*</span></label>
                         <input type="text" id="institution" placeholder="ex. Universitas Gadjah Mada"
                                v-model="form.institution"
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Tipe Peserta<span
+                    <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Member Type<span
                         class="text-red-600">*</span></label>
                     <select id="job_type" v-model="form.job_type_code"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -71,7 +71,7 @@
                 </div>
                 <div class="grid gap-2 sm:grid-cols-2 mt-3" v-if="!logged_in">
                     <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password <span
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Create New Password<span
                             class="text-red-600">*</span></label>
                         <div class="relative">
                             <input :type="eye_icon ? 'text' : 'password'" id="password" v-model="form.password"
@@ -99,8 +99,7 @@
                         </div>
                     </div>
                     <div>
-                        <label for="password-confirmation" class="block mb-2 text-sm font-medium text-gray-900">Konfirmasi
-                            Password <span
+                        <label for="password-confirmation" class="block mb-2 text-sm font-medium text-gray-900">Confirm Your Password <span
                                 class="text-red-600">*</span></label>
                         <input type="password" id="password-confirmation" v-model="form.password_confirmation"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
@@ -113,7 +112,7 @@
                     <button @click="registerEmail" :disabled="disabled"
                             class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                         <BtnLoader v-if="disabled"></BtnLoader>
-                        <span v-if="!disabled">Daftar</span>
+                        <span v-if="!disabled">Register</span>
                     </button>
                     <!--                    <button v-if="!logged_in"-->
                     <!--                            class="inline-block w-full text-base relative text-neutral-700 text-center px-8 py-2.5 text-center rounded-full border hover:bg-neutral-100">-->

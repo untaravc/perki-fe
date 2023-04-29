@@ -1,11 +1,10 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24 pb-12 px-2">
         <div class="text-4xl font-bold mb-1 text-center text-white">
-            PEMBICARA
+            SPEAKERS
         </div>
         <div class="text-small text-slate-100 mb-5 text-center">
-            Pembicara adalah pada ahli dalam bidang Kardiologi dan Kedokteran Vaskular serta bidang-bidang terkait baik
-            tingkat lokal maupun nasional
+            The speakers are experts in Cardiology and Vascular Medicine as well as related fields local and national level
         </div>
         <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
             <div class="group" v-for="data in data_content">
@@ -19,7 +18,7 @@
             </div>
         </div>
         <router-link to="/speakers">
-            <div class="bg-blue-500 p-1 text-center w-full rounded mt-4 text-slate-200 cursor-pointer">Selengkapnya
+            <div class="bg-blue-500 p-1 text-center w-full rounded mt-4 text-slate-200 cursor-pointer">View all
             </div>
         </router-link>
     </div>

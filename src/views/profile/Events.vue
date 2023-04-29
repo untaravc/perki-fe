@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="text-2xl font-semibold mb-3">Event Saya</div>
+        <div class="text-2xl font-semibold mb-3">My Event</div>
+        <div v-if="data_content.length === 0" class="p-3 italic text-slate-500">
+            no data
+        </div>
         <div class="border-slate-200 border bg-white rounded mb-2" v-for="event in data_content">
             <div class="bg-slate-100 rounded-t py-3 px-4 flex justify-between">
                 <div class="flex">
@@ -24,11 +27,11 @@
                     <div class="flex justify-end mt-2">
                         <div class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-2 py-1 text-sm rounded-lg">
                             <unicon name="location-point" fill="white" height="14px" width="14px"></unicon>
-                            <div class="ml-1">Lokasi</div>
+                            <div class="ml-1">Location</div>
                         </div>
                         <div class="bg-blue-700 flex mx-1 cursor-pointer hover:bg-blue-800 items-center text-white px-2 py-1 text-sm rounded-lg">
                             <unicon name="play" fill="white" height="14px" width="14px"></unicon>
-                            <div class="ml-1">Informasi</div>
+                            <div class="ml-1">Information</div>
                         </div>
                     </div>
                 </div>

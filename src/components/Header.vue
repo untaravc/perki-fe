@@ -10,7 +10,7 @@
                 <router-link to="/register"
                              class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
-                        <div class="mr-2">Daftar</div>
+                        <div class="mr-2">Register</div>
                         <unicon name="arrow-right" fill="white"></unicon>
                     </div>
                 </router-link>
@@ -30,19 +30,14 @@
                 <ul
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
                     <li>
-                        <a href="/"
-                           class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Home</a>
+                        <router-link to="/"
+                           class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
+                           aria-current="page">Home</router-link>
                     </li>
                     <li>
-                        <a href="/#schedule"
+                        <router-link to="/profile/events"
                            class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Jadwal</a>
-                    </li>
-                    <li>
-                        <a href="/login"
-                           class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Event Saya</a>
+                           aria-current="page">My Account</router-link>
                     </li>
                 </ul>
             </div>
@@ -66,3 +61,14 @@ export default {
     }
 }
 </script>
+<style scoped>
+.router-link-active:not(.home){
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.router-link-exact-active{
+    font-weight: 600;
+    text-decoration: underline;
+}
+</style>

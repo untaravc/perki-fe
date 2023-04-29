@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24 px-2" id="schedule">
         <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
-            JADWAL ACARA
+            SCHEDULE
         </div>
         <div class="text-small text-slate-600 mb-5 text-center">
             Jogja Cardiology Update 2023 in conjunction with The Sixth Jogja International Cardiovascular Topik Series
@@ -10,7 +10,7 @@
             <div @click="selected = 1" :class="selected === 1 ? 'bg-yellow-400' : 'bg-slate-500'"
                  class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:bg-yellow-500 group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
-                    JUMAT
+                    FRIDAY
                     <span :class="selected === 1 ? 'max-w-full' : 'max-w-0'"
                           class="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-white"></span>
                 </div>
@@ -18,7 +18,7 @@
             <div @click="selected = 2" :class="selected === 2 ? 'bg-cyan-500' : 'bg-slate-500'"
                  class="text-white py-3 text-center cursor-pointer hover:bg-cyan-600 group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
-                    SABTU
+                    SATURDAY
                     <span :class="selected === 2 ? 'max-w-full' : 'max-w-0'"
                           class="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-white"></span>
                 </div>
@@ -26,20 +26,22 @@
             <div @click="selected = 3" :class="selected === 3 ? 'bg-indigo-600 ' : 'bg-slate-500'"
                  class="text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:bg-indigo-700 group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
-                    MINGGU
+                    SUNDAY
                     <span :class="selected === 3 ? 'max-w-full' : 'max-w-0'"
                           class="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-white"></span>
                 </div>
             </div>
         </div>
         <div v-if="selected === 1" class="p-2 border-b border-slate-900">
-            <div class="grid grid-cols-7" v-for="friday in schedule.friday">
-                <div class="col-span-1">
+            <div class="grid grid-cols-2 md:grid-cols-7 border-b py-1 border-blue-300" v-for="friday in schedule.friday">
+                <div class="md:col-span-1 text-center col-span-2">
+                    <div class="inline-block bg-blue-300 px-2 py-1 rounded">
                     {{ $filters.formatTime(friday.date_start) }}
                     -
                     {{ $filters.formatTime(friday.date_end) }}
+                    </div>
                 </div>
-                <div class="col-span-3">
+                <div class="md:col-span-3 px-1 col-span-1">
                     <div class="text-indigo-700 font-bold">
                         {{ friday.room_a.name }}
                     </div>
@@ -51,7 +53,7 @@
                         <span class="bg-slate-200 py-1 px-2 rounded-lg mr-1">Speaker 2</span>
                     </div>
                 </div>
-                <div class="col-span-3">
+                <div class="md:col-span-3 px-1 col-span-1">
                     <div class="text-indigo-700 font-bold">
                         {{ friday.room_b.name }}
                     </div>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-2xl font-semibold mb-3">Profil</div>
+        <div class="text-2xl font-semibold mb-3">Profile</div>
         <div class="p-6 border-slate-100 bg-white rounded-xl">
             <div class="grid gap-2 grid-cols-5">
                 <div>
@@ -8,7 +8,7 @@
                          class="w-full bg-purple-300 bg-cover rounded-md bg-center bg-no-repeat">
                     </div>
                     <div class="text-center text-sm cursor-pointer text-blue-800">
-                        Ganti Foto
+                        Update Photo
                     </div>
                 </div>
                 <div class="col-span-4 pl-4">

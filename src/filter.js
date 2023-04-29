@@ -42,11 +42,11 @@ const config = {
 	},
 	formatDayDateTime(value) {
 		if (value) {
-			moment.updateLocale("en", {
-				weekdays: [
-					"Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"
-				],
-			})
+			// moment.updateLocale("en", {
+			// 	weekdays: [
+			// 		"Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"
+			// 	],
+			// })
 			return moment(value).format("dddd, DD MMM HH:mm");
 		}
 	},

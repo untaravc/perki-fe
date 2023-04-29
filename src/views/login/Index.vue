@@ -5,8 +5,8 @@
                 <div>
                     <img src="/storage/logo/jcu_color.png" alt="" class="h-16 mb-2">
                 </div>
-                <div class="font-semibold text-xl">Masuk</div>
-                <div class="text-sm min-w-[380px]">Masuk dengan email & password atau GMail.</div>
+                <div class="font-semibold text-xl">Sign In</div>
+                <div class="text-sm min-w-[380px]">Sign in with your account or gmail.</div>
                 <div class="mt-3">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-Mail <span
                         class="text-red-600">*</span></label>
@@ -22,11 +22,11 @@
                 <div class="mt-3">
                     <button @click="login"
                             class="text-white mb-2 w-full bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
-                        Masuk
+                        Sign In
                     </button>
                 </div>
                 <div class="mt-3 text-center">
-                    <div class="italic text-slate-500 text-sm mb-2">Atau masuk dengan Google</div>
+                    <div class="italic text-slate-500 text-sm mb-2">Sign in with Google</div>
                     <div>
                         <GoogleLogin :callback="loginByGoogle"/>
                     </div>

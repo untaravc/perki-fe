@@ -4,8 +4,8 @@
             <div class="grid gap-4 md:grid-cols-3">
                 <div class="">
                     <div class="font-semibold text-lg min-h-[56px]">
-                        Simposium & <br>
-                        Workshop Half Day
+                        Symposium & <br>
+                        Saturday Workshop
                     </div>
                     <div class="rounded-tl-lg rounded-tr-lg bg-blue-50 p-4 border cursor-pointer hover:bg-blue-100"
                          @click="selectSympo(events.symposium.id)">
@@ -14,7 +14,7 @@
                                 {{ events.symposium.name }}
                             </div>
                             <div class="text-xs mb-1">
-                                Jumat-Sabtu, 1-2 Sep 08:00
+                                Friday-Saturday, 1-2 Sep 08:00
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}
@@ -30,9 +30,9 @@
                                 <unicon v-if="form.symposium == null" name="square" width="35" height="35"></unicon>
                             </div>
                         </div>
-                        <div class="text-xs text-blue-700"
+                        <div class="text-xs text-red-600"
                              v-if="form.workshop_half_day == null && form.symposium != null">
-                            * Silakan memilih Workshop Half Day
+                            * Please select Saturday Workshop
                         </div>
                     </div>
                     <div v-for="half_day in events.half_day" @click="selectHalfDay(half_day.id)"
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="">
-                    <div class="font-semibold text-lg min-h-[56px]">Workshop Full Day</div>
+                    <div class="font-semibold text-lg min-h-[56px]">Sunday Workshop</div>
                     <div v-for="full_day in events.full_day" @click="selectFullDay(full_day.id)"
                          class="rounded-lg bg-blue-50 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
                         <div class="mb-3">
@@ -90,25 +90,25 @@
                     <div class="px-3 py-4 border rounded-lg">
                         <div class="border-b">
                             <div class="text-xs">
-                                Nomor Transaksi:
+                                Transaction Number:
                             </div>
                             <div class="text-sm italic mb-2">
                                 {{ pricing.transaction.number }}
                             </div>
                             <div class="text-xs">
-                                Nama:
+                                Name:
                             </div>
                             <div class="text-sm italic mb-2">
                                 {{ pricing.transaction.user_name }}
                             </div>
                             <div class="text-xs">
-                                No Telp:
+                                Phone:
                             </div>
                             <div class="text-sm italic mb-2">
                                 {{ pricing.transaction.user_phone }}
                             </div>
                             <div class="text-xs">
-                                No Telp:
+                                Email:
                             </div>
                             <div class="text-sm italic mb-2">
                                 {{ pricing.transaction.user_email }}
@@ -116,7 +116,19 @@
                         </div>
 
                         <div class="font-semibold mt-5 mb-2">
-                            Detail Transaksi
+                            Voucher Code
+                        </div>
+                        <input type="text" id="institution" placeholder="input voucher code"
+                               v-model="voucher"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                        <div class="text-right mt-3">
+                            <div @click="calculatePrice('check')" class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">
+                                Check
+                            </div>
+                        </div>
+
+                        <div class="font-semibold mt-5 mb-2">
+                            Transaction Details
                         </div>
                         <div class="text-sm" v-if="pricing.count > 0">
                             <div v-for="price in pricing.items">
@@ -140,7 +152,7 @@
                         <div class="mt-5">
                             <button @click="toPayment"
                                     class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
-                                Lanjut Pembayaran
+                                Process to Payment
                             </button>
                         </div>
                     </div>
@@ -155,6 +167,7 @@ export default {
     data() {
         return {
             selected: 2,
+            voucher:'',
             form: {
                 symposium: null,
                 workshop_full_day: null,
@@ -181,13 +194,19 @@ export default {
                     this.events = data.result
                 })
         },
-        calculatePrice() {
+        calculatePrice(mode = 'calculate') {
             this.authPost('pub/calculate-price', {
                 items: this.form,
+                voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number
             })
                 .then((data) => {
                     this.pricing = data.result
+                    if(data.message){
+                        if(mode === "check"){
+                            this.toaster({title: data.message, icon: 'none'})
+                        }
+                    }
                 })
         },
         selectSympo(id) {

@@ -1,35 +1,33 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24 pb-12 px-2">
         <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
-            PAKET HARGA
+            PRICING
         </div>
         <div class="text-small text-slate-600 mb-5 text-center">
-            Segera daftarkan diri anda dan dapatkan harga spesial Early Bird hingga 31 Juli 2023
+            Register yourself and get a special Early Bird price until <b>31st of July</b>
         </div>
         <div class="grid grid-cols-3">
             <div class="md:col-span-2 col-span-3 shadow bg-blue-900 p-5 rounded-l-none md:rounded-l-lg text-white">
                 <div class="text-lg mb-2">
-                    Pilihan Paket
+                    Packages:
                 </div>
                 <div class="grid grid-cols-3 mb-3">
-                    <div @click="select(pricing.ws_fd, 1)" :class="selected_index === 1 ? 'bg-blue-600' : 'bg-blue-800'"
+                    <div @click="select(pricing.platinum, 1)" :class="selected_index === 1 ? 'bg-blue-600' : 'bg-blue-800'"
                         class="shadow p-3 col-span-3 md:col-span-1 border-blue-600 border cursor-pointer md:rounded-l-lg">
-                        {{ pricing.ws_fd.name }}
+                        {{ pricing.platinum.name }}
                     </div>
-                    <div @click="select(pricing.sympo_ws, 2)" :class="selected_index === 2 ? 'bg-blue-600' : 'bg-blue-800'"
+                    <div @click="select(pricing.gold, 2)" :class="selected_index === 2 ? 'bg-blue-600' : 'bg-blue-800'"
                         class="shadow p-3 col-span-3 md:col-span-1 border-blue-600 border cursor-pointer">
-                        {{ pricing.sympo_ws.name }}
+                        {{ pricing.gold.name }}
                     </div>
-                    <div @click="select(pricing.all_event, 3)" :class="selected_index === 3 ? 'bg-blue-600' : 'bg-blue-800'"
+                    <div @click="select(pricing.bronze, 3)" :class="selected_index === 3 ? 'bg-blue-600' : 'bg-blue-800'"
                         class="shadow p-3 col-span-3 md:col-span-1 border-blue-600 border cursor-pointer md:rounded-r-lg">
-                        {{ pricing.all_event.name }}
+                        {{ pricing.bronze.name }}
                     </div>
                 </div>
                 <div>
                     {{selected.name}} detail:
-                    <div class="text-slate-300">
-                        {{selected.desc}}
-                    </div>
+                    <div class="text-slate-300 disc" v-html="selected.desc"></div>
                 </div>
             </div>
             <div class="md:col-span-1  col-span-3 border-l  border-slate-500 shadow bg-blue-900 p-5 rounded-r-none md:rounded-r-lg text-white">
@@ -50,9 +48,9 @@
                     Early Bird:
                     <span class="font-bold text-lime-400">Rp {{$filters.currency(selected.price_drsp_eb)}}</span>
                 </div>
-                <div class="rounded-lg bg-blue-700 p-3 font-semibold text-center hover:bg-blue-600 cursor-pointer">
-                    Daftar Sekarang
-                </div>
+                <router-link to="/register" class="rounded-lg block bg-blue-700 p-3 mt-3 w-full font-semibold text-center hover:bg-blue-600 cursor-pointer">
+                    Register Now
+                </router-link>
             </div>
         </div>
     </div>
@@ -63,9 +61,9 @@ export default {
     data() {
         return {
             pricing: {
-                ws_fd: {},
-                sympo_ws: {},
-                all_event: {},
+                platinum: {},
+                gold: {},
+                bronze: {},
             },
             selected:{},
             selected_index: 1,
@@ -77,7 +75,7 @@ export default {
                 .then((data) => {
                     this.pricing = data.result
 
-                    this.selected = this.pricing.ws_fd
+                    this.selected = this.pricing.platinum
                     this.selected_index = 1
                 })
         },
@@ -91,3 +89,10 @@ export default {
     }
 }
 </script>
+
+<style>
+.disc ul li {
+    list-style-type: disc;
+    margin-left: 16px;
+}
+</style>

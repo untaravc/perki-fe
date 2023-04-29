@@ -5,30 +5,32 @@
                  :style="`background-image: url('` + data_content[index]['poster'] + `')`"></div>
             <div class="md:col-span-3 md:order-1">
                 <div class="m-5 bg-blue-300 rounded-full py-1 px-8 italic text-sm inline-block">
-                    {{data_content[index]['date']}}
+                    {{ data_content[index]['date'] }}
                 </div>
                 <div class="mx-5 mb-5 text-4xl lg:text-6xl  font-bold text-blue-900">
-                    {{data_content[index]['title']}}
+                    {{ data_content[index]['title'] }}
                 </div>
                 <div class="mx-5 mb-5 lg:w-9/12 text-lg text-slate-600 italic">
-                    {{data_content[index]['subtitle']}}
+                    {{ data_content[index]['subtitle'] }}
                 </div>
                 <div class="mx-5 flex">
-                    <router-link to="/schedule"
+                    <a href="#schedule"
                                  class="text-blue-900 mr-4 inline-block items-center border border-blue-900 hover:bg-blue-900 hover:text-white font-medium rounded-full text-lg px-9 py-3 text-center">
-                        <div class="mr-2">Jadwal</div>
-                    </router-link>
+                        <div class="mr-2">Schedule</div>
+                    </a>
                     <router-link to="/register"
                                  class="text-white inline-block flex items-center bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-lg px-9 py-3 text-center">
-                        <div class="mr-2">Daftar</div>
+                        <div class="mr-2">Register</div>
                         <unicon name="arrow-right" fill="white"></unicon>
                     </router-link>
                 </div>
                 <div class="flex ml-6 mt-4">
-                    <div @click="prev" class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
+                    <div @click="prev"
+                         class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-left"></unicon>
                     </div>
-                    <div @click="next" class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
+                    <div @click="next"
+                         class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-right"></unicon>
                     </div>
                 </div>
@@ -38,52 +40,47 @@
 </template>
 <script>
 export default {
-    data(){
+    data() {
         return {
             index: 0,
             interval: '',
-            data_content:[
+            data_content: [
                 {
-                    title: "Jogja Cardiology Update",
-                    subtitle: "Integrating Technology In Cardiovascular Disease Management: Towards A Harmonic Fusion",
-                    date: "Yogyakarta, 1-3 September 2023",
-                    poster: '/storage/img/1st_announcement.jpg',
-                },
-                {
-                    title: "12 Symposium & 8 Workshop",
-                    subtitle: "Jogja Cardiology Update in Conjunction with Jogja International Cardiovascular Topic Series",
-                    date: "Tentrem Hotel, Yogyakarta",
-                    poster: '/storage/img/1st_announcement.jpg',
-                },{
-                    title: "The Sixth JINCARTOS",
-                    subtitle: "Jogja International Cardiovascular Topic Series: Scientific Breakthrough in Hearth Rhythm Disorder",
-                    date: "12 Symposium & 8 Workshop",
-                    poster: '/storage/img/1st_announcement.jpg',
+                    poster: '',
                 }
             ]
         }
     },
-    methods:{
-        next(){
+    methods: {
+        next() {
             let count = this.data_content.length - 1;
-            if(this.index < count){
+            if (this.index < count) {
                 this.index++
             } else {
                 this.index = 0
             }
             clearInterval(this.interval)
         },
-        prev(){
-            if(this.index > 0){
+        prev() {
+            if (this.index > 0) {
                 this.index--
             } else {
                 this.index = this.data_content.length - 1;
             }
             clearInterval(this.interval)
+        },
+        loadData() {
+            this.apiGet('pub/hero-banner')
+                .then((data) => {
+                    this.data_content = data.result;
+                })
         }
     },
+    created() {
+        this.loadData()
+    },
     mounted() {
-        this.interval = setInterval(()=>{
+        this.interval = setInterval(() => {
             this.next()
         }, 5000)
     }

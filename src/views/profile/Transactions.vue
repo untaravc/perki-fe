@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="text-2xl font-semibold mb-3">Transaksi</div>
+        <div class="text-2xl font-semibold mb-3">Transaction</div>
+        <div v-if="data_content.length === 0" class="p-3 italic text-slate-500">
+            no data
+        </div>
         <div class="border-slate-200 border bg-white rounded mb-2" v-for="trx in data_content">
             <div class="bg-slate-100 rounded-t py-3 px-4 flex justify-between">
                 <div class="flex">
@@ -17,7 +20,7 @@
                         <router-link v-if="trx.status === 100"
                                      :to="'/register/event?transaction_number=' + trx.number">{{ trx.number }}
                         </router-link>
-                        <router-link v-if="trx.status === 110 || trx.status === 120"
+                        <router-link v-else="trx.status === 110 || trx.status === 120"
                                      :to="'/payment?transaction_number=' + trx.number">{{ trx.number }}
                         </router-link>
                         <span class="font-semibold" v-else>{{ trx.number }}</span>
@@ -34,6 +37,18 @@
                     <div class="font-semibold text-blue-700">
                         {{ $filters.currency(trx.total) }}
                     </div>
+                    <router-link v-if="trx.status === 100"
+                                 class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
+                                 :to="'/register/event?transaction_number=' + trx.number">
+                        Detail
+                        <unicon name="angle-right" fill="white" height="14px" width="14px"></unicon>
+                    </router-link>
+                    <router-link v-else="trx.status === 110 || trx.status === 120"
+                                 class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
+                                 :to="'/payment?transaction_number=' + trx.number">
+                        Detail
+                        <unicon name="angle-right" fill="white" height="14px" width="14px"></unicon>
+                    </router-link>
                 </div>
             </div>
         </div>
