@@ -31,13 +31,21 @@
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
                     <li>
                         <router-link to="/"
-                           class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">Home</router-link>
+                                     class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
+                                     aria-current="page">Home
+                        </router-link>
                     </li>
-                    <li>
+                    <li v-if="has_token">
                         <router-link to="/profile/events"
-                           class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                           aria-current="page">My Account</router-link>
+                                     class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
+                                     aria-current="page">My Account
+                        </router-link>
+                    </li>
+                    <li v-if="!has_token">
+                        <router-link to="/login"
+                                     class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
+                                     aria-current="page">Sign In
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -48,26 +56,41 @@
 export default {
     data() {
         return {
-            scrollPosition: null
+            scrollPosition: null,
+            has_token: false,
         }
     },
     methods: {
         updateScroll() {
             this.scrollPosition = window.scrollY
+        },
+        checkToken() {
+            let token = localStorage.getItem('perki_user_token');
+            if (token) {
+                this.has_token = true;
+            } else {
+                this.has_token = false;
+            }
         }
+    },
+    created() {
+        this.checkToken()
     },
     mounted() {
         window.addEventListener('scroll', this.updateScroll);
+        this.emitter.on("update-header", ()=>{
+            this.checkToken()
+        });
     }
 }
 </script>
 <style scoped>
-.router-link-active:not(.home){
+.router-link-active:not(.home) {
     font-weight: 600;
     text-decoration: underline;
 }
 
-.router-link-exact-active{
+.router-link-exact-active {
     font-weight: 600;
     text-decoration: underline;
 }

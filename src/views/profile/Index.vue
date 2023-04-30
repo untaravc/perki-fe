@@ -17,11 +17,14 @@
                             <unicon name="youtube" height="20px" :fill="active === 'events' ? 'blue' : ''"></unicon>
                             <div class="ml-2">My Event</div>
                         </router-link>
-                        <router-link to="/profile/transactions" class="flex my-3 cursor-pointer"
+                        <router-link to="/profile/transactions" class="flex justify-between my-3 cursor-pointer"
                                      @click="active = 'transactions'">
-                            <unicon name="shopping-cart" height="20px"
-                                    :fill="active === 'transactions' ? 'darkblue' : ''"></unicon>
-                            <div class="ml-2">Transaction</div>
+                            <div class="flex">
+                                <unicon name="shopping-cart" height="20px"
+                                        :fill="active === 'transactions' ? 'darkblue' : ''"></unicon>
+                                <div class="ml-2">Transaction</div>
+                            </div>
+                            <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">{{pending_transaction}}</div>
                         </router-link>
                         <div class="flex my-3 cursor-pointer" @click="logout">
                             <unicon name="signout" height="20px"></unicon>
@@ -42,7 +45,8 @@
 export default {
     data() {
         return {
-            active: ''
+            active: '',
+            pending_transaction: 0,
         }
     },
     methods: {
@@ -54,9 +58,19 @@ export default {
                             localStorage.removeItem('perki_user_token')
                             this.$router.push('/')
                         }
+                        this.emitter.emit("update-header");
                     })
             }
+        },
+        loadData() {
+            this.authGet('pub/pending-transaction-count')
+                .then((data) => {
+                    this.pending_transaction = data.result.pending_transaction
+                })
         }
+    },
+    created() {
+        this.loadData()
     }
 }
 </script>

@@ -20,7 +20,7 @@
                         <div
                             class="rounded border-orange-400 border-2 justify-between shadow-inner flex px-3 py-2 border">
                             <div>1370 0013 3133 5</div>
-                            <div class="cursor-pointer" @click="copyText('282983928', 'Nomor Rekening')">
+                            <div class="cursor-pointer" @click="copyText('1370001331335', 'Nomor Rekening')">
                                 <unicon name="copy" height="18px"></unicon>
                             </div>
                         </div>
@@ -56,15 +56,18 @@
                     </label>
                     <input type="file" accept="application/pdf,image/*" hidden id="file_upload" @change="uploadFile">
                 </div>
-                <div v-show="show_proof" class="flex justify-center bg-slate-200 p-2" >
-                    <a :href="transaction.transfer_proof" target="_blank">
-                    <img :src="transaction.transfer_proof" alt="" class="max-h-52">
-                    </a>
+                <div v-show="show_proof" class="flex justify-center bg-slate-200 p-2">
+                    <div class="relative">
+                        <a :href="transaction.transfer_proof" target="_blank">
+                            <img :src="transaction.transfer_proof" alt="" class="max-h-52">
+                        </a>
+                    </div>
                 </div>
-                <label for="file_upload" v-show="show_proof">
+                <label for="file_upload" v-show="show_proof" class="relative">
                     <div
                         class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-800 border-slate-800 hover:bg-blue-900 text-white">
-                        Re-upload
+                        <span v-if="!upload_loader">Re-upload</span>
+                        <span v-if="upload_loader">loading...</span>
                     </div>
                 </label>
             </div>
@@ -118,7 +121,7 @@ export default {
             this.authGet('pub/transaction/' + this.$route.query.transaction_number)
                 .then((data) => {
                     this.transaction = data.result
-                    if(this.transaction.transfer_proof){
+                    if (this.transaction.transfer_proof) {
                         this.show_proof = true
                     }
                 })
@@ -145,6 +148,7 @@ export default {
                             this.uploadTransferProof()
                             this.show_proof = true
                         }
+                        this.upload_loader = false;
                     }).catch((e) => {
                     this.upload_loader = false;
                 });
@@ -155,12 +159,12 @@ export default {
                 transaction_id: this.transaction.id,
                 transfer_proof_link: this.transaction.transfer_proof
             })
-                .then((data)=>{
-                    if(data.status){
+                .then((data) => {
+                    if (data.status) {
                         this.upload_loader = false;
                         this.loadData()
                     }
-                }).catch(()=>{
+                }).catch(() => {
 
             })
         }

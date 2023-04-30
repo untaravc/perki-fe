@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="font-semibold text-blue-700">
+                    <div class="font-semibold text-blue-700 text-right">
                         {{ $filters.currency(trx.total) }}
                     </div>
                     <router-link v-if="trx.status === 100"

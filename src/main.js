@@ -1,8 +1,6 @@
 import {createApp} from 'vue'
 import {createPinia} from 'pinia'
-import filter from './filter'
 import mixin from './stores/mixin'
-import Axios from 'axios'
 import vue3GoogleLogin from 'vue3-google-login'
 
 import App from './App.vue'
@@ -24,6 +22,7 @@ const app = createApp(App)
 app.component('BtnLoader', BtnLoader)
 app.component('page-loader', Loading)
 
+
 app.use(Unicon)
 	.use(createPinia())
 	.use(vue3GoogleLogin, {
@@ -32,7 +31,16 @@ app.use(Unicon)
 	.use(router)
 	.mixin(mixin)
 
+// filter
+import filter from './filter'
 app.config.globalProperties.$filters = filter
+
+import Axios from 'axios'
 app.config.globalProperties.$axios = Axios;
+
+// event bus
+import mitt from 'mitt';
+const emitter = mitt();
+app.config.globalProperties.emitter = emitter;
 
 app.mount('#app')

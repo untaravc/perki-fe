@@ -59,6 +59,7 @@ export default {
                     } else {
                         alert(data.message)
                     }
+                    this.emitter.emit("update-header");
                 })
         },
         loginByGoogle(callback) {
@@ -70,12 +71,11 @@ export default {
                     let destination = this.$route.query.to
                     if (destination) {
                         this.$router.push(this.$route.query.to)
-                        console.log('to')
                     } else {
-                        console.log('info')
                         this.$router.push('/profile/info')
                     }
                 }
+                this.emitter.emit("update-header");
             })
         }
     }

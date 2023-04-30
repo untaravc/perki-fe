@@ -227,10 +227,12 @@ export default {
         toPayment(){
             this.authPost('pub/create-payment',{
                 items: this.form,
+                voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number
             }).then((data)=>{
                     if(data.status){
                         this.$router.push('/payment?transaction_number=' + this.$route.query.transaction_number)
+                        this.emitter.emit("update-header");
                     } else {
                         this.toaster({title: data.message, icon: 'warning'})
                     }
