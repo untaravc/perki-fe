@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24 pb-12 px-2">
         <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
-            PRICING
+            PACKAGE
         </div>
         <div class="text-small text-slate-600 mb-5 text-center">
             Register yourself and get a special Early Bird price until <b>31st of July</b>

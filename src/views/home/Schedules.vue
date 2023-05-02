@@ -4,7 +4,7 @@
             SCHEDULE
         </div>
         <div class="text-small text-slate-600 mb-5 text-center">
-            Jogja Cardiology Update 2023 in conjunction with The Sixth Jogja International Cardiovascular Topik Series
+            Jogja Cardiology Update 2023 in conjunction with The Sixth Jogja International Cardiovascular Topic Series
         </div>
         <div class="grid grid-cols-3">
             <div @click="selected = 1" :class="selected === 1 ? 'bg-yellow-400' : 'bg-slate-500'"
