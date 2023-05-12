@@ -14,7 +14,7 @@
                                 {{ events.symposium.name }}
                             </div>
                             <div class="text-xs mb-1">
-                                Friday-Saturday, 1-2 Sep 08:00
+                                Friday-Saturday, Sep 1st - 2nd, 08:00
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}
@@ -35,7 +35,7 @@
                             * Please select Saturday Workshop
                         </div>
                     </div>
-                    <div v-for="half_day in events.half_day" @click="selectHalfDay(half_day.id)"
+                    <div v-for="half_day in events.half_day" @click="selectHalfDay(half_day.id, events.symposium.id)"
                          class="bg-blue-50 p-4 border last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-100 ">
                         <div class="mb-3">
                             <div class="font-semibold text-blue-900 flex">
@@ -220,7 +220,8 @@ export default {
             this.form.workshop_full_day === id ? this.form.workshop_full_day = null : this.form.workshop_full_day = id
             this.calculatePrice()
         },
-        selectHalfDay(id){
+        selectHalfDay(id, symposium_id){
+            this.form.symposium = symposium_id
             this.form.workshop_half_day = id
             this.calculatePrice()
         },

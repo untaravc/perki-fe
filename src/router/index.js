@@ -11,6 +11,7 @@ import SelectEvent from '../views/register/SelectEvent.vue'
 import Payment from '../views/payment/Index.vue'
 import Schedule from '../views/schedule/Index.vue'
 import Speakers from '../views/speakers/Index.vue'
+import CheckTransaction from '../views/check_transaction/Index.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -57,6 +58,11 @@ const router = createRouter({
 					path: '/speakers',
 					name: 'speakers',
 					component: Speakers,
+				},
+				{
+					path: '/check_transaction',
+					name: 'check_transaction',
+					component: CheckTransaction,
 				},
 				{
 					path: '/profile',

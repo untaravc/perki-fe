@@ -47,7 +47,7 @@ const config = {
 			// 		"Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu"
 			// 	],
 			// })
-			return moment(value).format("dddd, DD MMM HH:mm");
+			return moment(value).format("dddd, MMM Do, HH:mm");
 		}
 	},
 	formatDateTime(value) {

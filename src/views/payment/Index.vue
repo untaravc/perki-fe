@@ -63,6 +63,9 @@
                         </a>
                     </div>
                 </div>
+                <div v-if="transaction.status === 120" class="italic">
+                    Proof of transfer successfully uploaded. Waiting for admin confirmation.
+                </div>
                 <label for="file_upload" v-show="show_proof" class="relative">
                     <div
                         class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-800 border-slate-800 hover:bg-blue-900 text-white">
