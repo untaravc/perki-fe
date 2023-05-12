@@ -3,15 +3,19 @@ import PublicLayout from '../views/PublicLayout.vue'
 import HomeView from '../views/home/Index.vue'
 import Register from '../views/register/Index.vue'
 import Login from '../views/login/Index.vue'
-import Profile from '../views/profile/Index.vue'
-import ProfileInfo from '../views/profile/Info.vue'
-import ProfileEvents from '../views/profile/Events.vue'
-import ProfileTransactions from '../views/profile/Transactions.vue'
 import SelectEvent from '../views/register/SelectEvent.vue'
 import Payment from '../views/payment/Index.vue'
 import Schedule from '../views/schedule/Index.vue'
 import Speakers from '../views/speakers/Index.vue'
+import Venue from '../views/venue/Index.vue'
+import Abstracts from '../views/abstracts/Index.vue'
 import CheckTransaction from '../views/check_transaction/Index.vue'
+
+import Profile from '../views/profile/Index.vue'
+import ProfileInfo from '../views/profile/Info.vue'
+import ProfileEvents from '../views/profile/Events.vue'
+import ProfileTransactions from '../views/profile/Transactions.vue'
+import ProfileAbstracts from '../views/profile/Abstracts.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -60,6 +64,16 @@ const router = createRouter({
 					component: Speakers,
 				},
 				{
+					path: '/venue',
+					name: 'venue',
+					component: Venue,
+				},
+				{
+					path: '/abstracts',
+					name: 'abstracts',
+					component: Abstracts,
+				},
+				{
 					path: '/check_transaction',
 					name: 'check_transaction',
 					component: CheckTransaction,
@@ -83,6 +97,11 @@ const router = createRouter({
 							path: 'transactions',
 							name: 'profile-transaction',
 							component: ProfileTransactions,
+						},
+						{
+							path: 'abstracts',
+							name: 'profile-abstracts',
+							component: ProfileAbstracts,
 						},
 					]
 				},

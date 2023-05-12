@@ -201,10 +201,10 @@ export default {
                 has = true;
             }
 
-            if (type === 'status') {
-                return has;
-            } else {
-                return message;
+            if(type === 'status') {
+                return has
+            }  else {
+                return message
             }
         }
     },

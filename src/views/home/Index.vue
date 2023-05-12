@@ -2,6 +2,7 @@
     <div>
         <Hero></Hero>
         <TimerPage></TimerPage>
+        <Menu></Menu>
         <Video></Video>
         <Sponsors></Sponsors>
         <Schedules></Schedules>
@@ -22,8 +23,19 @@ import Sponsors from './Sponsors.vue'
 import Pricing from "./Pricing.vue";
 import TimerPage from "./Timer.vue";
 import Venue from "./Venue.vue";
+import Menu from "./Menu.vue";
 
 export default {
-    components: {Pricing, Hero, Video, Speakers, Schedules, Sponsors, TimerPage, Venue}
+    components: {
+        Pricing,
+        Hero,
+        Video,
+        Speakers,
+        Schedules,
+        Sponsors,
+        TimerPage,
+        Venue,
+        Menu
+    }
 }
 </script>

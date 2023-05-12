@@ -26,6 +26,12 @@
                             </div>
                             <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">{{pending_transaction}}</div>
                         </router-link>
+
+                        <router-link to="/profile/abstracts" class="flex my-3 cursor-pointer" @click="active = 'abstracts'">
+                            <unicon name="file-upload" height="20px" :fill="active === 'abstracts' ? 'blue' : ''"></unicon>
+                            <div class="ml-2">Abstracts</div>
+                        </router-link>
+
                         <div class="flex my-3 cursor-pointer" @click="logout">
                             <unicon name="signout" height="20px"></unicon>
                             <div class="ml-2">Logout</div>

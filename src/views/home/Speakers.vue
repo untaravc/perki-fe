@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-24 pb-12 px-2">
+    <div class="max-w-screen-lg m-auto pt-24 pb-12 px-2" id="speaker">
         <div class="text-4xl font-bold mb-1 text-center text-white">
             SPEAKERS
         </div>

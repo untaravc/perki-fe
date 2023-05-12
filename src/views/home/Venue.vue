@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2">
+    <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2" id="venue">
         <div class="text-4xl font-bold mb-1 text-center mb-3">
             VENUE
         </div>
@@ -11,12 +11,12 @@
                 class="col-span-12 md:col-span-5 min-h-[300px]  bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
                 style="background-image: url('/storage/img/tentrem-hotel.webp')">
             </div>
-            <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-4">
-                <div>
+            <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
+                <div class="mb-4">
                     <div class="text-2xl font-bold">Get Special Room Prices </div>
                     <div class="italic text-blue-800 text-sm">for JCU 2023 participants</div>
                 </div>
-                <div class="ml-8 mt-4">
+                <div class="ml-8 mb-4">
                     <ol class="list-decimal">
                         <li>
                             <router-link to="/register" class="font-semibold underline text-blue-700">Register</router-link>
@@ -29,35 +29,18 @@
                         </li>
                     </ol>
                 </div>
-                <div class="mt-4">
+                <div class="mb-4">
                     For more detailed information
                     <a href="https://wa.me/6285865064280?text=Bagaimana cara mendapatkan harga Room khusus, peserta JCU 2023?"
                        target="_blank"
                        class="italic text-blue-700">https://wa.me/6285865064280</a>
                 </div>
+                <div class="flex justify-end mb-4">
+                    <router-link to="venue" class="mx-1 px-3 py-1 bg-blue-800 hover:bg-blue-900 rounded-lg text-white">
+                        More information
+                    </router-link>
+                </div>
             </div>
         </div>
     </div>
 </template>
-
-<script>
-export default {
-    data() {
-        return {
-            count: 8,
-            data_content: []
-        }
-    },
-    methods: {
-        loadSpeaker() {
-            this.apiGet('pub/speakers')
-                .then((data) => {
-                    this.data_content = data.result
-                })
-        }
-    },
-    created() {
-        this.loadSpeaker()
-    }
-}
-</script>
