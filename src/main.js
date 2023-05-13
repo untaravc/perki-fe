@@ -13,14 +13,12 @@ import Unicon from 'vue-unicons'
 
 import icons from './icons'
 import BtnLoader from './components/ButtonLoader.vue'
-import Loading from 'vue-loading-overlay';
 
 Unicon.add(icons)
 
 const app = createApp(App)
 
 app.component('BtnLoader', BtnLoader)
-app.component('page-loader', Loading)
 
 
 app.use(Unicon)

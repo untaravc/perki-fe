@@ -24,12 +24,21 @@
                                         :fill="active === 'transactions' ? 'darkblue' : ''"></unicon>
                                 <div class="ml-2">Transaction</div>
                             </div>
-                            <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">{{pending_transaction}}</div>
+                            <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
+                                {{ pending_transaction }}
+                            </div>
                         </router-link>
 
-                        <router-link to="/profile/abstracts" class="flex my-3 cursor-pointer" @click="active = 'abstracts'">
-                            <unicon name="file-upload" height="20px" :fill="active === 'abstracts' ? 'blue' : ''"></unicon>
-                            <div class="ml-2">Abstracts</div>
+                        <router-link to="/profile/abstracts" class="flex my-3 cursor-pointer justify-between"
+                                     @click="active = 'abstracts'">
+                            <div class="flex">
+                                <unicon name="file-upload" height="20px"
+                                        :fill="active === 'abstracts' ? 'blue' : ''"></unicon>
+                                <div class="ml-2">Abstracts</div>
+                            </div>
+                            <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
+                                {{ abstracts }}
+                            </div>
                         </router-link>
 
                         <div class="flex my-3 cursor-pointer" @click="logout">
@@ -53,6 +62,7 @@ export default {
         return {
             active: '',
             pending_transaction: 0,
+            abstracts: 0,
         }
     },
     methods: {
@@ -72,6 +82,7 @@ export default {
             this.authGet('pub/pending-transaction-count')
                 .then((data) => {
                     this.pending_transaction = data.result.pending_transaction
+                    this.abstracts = data.result.abstracts
                 })
         }
     },

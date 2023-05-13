@@ -1,9 +1,12 @@
 <template>
     <span>
         <span v-if="type.ext === 'pdf'">
-            <a class="btn btn-sm btn-outline-danger" :href="link" target="_blank">
-                <unicon name="file-alt" fill="red"></unicon> {{ $filters.truncate(type.name, 10) }}
-            </a>
+            <div class="p-3 bg-yellow-300 rounded-full">
+                <a :href="link" target="_blank">
+                    <unicon name="file-alt" fill="red"></unicon>
+                </a>
+            </div>
+            <div class="text-sm">{{ $filters.truncate(type.name, 15) }}</div>
         </span>
         <span v-else-if="type.ext === 'xls' || type.ext === 'xlsx'">
             <a class="btn btn-sm btn-outline-success" :href="link" download>
@@ -16,7 +19,8 @@
             </a>
         </span>
         <span v-else-if="type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg'">
-            <a target="_blank" :href="link"><img :src="link" :alt="type.name" :style="thumbnail ? 'width: 20px; height: auto' :'width: 100px; height: auto'"></a>
+            <a target="_blank" :href="link"><img :src="link" :alt="type.name"
+                                                 :style="thumbnail ? 'width: 20px; height: auto' :'width: 100px; height: auto'"></a>
         </span>
         <span v-else>
             <a class="btn btn-sm btn-outline-info" :href="link" download>
