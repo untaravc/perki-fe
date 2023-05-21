@@ -36,7 +36,7 @@
                     <unicon name="location-pin-alt" fill="#e02523" width="36px" height="36px"></unicon>
                 </div>
                 <div class="text-sm font-semibold font-light text-center">
-                    Venue
+                    Accommodation
                 </div>
             </a>
         </div>

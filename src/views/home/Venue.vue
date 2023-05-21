@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2" id="venue">
         <div class="text-4xl font-bold mb-1 text-center mb-3">
-            VENUE
+            ACCOMMODATION
         </div>
         <div class="mb-6 text-center">
             Tentrem Hotel Yogyakarta, P. Mangkubumi St. No.72A, Cokrodiningratan, Jetis, Yogyakarta
