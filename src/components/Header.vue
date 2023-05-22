@@ -14,7 +14,7 @@
                         <unicon name="arrow-right" fill="white"></unicon>
                     </div>
                 </router-link>
-                <button data-collapse-toggle="navbar-sticky" type="button"
+                <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"
                         class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         aria-controls="navbar-sticky" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
@@ -30,19 +30,19 @@
                 <ul
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
                     <li>
-                        <router-link to="/"
+                        <router-link to="/" @click="toggleMenu"
                                      class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                                      aria-current="page">Home
                         </router-link>
                     </li>
                     <li v-if="has_token">
-                        <router-link to="/profile/events"
+                        <router-link to="/profile/events" @click="toggleMenu"
                                      class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                                      aria-current="page">My Account
                         </router-link>
                     </li>
                     <li v-if="!has_token">
-                        <router-link to="/login"
+                        <router-link to="/login" @click="toggleMenu"
                                      class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                                      aria-current="page">Sign In
                         </router-link>
@@ -63,6 +63,11 @@ export default {
     methods: {
         updateScroll() {
             this.scrollPosition = window.scrollY
+        },
+        toggleMenu(){
+            let menu_btn = this.$refs.toggle_menu
+
+            menu_btn.click()
         },
         checkToken() {
             let token = localStorage.getItem('perki_user_token');

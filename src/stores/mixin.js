@@ -30,7 +30,9 @@ const mixin = {
 		}
 	},
 	created: function () {
-		if (import.meta.env.VITE_MODE === 'local') {
+		let href = window.location.origin
+		if(href === 'http://localhost:5173'){
+		// if (import.meta.env.VITE_MODE === 'local') {
 			this.base_api = 'http://localhost:8000/api/'
 		} else {
 			this.base_api = 'https://src.perki-jogja.com/api/'
