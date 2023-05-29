@@ -4,7 +4,7 @@
         <TimerPage></TimerPage>
         <Menu></Menu>
         <Video></Video>
-        <Sponsors></Sponsors>
+<!--        <Sponsors></Sponsors>-->
         <Schedules></Schedules>
         <Pricing></Pricing>
         <div class="bg-gradient-to-br from-[#193460] to-[#0a0009]">

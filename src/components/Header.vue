@@ -1,5 +1,5 @@
 <template>
-    <nav class="px-2 sm:px-4 py-4 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 dark:border-gray-600"
+    <nav class="px-2 sm:px-4 py-4 dark:bg-gray-900 bg-blue-200 fixed w-full z-20 top-0 left-0 dark:border-gray-600"
          :class="scrollPosition > 60 ? 'bg-blue-200 border-b border-blue-100' : ''">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center">
@@ -33,6 +33,12 @@
                         <router-link to="/" @click="toggleMenu"
                                      class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                                      aria-current="page">Home
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/abstracts" @click="toggleMenu"
+                                     class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
+                                     aria-current="page">Committee
                         </router-link>
                     </li>
                     <li v-if="has_token">
