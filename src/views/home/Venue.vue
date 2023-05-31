@@ -33,7 +33,7 @@
                     For more detailed information
                     <a href="https://wa.me/6285865064280?text=Bagaimana cara mendapatkan harga Room khusus, peserta JCU 2023?"
                        target="_blank"
-                       class="italic text-blue-700">https://wa.me/6285865064280</a>
+                       class="italic text-blue-700">https://wa.me/628112925147</a>
                 </div>
                 <div class="flex justify-end mb-4">
                     <router-link to="venue" class="mx-1 px-3 py-1 bg-blue-800 hover:bg-blue-900 rounded-lg text-white">

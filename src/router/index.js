@@ -16,6 +16,7 @@ import ProfileInfo from '../views/profile/Info.vue'
 import ProfileEvents from '../views/profile/Events.vue'
 import ProfileTransactions from '../views/profile/Transactions.vue'
 import ProfileAbstracts from '../views/profile/Abstracts.vue'
+import Committee from '../views/committee/Index.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -57,6 +58,11 @@ const router = createRouter({
 					path: '/schedule',
 					name: 'schedule',
 					component: Schedule,
+				},
+				{
+					path: '/committee',
+					name: 'committee',
+					component: Committee,
 				},
 				{
 					path: '/speakers',
