@@ -3,7 +3,7 @@
         <div class="text-4xl font-bold mb-8 text-center">
             COMMITTEE
         </div>
-        <div v-for="data in data_content" class="mb-12">
+        <div v-for="data in data_content.photos" class="mb-12">
             <div class="text-2xl font-bold mb-4">{{ data.title }}</div>
             <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
                 <div class="group relative" v-for="user in data.users">
@@ -21,6 +21,22 @@
                 </div>
             </div>
         </div>
+        <div v-for="data in data_content.name" class="mb-12">
+            <div class="text-2xl font-bold mb-4">{{ data.title }}</div>
+
+            <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
+                <div v-for="user in data.users">
+                    <div class="bg-blue-100 rounded flex min-h-[56px]">
+                        <div class="bg-blue-200 p-2 rounded-l flex items-center">
+                            <unicon name="user-md" width="20px" height="20px" fill="blue" icon-style="line"></unicon>
+                        </div>
+                        <div class="text-sm font-semibold flex items-center p-2 rounded-r" v-if="user.data">
+                            {{ user.data.name }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -29,7 +45,10 @@ export default {
     data() {
         return {
             count: 8,
-            data_content: []
+            data_content: {
+                photos:[],
+                name:[],
+            }
         }
     },
     methods: {

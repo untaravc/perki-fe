@@ -30,6 +30,7 @@ import {
 	uniTimes,
 	uniUser,
 	uniUserMd,
+	uniUserMdSolid,
 	uniYoutube,
 } from 'vue-unicons/dist/icons'
 
@@ -66,5 +67,6 @@ export default [
 	uniTimes,
 	uniUser,
 	uniUserMd,
+	uniUserMdSolid,
 	uniYoutube,
 ]

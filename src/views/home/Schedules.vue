@@ -33,104 +33,128 @@
             </div>
         </div>
         <div v-if="selected === 1" class="p-2 border-b border-slate-900">
-            <div class="grid grid-cols-2 md:grid-cols-7 border-b border-blue-300" v-for="friday in schedule.friday">
-                <div class="md:col-span-1 text-center col-span-2">
+            <div class="grid grid-cols-7">
+                <div class="col-span-1 row-span-4 text-center">
                     <div class="inline-block bg-blue-300 px-2 py-1 rounded">
-                    {{ $filters.formatTime(friday.date_start) }}
-                    -
-                    {{ $filters.formatTime(friday.date_end) }}
+                        {{ $filters.formatTime("2023-09-01 08:00:00") }}
+                        -
+                        {{ $filters.formatTime("2023-09-01 11:00:00") }}
                     </div>
                 </div>
-                <div class="md:col-span-3 px-1 col-span-1">
-                    <div class="text-indigo-700 font-bold">
-                        {{ friday.room_a.name }}
-                    </div>
+                <div class="col-span-6 mb-4 border-b border-slate-300" v-for="ws_hd in schedule.workshop_half_day_1">
+                    <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
                     <div class="text-base font-semibold">
-                        {{ friday.room_a.title }}
+                        {{ ws_hd.title }}
                     </div>
-<!--                    <div class="text-sm">-->
-<!--                        <span class="bg-slate-200 py-1 px-2 rounded-lg mr-1">Speaker 1</span>-->
-<!--                        <span class="bg-slate-200 py-1 px-2 rounded-lg mr-1">Speaker 2</span>-->
-<!--                    </div>-->
-                </div>
-                <div class="md:col-span-3 px-1 col-span-1">
-                    <div class="text-indigo-700 font-bold">
-                        {{ friday.room_b.name }}
+                    <div class="text-sm my-2 pl-6">
+                        <ul class="list-disc">
+                            <li v-for="item in ws_hd.schedules">{{item.title}}</li>
+                        </ul>
                     </div>
-                    <div class="text-base font-semibold">
-                        {{ friday.room_b.title }}
-                    </div>
-<!--                    <div class="text-sm my-2">-->
-<!--                        <span class="bg-slate-200 py-1 px-2 rounded mr-1">Speaker 1</span>-->
-<!--                        <span class="bg-slate-200 py-1 px-2 rounded mr-1">Speaker 2</span>-->
-<!--                    </div>-->
                 </div>
             </div>
             <div class="grid grid-cols-7">
                 <div class="col-span-1 row-span-4 text-center">
                     <div class="inline-block bg-blue-300 px-2 py-1 rounded">
-                    {{ $filters.formatTime("2023-09-01 13:00:00") }}
-                    -
-                    {{ $filters.formatTime("2023-09-01 16:00:00") }}
+                        {{ $filters.formatTime("2023-09-01 13:00:00") }}
+                        -
+                        {{ $filters.formatTime("2023-09-01 16:00:00") }}
                     </div>
                 </div>
-                <div class="col-span-6 mb-4 border-b border-slate-300" v-for="ws_hd in schedule.workshop_half_day">
-                    <div class="text-indigo-700 font-bold">{{ws_hd.name}}</div>
+                <div class="col-span-6 mb-4 border-b border-slate-300" v-for="ws_hd in schedule.workshop_half_day_2">
+                    <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
                     <div class="text-base font-semibold">
                         {{ ws_hd.title }}
+                    </div>
+                    <div class="text-sm my-2 pl-6">
+                        <ul class="list-disc">
+                            <li v-for="item in ws_hd.schedules">{{item.title}}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div v-if="selected === 2" class="p-2 border-b border-slate-900">
-            <div class="grid grid-cols-2 md:grid-cols-7 mb-4 border-b border-slate-300" v-for="saturday in schedule.saturday">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
+                 v-for="saturday in schedule.saturday">
                 <div class="col-span-2 text-center md:col-span-1">
                     <div class="inline-block bg-blue-300 px-2 py-1 rounded">
-                    {{ $filters.formatTime(saturday.date_start) }}
-                    -
-                    {{ $filters.formatTime(saturday.date_end) }}
+                        {{ $filters.formatTime(saturday.date_start) }}
+                        -
+                        {{ $filters.formatTime(saturday.date_end) }}
                     </div>
                 </div>
                 <div class="col-span-1 md:col-span-3">
-                    <div class="text-indigo-700 font-bold">
-                        {{ saturday.room_a.name }}
+                    <div v-if="saturday.room_a">
+                        <div class="text-indigo-700 font-bold">
+                            {{ saturday.room_a.name }}
+                        </div>
+                        <div class="text-base font-semibold">
+                            {{ saturday.room_a.title }}
+                        </div>
+                        <div class="text-sm my-2 pl-6">
+                            <ul class="list-disc">
+                                <li v-for="item in saturday.room_a.schedule_details">{{item.title}}</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="text-base font-semibold">
-                        {{ saturday.room_a.title }}
-                    </div>
-<!--                    <div class="text-sm">-->
-<!--                        <span class="bg-slate-200 py-1 px-2 rounded-lg mr-1">Speaker 1</span>-->
-<!--                        <span class="bg-slate-200 py-1 px-2 rounded-lg mr-1">Speaker 2</span>-->
-<!--                    </div>-->
                 </div>
                 <div class="col-span-1 md:col-span-3">
-                    <div class="text-indigo-700 font-bold">
-                        {{ saturday.room_b.name }}
+                    <div v-if="saturday.room_b">
+                        <div class="text-indigo-700 font-bold">
+                            {{ saturday.room_b.name }}
+                        </div>
+                        <div class="text-base font-semibold">
+                            {{ saturday.room_b.title }}
+                        </div>
+                        <div class="text-sm my-2 pl-6">
+                            <ul class="list-disc">
+                                <li v-for="item in saturday.room_b.schedule_details">{{item.title}}</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="text-base font-semibold">
-                        {{ saturday.room_b.title }}
-                    </div>
-<!--                    <div class="text-sm my-2">-->
-<!--                        <span class="bg-slate-200 py-1 px-2 rounded mr-1">Speaker 1</span>-->
-<!--                        <span class="bg-slate-200 py-1 px-2 rounded mr-1">Speaker 2</span>-->
-<!--                    </div>-->
                 </div>
             </div>
         </div>
 
         <div v-if="selected === 3" class="p-2 border-b border-slate-900">
-            <div class="grid grid-cols-7">
-                <div class="col-span-1 row-span-4 text-center">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
+                 v-for="sunday in schedule.sunday">
+                <div class="col-span-2 text-center md:col-span-1">
                     <div class="inline-block bg-blue-300 px-2 py-1 rounded">
-                    {{ $filters.formatTime("2023-09-02 08:00:00") }}
-                    -
-                    {{ $filters.formatTime("2023-09-02 16:00:00") }}
+                        {{ $filters.formatTime(sunday.date_start) }}
+                        -
+                        {{ $filters.formatTime(sunday.date_end) }}
                     </div>
                 </div>
-                <div class="col-span-6 mb-4 border-b border-slate-300" v-for="ws_fd in schedule.workshop_full_day">
-                    <div class="text-indigo-700 font-bold">{{ws_fd.name}}</div>
-                    <div class="text-base font-semibold">
-                        {{ ws_fd.title }}
+                <div class="col-span-1 md:col-span-3">
+                    <div v-if="sunday.room_a">
+                        <div class="text-indigo-700 font-bold">
+                            {{ sunday.room_a.name }}
+                        </div>
+                        <div class="text-base font-semibold">
+                            {{ sunday.room_a.title }}
+                        </div>
+                        <div class="text-sm my-2 pl-6">
+                            <ul class="list-disc">
+                                <li v-for="item in sunday.room_a.schedule_details">{{item.title}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-1 md:col-span-3">
+                    <div v-if="sunday.room_b">
+                        <div class="text-indigo-700 font-bold">
+                            {{ sunday.room_b.name }}
+                        </div>
+                        <div class="text-base font-semibold">
+                            {{ sunday.room_b.title }}
+                        </div>
+                        <div class="text-sm my-2 pl-6">
+                            <ul class="list-disc">
+                                <li v-for="item in sunday.room_b.schedule_details">{{item.title}}</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -145,9 +169,10 @@ export default {
             selected: 1,
             show: false,
             schedule: {
-                workshop_half_day:[],
-                friday:[],
-                saturday:[],
+                workshop_half_day_1: [],
+                workshop_half_day_2: [],
+                friday: [],
+                saturday: [],
             },
         }
     },

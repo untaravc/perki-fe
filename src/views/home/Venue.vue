@@ -31,7 +31,7 @@
                 </div>
                 <div class="mb-4">
                     For more detailed information
-                    <a href="https://wa.me/6285865064280?text=Bagaimana cara mendapatkan harga Room khusus, peserta JCU 2023?"
+                    <a href="https://wa.me/628112925147?text=Bagaimana cara mendapatkan harga Room khusus, peserta JCU 2023?"
                        target="_blank"
                        class="italic text-blue-700">https://wa.me/628112925147</a>
                 </div>
