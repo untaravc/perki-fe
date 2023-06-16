@@ -88,6 +88,7 @@ export default {
     },
     created() {
         this.loadData()
+        this.emitter.emit("update-header");
     }
 }
 </script>

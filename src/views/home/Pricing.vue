@@ -31,7 +31,13 @@
                 </div>
             </div>
             <div class="md:col-span-1  col-span-3 border-l  border-slate-500 shadow bg-blue-900 p-5 rounded-r-none md:rounded-r-lg text-white">
-                <div class="text-lg mb-3">{{selected.name}} </div>
+                <div class="text-lg font-bold mb-3">{{selected.name}} </div>
+                <div v-if="selected.price_stdn">
+                <div class="text-base mb-1 italic">Medical Student</div>
+                <div class="text-3xl font-bold text-blue-200 mb-2">
+                    Rp {{$filters.currency(selected.price_stdn)}}
+                </div>
+                </div>
                 <div class="text-base mb-1 italic">General Practitioner</div>
                 <div class="text-3xl font-bold text-blue-200 mb-2">
                     Rp {{$filters.currency(selected.price_drgn)}}

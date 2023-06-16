@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-8">
         <Hero></Hero>
         <TimerPage></TimerPage>
         <Menu></Menu>

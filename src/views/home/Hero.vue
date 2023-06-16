@@ -14,15 +14,14 @@
                     {{ data_content[index]['subtitle'] }}
                 </div>
                 <div class="mx-5 flex">
-                    <a href="#schedule"
-                                 class="text-blue-900 mr-4 inline-block items-center border border-blue-900 hover:bg-blue-900 hover:text-white font-medium rounded-full text-lg px-9 py-3 text-center">
-                        <div class="mr-2">Schedule</div>
-                    </a>
-                    <router-link to="/register"
-                                 class="text-white inline-block flex items-center bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-lg px-9 py-3 text-center">
-                        <div class="mr-2">Register</div>
-                        <unicon name="arrow-right" fill="white"></unicon>
-                    </router-link>
+                    <div v-for="btn in data_content[index]['buttons']" class="mx-2">
+                        <router-link :to="btn.link"
+                                     :class="btn.theme === 'dark' ? 'text-white bg-blue-900' : 'text-blue-900 hover:bg-blue-900 hover:text-white'"
+                                     class="flex items-center border border-blue-900 font-medium rounded-full text-lg px-6 py-2 text-center">
+                            <div class="mr-2">{{ btn.text }}</div>
+                            <unicon v-if="btn.theme === 'dark'" name="arrow-right" fill="white"></unicon>
+                        </router-link>
+                    </div>
                 </div>
                 <div class="flex ml-6 mt-4">
                     <div @click="prev"

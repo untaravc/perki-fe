@@ -36,6 +36,12 @@
                         </router-link>
                     </li>
                     <li>
+                        <router-link to="/abstracts" @click="toggleMenu"
+                                     class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
+                                     aria-current="page">Abstracts
+                        </router-link>
+                    </li>
+                    <li>
                         <router-link to="/committee" @click="toggleMenu"
                                      class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                                      aria-current="page">Committee
