@@ -10,6 +10,7 @@ import Speakers from '../views/speakers/Index.vue'
 import Venue from '../views/venue/Index.vue'
 import Abstracts from '../views/abstracts/Index.vue'
 import CheckTransaction from '../views/check_transaction/Index.vue'
+import ContactUs from '../views/contact-us/Index.vue'
 
 import Profile from '../views/profile/Index.vue'
 import ProfileInfo from '../views/profile/Info.vue'
@@ -35,6 +36,11 @@ const router = createRouter({
 					path: '/register',
 					name: 'register',
 					component: Register,
+				},
+				{
+					path: '/contact-us',
+					name: 'contact-us',
+					component: ContactUs,
 				},
 				{
 					path: '/login',

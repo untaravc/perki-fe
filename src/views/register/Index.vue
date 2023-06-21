@@ -12,6 +12,9 @@
                         class="text-red-600">*</span></label>
                     <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                    <small class="text-xs text-blue-900 italic">
+                        for certificate writing
+                    </small>
                     <small class="text-xs text-red-600 italic" v-if="parseErrors('name')">
                         {{ parseErrors('name', 'val') }}
                     </small>
@@ -38,21 +41,40 @@
                         </small>
                     </div>
                 </div>
-                <div class="mt-3">
-                    <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Member Type<span
-                        class="text-red-600">*</span></label>
-                    <select id="job_type" v-model="form.job_type_code"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>== Pilih ==</option>
-                        <option :value="job.code" :key="job.code" v-for="job in data_raw.job_types">{{ job.name }}
-                        </option>
-                    </select>
-                    <small class="text-xs text-red-600 italic" v-if="parseErrors('job_type_code')">
-                        {{ parseErrors('job_type_code', 'val') }}
-                    </small>
+                <div class="grid gap-2 sm:grid-cols-2 mt-3">
+                    <div class="mt-3">
+                        <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Member Type<span
+                            class="text-red-600">*</span></label>
+                        <select id="job_type" v-model="form.job_type_code"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>== Pilih ==</option>
+                            <option :value="job.code" :key="job.code" v-for="job in data_raw.job_types">{{ job.name }}
+                            </option>
+                        </select>
+                        <small class="text-xs text-red-600 italic" v-if="parseErrors('job_type_code')">
+                            {{ parseErrors('job_type_code', 'val') }}
+                        </small>
+                    </div>
+                    <div class="mt-3 flex justify-between"
+                         v-if="form.job_type_code === 'MHSA' || form.job_type_code === 'COAS'">
+                        <div>
+                            <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Student Card
+                                Photo<span
+                                    class="text-red-600">*</span></label>
+                            <input type="file" accept="image/*" id="file-upload" @change="uploadFile">
+                            <small class="text-xs text-red-600 italic" v-if="parseErrors('identity_photo')">
+                                {{ parseErrors('identity_photo', 'val') }}
+                            </small>
+                        </div>
+                        <div class="flex items-end">
+                            <a :href="form.identity_photo" target="_blank">
+                                <img :src="form.identity_photo" alt="" class="rounded max-w-[128px] max-h-[52px]">
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="mt-3">
-                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone <span
+                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone (Whatsapp Number)<span
                         class="text-red-600">*</span></label>
                     <input type="tel" id="phone" placeholder="ex. 081234567890" v-model="form.phone"
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
@@ -71,8 +93,9 @@
                 </div>
                 <div class="grid gap-2 sm:grid-cols-2 mt-3" v-if="!logged_in">
                     <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Create New Password<span
-                            class="text-red-600">*</span></label>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Create New
+                            Password<span
+                                class="text-red-600">*</span></label>
                         <div class="relative">
                             <input :type="eye_icon ? 'text' : 'password'" id="password" v-model="form.password"
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
@@ -99,7 +122,8 @@
                         </div>
                     </div>
                     <div>
-                        <label for="password-confirmation" class="block mb-2 text-sm font-medium text-gray-900">Confirm Your Password <span
+                        <label for="password-confirmation" class="block mb-2 text-sm font-medium text-gray-900">Confirm
+                            Your Password <span
                                 class="text-red-600">*</span></label>
                         <input type="password" id="password-confirmation" v-model="form.password_confirmation"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
@@ -148,6 +172,7 @@ export default {
                 job_type_code: '',
                 password: '',
                 password_confirmation: '',
+                identity_photo: '',
             },
             form_errors: []
         }
@@ -172,6 +197,7 @@ export default {
                         this.form.institution = res.institution
                         this.form.job_type_code = res.job_type_code
                         this.form.phone = res.phone
+                        this.form.identity_photo = res.identity_photo
                     }
                 })
         },
@@ -189,8 +215,8 @@ export default {
                         this.form_errors = data.errors
                     }
                     this.disabled = false
-                }).catch(()=>{
-                    this.disabled = false
+                }).catch(() => {
+                this.disabled = false
             })
         },
         parseErrors(field, type = 'status') {
@@ -201,12 +227,31 @@ export default {
                 has = true;
             }
 
-            if(type === 'status') {
+            if (type === 'status') {
                 return has
-            }  else {
+            } else {
                 return message
             }
-        }
+        },
+        uploadFile() {
+            this.upload_loader = true;
+            let file = document.getElementById("file-upload").files[0];
+            if (file) {
+                let form_data = new FormData();
+
+                form_data.append('file', file)
+
+                this.apiPost('pub/upload-file', form_data)
+                    .then((data) => {
+                        this.form.identity_photo = data.result.link;
+                        this.upload_loader = false;
+                    }).catch((e) => {
+                    this.upload_loader = false;
+                });
+            } else {
+                this.upload_loader = false;
+            }
+        },
     },
     created() {
         this.loadJobType();

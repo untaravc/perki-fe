@@ -1,8 +1,8 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-16">
         <div class="grid md:grid-cols-5 lg:gap-6 mb-12 mt-20">
-            <div class="md:order-2 rounded-lg md:col-span-2 relative bg-contain h-96 bg-center bg-no-repeat w-full"
-                 :style="`background-image: url('` + data_content[index]['poster'] + `')`"></div>
+            <a target="_blank" :href="data_content[index]['poster']" class="md:order-2 rounded-lg md:col-span-2 relative bg-contain h-96 bg-center bg-no-repeat w-full"
+                 :style="`background-image: url('` + data_content[index]['poster'] + `')`"></a>
             <div class="md:col-span-3 md:order-1">
                 <div class="m-5 bg-blue-300 rounded-full py-1 px-8 italic text-sm inline-block">
                     {{ data_content[index]['date'] }}

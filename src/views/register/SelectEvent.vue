@@ -2,7 +2,7 @@
     <div class="max-w-screen-lg m-auto pt-24" style="min-height: calc(100vh - 133px);">
         <div class="p-6 border-slate-100 bg-white rounded-xl">
             <div class="mb-4 grid grid-cols-3 gap-4">
-                <div @click="selectPackage('platinum')" v-if="data_raw.job_type !== 'MHSA'"
+                <div @click="selectPackage('platinum')" v-if="transaction.job_type_code !== 'MHSA' && transaction.job_type_code !== 'COAS'"
                      class="bg-blue-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
                     <div class="font-bold text-white">Platinum</div>
                     <unicon v-if="package === 'platinum'" fill="white" name="check-square" width="30"
@@ -16,7 +16,7 @@
                             height="30"></unicon>
                     <unicon v-else name="square" width="30" height="30"></unicon>
                 </div>
-                <div @click="selectPackage('add-on')"
+                <div @click="selectPackage('add-on')" v-if="data_raw.has_symposium"
                      class="border border-blue-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
                     <div class="font-bold text-blue-800">Add-On</div>
                     <unicon v-if="package === 'add-on'" name="check-square" width="30"
@@ -27,7 +27,7 @@
             <div class="grid gap-4 md:grid-cols-3">
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
-                         class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-2">
+                         class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
                         <div class="mb-3">
                             <div class="font-semibold text-blue-900 flex">
                                 <unicon name="check-square" width="20"
@@ -41,6 +41,19 @@
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="font-semibold flex justify-between mb-1" v-if="package === 'gold'">
+                        <div>Add-On</div>
+                        <div>
+                            <unicon v-if="data_raw.workshop" name="check-square" @click="data_raw.workshop = false"
+                                    width="25"
+                                    height="25"
+                                    fill="#243776"></unicon>
+                            <unicon v-if="!data_raw.workshop" name="square" width="25" @click="data_raw.workshop = true"
+                                    height="25"
+                                    fill="#243776"></unicon>
                         </div>
                     </div>
 
@@ -211,9 +224,10 @@ export default {
                 symposium: true,
                 workshop: true,
                 job_type: '',
+                has_symposium: false,
             },
             transaction: '',
-            package: '',
+            package: 'platinum',
             pricing: {
                 items:'',
                 subtotal:'',
@@ -232,21 +246,13 @@ export default {
                     this.form.symposium = this.events.symposium['id'];
 
                     this.transaction = data.result.transaction
+                    this.data_raw.has_symposium = data.result.has_symposium
+
+                    if(this.transaction.job_type_code === "MHSA" || this.transaction.job_type_code === "COAS"){
+                        this.package = 'gold';
+                    }
 
                     this.calculatePrice()
-                })
-        },
-        loadPackage() {
-            this.authGet('pub/packages-active')
-                .then((data) => {
-                    this.data_raw.job_type = data.result
-                    if (this.data_raw.job_type === 'MHSA') {
-                        this.package = 'gold';
-                        this.selectPackage(this.package)
-                    } else {
-                        this.package = 'platinum';
-                        this.selectPackage(this.package)
-                    }
                 })
         },
         calculatePrice(mode = 'calculate') {
@@ -268,6 +274,8 @@ export default {
         },
         selectPackage(name) {
             this.package = name;
+            this.form.morning_workshop = null;
+            this.form.afternoon_workshop = null;
             switch (name) {
                 case 'platinum':
                     this.data_raw.symposium = true;
@@ -319,7 +327,6 @@ export default {
     },
     created() {
         this.loadData()
-        this.loadPackage()
     }
 }
 </script>

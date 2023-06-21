@@ -7,6 +7,8 @@ const config = {
 		} else {
 			if (value) {
 				return value.toLocaleString('id-ID')
+			} else {
+				return 0;
 			}
 		}
 	},
