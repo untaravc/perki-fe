@@ -10,7 +10,7 @@
             <Speakers></Speakers>
         </div>
         <Venue></Venue>
-        <Sponsors></Sponsors>
+<!--        <Sponsors></Sponsors>-->
     </div>
 </template>
 

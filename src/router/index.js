@@ -18,6 +18,7 @@ import ProfileEvents from '../views/profile/Events.vue'
 import ProfileTransactions from '../views/profile/Transactions.vue'
 import ProfileAbstracts from '../views/profile/Abstracts.vue'
 import Committee from '../views/committee/Index.vue'
+import Logas from '../views/logas/Index.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -89,6 +90,11 @@ const router = createRouter({
 					path: '/check_transaction',
 					name: 'check_transaction',
 					component: CheckTransaction,
+				},
+				{
+					path: '/logas',
+					name: 'logas',
+					component: Logas,
 				},
 				{
 					path: '/profile',
