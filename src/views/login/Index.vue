@@ -31,6 +31,9 @@
                         <GoogleLogin :callback="loginByGoogle"/>
                     </div>
                 </div>
+                <div class="mt-3">
+                    <router-link to="/forgot-password" class="text-slate-500 font-semibold text-sm mb-2">Forgot your Password?</router-link>
+                </div>
             </div>
         </div>
     </div>

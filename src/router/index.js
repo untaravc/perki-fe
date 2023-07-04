@@ -19,6 +19,8 @@ import ProfileTransactions from '../views/profile/Transactions.vue'
 import ProfileAbstracts from '../views/profile/Abstracts.vue'
 import Committee from '../views/committee/Index.vue'
 import Logas from '../views/logas/Index.vue'
+import ForgotPassword from '../views/login/ForgotPassword.vue'
+import ResetPassword from '../views/login/ResetPassword.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -47,6 +49,22 @@ const router = createRouter({
 					path: '/login',
 					name: 'login',
 					component: Login,
+					meta: {
+						guard: 'guest'
+					}
+				},
+				{
+					path: '/forgot-password',
+					name: 'forgot-password',
+					component: ForgotPassword,
+					meta: {
+						guard: 'guest'
+					}
+				},
+				{
+					path: '/reset-password',
+					name: 'reset-password',
+					component: ResetPassword,
 					meta: {
 						guard: 'guest'
 					}
