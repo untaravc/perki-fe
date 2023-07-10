@@ -2,20 +2,24 @@
     <div class="max-w-screen-lg m-auto pt-20 pb-12">
         <div class="flex justify-center items-center" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl text-center min-w-[425px] lg:min-w-[450px]">
-                <div class="text-xl mb-4">complete the payment</div>
-                <div class="text-2xl text-[#F78F2D] mb-2 font-semibold">
-                    Rp {{ $filters.currency(transaction.total) }}
-                </div>
-                <div class="text-md">before</div>
-                <div class="text-xl mb-4">{{ $filters.formatDayDateTime(transaction.last_time) }}</div>
-                <div class="border rounded-tr-md flex justify-between rounded-tl-md p-3 bg-slate-50">
-                    <div class="text-base font-semibold">Transfer Bank</div>
-                    <div>
-                        <img style="max-height: 25px" src="/storage/logo/Mandiri_logo.png" alt="">
+                <div v-if="transaction.status < 200">
+                    <div class="text-xl mb-4">complete the payment</div>
+                    <div class="text-2xl text-[#F78F2D] mb-2 font-semibold">
+                        Rp {{ $filters.currency(transaction.total) }}
+                    </div>
+                    <div class="text-md">before</div>
+                    <div class="text-xl mb-4">{{ $filters.formatDayDateTime(transaction.last_time) }}</div>
+                    <div class="border rounded-tr-md flex justify-between rounded-tl-md p-3 bg-slate-50">
+                        <div class="text-base font-semibold">Transfer Bank</div>
+                        <div>
+                            <img style="max-height: 25px" src="/storage/logo/Mandiri_logo.png" alt="">
+                        </div>
                     </div>
                 </div>
                 <div class="border rounded-br-md rounded-bl-md text-left p-3 mb-4">
                     <div class="mb-3">
+                        <div class="text-sm mb-1">Transaction Number</div>
+                        <div class="mb-1 font-semibold">{{ transaction.number }}</div>
                         <div class="text-sm mb-1">Account Number</div>
                         <div
                             class="rounded border-orange-400 border-2 justify-between shadow-inner flex px-3 py-2 border">
@@ -37,11 +41,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <button @click="toggleModal"
-                            class="border font-semibold rounded-full py-2 w-full border-slate-800 hover:bg-blue-800 hover:text-white">
-                        Item Detail
-                    </button>
+                <div class="mb-3 p-2 border rounded">
+                    <div class="text-xs my-1 p-1 bg-blue-100 text-slate-500 rounded grid grid-cols-2">
+                        <div>
+                            <div class="flex">
+                                <unicon name="user" fill="grey" height="15px" width="15px"></unicon>
+                                <div class="ml-1">{{ transaction.user_name }}</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex">
+                                <unicon name="envelope" fill="grey" height="15px" width="15px"></unicon>
+                                <div class="ml-1">{{ transaction.user_email }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-4 text-left">
+                        <ul class="list-disc">
+                            <li class="text-sm" v-for="detail in transaction.transaction_details">
+                                {{ detail.event_name }}
+                                <span
+                                    class="italic text-slate-500">{{ $filters.formatDateTime(detail.event.date_start) }}</span>
+                                <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div v-show="!show_proof">
                     <label for="file_upload">
@@ -66,38 +90,20 @@
                 <div v-if="transaction.status === 120" class="italic">
                     Proof of transfer successfully uploaded. Waiting for admin confirmation.
                 </div>
-                <label for="file_upload" v-show="show_proof" class="relative">
+                <div v-if="transaction.status === 200" class="italic">
+                    Payment <b>confirmed</b> <span class="">at {{ transaction.paid_at }}</span>
+                </div>
+                <label for="file_upload" v-show="show_proof && transaction.status === 120" class="relative">
                     <div
                         class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-800 border-slate-800 hover:bg-blue-900 text-white">
                         <span v-if="!upload_loader">Re-upload</span>
                         <span v-if="upload_loader">loading...</span>
                     </div>
                 </label>
-            </div>
-        </div>
-        <div id="defaultModal" tabindex="-1" aria-hidden="true"
-             class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-full max-w-2xl max-h-full">
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <!-- Modal header -->
-                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                        <h3 class="text-xl font-semibold text-gray-900">
-                            Detail Event
-                        </h3>
-                        <button type="button" @click="toggleModal"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg p-1.5 ml-auto inline-flex items-center"
-                                data-modal-hide="defaultModal">
-                            <unicon name="times"></unicon>
-                        </button>
-                    </div>
-                    <div class="p-6 space-y-6">
-                        <div class="p-2" v-for="detail in transaction.transaction_details">
-                            <div>
-                                {{ detail.event_name }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <router-link to="/profile/transactions"
+                             class="block font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-100 border-slate-800 hover:bg-blue-200 text-blue-800">
+                    Back to Transaction
+                </router-link>
             </div>
         </div>
     </div>

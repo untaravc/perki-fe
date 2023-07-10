@@ -38,7 +38,10 @@
                             <td class="px-4 py-2">{{ author.surname }}</td>
                             <!--                            <td  class="px-4 py-2">{{ author.email }}</td>-->
                             <!--                            <td  class="px-4 py-2">{{ author.institution }}</td>-->
-                            <td class="px-4 py-2">{{ author.type }}</td>
+                            <td class="px-4 py-2">
+                                <span v-if="author.is_presenter">presenter</span>
+                                <span v-if="author.is_corresponding"><br>corresponding</span>
+                            </td>
                             <td class="px-4 py-2">
                                 <span @click="editAuthorModal(author, i)"
                                       class="cursor-pointer underline font-bold text-blue-700 hover:text-blue-900 mr-1">edit</span>
@@ -48,7 +51,7 @@
                         </tr>
                         <tr>
                             <td colspan="6" class="text-center px-4 py-2">
-                                <button @click="addAuthorModal">Add Author</button>
+                                <button @click="addAuthorModal" class="font-semibold text-blue-700 hover:text-blue-800">Add Author</button>
                             </td>
                         </tr>
                     </table>
@@ -73,76 +76,31 @@
             </div>
             <div class="mb-4">
                 <label>Category</label>
-                <select v-model="form.category"
+                <select v-model="form.category" @change="updateBodySections"
                         class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500">
                     <option value="research">Research</option>
                     <option value="case_report">Case Report</option>
                     <option value="systematic_review">Systematic Review</option>
+                    <option value="meta_analysis">Meta Analysis</option>
                 </select>
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('category')">
                     {{ parseErrors('category', 'val') }}
                 </small>
             </div>
-            <label>Abstract ({{ abstracts_count.body_total }}/300 words)</label>
-            <div class="mb-2">
-                <label class="text-sm" title="Provide 1 or 2 sentences that explain the context of the study.">
-                    Background
-                    <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
-                </label>
-                <textarea rows="3" v-model="form.body_background"
-                          class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
-                <small class="text-xs text-red-600 italic" v-if="parseErrors('body')">
-                    {{ parseErrors('body', 'val') }}
-                </small>
+            <div class="mb-4">
+                <!--            <label>Abstract ({{ abstracts_count.body_total }}/300 words)</label>-->
+                <label>Abstract</label>
+
+                <div class="mb-2" v-for="body_form in abstract_form">
+                    <label class="text-sm" title="Provide 1 or 2 sentences that explain the context of the study.">
+                        {{ body_form.title }}
+                        <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
+                    </label>
+                    <textarea rows="3" v-model="body_form.content"
+                              class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
             </div>
-            <div class="mb-2">
-                <label class="text-sm"
-                       title="State the precise objective, the specific hypothesis to be tested, or both.">
-                    Aim
-                    <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
-                </label>
-                <textarea rows="3" v-model="form.body_aim"
-                          class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
-                <small class="text-xs text-red-600 italic" v-if="parseErrors('body')">
-                    {{ parseErrors('body', 'val') }}
-                </small>
-            </div>
-            <div class="mb-2">
-                <label class="text-sm"
-                       title="Describe the study design, including the use of cells, animal models, or human subjects. Identify the control group. Identify specific methods and procedures. Describe interventions, if used.">
-                    Method
-                    <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
-                </label>
-                <textarea rows="3" v-model="form.body_method"
-                          class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
-                <small class="text-xs text-red-600 italic" v-if="parseErrors('body')">
-                    {{ parseErrors('body', 'val') }}
-                </small>
-            </div>
-            <div class="mb-2">
-                <label class="text-sm"
-                       title="Report the most important findings, including results of statistical analyses.">
-                    Results
-                    <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
-                </label>
-                <textarea rows="3" v-model="form.body_results"
-                          class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
-                <small class="text-xs text-red-600 italic" v-if="parseErrors('body')">
-                    {{ parseErrors('body', 'val') }}
-                </small>
-            </div>
-            <div class="mb-2">
-                <label class="text-sm"
-                       title="Report the most important findings, including results of statistical analyses.">
-                    Conclusions
-                    <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
-                </label>
-                <textarea rows="3" v-model="form.body_conclusions"
-                          class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
-                <small class="text-xs text-red-600 italic" v-if="parseErrors('body')">
-                    {{ parseErrors('body', 'val') }}
-                </small>
-            </div>
+
             <div class="mb-2">
                 <label>Additional Image/Graph (optional)</label>
                 <div class="relative border border-slate-500 rounded-lg p-2">
@@ -193,11 +151,7 @@
                     <span v-for="author in data.authors">{{ author.surname }}, {{ author.first_name }}; </span>
                 </div>
                 <div class="text-sm" v-if="data.body_parsed">
-                    <p><b>Background:</b> {{ data.body_parsed.body_background }}</p>
-                    <p><b>Aim:</b> {{ data.body_parsed.body_aim }}</p>
-                    <p><b>Method:</b> {{ data.body_parsed.body_method }}</p>
-                    <p><b>Results:</b> {{ data.body_parsed.body_results }}</p>
-                    <p><b>Conclusions:</b> {{ data.body_parsed.body_conclusions }}</p>
+                    <p v-for="item in data.body_parsed"><b>{{item.title}}:</b>{{item.content}}</p>
                 </div>
                 <div class="italic text-sm" v-if="data.file">
                     Attachment: <a target="_blank" class="text-sm italic text-blue-700 hover:text-blue-900"
@@ -220,6 +174,10 @@
                             }}</span>
                         <span v-if="data.category === 'systematic_review'"
                               class="px-2 py-1 font-semibold bg-purple-200 rounded text-xs">{{
+                                data.category
+                            }}</span>
+                        <span v-if="data.category === 'meta_analysis'"
+                              class="px-2 py-1 font-semibold bg-teal-200 rounded text-xs">{{
                                 data.category
                             }}</span>
                     </div>
@@ -288,15 +246,15 @@
                             <label for="">Type</label>
                             <div class="flex mt-1">
                                 <div class="flex items-center mr-2">
-                                    <input id="presenter" type="radio" value="presenter" name="author_type"
-                                           v-model="author_form.type"
+                                    <input id="presenter" type="checkbox" :value="1" name="author_type"
+                                           v-model="author_form.is_presenter"
                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="presenter"
                                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Presenter</label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input checked id="corresponding" type="radio" value="corresponding"
-                                           name="author_type" v-model="author_form.type"
+                                    <input checked id="corresponding" type="checkbox" :value="1"
+                                           name="author_type" v-model="author_form.is_corresponding"
                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="corresponding"
                                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Corresponding</label>
@@ -339,13 +297,31 @@ export default {
             upload_loader: false,
             open_form: false,
             author_modal: '',
-            abstracts_count: {
-                body_background: 0,
-                body_aim: 0,
-                body_method: 0,
-                body_results: 0,
-                body_conclusions: 0,
-                body_total: 0,
+            abstract_form: [],
+            abstract_form_list: {
+                research: [
+                    {field: "introduction", title: "INTRODUCTION"},
+                    {field: "methods", title: "METHODS"},
+                    {field: "result", title: "RESULT"},
+                    {field: "discussion", title: "DISCUSSION"},
+                    {field: "conclusion", title: "CONCLUSION"},
+                ],
+                case_report: [
+                    {field: "introduction", title: "INTRODUCTION"},
+                    {field: "case_presentation", title: "CASE PRESENTATION"},
+                    {field: "discussion", title: "DISCUSSION"},
+                    {field: "conclusion", title: "CONCLUSION"},
+                ],
+                systematic_review: [
+                    {field: "introduction", title: "INTRODUCTION"},
+                    {field: "discussion", title: "DISCUSSION"},
+                    {field: "conclusion", title: "CONCLUSION"},
+                ],
+                meta_analysis: [
+                    {field: "introduction", title: "INTRODUCTION"},
+                    {field: "discussion", title: "DISCUSSION"},
+                    {field: "conclusion", title: "CONCLUSION"},
+                ]
             },
             form: {
                 id: '',
@@ -354,14 +330,9 @@ export default {
                 subtitle: '',
                 slug: '',
                 image: '',
-                category: '',
+                category: 'case_report',
                 file: '',
-                body: '',
-                body_background: '',
-                body_aim: '',
-                body_method: '',
-                body_results: '',
-                body_conclusions: '',
+                body: {},
                 status: '',
                 authors: [],
             },
@@ -373,7 +344,8 @@ export default {
                 surname: '',
                 institution: '',
                 email: '',
-                type: '',
+                is_presenter: '',
+                is_corresponding: '',
             }
         }
     },
@@ -394,7 +366,8 @@ export default {
                 surname: '',
                 institution: '',
                 email: '',
-                type: '',
+                is_presenter: '',
+                is_corresponding: '',
             }
         },
         editAuthorModal(author, index) {
@@ -412,6 +385,8 @@ export default {
                 type: '',
                 institution: '',
                 order: '',
+                is_presenter: '',
+                is_corresponding: '',
             })
         },
         pushAuthor() {
@@ -468,17 +443,13 @@ export default {
                 category: '',
                 file: '',
                 body: '',
-                body_background: '',
-                body_aim: '',
-                body_method: '',
-                body_results: '',
-                body_conclusions: '',
                 status: '',
                 authors: [],
             }
         },
         addData() {
-            this.disabled = true
+            // this.disabled = true
+            this.form.body = this.abstract_form
             this.authPost('pub/abstracts', this.form)
                 .then((data) => {
                     if (data.status) {
@@ -520,20 +491,15 @@ export default {
             this.form.subtitle = data.subtitle;
             this.form.category = data.category;
             this.form.file = data.file;
-            this.form.body = data.body;
+            this.abstract_form = data.body_parsed;
             this.form.authors = data.authors;
-
-            this.form.body_background = data.body_parsed.body_background ?? null;
-            this.form.body_aim = data.body_parsed.body_aim ?? null;
-            this.form.body_method = data.body_parsed.body_method ?? null;
-            this.form.body_results = data.body_parsed.body_results ?? null;
-            this.form.body_conclusions = data.body_parsed.body_conclusions ?? null;
 
             this.open_form = true;
             this.edit_mode = true;
         },
         updateData() {
             this.disabled = true
+            this.form.body = this.abstract_form
             this.authPost('pub/abstracts/' + this.form.id, this.form)
                 .then((data) => {
                     if (data.status) {
@@ -564,13 +530,11 @@ export default {
                     })
             }
         },
-        abstractTotal() {
-            this.abstracts_count.body_total =
-                parseInt(this.abstracts_count.body_background) +
-                parseInt(this.abstracts_count.body_aim) +
-                parseInt(this.abstracts_count.body_method) +
-                parseInt(this.abstracts_count.body_results) +
-                parseInt(this.abstracts_count.body_conclusions)
+        updateBodySections() {
+            let list = this.abstract_form_list[this.form.category]
+            if (list) {
+                this.abstract_form = list
+            }
         }
     },
     created() {
@@ -578,38 +542,6 @@ export default {
     },
     mounted() {
         this.author_modal = new Modal(document.getElementById('authorModal'));
-    },
-    watch: {
-        'form.body_background'(val) {
-            if(val){
-                this.abstracts_count.body_background = val.trim().split(/\s+/).length;
-                this.abstractTotal()
-            }
-        },
-        'form.body_aim'(val) {
-            if(val) {
-                this.abstracts_count.body_aim = val.trim().split(/\s+/).length;
-                this.abstractTotal()
-            }
-        },
-        'form.body_method'(val) {
-            if(val) {
-                this.abstracts_count.body_method = val.trim().split(/\s+/).length;
-                this.abstractTotal()
-            }
-        },
-        'form.body_results'(val) {
-            if(val) {
-                this.abstracts_count.body_results = val.trim().split(/\s+/).length;
-                this.abstractTotal()
-            }
-        },
-        'form.body_conclusions'(val) {
-            if(val) {
-                this.abstracts_count.body_conclusions = val.trim().split(/\s+/).length;
-                this.abstractTotal()
-            }
-        },
     },
 }
 </script>

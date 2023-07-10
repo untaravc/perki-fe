@@ -207,10 +207,16 @@ export default {
                 .then((data) => {
                     if (data.status) {
                         let trx = data.result.transaction
-                        localStorage.setItem('perki_user_token', data.result.token)
+                        let token = data.result.token
+
+                        if(token){
+                            localStorage.setItem('perki_user_token', data.result.token)
+                        }
+
                         if (trx) {
                             this.$router.push('register/event?transaction_number=' + trx.number);
                         }
+                        this.emitter.emit("update-header");
                     } else {
                         this.form_errors = data.errors
                     }

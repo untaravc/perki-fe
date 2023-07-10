@@ -20,9 +20,10 @@
                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                 </div>
                 <div class="mt-3">
-                    <button @click="login"
+                    <button @click="login" :disabled="disabled"
                             class="text-white mb-2 w-full bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
-                        Sign In
+                        <BtnLoader v-if="disabled"></BtnLoader>
+                        <span v-if="!disabled">Sign In</span>
                     </button>
                 </div>
                 <div class="mt-3 text-center">
@@ -46,6 +47,7 @@ export default {
     components: {GoogleLogin},
     data() {
         return {
+            disabled:false,
             form: {
                 email: '',
                 password: '',
@@ -54,6 +56,8 @@ export default {
     },
     methods: {
         login() {
+            this.disabled = true;
+            console.log(this.disabled)
             this.apiPost('pub/login', this.form)
                 .then((data)=>{
                     if(data.status){
@@ -63,6 +67,7 @@ export default {
                         alert(data.message)
                     }
                     this.emitter.emit("update-header");
+                    this.disabled = false;
                 })
         },
         loginByGoogle(callback) {

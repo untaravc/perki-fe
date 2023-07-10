@@ -88,10 +88,33 @@ export default {
             } else {
                 this.has_token = false;
             }
+        },
+        randGuest(length) {
+            let result = '';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const charactersLength = characters.length;
+            let counter = 0;
+            while (counter < length) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                counter += 1;
+            }
+            return result;
+        },
+        guestLog(){
+            let guest_token = localStorage.getItem('perki_app_guest_token');
+            if(!guest_token){
+                guest_token = this.randGuest(20)
+                localStorage.setItem('perki_app_guest_token', guest_token);
+            }
+
+            this.authPost('pub/guest', {
+                perki_app_guest_token: guest_token
+            })
         }
     },
     created() {
         this.checkToken()
+        this.guestLog()
     },
     mounted() {
         window.addEventListener('scroll', this.updateScroll);

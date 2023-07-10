@@ -20,15 +20,31 @@
                         <router-link v-if="trx.status === 100"
                                      :to="'/register/event?transaction_number=' + trx.number">{{ trx.number }}
                         </router-link>
-                        <router-link v-else="trx.status === 110 || trx.status === 120"
+                        <router-link v-if="trx.status === 110 || trx.status === 120"
                                      :to="'/payment?transaction_number=' + trx.number">{{ trx.number }}
                         </router-link>
                         <span class="font-semibold" v-else>{{ trx.number }}</span>
+                    </div>
+                    <div class="text-xs my-1 p-1 bg-blue-100 text-slate-500 rounded grid grid-cols-2">
+                        <div>
+                            <div class="flex">
+                                <unicon name="user" fill="grey" height="15px" width="15px"></unicon>
+                                <div class="ml-1">{{trx.user_name}}</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex">
+                                <unicon name="envelope" fill="grey" height="15px" width="15px"></unicon>
+                                <div class="ml-1">{{trx.user_email}}</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="ml-4">
                         <ul class="list-disc">
                             <li class="text-sm" v-for="detail in trx.transaction_details">
                                 {{ detail.event_name }}
+                                <span class="italic text-slate-500">{{$filters.formatDateTime(detail.event.date_start)}}</span>
+                                <div class="text-xs" v-if="detail.event">{{detail.event.title}}</div>
                             </li>
                         </ul>
                     </div>

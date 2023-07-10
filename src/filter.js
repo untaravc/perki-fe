@@ -54,7 +54,7 @@ const config = {
 	},
 	formatDateTime(value) {
 		if (value) {
-			return moment(value).format("DD MMM YYYY hh:mm");
+			return moment(value).format("DD MMM YYYY HH:mm");
 		}
 	},
 	formatTime(value) {
