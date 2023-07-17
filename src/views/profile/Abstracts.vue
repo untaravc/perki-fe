@@ -90,14 +90,16 @@
             <div class="mb-4">
                 <!--            <label>Abstract ({{ abstracts_count.body_total }}/300 words)</label>-->
                 <label>Abstract</label>
-
                 <div class="mb-2" v-for="body_form in abstract_form">
                     <label class="text-sm" title="Provide 1 or 2 sentences that explain the context of the study.">
                         {{ body_form.title }}
                         <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
                     </label>
-                    <textarea rows="3" v-model="body_form.content"
+                    <textarea rows="3" v-model="body_form.content" @keyup="countWords"
                               class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <div class="italic text-slate-400 text-sm font-semibold">
+                    Word count: {{word_count}}/300
                 </div>
             </div>
 
@@ -289,6 +291,7 @@ export default {
     data() {
         return {
             author_count: 1,
+            word_count: 0,
             author_edit_mode: false,
             edit_mode: false,
             author_edit_index: '',
@@ -355,6 +358,20 @@ export default {
                 .then((data) => {
                     this.data_content = data.result
                 })
+        },
+        countWords(){
+            let count = 0;
+            for(let i = 0; i < this.abstract_form.length; i++){
+
+                let word = this.abstract_form[i]['content'];
+                if(word){
+                    let ln = word.trim().split(/\s+/).length
+                    count += ln
+                }
+
+            }
+
+            this.word_count = count
         },
         addAuthorModal() {
             this.author_modal.show()
@@ -449,6 +466,10 @@ export default {
         },
         addData() {
             // this.disabled = true
+            if(this.word_count > 300){
+                alert("Abstract to long.")
+                return;
+            }
             this.form.body = this.abstract_form
             this.authPost('pub/abstracts', this.form)
                 .then((data) => {
@@ -498,6 +519,10 @@ export default {
             this.edit_mode = true;
         },
         updateData() {
+            if(this.word_count > 300){
+                alert("Abstract to long.")
+                return;
+            }
             this.disabled = true
             this.form.body = this.abstract_form
             this.authPost('pub/abstracts/' + this.form.id, this.form)

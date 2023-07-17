@@ -13,6 +13,7 @@ import CheckTransaction from '../views/check_transaction/Index.vue'
 import ContactUs from '../views/contact-us/Index.vue'
 
 import Profile from '../views/profile/Index.vue'
+import Events from '../views/events/Index.vue'
 import ProfileInfo from '../views/profile/Info.vue'
 import ProfileEvents from '../views/profile/Events.vue'
 import ProfileTransactions from '../views/profile/Transactions.vue'
@@ -34,6 +35,11 @@ const router = createRouter({
 					path: '/',
 					name: 'home',
 					component: HomeView,
+				},
+				{
+					path: '/events',
+					name: 'events',
+					component: Events,
 				},
 				{
 					path: '/register',

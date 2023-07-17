@@ -1,9 +1,10 @@
 <template>
     <div class="mb-8">
         <Hero></Hero>
-        <TimerPage></TimerPage>
+<!--        <EventCta></EventCta>-->
         <Menu></Menu>
         <Video></Video>
+        <TimerPage></TimerPage>
         <Schedules></Schedules>
         <Pricing></Pricing>
         <div class="bg-gradient-to-br from-[#193460] to-[#0a0009]">
@@ -24,6 +25,7 @@ import Pricing from "./Pricing.vue";
 import TimerPage from "./Timer.vue";
 import Venue from "./Venue.vue";
 import Menu from "./Menu.vue";
+import EventCta from "./EventCta.vue";
 
 export default {
     components: {
@@ -35,6 +37,7 @@ export default {
         Sponsors,
         TimerPage,
         Venue,
+        EventCta,
         Menu
     }
 }
