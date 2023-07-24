@@ -17,14 +17,14 @@
                 <ul class="list-disc ml-4">
                     <li>All abstracts must be submitted in English</li>
                     <li>Before submitting an abstract, registration to the symposium is mandatory</li>
-                    <li>Please refer to the abstract templates and upload the file to the online submission</li>
+                    <li>Please refer to the abstract templates and upload the file attachment (optional) to the online submission</li>
                     <li>Submission is only available via online submission</li>
                     <li>No submission fee required to submit an abstract to JCU 2023 in conjunction with the 6th
                         JINCARTOS 2023
                     </li>
                     <li>There is no limit to the number of abstracts an author may submit.</li>
                     <li>All abstract submitted are reviewed and selected by members of the Peer Reviewers.</li>
-                    <li>Supported file formats is Portable Document Format file (pdf).</li>
+                    <li>Supported attachment file format: graphic, figure, or table is .JPEG or .JPG</li>
                     <!--                    <li>Contact Person: dr</li>-->
                 </ul>
             </div>

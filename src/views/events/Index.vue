@@ -5,7 +5,7 @@
         </div>
         <div class="grid grid-cols-3 gap-3">
             <a :href="event.link" target="_blank" class="col-span-3 md:col-span-1" v-for="event in data_content">
-                <div style="padding-bottom: 100%"
+                <div style="padding-bottom: 120%"
                      :style="'background-image: url(' + base_url + event.image +')'"
                      class="w-full bg-purple-300 bg-cover rounded-md bg-center bg-no-repeat">
                 </div>
