@@ -4,6 +4,7 @@ const mixin = {
 	data() {
 		return {
 			base_api: '',
+			base_url: '',
 			page_loader_config: {
 				loader: 'bars',
 				canCancel: false,
@@ -31,11 +32,13 @@ const mixin = {
 	},
 	created: function () {
 		let href = window.location.origin
-		if(href === 'http://localhost:5173'){
+		if(href === 'http://localhost:5173' || href === 'http://127.0.0.1:5173'){
 		// if (import.meta.env.VITE_MODE === 'local') {
 			this.base_api = 'http://localhost:8000/api/'
+			this.base_url = 'http://localhost:8000'
 		} else {
 			this.base_api = 'https://src.perki-jogja.com/api/'
+			this.base_url = 'https://src.perki-jogja.com'
 		}
 	},
 	methods: {

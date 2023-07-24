@@ -1,7 +1,7 @@
 <template>
     <div class="mb-8">
         <Hero></Hero>
-<!--        <EventCta></EventCta>-->
+        <EventCta></EventCta>
         <Menu></Menu>
         <Video></Video>
         <TimerPage></TimerPage>

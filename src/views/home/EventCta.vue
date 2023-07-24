@@ -10,7 +10,7 @@
                         {{event.title}}
                     </div>
                 </div>
-                <div class="col-span-3 md:col-span-1 flex justify-center items-center">
+                <div class="col-span-3 md:col-span-1 flex justify-end px-6 items-center">
                     <router-link to="/events"
                        class="text-blue-900 bg-blue-200 hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                         Register
