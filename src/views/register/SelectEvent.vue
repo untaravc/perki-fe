@@ -181,20 +181,11 @@
                                 <div class="font-semibold">{{ $filters.currency(pricing.total) }}</div>
                             </div>
                         </div>
-                        <!--                        <div class="text-sm" v-if="pricing.count === 0">-->
-                        <!--                            <div class="flex justify-between">-->
-                        <!--                                <div>Event</div>-->
-                        <!--                                <div>0</div>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="flex justify-between border-t border-slate-800 font-semibold">-->
-                        <!--                                <div>Total</div>-->
-                        <!--                                <div>0</div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
                         <div class="mt-5">
-                            <button @click="toPayment"
+                            <button @click="toPayment" :disabled="disabled"
                                     class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
-                                Process to Payment
+                                <BtnLoader v-if="disabled"></BtnLoader>
+                                <span v-if="!disabled">Process to Payment</span>
                             </button>
                         </div>
                     </div>
@@ -210,6 +201,7 @@ export default {
         return {
             selected: 2,
             voucher: '',
+            disabled: false,
             form: {
                 symposium: null,
                 morning_workshop: null,
@@ -310,6 +302,7 @@ export default {
             this.calculatePrice()
         },
         toPayment() {
+            this.disabled = true;
             this.authPost('pub/create-payment-2', {
                 items: this.form,
                 voucher: this.voucher,
@@ -322,6 +315,9 @@ export default {
                 } else {
                     this.toaster({title: data.message, icon: 'warning'})
                 }
+                this.disabled = false;
+            }).catch(()=>{
+                this.disabled = false;
             })
         }
     },
