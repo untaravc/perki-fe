@@ -73,7 +73,7 @@
                         <ul class="list-disc">
                             <li v-for="item in ws_hd.schedules">
                                 {{item.title}}
-                                <span v-if="item.speaker"><br>{{item.speaker.name}}</span>
+                                <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
                             </li>
                         </ul>
                     </div>
@@ -149,7 +149,10 @@
                         </div>
                         <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
-                                <li v-for="item in sunday.room_a.schedule_details">{{item.title}}</li>
+                                <li v-for="item in sunday.room_a.schedule_details">
+                                    {{item.title}}
+                                    <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -164,7 +167,10 @@
                         </div>
                         <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
-                                <li v-for="item in sunday.room_b.schedule_details">{{item.title}}</li>
+                                <li v-for="item in sunday.room_b.schedule_details">
+                                    {{item.title}}
+                                    <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
