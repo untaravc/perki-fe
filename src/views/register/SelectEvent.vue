@@ -138,18 +138,19 @@
                             </div>
                         </div>
 
-<!--                        <div class="font-semibold mt-5 mb-2">-->
-<!--                            Voucher Code-->
-<!--                        </div>-->
-<!--                        <input type="text" id="institution" placeholder="input voucher code"-->
-<!--                               v-model="voucher"-->
-<!--                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">-->
-<!--                        <div class="text-right mt-3">-->
-<!--                            <div @click="calculatePrice('check')"-->
-<!--                                 class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">-->
-<!--                                Check-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <div class="font-semibold mt-5 mb-2">
+                            Voucher Code
+                        </div>
+                        <input type="text" id="institution" placeholder="input voucher code"
+                               v-model="voucher"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                        <small class="text-red-800" v-if="pricing.voucher_validation">{{ pricing.voucher_validation }}</small>
+                        <div class="text-right mt-3">
+                            <div @click="calculatePrice('check')"
+                                 class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">
+                                Check
+                            </div>
+                        </div>
 
                         <div class="font-semibold mt-5 mb-2">
                             Transaction Details
@@ -167,6 +168,12 @@
                             <div class="flex justify-between  my-1">
                                 <div class="text-slate-600">Subtotal</div>
                                 <div class="font-semibold">{{ $filters.currency(pricing.subtotal) }}</div>
+                            </div>
+                        </div>
+                        <div class="text-sm" v-if="pricing.discount_amount !== 0">
+                            <div class="flex justify-between  my-1">
+                                <div class="text-slate-500">Voucher Discount</div>
+                                <div class="text-slate-500">{{ $filters.currency(pricing.discount_amount) }}</div>
                             </div>
                         </div>
                         <div class="text-sm" v-if="pricing.package_discount !== 0">
@@ -224,6 +231,8 @@ export default {
                 items:'',
                 subtotal:'',
                 package_discount:'',
+                voucher_validation:'',
+                discount_amount: 0,
                 total:'',
             }
         }
