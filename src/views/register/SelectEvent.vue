@@ -2,7 +2,8 @@
     <div class="max-w-screen-lg m-auto pt-24" style="min-height: calc(100vh - 133px);">
         <div class="p-6 border-slate-100 bg-white rounded-xl">
             <div class="mb-4 grid grid-cols-3 gap-4">
-                <div @click="selectPackage('platinum')" v-if="transaction.job_type_code !== 'MHSA' && transaction.job_type_code !== 'COAS'"
+                <div @click="selectPackage('platinum')"
+                     v-if="transaction.job_type_code !== 'MHSA' && transaction.job_type_code !== 'COAS'"
                      class="bg-blue-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
                     <div class="font-bold text-white">Platinum</div>
                     <unicon v-if="package === 'platinum'" fill="white" name="check-square" width="30"
@@ -24,7 +25,7 @@
                     <unicon v-else fill="darkblue" name="square" width="30" height="30"></unicon>
                 </div>
             </div>
-            <div class="grid gap-4 md:grid-cols-3">
+            <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
                          class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
@@ -108,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="">
+                <div class="col-span-2 md:col-span-1">
                     <div class="font-semibold text-lg mb-2">Payment</div>
                     <div class="px-3 py-4 border rounded-lg">
                         <div class="border-b">
@@ -144,12 +145,27 @@
                         <input type="text" id="institution" placeholder="input voucher code"
                                v-model="voucher"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                        <small class="text-red-800" v-if="pricing.voucher_validation">{{ pricing.voucher_validation }}</small>
+                        <small class="text-red-800" v-if="pricing.voucher_validation">
+                            {{ pricing.voucher_validation }}
+                        </small>
                         <div class="text-right mt-3">
                             <div @click="calculatePrice('check')"
                                  class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">
                                 Check
                             </div>
+                        </div>
+
+                        <div class="font-semibold mt-5 mb-2">
+                            Collective Registration
+                        </div>
+                        <div v-if="count === 5">
+                            <span v-for="user in users">{{user.name}}, </span>
+                        </div>
+                        <div>
+                            <button @click="memberModal"
+                                    class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                Add Member
+                            </button>
                         </div>
 
                         <div class="font-semibold mt-5 mb-2">
@@ -199,6 +215,50 @@
                 </div>
             </div>
         </div>
+
+        <div id="memberModal" tabindex="-1" aria-hidden="true" data-modal-placement="top-center"
+             class="fixed top-0 left-0 right-0 z-50 w-full p-4 hidden overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-3 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            Add Member
+                        </h3>
+                        <button type="button" @click="member_modal.hide()"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg p-1 ml-auto inline-flex items-center">
+                            <unicon name="times"></unicon>
+                        </button>
+                    </div>
+                    <div class="p-6">
+                        <p class="mb-3">
+                            Add five other members to get special price IDR 5.000.000
+                        </p>
+                        <div class="grid mb-2 gap-1 grid-cols-2">
+                            <div>Email</div>
+                            <div>Name</div>
+                        </div>
+                        <div class="grid mb-2 gap-1 grid-cols-2" v-for="(user, i) in users">
+                            <div>
+                                <input v-model="user.email" type="text" :placeholder="'email_'+ (i + 1) +'@mail.com'"
+                                       class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"/>
+                            </div>
+                            <div>
+                                <input v-model="user.name" type="text" :placeholder="'User name '+ (i + 1)"
+                                       class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"/>
+                            </div>
+                        </div>
+                        <div>
+                            <button @click="addMember"
+                                    class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                Add Member
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -206,14 +266,23 @@
 export default {
     data() {
         return {
+            count: 0,
             selected: 2,
             voucher: '',
             disabled: false,
+            member_modal: '',
             form: {
                 symposium: null,
                 morning_workshop: null,
                 afternoon_workshop: null,
             },
+            users: [
+                { name: '', email: ''},
+                { name: '', email: ''},
+                { name: '', email: ''},
+                { name: '', email: ''},
+                { name: '', email: ''},
+            ],
             events: {
                 symposium: [],
                 morning_workshop: [],
@@ -228,12 +297,12 @@ export default {
             transaction: '',
             package: 'platinum',
             pricing: {
-                items:'',
-                subtotal:'',
-                package_discount:'',
-                voucher_validation:'',
+                items: '',
+                subtotal: '',
+                package_discount: '',
+                voucher_validation: '',
                 discount_amount: 0,
-                total:'',
+                total: '',
             }
         }
     },
@@ -249,7 +318,7 @@ export default {
                     this.transaction = data.result.transaction
                     this.data_raw.has_symposium = data.result.has_symposium
 
-                    if(this.transaction.job_type_code === "MHSA" || this.transaction.job_type_code === "COAS"){
+                    if (this.transaction.job_type_code === "MHSA" || this.transaction.job_type_code === "COAS") {
                         this.package = 'gold';
                     }
 
@@ -310,6 +379,9 @@ export default {
             }
             this.calculatePrice()
         },
+        memberModal() {
+            this.member_modal.show()
+        },
         toPayment() {
             this.disabled = true;
             this.authPost('pub/create-payment-2', {
@@ -317,6 +389,7 @@ export default {
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
                 package: this.package,
+                users: this.users,
             }).then((data) => {
                 if (data.status) {
                     this.$router.push('/payment?transaction_number=' + this.$route.query.transaction_number)
@@ -325,13 +398,43 @@ export default {
                     this.toaster({title: data.message, icon: 'warning'})
                 }
                 this.disabled = false;
-            }).catch(()=>{
+            }).catch(() => {
                 this.disabled = false;
             })
+        },
+        addMember(){
+            this.count = 0;
+            this.users.forEach(item=>{
+                if(item.name !== '' && item.email !== ''){
+                    this.count++
+                }
+            })
+
+            if(this.count < 5){
+                if(confirm("Member less than 5, add more member?")){
+
+                } else {
+                    this.member_modal.hide()
+                    this.users = [
+                        { name: '', email: ''},
+                        { name: '', email: ''},
+                        { name: '', email: ''},
+                        { name: '', email: ''},
+                        { name: '', email: ''},
+                    ];
+                }
+            } else {
+                this.member_modal.hide()
+            }
         }
     },
     created() {
         this.loadData()
-    }
+    },
+    mounted() {
+        this.member_modal = new Modal(document.getElementById('memberModal'), {
+            closable: false
+        });
+    },
 }
 </script>
