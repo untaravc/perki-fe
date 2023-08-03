@@ -159,7 +159,7 @@
                             Collective Registration
                         </div>
                         <div v-if="count === 5">
-                            <span v-for="user in users">{{user.name}}, </span>
+                            <span v-for="user in users">{{ user.name }}, </span>
                         </div>
                         <div>
                             <button @click="memberModal"
@@ -232,7 +232,7 @@
                     </div>
                     <div class="p-6">
                         <p class="mb-3">
-                            Add five other members to get special price IDR 5.000.000
+                            <i>Buy 5 get 1 Free.</i> Add five other <b>General Practitioner</b> to get special Symposium price (IDR 5.000.000)
                         </p>
                         <div class="grid mb-2 gap-1 grid-cols-2">
                             <div>Email</div>
@@ -277,11 +277,11 @@ export default {
                 afternoon_workshop: null,
             },
             users: [
-                { name: '', email: ''},
-                { name: '', email: ''},
-                { name: '', email: ''},
-                { name: '', email: ''},
-                { name: '', email: ''},
+                {name: '', email: ''},
+                {name: '', email: ''},
+                {name: '', email: ''},
+                {name: '', email: ''},
+                {name: '', email: ''},
             ],
             events: {
                 symposium: [],
@@ -323,6 +323,20 @@ export default {
                     }
 
                     this.calculatePrice()
+
+                    let users = data.result.transaction.users
+                    if (users.length > 0) {
+                        this.users = [];
+                        this.count = users.length;
+                        users.forEach(item => {
+                            this.users.push({
+                                id: item.id,
+                                name: item.user_name,
+                                email: item.user_email,
+                            })
+                        })
+                    }
+
                 })
         },
         calculatePrice(mode = 'calculate') {
@@ -331,6 +345,7 @@ export default {
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
                 package: this.package,
+                users: this.users,
             })
                 .then((data) => {
                     this.pricing = data.result
@@ -350,12 +365,15 @@ export default {
                 case 'platinum':
                     this.data_raw.symposium = true;
                     this.data_raw.workshop = true;
+                    this.form.symposium = this.events.symposium['id'];
                     break;
                 case 'gold':
                     this.data_raw.symposium = true;
                     this.data_raw.workshop = false;
+                    this.form.symposium = this.events.symposium['id'];
                     break;
                 case 'add-on':
+                    this.form.symposium = null
                     this.data_raw.symposium = false;
                     this.data_raw.workshop = true;
                     break;
@@ -402,29 +420,30 @@ export default {
                 this.disabled = false;
             })
         },
-        addMember(){
+        addMember() {
             this.count = 0;
-            this.users.forEach(item=>{
-                if(item.name !== '' && item.email !== ''){
+            this.users.forEach((item, i) => {
+                if (item.name !== '' && item.email !== '') {
                     this.count++
                 }
             })
 
-            if(this.count < 5){
-                if(confirm("Member less than 5, add more member?")){
+            if (this.count < 5) {
+                if (confirm("Member less than 5, add more member?")) {
 
                 } else {
                     this.member_modal.hide()
                     this.users = [
-                        { name: '', email: ''},
-                        { name: '', email: ''},
-                        { name: '', email: ''},
-                        { name: '', email: ''},
-                        { name: '', email: ''},
+                        {name: '', email: ''},
+                        {name: '', email: ''},
+                        {name: '', email: ''},
+                        {name: '', email: ''},
+                        {name: '', email: ''},
                     ];
                 }
             } else {
                 this.member_modal.hide()
+                this.calculatePrice()
             }
         }
     },
