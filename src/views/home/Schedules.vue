@@ -41,18 +41,29 @@
                         {{ $filters.formatTime("2023-09-01 11:00:00") }}
                     </div>
                 </div>
-                <div class="col-span-7 md:col-span-6 mb-4 border-b border-slate-300" v-for="ws_hd in schedule.workshop_half_day_1">
-                    <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
-                    <div class="text-base font-semibold">
-                        {{ ws_hd.title }}
-                    </div>
-                    <div class="text-sm my-2 pl-6">
-                        <ul class="list-disc">
-                            <li v-for="item in ws_hd.schedules">
-                                {{item.title}}
-                                <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
-                            </li>
-                        </ul>
+                <div class="col-span-7 md:col-span-6 mb-4 border-b border-slate-300"
+                     v-for="ws_hd in schedule.workshop_half_day_1">
+                    <div class="grid grid-cols-4">
+                        <div class="col-span-3">
+                            <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
+                            <div class="text-base font-semibold">
+                                {{ ws_hd.title }}
+                            </div>
+                            <div class="text-sm my-2 pl-6">
+                                <ul class="list-disc">
+                                    <li v-for="item in ws_hd.schedules">
+                                        {{ item.title }}
+                                        <span class="font-semibold"
+                                              v-if="item.speaker"><br>{{ item.speaker.name }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-span-1">
+                            <a target="_blank" :href="base_url + ws_hd.image">
+                                <img class="w-full" :src="base_url + ws_hd.image" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,18 +75,29 @@
                         {{ $filters.formatTime("2023-09-01 16:00:00") }}
                     </div>
                 </div>
-                <div class="col-span-7 md:col-span-6 mb-4 border-b border-slate-300" v-for="ws_hd in schedule.workshop_half_day_2">
-                    <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
-                    <div class="text-base font-semibold">
-                        {{ ws_hd.title }}
-                    </div>
-                    <div class="text-sm my-2 pl-6">
-                        <ul class="list-disc">
-                            <li v-for="item in ws_hd.schedules">
-                                {{item.title}}
-                                <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
-                            </li>
-                        </ul>
+                <div class="col-span-7 md:col-span-6 mb-4 border-b border-slate-300"
+                     v-for="ws_hd in schedule.workshop_half_day_2">
+                    <div class="grid grid-cols-4">
+                        <div class="col-span-3">
+                            <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
+                            <div class="text-base font-semibold">
+                                {{ ws_hd.title }}
+                            </div>
+                            <div class="text-sm my-2 pl-6">
+                                <ul class="list-disc">
+                                    <li v-for="item in ws_hd.schedules">
+                                        {{ item.title }}
+                                        <span class="font-semibold"
+                                              v-if="item.speaker"><br>{{ item.speaker.name }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-span-1">
+                            <a target="_blank" :href="base_url + ws_hd.image">
+                                <img class="w-full" :src="base_url + ws_hd.image" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,8 +123,8 @@
                         <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
                                 <li v-for="item in saturday.room_a.schedule_details">
-                                    {{item.title}}
-                                    <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
+                                    {{ item.title }}
+                                    <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -119,8 +141,8 @@
                         <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
                                 <li v-for="item in saturday.room_b.schedule_details">
-                                    {{item.title}}
-                                    <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
+                                    {{ item.title }}
+                                    <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -150,8 +172,8 @@
                         <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
                                 <li v-for="item in sunday.room_a.schedule_details">
-                                    {{item.title}}
-                                    <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
+                                    {{ item.title }}
+                                    <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -168,8 +190,8 @@
                         <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
                                 <li v-for="item in sunday.room_b.schedule_details">
-                                    {{item.title}}
-                                    <span class="font-semibold" v-if="item.speaker"><br>{{item.speaker.name}}</span>
+                                    {{ item.title }}
+                                    <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
                         </div>
