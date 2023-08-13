@@ -3,10 +3,10 @@
         <div class="flex justify-between mb-4">
             <div class="text-2xl font-semibold mb-3" id="edit-add">Abstracts</div>
             <div>
-                <button @click="addNew"
-                        class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
-                    Add New
-                </button>
+<!--                <button @click="addNew"-->
+<!--                        class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">-->
+<!--                    Add New-->
+<!--                </button>-->
             </div>
         </div>
         <div class="bg-white shadow-sm p-6 rounded-lg mb-4" v-if="open_form">
@@ -134,7 +134,11 @@
         </div>
 
         <!--       List-->
-        <div class="border-slate-200 border bg-white rounded mb-2" v-for="data in data_content">
+        <div class="italic" v-if="data_content.length === 0">
+            No Data
+        </div>
+        <div class="border-slate-200 border bg-white rounded mb-2"
+             v-if="data_content.length > 0" v-for="data in data_content">
             <div class="bg-slate-100 rounded-t py-3 px-4 flex justify-between">
                 <div class="flex">
                     <unicon name="clock" width="15" height="15"></unicon>

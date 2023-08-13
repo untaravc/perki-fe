@@ -5,7 +5,7 @@
                 <div>
                     <img src="/storage/logo/jcu_color.png" alt="" class="h-16 mb-2">
                 </div>
-                <div class="font-semibold text-xl">Register Event</div>
+                <div class="font-semibold text-xl">Register JCU in Conjunction Jincartos 2023</div>
                 <div class="text-sm">Create your account to register event.</div>
                 <div class="mt-3">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name<span
@@ -47,7 +47,7 @@
                             class="text-red-600">*</span></label>
                         <select id="job_type" v-model="form.job_type_code"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>== Pilih ==</option>
+                            <option value="" selected>== Pilih ==</option>
                             <option :value="job.code" :key="job.code" v-for="job in data_raw.job_types">{{ job.name }}
                             </option>
                         </select>
