@@ -19,7 +19,7 @@
                 </div>
                 <div @click="selectPackage('add-on')" v-if="data_raw.has_symposium"
                      class="border border-blue-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-                    <div class="font-bold text-blue-800">Add-On</div>
+                    <div class="font-bold text-blue-800">Workshop</div>
                     <unicon v-if="package === 'add-on'" name="check-square" width="30"
                             height="30"></unicon>
                     <unicon v-else fill="darkblue" name="square" width="30" height="30"></unicon>
@@ -292,7 +292,7 @@ export default {
                 symposium: true,
                 workshop: true,
                 job_type: '',
-                has_symposium: false,
+                has_symposium: true,
             },
             transaction: '',
             package: 'platinum',
@@ -316,7 +316,7 @@ export default {
                     this.form.symposium = this.events.symposium['id'];
 
                     this.transaction = data.result.transaction
-                    this.data_raw.has_symposium = data.result.has_symposium
+                    // this.data_raw.has_symposium = data.result.has_symposium
 
                     if (this.transaction.job_type_code === "MHSA" || this.transaction.job_type_code === "COAS") {
                         this.package = 'gold';
