@@ -18,8 +18,8 @@
                     <unicon v-else name="square" width="30" height="30"></unicon>
                 </div>
                 <div @click="selectPackage('add-on')" v-if="data_raw.has_symposium"
-                     class="border border-blue-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-                    <div class="font-bold text-blue-800">Workshop</div>
+                     class="border border-slate-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
+                    <div class="font-bold text-blue-800">Silver</div>
                     <unicon v-if="package === 'add-on'" name="check-square" width="30"
                             height="30"></unicon>
                     <unicon v-else fill="darkblue" name="square" width="30" height="30"></unicon>
@@ -60,10 +60,12 @@
 
                     <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if="data_raw.workshop">
                         <div>
-                            <div v-for="morning in events.morning_workshop" @click="selectMorning(morning.id)"
+                            <div v-for="morning in events.morning_workshop" @click="selectMorning(morning.id, morning)"
                                  :class="form.morning_workshop === morning.id ? 'bg-blue-200' : 'bg-blue-50'"
                                  class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
                                 <div class="mb-3">
+                                    <div class="text-sm italic" v-if="!morning.available">Full Booked</div>
+                                    <div class="text-sm italic" v-if="morning.available">{{morning.quota - morning.transactions_count}} available</div>
                                     <div class="font-semibold text-blue-900 flex">
                                         <unicon v-if="form.morning_workshop === morning.id" name="check-square"
                                                 width="20"
@@ -84,10 +86,12 @@
                             </div>
                         </div>
                         <div>
-                            <div v-for="afternoon in events.afternoon_workshop" @click="selectAfternoon(afternoon.id)"
+                            <div v-for="afternoon in events.afternoon_workshop" @click="selectAfternoon(afternoon.id, afternoon)"
                                  :class="form.afternoon_workshop === afternoon.id ? 'bg-blue-200' : 'bg-blue-50'"
                                  class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
                                 <div class="mb-3">
+                                    <div class="text-sm italic" v-if="!afternoon.available">Full Booked</div>
+                                    <div class="text-sm italic" v-if="afternoon.available">{{afternoon.quota - afternoon.transactions_count}} available</div>
                                     <div class="font-semibold text-blue-900 flex">
                                         <unicon v-if="form.afternoon_workshop === afternoon.id" name="check-square"
                                                 width="20"
@@ -232,7 +236,8 @@
                     </div>
                     <div class="p-6">
                         <p class="mb-3">
-                            <i>Buy 5 get 1 Free.</i> Add five other <b>General Practitioner</b> to get special Symposium price (IDR 5.000.000)
+                            <i>Buy 5 get 1 Free.</i> Add five other <b>General Practitioner</b> to get special Symposium
+                            price (IDR 5.000.000)
                         </p>
                         <div class="grid mb-2 gap-1 grid-cols-2">
                             <div>Email</div>
@@ -381,17 +386,26 @@ export default {
 
             this.calculatePrice()
         },
-        selectMorning(id) {
-            if (this.form.morning_workshop !== id) {
-                this.form.morning_workshop = id
+        selectMorning(id, morning) {
+            if (morning.available) {
+                if (this.form.morning_workshop !== id) {
+                    this.form.morning_workshop = id
+                } else {
+                    this.form.morning_workshop = ''
+                }
             } else {
                 this.form.morning_workshop = ''
             }
+
             this.calculatePrice()
         },
-        selectAfternoon(id) {
-            if (this.form.afternoon_workshop !== id) {
-                this.form.afternoon_workshop = id
+        selectAfternoon(id, afternoon) {
+            if (afternoon.available) {
+                if (this.form.afternoon_workshop !== id) {
+                    this.form.afternoon_workshop = id
+                } else {
+                    this.form.afternoon_workshop = ''
+                }
             } else {
                 this.form.afternoon_workshop = ''
             }

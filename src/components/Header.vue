@@ -36,9 +36,9 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link to="/abstracts" @click="toggleMenu"
+                        <router-link to="/guidance" @click="toggleMenu"
                                      class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
-                                     aria-current="page">Abstracts
+                                     aria-current="page">Guidance
                         </router-link>
                     </li>
                     <li>
