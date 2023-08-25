@@ -162,7 +162,7 @@
                         <div class="font-semibold mt-5 mb-2">
                             Collective Registration
                         </div>
-                        <div v-if="count === 5">
+                        <div v-if="count >= 5">
                             <span v-for="user in users">{{ user.name }}, </span>
                         </div>
                         <div>
@@ -282,6 +282,7 @@ export default {
                 afternoon_workshop: null,
             },
             users: [
+                {name: '', email: ''},
                 {name: '', email: ''},
                 {name: '', email: ''},
                 {name: '', email: ''},
@@ -448,6 +449,7 @@ export default {
                 } else {
                     this.member_modal.hide()
                     this.users = [
+                        {name: '', email: ''},
                         {name: '', email: ''},
                         {name: '', email: ''},
                         {name: '', email: ''},
