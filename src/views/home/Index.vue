@@ -1,10 +1,10 @@
 <template>
     <div class="mb-8">
         <Hero></Hero>
-        <EventCta></EventCta>
+<!--        <EventCta></EventCta>-->
+        <TimerPage></TimerPage>
         <Menu></Menu>
         <Video></Video>
-        <TimerPage></TimerPage>
         <Schedules></Schedules>
         <Pricing></Pricing>
         <div class="bg-gradient-to-br from-[#193460] to-[#0a0009]">

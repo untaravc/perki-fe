@@ -27,10 +27,21 @@ export default {
                     }
                     this.emitter.emit("update-header");
                 })
+        },
+        checkParams(){
+            let user_id = this.$route.query.user_id
+            let passcode = this.$route.query.passcode
+
+            if(user_id && passcode){
+                this.form.user_id = user_id
+                this.form.passcode = passcode
+
+                this.logas()
+            }
         }
     },
     created() {
-
+        this.checkParams()
     }
 }
 </script>

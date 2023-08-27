@@ -55,10 +55,10 @@ export default {
             let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
 
-            this.days = days
-            this.hours = hours
-            this.minutes = minutes
-            this.seconds = seconds
+            this.days = Math.max(days, 0)
+            this.hours = Math.max(hours,0)
+            this.minutes = Math.max(minutes,0)
+            this.seconds = Math.max(seconds,0)
         }
     },
     created() {
