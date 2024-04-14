@@ -3,9 +3,10 @@
         <div class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-white">
             <a href="#schedule">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-blue-100">
-                    <unicon name="schedule" fill="lighblue" width="36px" height="36px"></unicon>
+                    <v-icon name="bi-table" scale="1.5" fill="blue" />
+                    <!-- <unicon name="schedule" fill="lighblue" width="36px" height="36px"></unicon> -->
                 </div>
-                <div class="text-sm font-semibold font-light text-center">
+                <div class="text-sm font-semibold text-center">
                     Schedule
                 </div>
             </a>

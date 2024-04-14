@@ -1,8 +1,9 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-16">
         <div class="grid md:grid-cols-5 lg:gap-6 mb-12 mt-20">
-            <a target="_blank" :href="base_url + data_content[index]['poster']" class="md:order-2 rounded-lg md:col-span-2 relative bg-contain h-96 bg-center bg-no-repeat w-full"
-                 :style="`background-image: url('` + base_url +data_content[index]['poster'] + `')`"></a>
+            <a target="_blank" :href="base_url + data_content[index]['poster']"
+                class="md:order-2 rounded-lg md:col-span-2 relative bg-contain h-96 bg-center bg-no-repeat w-full"
+                :style="`background-image: url('` + base_url + data_content[index]['poster'] + `')`"></a>
             <div class="md:col-span-3 md:order-1">
                 <div class="m-5 bg-blue-300 rounded-full py-1 px-8 italic text-sm inline-block">
                     {{ data_content[index]['date'] }}
@@ -16,8 +17,8 @@
                 <div class="mx-5 flex">
                     <div v-for="btn in data_content[index]['buttons']" class="mx-2">
                         <router-link :to="btn.link"
-                                     :class="btn.theme === 'dark' ? 'text-white bg-blue-900' : 'text-blue-900 hover:bg-blue-900 hover:text-white'"
-                                     class="flex items-center border border-blue-900 font-medium rounded-full text-lg px-6 py-2 text-center">
+                            :class="btn.theme === 'dark' ? 'text-white bg-blue-900' : 'text-blue-900 hover:bg-blue-900 hover:text-white'"
+                            class="flex items-center border border-blue-900 font-medium rounded-full text-lg px-6 py-2 text-center">
                             <div class="mr-2">{{ btn.text }}</div>
                             <unicon v-if="btn.theme === 'dark'" name="arrow-right" fill="white"></unicon>
                         </router-link>
@@ -25,11 +26,11 @@
                 </div>
                 <div class="flex ml-6 mt-4">
                     <div @click="prev"
-                         class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
+                        class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-left"></unicon>
                     </div>
                     <div @click="next"
-                         class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
+                        class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-right"></unicon>
                     </div>
                 </div>
@@ -69,7 +70,7 @@ export default {
             clearInterval(this.interval)
         },
         loadData() {
-            this.apiGet('pub/hero-banner')
+            this.apiGet('pub/hero-banner', { ref: 2024 })
                 .then((data) => {
                     this.data_content = data.result;
                 })

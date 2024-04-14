@@ -1,7 +1,8 @@
-import {createApp} from 'vue'
-import {createPinia} from 'pinia'
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import mixin from './stores/mixin'
 import vue3GoogleLogin from 'vue3-google-login'
+import registerIcon from "./oh_icon";
 
 import App from './App.vue'
 import router from './router'
@@ -19,7 +20,7 @@ Unicon.add(icons)
 const app = createApp(App)
 
 app.component('BtnLoader', BtnLoader)
-
+registerIcon(app)
 
 app.use(Unicon)
 	.use(createPinia())

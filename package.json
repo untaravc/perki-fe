@@ -15,6 +15,7 @@
     "flowbite": "^1.6.3",
     "mitt": "^3.0.0",
     "moment": "^2.29.4",
+    "oh-vue-icons": "^1.0.0-rc3",
     "pinia": "^2.0.28",
     "sweetalert2": "^11.4.35",
     "vue": "^3.2.45",
