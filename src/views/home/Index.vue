@@ -1,8 +1,8 @@
 <template>
     <div class="mb-8">
         <Hero></Hero>
-<!--        <EventCta></EventCta>-->
-        <TimerPage></TimerPage>
+        <EventCta></EventCta>
+<!--        <TimerPage></TimerPage>-->
         <Menu></Menu>
         <Video></Video>
         <Schedules></Schedules>

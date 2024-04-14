@@ -23,6 +23,7 @@ import Committee from '../views/committee/Index.vue'
 import Logas from '../views/logas/Index.vue'
 import ForgotPassword from '../views/login/ForgotPassword.vue'
 import ResetPassword from '../views/login/ResetPassword.vue'
+import Videos from '../views/videos/Index.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -90,6 +91,11 @@ const router = createRouter({
 					path: '/payment',
 					name: 'payment',
 					component: Payment,
+				},
+				{
+					path: '/videos',
+					name: 'videos',
+					component: Videos,
 				},
 				{
 					path: '/schedule',
