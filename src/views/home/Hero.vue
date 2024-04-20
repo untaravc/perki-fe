@@ -5,7 +5,8 @@
                 class="md:order-2 rounded-lg md:col-span-2 relative bg-contain h-96 bg-center bg-no-repeat w-full"
                 :style="`background-image: url('` + base_url + data_content[index]['poster'] + `')`"></a>
             <div class="md:col-span-3 md:order-1">
-                <div class="m-5 bg-blue-300 rounded-full py-1 px-8 italic text-sm inline-block">
+                <div
+                    class="m-5 bg-gradient-to-r from-emerald-300 to-cyan-300 rounded-full py-1 px-8 italic text-sm inline-block">
                     {{ data_content[index]['date'] }}
                 </div>
                 <div class="mx-5 mb-5 text-4xl lg:text-6xl  font-bold text-blue-900">
@@ -14,7 +15,7 @@
                 <div class="mx-5 mb-5 lg:w-9/12 text-lg text-slate-600 italic">
                     {{ data_content[index]['subtitle'] }}
                 </div>
-                <div class="mx-5 flex">
+                <div class="mx-5 flex" v-if="data_content[index]['buttons'].length > 0">
                     <div v-for="btn in data_content[index]['buttons']" class="mx-2">
                         <router-link :to="btn.link"
                             :class="btn.theme === 'dark' ? 'text-white bg-blue-900' : 'text-blue-900 hover:bg-blue-900 hover:text-white'"
@@ -47,6 +48,7 @@ export default {
             data_content: [
                 {
                     poster: '',
+                    buttons: [],
                 }
             ]
         }

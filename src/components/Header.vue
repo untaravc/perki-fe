@@ -1,5 +1,5 @@
 <template>
-    <nav class="px-2 sm:px-4 py-2 dark:bg-gray-900 bg-blue-200 fixed w-full z-20 top-0 left-0 dark:border-gray-600"
+    <nav class="px-2 sm:px-4 py-2 bg-gradient-to-r from-emerald-300 to-cyan-300 bg-blue-200 fixed w-full z-20 top-0 left-0 "
         :class="scrollPosition > 60 ? 'bg-blue-200 border-b border-blue-100' : ''">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center ml-4 sm:ml-0">
@@ -29,12 +29,12 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
-                    <li>
+                    <!-- <li>
                         <router-link to="/" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Home
                         </router-link>
-                    </li>
+                    </li> -->
                     <!-- <li>
                         <router-link to="/guidance" @click="toggleMenu"
                                      class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"

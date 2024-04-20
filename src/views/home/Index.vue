@@ -2,7 +2,7 @@
     <div class="mb-8" style="min-height: calc(100vh - 165px);">
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
-        <TimerPage></TimerPage>
+        <!-- <TimerPage></TimerPage> -->
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
         <!-- <Schedules></Schedules> -->
