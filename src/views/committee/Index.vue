@@ -9,8 +9,8 @@
                 <div class="group relative" v-for="user in data.users">
                     <div v-if="user.data">
                         <div style="padding-bottom: 100%" v-if="user.data"
-                             :style="'background-image: url(' + user.data.image +')'"
-                             class="w-full bg-purple-300 bg-cover mb-2 rounded-md bg-center bg-no-repeat">
+                            :style="'background-image: url(' + user.data.image + ')'"
+                            class="w-full bg-purple-300 bg-cover mb-2 rounded-md bg-center bg-no-repeat">
                         </div>
                         <div
                             class="absolute bottom-0 right-0 left-0 rounded-b-md pb-3 pt-6 px-3 bg-gradient-to-t from-slate-800 to-transparent">
@@ -46,14 +46,14 @@ export default {
         return {
             count: 8,
             data_content: {
-                photos:[],
-                name:[],
+                photos: [],
+                name: [],
             }
         }
     },
     methods: {
         loadSpeaker() {
-            this.apiGet('pub/committee')
+            this.apiGet('pub/committee', { ref: 2024 })
                 .then((data) => {
                     this.data_content = data.result
                 })

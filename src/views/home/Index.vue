@@ -2,16 +2,16 @@
     <div class="mb-8" style="min-height: calc(100vh - 165px);">
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
-        <!-- <TimerPage></TimerPage> -->
-        <!-- <Menu></Menu> -->
-        <!-- <Video></Video> -->
-        <!-- <Schedules></Schedules> -->
-        <!-- <Pricing></Pricing> -->
-        <!-- <div class="bg-gradient-to-br from-[#193460] to-[#0a0009]">
+        <TimerPage></TimerPage>
+        <Menu></Menu>
+        <Video></Video>
+        <Schedules></Schedules>
+        <Pricing></Pricing>
+        <div class="bg-gradient-to-br from-emerald-700 to-cyan-800">
             <Speakers></Speakers>
-        </div> -->
-        <!-- <Venue></Venue> -->
-        <!-- <Sponsors></Sponsors> -->
+        </div>
+        <Venue></Venue>
+        <Sponsors></Sponsors>
     </div>
 </template>
 

@@ -4,7 +4,7 @@
             <div class="grid grid-cols-3">
                 <div class="col-span-3 md:col-span-1 text-center md:border-r-2 mb-4 border-blue-900">
                     <div class="font-semibold text-lg">Get Ready For The Event</div>
-                    <div>18-24 October 2023</div>
+                    <div>18-20 October 2023</div>
                     <a href="https://goo.gl/maps/89THhNvmVHL5boFj7" target="_blank"
                         class="text-sm text-slate-500 underline cursor-pointer">Tentrem Hotel, Yogyakarta</a>
                 </div>

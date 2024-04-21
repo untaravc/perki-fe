@@ -17,10 +17,11 @@
                 <ul class="list-disc ml-4">
                     <li>All abstracts must be submitted in English</li>
                     <li>Before submitting an abstract, registration to the symposium is mandatory</li>
-                    <li>Please refer to the abstract templates and upload the file attachment (optional) to the online submission</li>
+                    <li>Please refer to the abstract templates and upload the file attachment (optional) to the online
+                        submission</li>
                     <li>Submission is only available via online submission</li>
-                    <li>No submission fee required to submit an abstract to JCU 2023 in conjunction with the 6th
-                        JINCARTOS 2023
+                    <li>No submission fee required to submit an abstract to JCU 2024 in conjunction with the 7th
+                        JINCARTOS 2024
                     </li>
                     <li>There is no limit to the number of abstracts an author may submit.</li>
                     <li>All abstract submitted are reviewed and selected by members of the Peer Reviewers.</li>
@@ -30,7 +31,8 @@
             </div>
         </div>
         <div v-if="has_token" class="flex justify-center">
-            <router-link to="/profile/abstracts" class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+            <router-link to="/profile/abstracts"
+                class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                 Submit new abstract
             </router-link>
         </div>

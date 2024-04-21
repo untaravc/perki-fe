@@ -1,6 +1,6 @@
 <template>
     <div class="px-2">
-        <div class="max-w-screen-lg m-auto py-6 bg-indigo-200 rounded-lg">
+        <div class="max-w-screen-lg m-auto py-6 bg-gradient-to-br from-emerald-100 to-cyan-100 rounded-lg">
             <Carousel :settings="settings" :wrapAround="true" :breakpoints="breakpoints">
                 <Slide v-for="slide in sliders" :key="slide">
                     <div class="carousel__item">
@@ -14,7 +14,7 @@
 
 <script>
 import 'vue3-carousel/dist/carousel.css'
-import {Carousel, Slide, Pagination, Navigation} from 'vue3-carousel'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 export default {
     name: 'App',
