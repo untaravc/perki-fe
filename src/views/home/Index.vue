@@ -3,15 +3,15 @@
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
-        <Menu></Menu>
-        <Video></Video>
-        <Schedules></Schedules>
-        <Pricing></Pricing>
-        <div class="bg-gradient-to-br from-emerald-700 to-cyan-800">
+        <!-- <Menu></Menu> -->
+        <!-- <Video></Video> -->
+        <!-- <Schedules></Schedules> -->
+        <!-- <Pricing></Pricing> -->
+        <!-- <div class="bg-gradient-to-br from-purple-700 to-cyan-800">
             <Speakers></Speakers>
         </div>
-        <Venue></Venue>
-        <Sponsors></Sponsors>
+        <Venue></Venue> -->
+        <!-- <Sponsors></Sponsors> -->
     </div>
 </template>
 

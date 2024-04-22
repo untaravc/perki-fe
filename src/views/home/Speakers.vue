@@ -20,7 +20,7 @@
         </div>
         <router-link to="/speakers">
             <div
-                class="bg-gradient-to-r from-emerald-500 to-cyan-500 p-1 text-center w-full rounded mt-4 text-slate-200 cursor-pointer">
+                class="bg-gradient-to-r from-purple-500 to-cyan-500 p-1 text-center w-full rounded mt-4 text-slate-200 cursor-pointer">
                 View all
             </div>
         </router-link>

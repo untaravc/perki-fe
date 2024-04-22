@@ -6,24 +6,24 @@
         <div class="text-small text-slate-600 mb-5 text-center">
             Register yourself and get a special Early Bird price until <b>31st of August</b>
         </div>
-        <div class="grid grid-cols-3 bg-gradient-to-bl from-emerald-100 to-cyan-100">
+        <div class="grid grid-cols-3 bg-gradient-to-bl from-purple-100 to-cyan-100">
             <div class="md:col-span-2 col-span-3 shadow  p-5 rounded-l-none md:rounded-l-lg">
                 <div class="text-lg mb-2">
                     Packages:
                 </div>
                 <div class="grid grid-cols-3 mb-3 text-white">
                     <div @click="select(pricing.platinum, 1)"
-                        :class="selected_index === 1 ? 'from-cyan-400 to-emerald-400' : 'from-emerald-800 to-cyan-800'"
+                        :class="selected_index === 1 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
                         class="shadow p-3 col-span-3 font-medium md:col-span-1 bg-gradient-to-r cursor-pointer md:rounded-l-lg">
                         {{ pricing.platinum.name }}
                     </div>
                     <div @click="select(pricing.gold, 2)"
-                        :class="selected_index === 2 ? 'from-cyan-500 to-emerald-500' : 'from-emerald-800 to-cyan-800'"
+                        :class="selected_index === 2 ? 'from-cyan-500 to-purple-500' : 'from-purple-800 to-cyan-800'"
                         class="shadow p-3 col-span-3 font-medium md:col-span-1 bg-gradient-to-r cursor-pointer">
                         {{ pricing.gold.name }}
                     </div>
                     <div @click="select(pricing.bronze, 3)"
-                        :class="selected_index === 3 ? 'from-cyan-500 to-emerald-500' : 'from-emerald-800 to-cyan-800'"
+                        :class="selected_index === 3 ? 'from-cyan-500 to-purple-500' : 'from-purple-800 to-cyan-800'"
                         class="shadow p-3 col-span-3 font-medium md:col-span-1 bg-gradient-to-r cursor-pointer md:rounded-r-lg">
                         {{ pricing.bronze.name }}
                     </div>
@@ -59,8 +59,8 @@
                     <span class="font-bold text-lime-500">Rp {{ $filters.currency(selected.price_drsp_eb) }}</span>
                 </div>
                 <router-link to="/register" class="rounded-lg bg-pos-0 block text-white 
-                bg-gradient-to-r from-emerald-600 to-cyan-600 p-3 mt-3 w-full font-semibold text-center
-                    hover:from-cyan-500 hover:to-emerald-500 cursor-pointer">
+                bg-gradient-to-r from-purple-600 to-cyan-600 p-3 mt-3 w-full font-semibold text-center
+                    hover:from-cyan-500 hover:to-purple-500 cursor-pointer">
                     Register Now
                 </router-link>
             </div>

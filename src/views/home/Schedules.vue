@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-3">
             <div @click="selected = 1"
-                :class="selected === 1 ? 'from-cyan-400 to-emerald-400' : 'from-emerald-800 to-cyan-800'"
+                :class="selected === 1 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
                 class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:bg-yellow-500 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     FRIDAY
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div @click="selected = 2"
-                :class="selected === 2 ? 'from-cyan-400 to-emerald-400' : 'from-emerald-800 to-cyan-800'"
+                :class="selected === 2 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
                 class="text-white py-3 text-center cursor-pointer hover:bg-cyan-600 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     SATURDAY
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div @click="selected = 3"
-                :class="selected === 3 ? 'from-cyan-400 to-emerald-400' : 'from-emerald-800 to-cyan-800'"
+                :class="selected === 3 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
                 class="text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:bg-indigo-700 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     SUNDAY

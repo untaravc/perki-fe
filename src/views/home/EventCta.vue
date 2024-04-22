@@ -1,6 +1,6 @@
 <template>
     <div class="px-2 mb-3">
-        <div class="max-w-screen-lg m-auto py-6 bg-gradient-to-r from-emerald-300 to-cyan-300 rounded-lg">
+        <div class="max-w-screen-lg m-auto py-6 bg-gradient-to-r from-purple-300 to-cyan-300 rounded-lg">
             <div class="grid grid-cols-3">
                 <div class="col-span-3 md:col-span-2 px-6">
                     <div class="font-semibold text-2xl">

@@ -6,7 +6,7 @@
         <div class="mb-6 text-center">
             Tentrem Hotel Yogyakarta, P. Mangkubumi St. No.72A, Cokrodiningratan, Jetis, Yogyakarta
         </div>
-        <div class="rounded-xl shadow-sm bg-gradient-to-bl from-emerald-100 to-cyan-100 grid grid-cols-12">
+        <div class="rounded-xl shadow-sm bg-gradient-to-bl from-purple-100 to-cyan-100 grid grid-cols-12">
             <div class="col-span-12 md:col-span-5 min-h-[300px]  bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
                 style="background-image: url('/storage/img/tentrem-hotel.webp')">
             </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="flex justify-end mb-4">
                     <router-link to="venue"
-                        class="mx-1 px-3 py-1 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-cyan-500 hover:to-emerald-500 rounded-lg text-white">
+                        class="mx-1 px-3 py-1 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-cyan-500 hover:to-purple-500 rounded-lg text-white">
                         More information
                     </router-link>
                 </div>
