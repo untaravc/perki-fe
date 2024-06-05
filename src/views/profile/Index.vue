@@ -13,27 +13,27 @@
                             <unicon name="user" height="20px" :fill="active === 'info' ? 'darkblue' : ''"></unicon>
                             <div class="ml-2">Profil</div>
                         </router-link>
-                        <router-link to="/profile/events" class="flex my-3 cursor-pointer" @click="active = 'events'">
+                        <!-- <router-link to="/profile/events" class="flex my-3 cursor-pointer" @click="active = 'events'">
                             <unicon name="youtube" height="20px" :fill="active === 'events' ? 'blue' : ''"></unicon>
                             <div class="ml-2">My Event</div>
                         </router-link>
                         <router-link to="/profile/transactions" class="flex justify-between my-3 cursor-pointer"
-                                     @click="active = 'transactions'">
+                            @click="active = 'transactions'">
                             <div class="flex">
                                 <unicon name="shopping-cart" height="20px"
-                                        :fill="active === 'transactions' ? 'darkblue' : ''"></unicon>
+                                    :fill="active === 'transactions' ? 'darkblue' : ''"></unicon>
                                 <div class="ml-2">Transaction</div>
                             </div>
                             <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
                                 {{ pending_transaction }}
                             </div>
-                        </router-link>
+                        </router-link> -->
 
                         <router-link to="/profile/abstracts" class="flex my-3 cursor-pointer justify-between"
-                                     @click="active = 'abstracts'">
+                            @click="active = 'abstracts'">
                             <div class="flex">
-                                <unicon name="file-upload" height="20px"
-                                        :fill="active === 'abstracts' ? 'blue' : ''"></unicon>
+                                <unicon name="file-upload" height="20px" :fill="active === 'abstracts' ? 'blue' : ''">
+                                </unicon>
                                 <div class="ml-2">Abstracts</div>
                             </div>
                             <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
@@ -70,7 +70,7 @@ export default {
             if (confirm('Logout?')) {
                 this.authPost('pub/logout')
                     .then((data) => {
-                        if (data.status) {
+                        if (data.success) {
                             localStorage.removeItem('perki_user_token')
                             this.$router.push('/')
                         }

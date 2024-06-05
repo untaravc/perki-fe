@@ -6,7 +6,7 @@
         <div class="mb-12">
             <div class="rounded-xl shadow-sm bg-blue-100 grid grid-cols-12">
                 <a href="https://goo.gl/maps/bKWMrkskfq1YFgJb6" target="_blank"
-                   class="col-span-12 cursor-pointer hover:brightness-50 md:col-span-5 min-h-[300px]  bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
+                    class="col-span-12 cursor-pointer hover:brightness-50 md:col-span-5 min-h-[300px]  bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
                     style="background-image: url('/storage/img/map-rss.png')">
                 </a>
                 <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
@@ -29,10 +29,8 @@
                     <div class="ml-8 mb-4">
                         <ol class="list-disc">
                             <li>
-                                Desy: <a class="italic text-blue-700" target="_blank" href="https://wa.me/6281394444634">62813 9444 4634</a>
-                            </li>
-                            <li>
-                                Vonny: <a class="italic text-blue-700" target="_blank" href="https://wa.me/6282229809505">62822 2980 9505</a>
+                                Aya: <a class="italic text-blue-700" target="_blank"
+                                    href="https://wa.me/62895340394067">+62 895 3403 94067</a>
                             </li>
                         </ol>
                     </div>
