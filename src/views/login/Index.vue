@@ -58,10 +58,9 @@ export default {
     methods: {
         login() {
             this.disabled = true;
-            console.log(this.disabled)
             this.apiPost('pub/login', this.form)
                 .then((data) => {
-                    if (data.status) {
+                    if (data.success) {
                         localStorage.setItem('perki_user_token', data.result.token)
                         this.$router.push('profile/info')
                     } else {

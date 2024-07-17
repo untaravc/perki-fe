@@ -3,7 +3,7 @@
         <div class="flex justify-center items-center" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl text-center min-w-[425px] lg:min-w-[450px]">
                 <div v-if="transaction.status < 200">
-                    <div class="text-xl mb-4">complete the payment</div>
+                    <div class="text-xl mb-4">Complete the Payment</div>
                     <div class="text-2xl text-[#F78F2D] mb-2 font-semibold">
                         Rp {{ $filters.currency(transaction.total) }}
                     </div>
@@ -60,8 +60,8 @@
                         <ul class="list-disc">
                             <li class="text-sm" v-for="detail in transaction.transaction_details">
                                 {{ detail.event_name }}
-                                <span
-                                    class="italic text-slate-500">{{ $filters.formatDateTime(detail.event.date_start) }}</span>
+                                <span class="italic text-slate-500">{{ $filters.formatDateTime(detail.event.date_start)
+                                    }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
@@ -71,7 +71,7 @@
                     <label for="file_upload">
                         <div
                             class="bg-slate-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
-                            <page-loader v-model:active="upload_loader" loader="dots" :is-full-page="false"/>
+                            <page-loader v-model:active="upload_loader" loader="dots" :is-full-page="false" />
                             <div v-if="!upload_loader">
                                 <unicon name="file" fill="grey"></unicon>
                                 <div class="text-sm italic text-slate-600">Select transfer proof</div>
@@ -101,7 +101,7 @@
                     </div>
                 </label>
                 <router-link to="/profile/transactions"
-                             class="block font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-100 border-slate-800 hover:bg-blue-200 text-blue-800">
+                    class="block font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-100 border-slate-800 hover:bg-blue-200 text-blue-800">
                     Back to Transaction
                 </router-link>
             </div>
@@ -137,7 +137,7 @@ export default {
         },
         copyText(copy_text, text = null) {
             navigator.clipboard.writeText(copy_text);
-            this.toaster({title: text + ' disalin'})
+            this.toaster({ title: text + ' disalin' })
         },
         uploadFile() {
             let file = document.getElementById("file_upload").files[0];
@@ -159,8 +159,8 @@ export default {
                         }
                         this.upload_loader = false;
                     }).catch((e) => {
-                    this.upload_loader = false;
-                });
+                        this.upload_loader = false;
+                    });
             }
         },
         uploadTransferProof() {
@@ -175,7 +175,7 @@ export default {
                     }
                 }).catch(() => {
 
-            })
+                })
         }
     },
     mounted() {

@@ -7,10 +7,10 @@
         <!-- <Video></Video> -->
         <!-- <Schedules></Schedules> -->
         <!-- <Pricing></Pricing> -->
-        <!-- <div class="bg-gradient-to-br from-purple-700 to-cyan-800">
+        <div class="bg-gradient-to-br from-purple-700 to-cyan-800">
             <Speakers></Speakers>
         </div>
-        <Venue></Venue> -->
+        <Venue></Venue>
         <!-- <Sponsors></Sponsors> -->
     </div>
 </template>

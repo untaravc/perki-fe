@@ -8,18 +8,22 @@
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <div class="flex md:order-2">
-                <router-link to="/register" v-if="!has_token"
-                    class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                <router-link to="/register"
+                    class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3">
                     <div class="flex items-center">
-                        <div class="mr-2">Register</div>
-                        <unicon name="arrow-right" fill="white"></unicon>
+                        <div>Register</div>
                     </div>
                 </router-link>
                 <router-link to="/profile/info" v-if="has_token"
                     class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
-                        <div class="mr-2">Profile</div>
-                        <unicon name="arrow-right" fill="white"></unicon>
+                        <div>Profile</div>
+                    </div>
+                </router-link>
+                <router-link to="/login" v-if="!has_token"
+                    class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    <div class="flex items-center">
+                        <div>Login</div>
                     </div>
                 </router-link>
                 <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"

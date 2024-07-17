@@ -212,9 +212,9 @@ export default {
                             localStorage.setItem('perki_user_token', data.result.token)
                         }
 
-                        // if (trx) {
-                        //     this.$router.push('register/event?transaction_number=' + trx.number);
-                        // }
+                        if (trx) {
+                            this.$router.push('register/event?transaction_number=' + trx.number);
+                        }
                         if (this.$route.query.url) {
                             this.$router.push(this.$route.query.url);
                         }

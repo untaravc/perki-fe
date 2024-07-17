@@ -1,20 +1,114 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24" style="min-height: calc(100vh - 133px);">
         <div class="p-6 border-slate-100 bg-white rounded-xl">
+            <div class="mb-4 grid grid-cols-3 gap-4">
+                <div @click="selectPackage('platinum')"
+                     v-if="transaction.job_type_code !== 'MHSA' && transaction.job_type_code !== 'COAS'"
+                     class="bg-blue-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
+                    <div class="font-bold text-white">Platinum</div>
+                    <unicon v-if="package === 'platinum'" fill="white" name="check-square" width="30"
+                            height="30"></unicon>
+                    <unicon v-else fill="white" name="square" width="30" height="30"></unicon>
+                </div>
+                <div @click="selectPackage('gold')"
+                     class="bg-yellow-300 p-4 rounded-lg flex justify-between items-center  cursor-pointer">
+                    <div class="font-bold">Gold</div>
+                    <unicon v-if="package === 'gold'" name="check-square" width="30"
+                            height="30"></unicon>
+                    <unicon v-else name="square" width="30" height="30"></unicon>
+                </div>
+                <div @click="selectPackage('add-on')" v-if="data_raw.has_symposium"
+                     class="border border-slate-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
+                    <div class="font-bold text-blue-800">Silver</div>
+                    <unicon v-if="package === 'add-on'" name="check-square" width="30"
+                            height="30"></unicon>
+                    <unicon v-else fill="darkblue" name="square" width="30" height="30"></unicon>
+                </div>
+            </div>
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
-                        class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
+                         class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
                         <div class="mb-3">
                             <div class="font-semibold text-blue-900 flex">
-                                <unicon name="check-square" width="20" height="20" fill="#243776"></unicon>
+                                <unicon name="check-square" width="20"
+                                        height="20"
+                                        fill="#243776"></unicon>
                                 <div class="ml-1">{{ events.symposium.name }}</div>
                             </div>
                             <div class="text-xs mb-1">
-                                Friday-Sunday, Oct 18th - 20th, 08:00-16:00
+                                Saturday-Sunday, Sep 2nd - 3rd, 08:00-15:00
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="font-semibold flex justify-between mb-1" v-if="package === 'gold'">
+                        <div>Add-On</div>
+                        <div>
+                            <unicon v-if="data_raw.workshop" name="check-square" @click="data_raw.workshop = false"
+                                    width="25"
+                                    height="25"
+                                    fill="#243776"></unicon>
+                            <unicon v-if="!data_raw.workshop" name="square" width="25" @click="data_raw.workshop = true"
+                                    height="25"
+                                    fill="#243776"></unicon>
+                        </div>
+                    </div>
+
+                    <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if="data_raw.workshop">
+                        <div>
+                            <div v-for="morning in events.morning_workshop" @click="selectMorning(morning.id, morning)"
+                                 :class="form.morning_workshop === morning.id ? 'bg-blue-200' : 'bg-blue-50'"
+                                 class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
+                                <div class="mb-3">
+                                    <div class="text-sm italic" v-if="!morning.available">Full Booked</div>
+                                    <div class="text-sm italic" v-if="morning.available">{{morning.quota - morning.transactions_count}} available</div>
+                                    <div class="font-semibold text-blue-900 flex">
+                                        <unicon v-if="form.morning_workshop === morning.id" name="check-square"
+                                                width="20"
+                                                height="20"
+                                                fill="#243776"></unicon>
+                                        <unicon v-if="form.morning_workshop !== morning.id" name="square" width="20"
+                                                height="20"
+                                                fill="#243776"></unicon>
+                                        <div class="ml-1">{{ morning.name }}</div>
+                                    </div>
+                                    <div class="text-xs mb-1">
+                                        {{ $filters.formatDayDateTime(morning.date_start) }}
+                                    </div>
+                                    <div class="text-xs mb-1 italic">
+                                        {{ morning.title }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div v-for="afternoon in events.afternoon_workshop" @click="selectAfternoon(afternoon.id, afternoon)"
+                                 :class="form.afternoon_workshop === afternoon.id ? 'bg-blue-200' : 'bg-blue-50'"
+                                 class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
+                                <div class="mb-3">
+                                    <div class="text-sm italic" v-if="!afternoon.available">Full Booked</div>
+                                    <div class="text-sm italic" v-if="afternoon.available">{{afternoon.quota - afternoon.transactions_count}} available</div>
+                                    <div class="font-semibold text-blue-900 flex">
+                                        <unicon v-if="form.afternoon_workshop === afternoon.id" name="check-square"
+                                                width="20"
+                                                height="20"
+                                                fill="#243776"></unicon>
+                                        <unicon v-if="form.afternoon_workshop !== afternoon.id" name="square" width="20"
+                                                height="20"
+                                                fill="#243776"></unicon>
+                                        <div class="ml-1">{{ afternoon.name }}</div>
+                                    </div>
+                                    <div class="text-xs mb-1">
+                                        {{ $filters.formatDayDateTime(afternoon.date_start) }}
+                                    </div>
+                                    <div class="text-xs mb-1 italic">
+                                        {{ afternoon.title }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -50,43 +144,22 @@
                         </div>
 
                         <div class="font-semibold mt-5 mb-2">
-                            Plataran Sehat (Screen Shoot)
-                        </div>
-                        <div>
-                            <input type="file" accept="image/*" id="file-upload" @change="uploadFile">
-                        </div>
-
-                        <div class="mb-2 p-2" v-if="form.plataran_img">
-                            <a target="_blank" :href="form.plataran_img">
-                                <div class="w-full h-32 bg-center bg-cover bg-no-repeat"
-                                    :style="'background-image:url(' + form.plataran_img + ')'" alt=""></div>
-                            </a>
-                        </div>
-                        <div class="font-semibold mt-5 mb-2">
-                            Identity Number (NIK)
-                        </div>
-                        <div>
-                            <input type="text" v-model="form.nik"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                        </div>
-
-
-                        <!-- <div class="font-semibold mt-5 mb-2">
                             Voucher Code
                         </div>
-                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                        <input type="text" id="institution" placeholder="input voucher code"
+                               v-model="voucher"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                         <small class="text-red-800" v-if="pricing.voucher_validation">
                             {{ pricing.voucher_validation }}
                         </small>
                         <div class="text-right mt-3">
                             <div @click="calculatePrice('check')"
-                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">
+                                 class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">
                                 Check
                             </div>
-                        </div> -->
+                        </div>
 
-                        <!-- <div class="font-semibold mt-5 mb-2">
+                        <div class="font-semibold mt-5 mb-2">
                             Collective Registration
                         </div>
                         <div v-if="count >= 5">
@@ -94,10 +167,10 @@
                         </div>
                         <div>
                             <button @click="memberModal"
-                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                    class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
-                        </div> -->
+                        </div>
 
                         <div class="font-semibold mt-5 mb-2">
                             Transaction Details
@@ -105,7 +178,7 @@
                         <div class="text-sm border-b">
                             <div v-for="price in pricing.items">
                                 <div class="flex justify-between my-1" v-if="price.price !== 0"
-                                    :class="price.name === 'Total' ? 'border-t border-slate-800 font-semibold' : ''">
+                                     :class="price.name === 'Total' ? 'border-t border-slate-800 font-semibold' : ''">
                                     <div>{{ price.name }}</div>
                                     <div>{{ $filters.currency(price.price) }}</div>
                                 </div>
@@ -137,7 +210,7 @@
                         </div>
                         <div class="mt-5">
                             <button @click="toPayment" :disabled="disabled"
-                                class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                    class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 <BtnLoader v-if="disabled"></BtnLoader>
                                 <span v-if="!disabled">Process to Payment</span>
                             </button>
@@ -148,7 +221,7 @@
         </div>
 
         <div id="memberModal" tabindex="-1" aria-hidden="true" data-modal-placement="top-center"
-            class="fixed top-0 left-0 right-0 z-50 w-full p-4 hidden overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+             class="fixed top-0 left-0 right-0 z-50 w-full p-4 hidden overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-2xl max-h-full">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
@@ -157,7 +230,7 @@
                             Add Member
                         </h3>
                         <button type="button" @click="member_modal.hide()"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg p-1 ml-auto inline-flex items-center">
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg p-1 ml-auto inline-flex items-center">
                             <unicon name="times"></unicon>
                         </button>
                     </div>
@@ -172,17 +245,17 @@
                         </div>
                         <div class="grid mb-2 gap-1 grid-cols-2" v-for="(user, i) in users">
                             <div>
-                                <input v-model="user.email" type="text" :placeholder="'email_' + (i + 1) + '@mail.com'"
-                                    class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+                                <input v-model="user.email" type="text" :placeholder="'email_'+ (i + 1) +'@mail.com'"
+                                       class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"/>
                             </div>
                             <div>
-                                <input v-model="user.name" type="text" :placeholder="'User name ' + (i + 1)"
-                                    class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+                                <input v-model="user.name" type="text" :placeholder="'User name '+ (i + 1)"
+                                       class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"/>
                             </div>
                         </div>
                         <div>
                             <button @click="addMember"
-                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                    class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
                         </div>
@@ -207,16 +280,14 @@ export default {
                 symposium: null,
                 morning_workshop: null,
                 afternoon_workshop: null,
-                plataran_img: '',
-                nik: '',
             },
             users: [
-                { name: '', email: '' },
-                { name: '', email: '' },
-                { name: '', email: '' },
-                { name: '', email: '' },
-                { name: '', email: '' },
-                { name: '', email: '' },
+                {name: '', email: ''},
+                {name: '', email: ''},
+                {name: '', email: ''},
+                {name: '', email: ''},
+                {name: '', email: ''},
+                {name: '', email: ''},
             ],
             events: {
                 symposium: [],
@@ -243,7 +314,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/events-list-24', {
+            this.authGet('pub/events-list-2', {
                 transaction_number: this.$route.query.transaction_number
             })
                 .then((data) => {
@@ -275,7 +346,7 @@ export default {
                 })
         },
         calculatePrice(mode = 'calculate') {
-            this.authPost('pub/calculate-price-24', {
+            this.authPost('pub/calculate-price-2', {
                 items: this.form,
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
@@ -287,10 +358,34 @@ export default {
 
                     if (data.message) {
                         if (mode === "check") {
-                            this.toaster({ title: data.message, icon: 'none' })
+                            this.toaster({title: data.message, icon: 'none'})
                         }
                     }
                 })
+        },
+        selectPackage(name) {
+            this.package = name;
+            this.form.morning_workshop = null;
+            this.form.afternoon_workshop = null;
+            switch (name) {
+                case 'platinum':
+                    this.data_raw.symposium = true;
+                    this.data_raw.workshop = true;
+                    this.form.symposium = this.events.symposium['id'];
+                    break;
+                case 'gold':
+                    this.data_raw.symposium = true;
+                    this.data_raw.workshop = false;
+                    this.form.symposium = this.events.symposium['id'];
+                    break;
+                case 'add-on':
+                    this.form.symposium = null
+                    this.data_raw.symposium = false;
+                    this.data_raw.workshop = true;
+                    break;
+            }
+
+            this.calculatePrice()
         },
         selectMorning(id, morning) {
             if (morning.available) {
@@ -322,14 +417,8 @@ export default {
         },
         toPayment() {
             this.disabled = true;
-            this.authPost('pub/create-payment-24', {
-                items: {
-                    symposium: this.form.symposium
-                },
-                props: {
-                    nik: this.form.nik,
-                    plataran_img: this.form.plataran_img,
-                },
+            this.authPost('pub/create-payment-2', {
+                items: this.form,
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
                 package: this.package,
@@ -339,7 +428,7 @@ export default {
                     this.$router.push('/payment?transaction_number=' + this.$route.query.transaction_number)
                     this.emitter.emit("update-header");
                 } else {
-                    this.toaster({ title: data.message, icon: 'warning' })
+                    this.toaster({title: data.message, icon: 'warning'})
                 }
                 this.disabled = false;
             }).catch(() => {
@@ -360,39 +449,19 @@ export default {
                 } else {
                     this.member_modal.hide()
                     this.users = [
-                        { name: '', email: '' },
-                        { name: '', email: '' },
-                        { name: '', email: '' },
-                        { name: '', email: '' },
-                        { name: '', email: '' },
-                        { name: '', email: '' },
+                        {name: '', email: ''},
+                        {name: '', email: ''},
+                        {name: '', email: ''},
+                        {name: '', email: ''},
+                        {name: '', email: ''},
+                        {name: '', email: ''},
                     ];
                 }
             } else {
                 this.member_modal.hide()
                 this.calculatePrice()
             }
-        },
-        uploadFile() {
-            this.upload_loader = true;
-            let file = document.getElementById("file-upload").files[0];
-            if (file) {
-                let form_data = new FormData();
-
-                form_data.append('file', file)
-
-                this.apiPost('pub/upload-file', form_data)
-                    .then((data) => {
-                        this.form.plataran_img = data.result.link;
-                        this.upload_loader = false;
-                        document.getElementById("file-upload").value = ''
-                    }).catch((e) => {
-                        this.upload_loader = false;
-                    });
-            } else {
-                this.upload_loader = false;
-            }
-        },
+        }
     },
     created() {
         this.loadData()

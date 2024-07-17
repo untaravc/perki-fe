@@ -16,7 +16,7 @@
                         <!-- <router-link to="/profile/events" class="flex my-3 cursor-pointer" @click="active = 'events'">
                             <unicon name="youtube" height="20px" :fill="active === 'events' ? 'blue' : ''"></unicon>
                             <div class="ml-2">My Event</div>
-                        </router-link>
+                        </router-link> -->
                         <router-link to="/profile/transactions" class="flex justify-between my-3 cursor-pointer"
                             @click="active = 'transactions'">
                             <div class="flex">
@@ -27,7 +27,7 @@
                             <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
                                 {{ pending_transaction }}
                             </div>
-                        </router-link> -->
+                        </router-link>
 
                         <router-link to="/profile/abstracts" class="flex my-3 cursor-pointer justify-between"
                             @click="active = 'abstracts'">
