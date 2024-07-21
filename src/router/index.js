@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import PublicLayout from '../views/PublicLayout.vue'
 import HomeView from '../views/home/Index.vue'
 import Register from '../views/register/Index.vue'
@@ -8,6 +8,7 @@ import Payment from '../views/payment/Index.vue'
 import Schedule from '../views/schedule/Index.vue'
 import Speakers from '../views/speakers/Index.vue'
 import Guidance from '../views/guidance/Index.vue'
+import Plataran from '../views/guidance/Plataran.vue'
 import Venue from '../views/venue/Index.vue'
 import Abstracts from '../views/abstracts/Index.vue'
 import CheckTransaction from '../views/check_transaction/Index.vue'
@@ -57,6 +58,11 @@ const router = createRouter({
 					path: '/guidance',
 					name: 'guidance',
 					component: Guidance,
+				},
+				{
+					path: '/plataran',
+					name: 'plataran',
+					component: Plataran,
 				},
 				{
 					path: '/login',
@@ -176,7 +182,7 @@ router.beforeEach((to, from, next) => {
 	let has_token = localStorage.getItem('perki_user_token')
 
 	if (to.meta.guard === "guest" && has_token) {
-		return next({name: 'profile-info'})
+		return next({ name: 'profile-info' })
 	} else {
 		return next()
 	}

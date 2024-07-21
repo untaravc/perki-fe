@@ -2,6 +2,14 @@
     <div class="max-w-screen-lg m-auto pt-24" style="min-height: calc(100vh - 133px);">
         <div class="p-6 border-slate-100 bg-white rounded-xl">
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
+                <div class="col-span-2" v-if="transaction.job_type_code !== 'DRGN'">
+                    <div class="rounded-lg bg-yellow-200 p-4 border">
+                        <div class="text-blue-900 flex">
+                            <div class="ml-1">Eraly Bird is only available for General Practitioner</div>
+                        </div>
+                        <!-- <div class="text-xs mb-1"></div> -->
+                    </div>
+                </div>
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
                         class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
@@ -11,7 +19,7 @@
                                 <div class="ml-1">{{ events.symposium.name }}</div>
                             </div>
                             <div class="text-xs mb-1">
-                                Friday-Sunday, Oct 18th - 20th, 08:00-16:00
+                                Saturday-Sunday, Oct 19th - 20th, 08:00-16:00
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}
@@ -19,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-2 md:col-span-1">
+                <div class="col-span-2 md:col-span-1" v-if="transaction.job_type_code === 'DRGN'">
                     <div class="font-semibold text-lg mb-2">Payment</div>
                     <div class="px-3 py-4 border rounded-lg">
                         <div class="border-b">
@@ -191,6 +199,42 @@
             </div>
         </div>
 
+        <div id="confirmModal" tabindex="-1" aria-hidden="true" data-modal-placement="top-center"
+            class="fixed top-0 left-0 right-0 z-50 w-full p-4 hidden overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            Confirmation
+                        </h3>
+                        <button type="button" @click="confirm_modal.hide()"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg p-1.5 ml-auto inline-flex items-center">
+                            <unicon name="times"></unicon>
+                        </button>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        Do you already have a "Plataran Sehat" account? If not, please click the link below to create
+                        one.
+                        <div class="text-right">
+                            <router-link to="/plataran"
+                                class="text-black bg-yellow-300 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                Guidance
+                            </router-link>
+                            <a href="http://satusehat.kemkes.go.id/sdmk" target="_blank"
+                                class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                Create Account
+                            </a>
+                            <button @click="author_modal.hide()"
+                                class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-200 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                I have an Account
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -203,6 +247,7 @@ export default {
             voucher: '',
             disabled: false,
             member_modal: '',
+            confirm_modal: '',
             form: {
                 symposium: null,
                 morning_workshop: null,
@@ -401,6 +446,10 @@ export default {
         this.member_modal = new Modal(document.getElementById('memberModal'), {
             closable: false
         });
+
+        this.confirm_modal = new Modal(document.getElementById('confirmModal'));
+
+        this.confirm_modal.show()
     },
 }
 </script>
