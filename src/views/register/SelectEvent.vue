@@ -44,6 +44,12 @@
                                 <span>{{ transaction.user_name }}</span>
                             </div>
                             <div class="text-xs">
+                                NIK:
+                            </div>
+                            <div class="text-sm italic mb-2">
+                                <span>{{ transaction.nik }}</span>
+                            </div>
+                            <div class="text-xs">
                                 Phone:
                             </div>
                             <div class="text-sm italic mb-2">
@@ -69,13 +75,6 @@
                                 <div class="w-full h-32 bg-center bg-cover bg-no-repeat"
                                     :style="'background-image:url(' + form.plataran_img + ')'" alt=""></div>
                             </a>
-                        </div>
-                        <div class="font-semibold mt-5 mb-2">
-                            Identity Number (NIK)
-                        </div>
-                        <div>
-                            <input type="text" v-model="form.nik"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                         </div>
 
 
@@ -217,15 +216,15 @@
                         Do you already have a "Plataran Sehat" account? If not, please click the link below to create
                         one.
                         <div class="text-right">
-                            <router-link to="/plataran"
+                            <button @click="goToPlataran"
                                 class="text-black bg-yellow-300 hover:bg-yellow-200 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 Guidance
-                            </router-link>
-                            <a href="http://satusehat.kemkes.go.id/sdmk" target="_blank"
+                            </button>
+                            <a href="http://satusehat.kemkes.go.id/sdmk/register" target="_blank"
                                 class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 Create Account
                             </a>
-                            <button @click="author_modal.hide()"
+                            <button @click="confirm_modal.hide()"
                                 class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-200 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 I have an Account
                             </button>
@@ -253,7 +252,6 @@ export default {
                 morning_workshop: null,
                 afternoon_workshop: null,
                 plataran_img: '',
-                nik: '',
             },
             users: [
                 { name: '', email: '' },
@@ -318,6 +316,10 @@ export default {
                     }
 
                 })
+        },
+        goToPlataran() {
+            this.confirm_modal.hide()
+            this.$router.push('/plataran')
         },
         calculatePrice(mode = 'calculate') {
             this.authPost('pub/calculate-price-24', {

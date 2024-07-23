@@ -7,17 +7,37 @@
                 </div>
                 <div class="font-semibold text-xl">Register JCU 2024 in Conjunction with the 7th Jincartos</div>
                 <div class="text-sm">Create your account to register event.</div>
-                <div class="mt-3">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name<span
-                            class="text-red-600">*</span></label>
-                    <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                    <small class="text-xs text-blue-900 italic">
-                        for certificate writing
-                    </small>
-                    <small class="text-xs text-red-600 italic" v-if="parseErrors('name')">
-                        {{ parseErrors('name', 'val') }}
-                    </small>
+                <div class="mt-3 grid gap-2 sm:grid-cols-2">
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name<span
+                                class="text-red-600">*</span></label>
+                        <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                        <small class="text-xs text-blue-900 italic">
+                            for certificate writing
+                        </small>
+                        <small class="text-xs text-red-600 italic" v-if="parseErrors('name')">
+                            {{ parseErrors('name', 'val') }}
+                        </small>
+                    </div>
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">ID Number (NIK)<span
+                                class="text-red-600">*</span></label>
+                        <input type="text" id="nik" placeholder="" autofocus v-model="form.nik"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                        <small class="text-xs text-red-600 italic" v-if="parseErrors('nik')">
+                            {{ parseErrors('nik', 'val') }}
+                        </small>
+                        <div class="text-xs p-1 bg-yellow-50 mt-1">
+                            <ul class="list-disc ml-4">
+                                <li>NIK is needed to invite participants into Plataran Sehat</li>
+                                <li>For Participants who are not willing to fill in the NIK column, they cannot learn
+                                    and cannot get SKP</li>
+                                <li>The storage an management of NIK data are fully the responsibility of the Ministry
+                                    of Health</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="grid gap-2 sm:grid-cols-2 mt-3">
                     <div>
@@ -170,6 +190,7 @@ export default {
                 password: '',
                 password_confirmation: '',
                 identity_photo: '',
+                nik: '',
                 ref: 2024,
             },
             form_errors: []
@@ -196,6 +217,7 @@ export default {
                         this.form.job_type_code = res.job_type_code
                         this.form.phone = res.phone
                         this.form.identity_photo = res.identity_photo
+                        this.form.nik = res.nik
                     }
                 })
         },
