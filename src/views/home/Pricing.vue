@@ -1,16 +1,13 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24 pb-12 px-2" id="package">
         <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
-            PACKAGE
+            PRICING
         </div>
         <div class="text-small text-slate-600 mb-5 text-center">
-            Register yourself and get a special Early Bird price until <b>31st of August</b>
+            Register yourself and get a special price
         </div>
         <div class="grid grid-cols-3 bg-gradient-to-bl from-purple-100 to-cyan-100">
             <div class="md:col-span-2 col-span-3 shadow  p-5 rounded-l-none md:rounded-l-lg">
-                <div class="text-lg mb-2">
-                    Packages:
-                </div>
                 <div class="grid grid-cols-3 mb-3 text-white">
                     <div @click="select(pricing.platinum, 1)"
                         :class="selected_index === 1 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
@@ -37,26 +34,28 @@
                 class="md:col-span-1  col-span-3 border-l  border-slate-500 shadow p-5 rounded-r-none md:rounded-r-lg ">
                 <div class="text-lg font-bold mb-3">{{ selected.name }} </div>
                 <div v-if="selected.price_stdn">
-                    <div class="text-base mb-1 italic">Medical Student</div>
+                    <div class="text-base mb-1 italic"></div>
                     <div class="text-3xl font-bold text-blue-700 mb-2">
                         Rp {{ $filters.currency(selected.price_stdn) }}
                     </div>
                 </div>
-                <div class="text-base mb-1 italic">General Practitioner</div>
+                <div class="text-base mb-1 italic">Symposium</div>
                 <div class="text-3xl font-bold text-blue-700 mb-2">
                     Rp {{ $filters.currency(selected.price_drgn) }}
                 </div>
-                <div class="italic border-b mb-3 border-slate-500" v-if="selected.price_drgn_eb > 0">
-                    Early Bird:
-                    <span class="font-bold text-lime-700">Rp {{ $filters.currency(selected.price_drgn_eb) }}</span>
+                <div class="italic border-b mb-3 border-slate-500">
+                    <!-- Early Bird:
+                    <span class="font-bold text-lime-700">Rp {{ $filters.currency(selected.price_drgn_eb) }}</span> -->
                 </div>
-                <div class="text-base mb-1 italic">Specialist</div>
-                <div class="text-3xl font-bold text-slate-900 mb-2">
+                <div class="text-base mb-1 italic">Symposium & 2 Workshops</div>
+                <div class="text-3xl font-bold text-lime-600 mb-2">
                     Rp {{ $filters.currency(selected.price_drsp) }}
                 </div>
                 <div class="italic mb-4" v-if="selected.price_drsp_eb > 0">
-                    Early Bird:
-                    <span class="font-bold text-lime-500">Rp {{ $filters.currency(selected.price_drsp_eb) }}</span>
+                    Normal Price:
+                    <span style="text-decoration-thickness: 2px; text-decoration-color: #ff0000aa;"
+                        class="font-bold text-slate-500 line-through">Rp {{
+                            $filters.currency(selected.price_drsp_eb) }}</span>
                 </div>
                 <router-link to="/register" class="rounded-lg bg-pos-0 block text-white 
                 bg-gradient-to-r from-purple-600 to-cyan-600 p-3 mt-3 w-full font-semibold text-center

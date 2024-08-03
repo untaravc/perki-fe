@@ -17,12 +17,11 @@
             <div class="p-5 flex justify-between">
                 <div>
                     <div class="font-semibold cursor-pointer underline text-blue-700 hover:text-blue-800">
-                        <router-link v-if="trx.status === 100"
-                                     :to="'/register/event?transaction_number=' + trx.number">
+                        <router-link v-if="trx.status === 100" :to="'/register/event?transaction_number=' + trx.number">
                             {{ trx.number }}
                         </router-link>
                         <router-link v-else="trx.status === 110 || trx.status === 120"
-                                     :to="'/payment?transaction_number=' + trx.number">
+                            :to="'/payment?transaction_number=' + trx.number">
                             {{ trx.number }}
                         </router-link>
                         <span class="font-semibold" v-else>{{ trx.number }}</span>
@@ -31,22 +30,23 @@
                         <div>
                             <div class="flex">
                                 <unicon name="user" fill="grey" height="15px" width="15px"></unicon>
-                                <div class="ml-1">{{trx.user_name}}</div>
+                                <div class="ml-1">{{ trx.user_name }}</div>
                             </div>
                         </div>
                         <div>
                             <div class="flex">
                                 <unicon name="envelope" fill="grey" height="15px" width="15px"></unicon>
-                                <div class="ml-1">{{trx.user_email}}</div>
+                                <div class="ml-1">{{ trx.user_email }}</div>
                             </div>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <ul class="list-disc">
+                        <ul class="list-disc" v-if="trx.transaction_details">
                             <li class="text-sm" v-for="detail in trx.transaction_details">
                                 {{ detail.event_name }}
-                                <span class="italic text-slate-500">{{$filters.formatDateTime(detail.event.date_start)}}</span>
-                                <div class="text-xs" v-if="detail.event">{{detail.event.title}}</div>
+                                <span class="italic text-slate-500"
+                                    v-if="detail.event">{{ $filters.formatDateTime(detail.event.date_start) }}</span>
+                                <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
                     </div>
@@ -56,14 +56,14 @@
                         {{ $filters.currency(trx.total) }}
                     </div>
                     <router-link v-if="trx.status === 100"
-                                 class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
-                                 :to="'/register/event?transaction_number=' + trx.number">
+                        class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
+                        :to="'/register/event?transaction_number=' + trx.number">
                         Detail
                         <unicon name="angle-right" fill="white" height="14px" width="14px"></unicon>
                     </router-link>
                     <router-link v-else="trx.status === 110 || trx.status === 120"
-                                 class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
-                                 :to="'/payment?transaction_number=' + trx.number">
+                        class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
+                        :to="'/payment?transaction_number=' + trx.number">
                         Detail
                         <unicon name="angle-right" fill="white" height="14px" width="14px"></unicon>
                     </router-link>

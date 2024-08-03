@@ -108,6 +108,12 @@
                     <small class="text-xs text-red-600 italic" v-if="parseErrors('email')">
                         {{ parseErrors('email', 'val') }}
                     </small>
+                    <div class="text-xs bg-yellow-50 mt-1 p-2">
+                        Please use the same email as the one registered to your Plataran Sehat account. Don't have one?
+                        <a target="_blank" class="font-semibold text-blue-700 hover:text-blue-600"
+                            href="https://satusehat.kemkes.go.id/sdmk/register">Register at Plataran
+                            Sehat.</a>
+                    </div>
                 </div>
                 <div class="grid gap-2 sm:grid-cols-2 mt-3" v-if="!logged_in">
                     <div>

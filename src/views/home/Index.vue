@@ -6,7 +6,7 @@
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
         <!-- <Schedules></Schedules> -->
-        <!-- <Pricing></Pricing> -->
+        <Pricing></Pricing>
         <div class="bg-gradient-to-br from-purple-700 to-cyan-800">
             <Speakers></Speakers>
         </div>

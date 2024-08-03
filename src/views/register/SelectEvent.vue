@@ -2,14 +2,6 @@
     <div class="max-w-screen-lg m-auto pt-24" style="min-height: calc(100vh - 133px);">
         <div class="p-6 border-slate-100 bg-white rounded-xl">
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
-                <div class="col-span-2" v-if="transaction.job_type_code !== 'DRGN'">
-                    <div class="rounded-lg bg-yellow-200 p-4 border">
-                        <div class="text-blue-900 flex">
-                            <div class="ml-1">Eraly Bird is only available for General Practitioner</div>
-                        </div>
-                        <!-- <div class="text-xs mb-1"></div> -->
-                    </div>
-                </div>
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
                         class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
@@ -26,8 +18,60 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if="data_raw.workshop">
+                        <div>
+                            <div v-for="first in events.first_workshop" @click="selectFirst(first.id, first)"
+                                :class="form.first_workshop === first.id ? 'bg-blue-200' : 'bg-blue-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
+                                <div class="mb-3">
+                                    <div class="text-sm italic" v-if="!first.available">Full Booked</div>
+                                    <div class="text-sm italic" v-if="first.available">{{ first.quota -
+                                        first.transactions_count }} available</div>
+                                    <div class="font-semibold text-blue-900 flex">
+                                        <unicon v-if="form.first_workshop === first.id" name="check-square" width="20"
+                                            height="20" fill="#243776"></unicon>
+                                        <unicon v-if="form.first_workshop !== first.id" name="square" width="20"
+                                            height="20" fill="#243776"></unicon>
+                                        <div class="ml-1">{{ first.name }}</div>
+                                    </div>
+                                    <div class="text-xs mb-1">
+                                        {{ $filters.formatDayDateTime(first.date_start) }}
+                                    </div>
+                                    <div class="text-xs mb-1 italic">
+                                        {{ first.title }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div v-for="second in events.second_workshop" @click="selectSecond(second.id, second)"
+                                :class="form.second_workshop === second.id ? 'bg-blue-200' : 'bg-blue-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
+                                <div class="mb-3">
+                                    <div class="text-sm italic" v-if="!second.available">Full Booked</div>
+                                    <div class="text-sm italic" v-if="second.available">{{ second.quota -
+                                        second.transactions_count }} available</div>
+                                    <div class="font-semibold text-blue-900 flex">
+                                        <unicon v-if="form.second_workshop === second.id" name="check-square" width="20"
+                                            height="20" fill="#243776"></unicon>
+                                        <unicon v-if="form.second_workshop !== second.id" name="square" width="20"
+                                            height="20" fill="#243776"></unicon>
+                                        <div class="ml-1">{{ second.name }}</div>
+                                    </div>
+                                    <div class="text-xs mb-1">
+                                        {{ $filters.formatDayDateTime(second.date_start) }}
+                                    </div>
+                                    <div class="text-xs mb-1 italic">
+                                        {{ second.title }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-span-2 md:col-span-1" v-if="transaction.job_type_code === 'DRGN'">
+
+
+                <div class="col-span-2 md:col-span-1">
                     <div class="font-semibold text-lg mb-2">Payment</div>
                     <div class="px-3 py-4 border rounded-lg">
                         <div class="border-b">
@@ -78,7 +122,7 @@
                         </div>
 
 
-                        <!-- <div class="font-semibold mt-5 mb-2">
+                        <div class="font-semibold mt-5 mb-2">
                             Voucher Code
                         </div>
                         <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"
@@ -91,7 +135,7 @@
                                 class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">
                                 Check
                             </div>
-                        </div> -->
+                        </div>
 
                         <!-- <div class="font-semibold mt-5 mb-2">
                             Collective Registration
@@ -249,8 +293,8 @@ export default {
             confirm_modal: '',
             form: {
                 symposium: null,
-                morning_workshop: null,
-                afternoon_workshop: null,
+                first_workshop: null,
+                second_workshop: null,
                 plataran_img: '',
             },
             users: [
@@ -263,8 +307,8 @@ export default {
             ],
             events: {
                 symposium: [],
-                morning_workshop: [],
-                afternoon_workshop: [],
+                first_workshop: [],
+                second_workshop: [],
             },
             data_raw: {
                 symposium: true,
@@ -294,11 +338,6 @@ export default {
                     this.form.symposium = this.events.symposium['id'];
 
                     this.transaction = data.result.transaction
-                    // this.data_raw.has_symposium = data.result.has_symposium
-
-                    if (this.transaction.job_type_code === "MHSA" || this.transaction.job_type_code === "COAS") {
-                        this.package = 'gold';
-                    }
 
                     this.calculatePrice()
 
@@ -326,7 +365,6 @@ export default {
                 items: this.form,
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
-                package: this.package,
                 users: this.users,
             })
                 .then((data) => {
@@ -339,28 +377,27 @@ export default {
                     }
                 })
         },
-        selectMorning(id, morning) {
-            if (morning.available) {
-                if (this.form.morning_workshop !== id) {
-                    this.form.morning_workshop = id
+        selectFirst(id, first) {
+            if (first.available) {
+                if (this.form.first_workshop !== id) {
+                    this.form.first_workshop = id
                 } else {
-                    this.form.morning_workshop = ''
+                    this.form.first_workshop = ''
                 }
             } else {
-                this.form.morning_workshop = ''
+                this.form.first_workshop = ''
             }
-
             this.calculatePrice()
         },
-        selectAfternoon(id, afternoon) {
-            if (afternoon.available) {
-                if (this.form.afternoon_workshop !== id) {
-                    this.form.afternoon_workshop = id
+        selectSecond(id, second) {
+            if (second.available) {
+                if (this.form.second_workshop !== id) {
+                    this.form.second_workshop = id
                 } else {
-                    this.form.afternoon_workshop = ''
+                    this.form.second_workshop = ''
                 }
             } else {
-                this.form.afternoon_workshop = ''
+                this.form.second_workshop = ''
             }
             this.calculatePrice()
         },
@@ -368,10 +405,21 @@ export default {
             this.member_modal.show()
         },
         toPayment() {
+            if (
+                (this.form.first_workshop && !this.form.second_workshop) ||
+                (!this.form.first_workshop && this.form.second_workshop)
+            ) {
+                this.toaster({ title: "Please select second workshop", icon: 'warning' })
+                return
+            }
+            console.log(this.form.first_workshop, this.form.second_workshop)
+            return;
             this.disabled = true;
             this.authPost('pub/create-payment-24', {
                 items: {
-                    symposium: this.form.symposium
+                    symposium: this.form.symposium,
+                    first_workshop: this.form.first_workshop,
+                    second_workshop: this.form.second_workshop,
                 },
                 props: {
                     nik: this.form.nik,
@@ -451,7 +499,7 @@ export default {
 
         this.confirm_modal = new Modal(document.getElementById('confirmModal'));
 
-        this.confirm_modal.show()
+        // this.confirm_modal.show()
     },
 }
 </script>
