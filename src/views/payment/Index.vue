@@ -152,7 +152,7 @@ export default {
 
                 this.authPost('pub/upload-file', form_data)
                     .then((data) => {
-                        if (data.status) {
+                        if (data.success) {
                             this.transaction.transfer_proof = data.result.link;
                             this.uploadTransferProof()
                             this.show_proof = true

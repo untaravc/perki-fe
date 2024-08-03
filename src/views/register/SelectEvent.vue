@@ -412,8 +412,7 @@ export default {
                 this.toaster({ title: "Please select second workshop", icon: 'warning' })
                 return
             }
-            console.log(this.form.first_workshop, this.form.second_workshop)
-            return;
+
             this.disabled = true;
             this.authPost('pub/create-payment-24', {
                 items: {
