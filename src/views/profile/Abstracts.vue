@@ -96,7 +96,7 @@
                         {{ body_form.title }}
                         <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
                     </label>
-                    <textarea rows="3" v-model="body_form.content" @keyup="countWords"
+                    <textarea rows="5" v-model="body_form.content" @keyup="countWords"
                         class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
                 </div>
                 <div class="italic text-slate-400 text-sm font-semibold">
@@ -110,7 +110,7 @@
                     <page-loading v-model:active="upload_loader" loader="bars" :is-full-page="false" />
                     <div class="flex justify-between">
                         <input type="file" id="file-upload" accept="image/*" hidden @change="uploadFile">
-                        <a class="flex items-center block" target="_blank" :href="form.file">
+                        <a class="items-center block" target="_blank" :href="form.file">
                             <unicon name="image" fill="blue"></unicon>
                             <span class="text-sm ml-2">{{ $filters.truncate(form.file, 30) }}</span>
                         </a>
@@ -135,7 +135,19 @@
         </div>
 
         <!--       List-->
-        <div class="italic" v-if="data_content.length === 0">
+        <div class="c bg-yellow-100 rounded p-4 text-sm flex justify-between">
+            <div>
+                We invite you to submit your abstracts for consideration by September 19th.
+            </div>
+            <div>
+                <a href="https://src.perki-jogja.com/assets24/docs/abstract-case-report-guidline-jcu-2024.docx"
+                    target="_blank" download
+                    class="bg-slate-200 hover:bg-slate-300 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-sm px-4 py-1.5 text-center">
+                    Download Guideline
+                </a>
+            </div>
+        </div>
+        <div class="italic text-sm mt-4 text-center" v-if="data_content.length === 0">
             No Data
         </div>
         <div class="border-slate-200 border bg-white rounded mb-2" v-if="data_content.length > 0"
@@ -317,16 +329,19 @@ export default {
                 case_report: [
                     { field: "introduction", title: "INTRODUCTION" },
                     { field: "case_presentation", title: "CASE PRESENTATION" },
-                    { field: "discussion", title: "DISCUSSION" },
+                    // { field: "discussion", title: "DISCUSSION" },
                     { field: "conclusion", title: "CONCLUSION" },
                 ],
                 systematic_review: [
                     { field: "introduction", title: "INTRODUCTION" },
-                    { field: "discussion", title: "DISCUSSION" },
+                    // { field: "discussion", title: "DISCUSSION" },
+                    { field: "methods", title: "METHODS" },
+                    { field: "result", title: "RESULT" },
                     { field: "conclusion", title: "CONCLUSION" },
                 ],
                 meta_analysis: [
                     { field: "introduction", title: "INTRODUCTION" },
+                    { field: "method", title: "METHODS" },
                     { field: "discussion", title: "DISCUSSION" },
                     { field: "conclusion", title: "CONCLUSION" },
                 ]

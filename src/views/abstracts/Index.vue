@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2 mt-20" style="min-height: calc(100vh - 84px - 128px)">
-        <div class="text-4xl font-bold mb-1 text-center mb-3">
+        <div class="text-4xl font-bold text-center mb-3">
             ABSTRACT SUBMISSION
         </div>
         <div v-if="!has_token" class="rounded-xl shadow-sm bg-yellow-200 p-6 mb-4">

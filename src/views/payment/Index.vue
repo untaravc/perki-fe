@@ -21,8 +21,7 @@
                         <div class="text-sm mb-1">Transaction Number</div>
                         <div class="mb-1 font-semibold">{{ transaction.number }}</div>
                         <div class="text-sm mb-1">Account Number</div>
-                        <div
-                            class="rounded border-orange-400 border-2 justify-between shadow-inner flex px-3 py-2 border">
+                        <div class="rounded border-orange-400 border-2 justify-between shadow-inner flex px-3 py-2">
                             <div>1370 0013 3133 5</div>
                             <div class="cursor-pointer" @click="copyText('1370001331335', 'Nomor Rekening')">
                                 <unicon name="copy" height="18px"></unicon>
@@ -32,8 +31,7 @@
                     </div>
                     <div class="mb-3">
                         <div class="text-sm mb-1">Nominal</div>
-                        <div
-                            class="rounded border-orange-400 border-2 justify-between shadow-inner flex px-3 py-2 border">
+                        <div class="rounded border-orange-400 border-2 justify-between shadow-inner flex px-3 py-2">
                             <div>Rp {{ $filters.currency(transaction.total) }}</div>
                             <div class="cursor-pointer" @click="copyText(transaction.total, 'Nominal')">
                                 <unicon name="copy" height="18px"></unicon>

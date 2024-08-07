@@ -4,10 +4,10 @@
             <div class="grid grid-cols-3">
                 <div class="col-span-3 md:col-span-2 px-6">
                     <div class="font-semibold text-2xl">
-                        Online Webinar Pre-JCU
+                        On-Demand Recordings
                     </div>
                     <div class="font-semibold text-sm text-blue-700">
-
+                        Jogja Cardilogy Update - Jincartos Symposium
                     </div>
                 </div>
                 <div class="col-span-3 md:col-span-1 flex justify-end px-6 items-center">
