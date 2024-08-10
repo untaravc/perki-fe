@@ -9,15 +9,15 @@
             </a>
             <div class="flex md:order-2">
                 <router-link to="/register"
-                    class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3">
-                    <div class="flex items-center">
-                        <div>Register</div>
-                    </div>
+                    class="text-white flex items-center bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none 
+                    focus:ring-blue-300 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
+                    Register
                 </router-link>
-                <router-link to="/profile/info" v-if="has_token"
-                    class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                <router-link to="/profile/info" v-if="has_token" class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 
+                        focus:outline-none focus:ring-blue-300 md:font-medium rounded-full 
+                        text-base px-2.5 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
-                        <div>Profile</div>
+                        <unicon name="user-md" fill="#ffffff" height="20px"></unicon>
                     </div>
                 </router-link>
                 <router-link to="/login" v-if="!has_token"
@@ -41,18 +41,18 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
-                    <!-- <li>
+                    <li>
                         <router-link to="/" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Home
                         </router-link>
                     </li>
-                    <li>
+                    <!-- <li>
                         <router-link to="/guidance" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Guidance
                         </router-link>
-                    </li>
+                    </li> -->
                     <li>
                         <router-link to="/committee" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
@@ -70,7 +70,7 @@
                             class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Sign In
                         </router-link>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         </div>

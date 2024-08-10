@@ -413,6 +413,11 @@ export default {
                 return
             }
 
+            if (!this.form.plataran_img && this.transaction.job_type_code !== "MHSA") {
+                this.toaster({ title: "Please upload Plataran Sehat (Screen Shoot)", icon: 'warning' })
+                return
+            }
+
             this.disabled = true;
             this.authPost('pub/create-payment-24', {
                 items: {

@@ -47,15 +47,17 @@
                     <!-- Early Bird:
                     <span class="font-bold text-lime-700">Rp {{ $filters.currency(selected.price_drgn_eb) }}</span> -->
                 </div>
-                <div class="text-base mb-1 italic">Symposium & 2 Workshops</div>
-                <div class="text-3xl font-bold text-lime-600 mb-2">
-                    Rp {{ $filters.currency(selected.price_drsp) }}
-                </div>
-                <div class="italic mb-4" v-if="selected.price_drsp_eb > 0">
-                    Normal Price:
-                    <span style="text-decoration-thickness: 2px; text-decoration-color: #ff0000aa;"
-                        class="font-bold text-slate-500 line-through">Rp {{
-                            $filters.currency(selected.price_drsp_eb) }}</span>
+                <div v-if="selected.price_drsp">
+                    <div class="text-base mb-1 italic">Symposium & 2 Workshops</div>
+                    <div class="text-3xl font-bold text-lime-600 mb-2">
+                        Rp {{ $filters.currency(selected.price_drsp) }}
+                    </div>
+                    <div class="italic mb-4" v-if="selected.price_drsp_eb > 0">
+                        Normal Price:
+                        <span style="text-decoration-thickness: 2px; text-decoration-color: #ff0000aa;"
+                            class="font-bold text-slate-500 line-through">Rp {{
+                                $filters.currency(selected.price_drsp_eb) }}</span>
+                    </div>
                 </div>
                 <router-link to="/register" class="rounded-lg bg-pos-0 block text-white 
                 bg-gradient-to-r from-purple-600 to-cyan-600 p-3 mt-3 w-full font-semibold text-center

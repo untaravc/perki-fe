@@ -32,8 +32,8 @@ const mixin = {
 	},
 	created: function () {
 		let href = window.location.origin
-		if(href === 'http://localhost:5173' || href === 'http://127.0.0.1:5173'){
-		// if (import.meta.env.VITE_MODE === 'local') {
+		if (href === 'http://localhost:5173' || href === 'http://127.0.0.1:5173') {
+			// if (import.meta.env.VITE_MODE === 'local') {
 			this.base_api = 'http://localhost:8000/api/'
 			this.base_url = 'http://localhost:8000'
 		} else {
@@ -46,7 +46,7 @@ const mixin = {
 			let response = '';
 			await this.$axios.get(this.base_api + uri, {
 				params: params,
-			}).then(({data}) => {
+			}).then(({ data }) => {
 				response = data;
 			}).catch((e) => {
 				let rc = e.response.status;
@@ -60,7 +60,7 @@ const mixin = {
 		async apiPost(uri, data = {}) {
 			let response = '';
 			await this.$axios.post(this.base_api + uri, data, this.setHeader())
-				.then(({data}) => {
+				.then(({ data }) => {
 					response = data;
 				}).catch((e) => {
 					let rc = e.response.status;
@@ -85,7 +85,7 @@ const mixin = {
 					Accept: "application/json",
 					"access-control-allow-origin": "*"
 				},
-			}).then(({data}) => {
+			}).then(({ data }) => {
 				if (data.code == 401) {
 					window.location = '/login'
 					localStorage.removeItem('perki_user_token');
@@ -112,7 +112,7 @@ const mixin = {
 				headers: {
 					Authorization: 'Bearer ' + token
 				}
-			}).then(({data}) => {
+			}).then(({ data }) => {
 				response = data;
 			}).catch((e) => {
 				let rc = e.response.status;
@@ -136,7 +136,7 @@ const mixin = {
 				headers: {
 					Authorization: 'Bearer ' + token
 				}
-			}).then(({data}) => {
+			}).then(({ data }) => {
 				response = data;
 			}).catch((e) => {
 				let rc = e.response.status;
@@ -160,7 +160,7 @@ const mixin = {
 					Authorization: 'Bearer ' + token
 				},
 				data: deleteData
-			}).then(({data}) => {
+			}).then(({ data }) => {
 				response = data;
 			}).catch((e) => {
 				let rc = e.response.status;
@@ -189,16 +189,16 @@ const mixin = {
 			}
 
 		},
-		toaster({title = 'Success!', icon = 'success'}) {
+		toaster({ title = 'Success!', icon = 'success' }) {
 			Swal.fire({
 				toast: true,
-				position: 'top-end',
+				position: 'top',
 				showConfirmButton: false,
 				timer: 2000,
 				timerProgressBar: false,
 				icon: icon,
 				title: title,
-				width: '15em'
+				// width: '15em'
 			})
 		},
 		updateSetupFilter(data) {
@@ -216,7 +216,7 @@ const mixin = {
 			document.getElementById(name).click()
 		},
 		setQueryUrl(filter) {
-			this.$router.replace({path: '', query: filter})
+			this.$router.replace({ path: '', query: filter })
 		},
 		getQueryUrl(query, filter) {
 			for (let key_filter in filter) {
