@@ -16,17 +16,28 @@
             <div>
                 <ul class="list-disc ml-4">
                     <li>All abstracts must be submitted in English</li>
-                    <li>Before submitting an abstract, registration to the symposium is mandatory</li>
+                    <li>Before submitting an abstract, registration to the symposium is mandatory via website</li>
+                    <li>JCU accepts following paper/abstract types: Original research, Meta-analysis/systematic review,
+                        and case report/case series.</li>
                     <li>Please refer to the abstract templates and upload the file attachment (optional) to the online
                         submission</li>
                     <li>Submission is only available via online submission</li>
                     <li>No submission fee required to submit an abstract to JCU 2024 in conjunction with the 7th
-                        JINCARTOS 2024
-                    </li>
+                        JINCARTOS 2024</li>
                     <li>There is no limit to the number of abstracts an author may submit.</li>
+                    <li>The abstract should not be exceeded 350 words (excluding the title, authors, and affiliations)
+                    </li>
                     <li>All abstract submitted are reviewed and selected by members of the Peer Reviewers.</li>
                     <li>Supported attachment file format: graphic, figure, or table is .JPEG or .JPG</li>
-                    <!--                    <li>Contact Person: dr</li>-->
+                    <li>The abstract paper paper has not previously been published and is not currently being considered
+                        for publication elsewhere (i.e. other conference or journal publication)</li>
+                    <li>Download <a class="text-blue-500 font-semibold"
+                            href="https://src.perki-jogja.com/assets24/docs/abstract-case-report-guidline-jcu-2024.docx"
+                            target="_blank" download>Guideline</a></li>
+                    <li>Contact:
+                        <a class="italic text-blue-700" target="_blank" href="https://wa.me/62895340394067">+62
+                            895 3403 94067</a> (Aya)
+                    </li>
                 </ul>
             </div>
         </div>

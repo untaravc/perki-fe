@@ -1,17 +1,17 @@
 <template>
     <div class="max-w-screen-lg m-auto grid grid-cols-4 gap-2 md:grid-cols-4 mt-16 mb-8">
-        <!-- <div
+        <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <a href="#schedule">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
-                    <v-icon name="bi-table" scale="1.5" fill="blue" />
+                    <!-- <v-icon name="bi-table" scale="1.5" fill="blue" /> -->
                     <unicon name="schedule" fill="lighblue" width="36px" height="36px"></unicon>
                 </div>
                 <div class="text-sm font-semibold text-center">
                     Schedule
                 </div>
             </a>
-        </div> -->
+        </div>
         <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg  bg-gradient-to-bl from-purple-100 to-cyan-100">
             <a href="#package">
@@ -34,7 +34,7 @@
                 </div>
             </a>
         </div>
-        <div
+        <!-- <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <a href="#venue">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
@@ -44,7 +44,7 @@
                     Accommodation
                 </div>
             </a>
-        </div>
+        </div> -->
         <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <router-link to="/abstracts">

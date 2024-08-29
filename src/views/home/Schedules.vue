@@ -52,7 +52,7 @@
                             <div class="text-base font-semibold">
                                 {{ ws_hd.title }}
                             </div>
-                            <div class="text-sm my-2 pl-6">
+                            <!-- <div class="text-sm my-2 pl-6">
                                 <ul class="list-disc">
                                     <li v-for="item in ws_hd.schedules">
                                         {{ item.title }}
@@ -60,7 +60,7 @@
                                             }}</span>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-span-1">
                             <a target="_blank" :href="base_url + ws_hd.image">
@@ -86,7 +86,7 @@
                             <div class="text-base font-semibold">
                                 {{ ws_hd.title }}
                             </div>
-                            <div class="text-sm my-2 pl-6">
+                            <!-- <div class="text-sm my-2 pl-6">
                                 <ul class="list-disc">
                                     <li v-for="item in ws_hd.schedules">
                                         {{ item.title }}
@@ -94,7 +94,7 @@
                                             }}</span>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-span-1">
                             <a target="_blank" :href="base_url + ws_hd.image">
@@ -115,7 +115,7 @@
                         {{ $filters.formatTime(saturday.date_end) }}
                     </div>
                 </div>
-                <div class="md:col-span-1 col-span-2 md:col-span-3">
+                <div class="col-span-2 md:col-span-3">
                     <div v-if="saturday.room_a">
                         <div class="text-indigo-700 font-bold">
                             {{ saturday.room_a.name }}
@@ -123,17 +123,17 @@
                         <div class="text-base font-semibold">
                             {{ saturday.room_a.title }}
                         </div>
-                        <div class="text-sm my-2 pl-6">
+                        <!-- <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
                                 <li v-for="item in saturday.room_a.schedule_details">
                                     {{ item.title }}
                                     <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="md:col-span-1 col-span-2 md:col-span-3">
+                <div class="col-span-2 md:col-span-3">
                     <div v-if="saturday.room_b">
                         <div class="text-indigo-700 font-bold">
                             {{ saturday.room_b.name }}
@@ -141,14 +141,14 @@
                         <div class="text-base font-semibold">
                             {{ saturday.room_b.title }}
                         </div>
-                        <div class="text-sm my-2 pl-6">
+                        <!-- <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
                                 <li v-for="item in saturday.room_b.schedule_details">
                                     {{ item.title }}
                                     <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                         {{ $filters.formatTime(sunday.date_end) }}
                     </div>
                 </div>
-                <div class="md:col-span-1 col-span-7 md:col-span-3">
+                <div class="col-span-7 md:col-span-3">
                     <div v-if="sunday.room_a">
                         <div class="text-indigo-700 font-bold">
                             {{ sunday.room_a.name }}
@@ -172,17 +172,17 @@
                         <div class="text-base font-semibold">
                             {{ sunday.room_a.title }}
                         </div>
-                        <div class="text-sm my-2 pl-6">
+                        <!-- <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
                                 <li v-for="item in sunday.room_a.schedule_details">
                                     {{ item.title }}
                                     <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="md:col-span-1 col-span-7 md:col-span-3">
+                <div class="col-span-7 md:col-span-3">
                     <div v-if="sunday.room_b">
                         <div class="text-indigo-700 font-bold">
                             {{ sunday.room_b.name }}
@@ -190,14 +190,14 @@
                         <div class="text-base font-semibold">
                             {{ sunday.room_b.title }}
                         </div>
-                        <div class="text-sm my-2 pl-6">
+                        <!-- <div class="text-sm my-2 pl-6">
                             <ul class="list-disc">
                                 <li v-for="item in sunday.room_b.schedule_details">
                                     {{ item.title }}
                                     <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -47,12 +47,12 @@
                             aria-current="page">Home
                         </router-link>
                     </li>
-                    <!-- <li>
+                    <li>
                         <router-link to="/guidance" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Guidance
                         </router-link>
-                    </li> -->
+                    </li>
                     <li>
                         <router-link to="/committee" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
