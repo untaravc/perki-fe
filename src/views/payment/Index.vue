@@ -167,7 +167,7 @@ export default {
                 transfer_proof_link: this.transaction.transfer_proof
             })
                 .then((data) => {
-                    if (data.status) {
+                    if (data.success) {
                         this.upload_loader = false;
                         this.loadData()
                     }

@@ -198,7 +198,7 @@ export default {
                 this.disabled = true;
                 this.authPost('pub/upload-file', form_data)
                     .then((data) => {
-                        if (data.status) {
+                        if (data.success) {
                             let link = data.result.link;
                             this.updateImage(link)
                         }
@@ -212,7 +212,7 @@ export default {
             this.authPatch('pub/profile-photo', {
                 image: link
             }).then(data => {
-                if (data.status) {
+                if (data.success) {
                     this.loadProfile()
                 }
             })
