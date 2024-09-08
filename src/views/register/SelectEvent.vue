@@ -28,10 +28,12 @@
                                     <div class="text-sm italic" v-if="first.available">{{ first.quota -
                                         first.transactions_count }} available</div>
                                     <div class="font-semibold text-blue-900 flex">
-                                        <unicon v-if="form.first_workshop === first.id" name="check-square" width="20"
-                                            height="20" fill="#243776"></unicon>
-                                        <unicon v-if="form.first_workshop !== first.id" name="square" width="20"
-                                            height="20" fill="#243776"></unicon>
+                                        <div v-if="first.available">
+                                            <unicon v-if="form.first_workshop === first.id" name="check-square"
+                                                width="20" height="20" fill="#243776"></unicon>
+                                            <unicon v-if="form.first_workshop !== first.id" name="square" width="20"
+                                                height="20" fill="#243776"></unicon>
+                                        </div>
                                         <div class="ml-1">{{ first.name }}</div>
                                     </div>
                                     <div class="text-xs mb-1">
@@ -52,10 +54,12 @@
                                     <div class="text-sm italic" v-if="second.available">{{ second.quota -
                                         second.transactions_count }} available</div>
                                     <div class="font-semibold text-blue-900 flex">
-                                        <unicon v-if="form.second_workshop === second.id" name="check-square" width="20"
-                                            height="20" fill="#243776"></unicon>
-                                        <unicon v-if="form.second_workshop !== second.id" name="square" width="20"
-                                            height="20" fill="#243776"></unicon>
+                                        <div v-if="second.available">
+                                            <unicon v-if="form.second_workshop === second.id" name="check-square"
+                                                width="20" height="20" fill="#243776"></unicon>
+                                            <unicon v-if="form.second_workshop !== second.id" name="square" width="20"
+                                                height="20" fill="#243776"></unicon>
+                                        </div>
                                         <div class="ml-1">{{ second.name }}</div>
                                     </div>
                                     <div class="text-xs mb-1">

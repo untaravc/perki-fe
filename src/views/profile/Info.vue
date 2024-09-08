@@ -78,6 +78,15 @@
                 </small>
             </div>
             <div class="mb-3">
+                <label for="nik" class="block mb-2 text-sm font-medium text-gray-900">NIK<span
+                        class="text-red-600">*</span></label>
+                <input type="text" id="nik" autofocus v-model="form.nik"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                <small class="text-xs text-red-600 italic" v-if="parseErrors('nik')">
+                    {{ parseErrors('nik', 'val') }}
+                </small>
+            </div>
+            <div class="mb-3">
                 <label for="city" class="block mb-2 text-sm font-medium text-gray-900">City<span
                         class="text-red-600">*</span></label>
                 <input type="text" id="city" autofocus v-model="form.city"
@@ -86,6 +95,7 @@
                     {{ parseErrors('city', 'val') }}
                 </small>
             </div>
+
             <div class="mb-3">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Update Password</label>
                 <input type="password" id="password" autofocus v-model="form.password"
@@ -127,6 +137,7 @@ export default {
                 job_label: '',
                 phone: '',
                 image: '',
+                nik: '',
             },
             form_errors: [],
             form: {
@@ -156,6 +167,7 @@ export default {
             this.form.name = data.name;
             this.form.phone = data.phone;
             this.form.city = data.city;
+            this.form.nik = data.nik;
             this.form.institution = data.institution;
         },
         updateData() {

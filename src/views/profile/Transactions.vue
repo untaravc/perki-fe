@@ -44,8 +44,8 @@
                         <ul class="list-disc" v-if="trx.transaction_details">
                             <li class="text-sm" v-for="detail in trx.transaction_details">
                                 {{ detail.event_name }}
-                                <span class="italic text-slate-500"
-                                    v-if="detail.event">{{ $filters.formatDateTime(detail.event.date_start) }}</span>
+                                <span class="italic text-slate-500" v-if="detail.event">{{
+                                    $filters.formatDateTime(detail.event.date_start) }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
@@ -82,7 +82,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/transaction-list')
+            this.authGet('pub/transaction-list?ref=2024',)
                 .then((data) => {
                     this.data_content = data.result;
                 })
