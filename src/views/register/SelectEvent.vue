@@ -6,10 +6,18 @@
                     <div v-if="data_raw.symposium"
                         class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
                         <div class="mb-3">
-                            <div class="font-semibold text-blue-900 flex">
-                                <unicon name="check-square" width="20" height="20" fill="#243776"></unicon>
-                                <div class="ml-1">{{ events.symposium.name }}</div>
+                            <div class="flex justify-between">
+                                <div class="font-semibold text-blue-900 flex items-center">
+                                    <unicon name="check-square" width="20" height="20" fill="#243776"></unicon>
+                                    <div class="ml-1">{{ events.symposium.name }}</div>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-xs me-1">Min. 8 SKP/Day</span>
+                                    <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
+                                        fill="#243776"></unicon>
+                                </div>
                             </div>
+
                             <div class="text-xs mb-1">
                                 Saturday-Sunday, Oct 19th - 20th, 08:00-16:00
                             </div>
@@ -24,17 +32,29 @@
                                 :class="form.first_workshop === first.id ? 'bg-blue-200' : 'bg-blue-50'"
                                 class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
                                 <div class="mb-3">
-                                    <div class="text-sm italic" v-if="!first.available">Full Booked</div>
-                                    <div class="text-sm italic" v-if="first.available">{{ first.quota -
-                                        first.transactions_count }} available</div>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="text-sm italic" v-if="!first.available">Full Booked</div>
+                                            <div class="text-sm italic" v-if="first.available">{{ first.quota -
+                                                first.transactions_count }} available</div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="text-xs">Min. 15 SKP</span>
+                                            <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
+                                                fill="#243776"></unicon>
+                                        </div>
+                                    </div>
+
                                     <div class="font-semibold text-blue-900 flex">
-                                        <div v-if="first.available">
+                                        <div v-if="first.available" class="flex items-center">
                                             <unicon v-if="form.first_workshop === first.id" name="check-square"
                                                 width="20" height="20" fill="#243776"></unicon>
                                             <unicon v-if="form.first_workshop !== first.id" name="square" width="20"
                                                 height="20" fill="#243776"></unicon>
                                         </div>
-                                        <div class="ml-1">{{ first.name }}</div>
+                                        <div class="ml-1">
+                                            {{ first.name }}
+                                        </div>
                                     </div>
                                     <div class="text-xs mb-1">
                                         {{ $filters.formatDayDateTime(first.date_start) }}
@@ -50,17 +70,31 @@
                                 :class="form.second_workshop === second.id ? 'bg-blue-200' : 'bg-blue-50'"
                                 class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
                                 <div class="mb-3">
-                                    <div class="text-sm italic" v-if="!second.available">Full Booked</div>
-                                    <div class="text-sm italic" v-if="second.available">{{ second.quota -
-                                        second.transactions_count }} available</div>
+
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="text-sm italic" v-if="!second.available">Full Booked</div>
+                                            <div class="text-sm italic" v-if="second.available">{{ second.quota -
+                                                second.transactions_count }} available</div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="text-xs">Min. 15 SKP</span>
+                                            <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
+                                                fill="#243776"></unicon>
+                                        </div>
+                                    </div>
+
                                     <div class="font-semibold text-blue-900 flex">
-                                        <div v-if="second.available">
+                                        <div v-if="second.available" class="flex items-center">
                                             <unicon v-if="form.second_workshop === second.id" name="check-square"
                                                 width="20" height="20" fill="#243776"></unicon>
                                             <unicon v-if="form.second_workshop !== second.id" name="square" width="20"
                                                 height="20" fill="#243776"></unicon>
                                         </div>
-                                        <div class="ml-1">{{ second.name }}</div>
+                                        <div class="ml-1">
+                                            <span>{{ second.name }}</span>
+                                            <span class="text-blue-400 font-normal"> min 15 SKP</span>
+                                        </div>
                                     </div>
                                     <div class="text-xs mb-1">
                                         {{ $filters.formatDayDateTime(second.date_start) }}
@@ -133,6 +167,11 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                         <small class="text-red-800" v-if="pricing.voucher_validation">
                             {{ pricing.voucher_validation }}
+                        </small>
+                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">
+                            <i>
+                                only applies to non-sponsored participants
+                            </i>
                         </small>
                         <div class="text-right mt-3">
                             <div @click="calculatePrice('check')"

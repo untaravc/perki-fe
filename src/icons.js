@@ -34,6 +34,7 @@ import {
 	uniUserMd,
 	uniUserMdSolid,
 	uniYoutube,
+	uniBookmark,
 } from 'vue-unicons/dist/icons'
 
 export default [
@@ -73,4 +74,5 @@ export default [
 	uniUserMd,
 	uniUserMdSolid,
 	uniYoutube,
+	uniBookmark,
 ]

@@ -66,7 +66,7 @@
                                 class="text-red-600">*</span></label>
                         <select id="job_type" v-model="form.job_type_code"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value="" selected>== Select Job ==</option>
+                            <option value="" selected>== Select Type ==</option>
                             <option :value="job.code" :key="job.code" v-for="job in data_raw.job_types">{{ job.name }}
                             </option>
                         </select>
