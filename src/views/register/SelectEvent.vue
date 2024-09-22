@@ -93,7 +93,6 @@
                                         </div>
                                         <div class="ml-1">
                                             <span>{{ second.name }}</span>
-                                            <span class="text-blue-400 font-normal"> min 15 SKP</span>
                                         </div>
                                     </div>
                                     <div class="text-xs mb-1">

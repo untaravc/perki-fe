@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-24 pb-12 px-2" id="package">
+    <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2" id="package">
         <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
             PRICING
         </div>

@@ -25,7 +25,7 @@
                     <li>No submission fee required to submit an abstract to JCU 2024 in conjunction with the 7th
                         JINCARTOS 2024</li>
                     <li>There is no limit to the number of abstracts an author may submit.</li>
-                    <li>The abstract should not be exceeded 350 words (excluding the title, authors, and affiliations)
+                    <li>The abstract should not be exceeded 300 words (excluding the title, authors, and affiliations)
                     </li>
                     <li>All abstract submitted are reviewed and selected by members of the Peer Reviewers.</li>
                     <li>Supported attachment file format: graphic, figure, or table is .JPEG or .JPG</li>

@@ -1,15 +1,15 @@
 <template>
-    <div class="mb-8" style="min-height: calc(100vh - 165px);">
+    <div class="" style="min-height: calc(100vh - 165px);">
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
         <Menu></Menu>
-        <!-- <Video></Video> -->
+        <Video></Video>
         <Schedules></Schedules>
         <Pricing></Pricing>
-        <!-- <div class="bg-gradient-to-br from-purple-700 to-cyan-800">
+        <div class="bg-gradient-to-br from-purple-700 to-cyan-800">
             <Speakers></Speakers>
-        </div> -->
+        </div>
         <!-- <Venue></Venue> -->
         <!-- <Sponsors></Sponsors> -->
     </div>

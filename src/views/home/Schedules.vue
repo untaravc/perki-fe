@@ -36,6 +36,9 @@
             </div>
         </div>
         <div v-if="selected === 1" class="p-2 border-b border-slate-900">
+            <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
+                Get a minimum of 15 SKP IDI per Workshop
+            </div>
             <div class="grid grid-cols-7">
                 <div class="md:col-span-1 col-span-7 row-span-4 text-center">
                     <div class="inline-block bg-blue-300 px-2 py-1 rounded">
@@ -96,9 +99,9 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-span-1">
+                        <div class="col-span-1 mb-2">
                             <a target="_blank" :href="base_url + ws_hd.image">
-                                <img class="w-full" :src="base_url + ws_hd.image" alt="">
+                                <img class="w-full rounded-md" :src="base_url + ws_hd.image" alt="">
                             </a>
                         </div>
                     </div>
@@ -106,8 +109,11 @@
             </div>
         </div>
         <div v-if="selected === 2" class="p-2 border-b border-slate-900">
+            <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
+                Get a minimum of 8 SKP IDI per Day Symposium
+            </div>
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
-                v-for="saturday in schedule.saturday">
+                v-for="(saturday, s) in schedule.saturday">
                 <div class="col-span-2 text-center md:col-span-1">
                     <div class="inline-block bg-blue-300 px-2 py-1 rounded">
                         {{ $filters.formatTime(saturday.date_start) }}
@@ -131,6 +137,18 @@
                                 </li>
                             </ul>
                         </div>
+                        <div>
+                            <div class="text-center hover:bg-slate-100 cursor-pointer"
+                                @click="() => { saturday.room_a.show = !saturday.room_a.show }">
+                                <unicon name="angle-down" height="25px" v-if="!saturday.room_a.show">
+                                </unicon>
+                                <unicon name="angle-up" height="25px" v-if="saturday.room_a.show"></unicon>
+                            </div>
+                            <a target="_blank" :href="base_url + saturday.room_a.image"
+                                v-if="saturday.room_a.show && saturday.room_a.image">
+                                <img class="w-full" :src="base_url + saturday.room_a.image" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-span-2 md:col-span-3">
@@ -149,12 +167,27 @@
                                 </li>
                             </ul>
                         </div>
+                        <div>
+                            <div class="text-center hover:bg-slate-100 cursor-pointer"
+                                @click="() => { saturday.room_b.show = !saturday.room_b.show }">
+                                <unicon name="angle-down" height="25px" v-if="!saturday.room_b.show">
+                                </unicon>
+                                <unicon name="angle-up" height="25px" v-if="saturday.room_b.show"></unicon>
+                            </div>
+                            <a target="_blank" :href="base_url + saturday.room_b.image"
+                                v-if="saturday.room_b.show && saturday.room_b.image">
+                                <img class="w-full" :src="base_url + saturday.room_b.image" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div v-if="selected === 3" class="p-2 border-b border-slate-900">
+            <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
+                Get a minimum of 8 SKP IDI per Day Symposium
+            </div>
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="sunday in schedule.sunday">
                 <div class="col-span-2 text-center md:col-span-1">
