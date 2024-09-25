@@ -12,7 +12,7 @@
                                     <div class="ml-1">{{ events.symposium.name }}</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <span class="text-xs me-1">Min. 8 SKP/Day</span>
+                                    <span class="text-xs me-1">Min. 16 SKP/Day</span>
                                     <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
                                         fill="#243776"></unicon>
                                 </div>
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if="data_raw.workshop">
+                    <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if="data_raw.workshop && count < 5">
                         <div>
                             <div v-for="first in events.first_workshop" @click="selectFirst(first.id, first)"
                                 :class="form.first_workshop === first.id ? 'bg-blue-200' : 'bg-blue-50'"
@@ -39,7 +39,7 @@
                                                 first.transactions_count }} available</div>
                                         </div>
                                         <div class="flex items-center">
-                                            <span class="text-xs">Min. 15 SKP</span>
+                                            <span class="text-xs">Min. 22 SKP</span>
                                             <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
                                                 fill="#243776"></unicon>
                                         </div>
@@ -78,7 +78,7 @@
                                                 second.transactions_count }} available</div>
                                         </div>
                                         <div class="flex items-center">
-                                            <span class="text-xs">Min. 15 SKP</span>
+                                            <span class="text-xs">Min. 22 SKP</span>
                                             <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
                                                 fill="#243776"></unicon>
                                         </div>
@@ -179,18 +179,24 @@
                             </div>
                         </div>
 
-                        <!-- <div class="font-semibold mt-5 mb-2">
+                        <div class="font-semibold mt-5 mb-2">
                             Collective Registration
                         </div>
                         <div v-if="count >= 5">
-                            <span v-for="user in users">{{ user.name }}, </span>
+                            <div v-for="user in users">
+                                <b>{{ user.name }}</b>
+                                <div class="flex justify-between">
+                                    <span class="text-sm">{{ user.nik }}</span>
+                                    <span class="text-sm">{{ user.email }}</span>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <button @click="memberModal"
                                 class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
-                        </div> -->
+                        </div>
 
                         <div class="font-semibold mt-5 mb-2">
                             Transaction Details
@@ -242,7 +248,7 @@
 
         <div id="memberModal" tabindex="-1" aria-hidden="true" data-modal-placement="top-center"
             class="fixed top-0 left-0 right-0 z-50 w-full p-4 hidden overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-full max-w-2xl max-h-full">
+            <div class="relative w-full max-w-4xl max-h-full">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-3 border-b rounded-t dark:border-gray-600">
@@ -263,13 +269,17 @@
                             <div>Email</div>
                             <div>Name</div>
                         </div>
-                        <div class="grid mb-2 gap-1 grid-cols-2" v-for="(user, i) in users">
+                        <div class="grid mb-2 gap-1 grid-cols-3" v-for="(user, i) in users">
                             <div>
                                 <input v-model="user.email" type="text" :placeholder="'email_' + (i + 1) + '@mail.com'"
                                     class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500" />
                             </div>
                             <div>
                                 <input v-model="user.name" type="text" :placeholder="'User name ' + (i + 1)"
+                                    class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+                            </div>
+                            <div>
+                                <input v-model="user.nik" type="text" :placeholder="'NIK ' + (i + 1)"
                                     class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500" />
                             </div>
                         </div>

@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ml-4">
+                    <div class="ml-4 mb-3">
                         <ul class="list-disc" v-if="trx.transaction_details">
                             <li class="text-sm" v-for="detail in trx.transaction_details">
                                 {{ detail.event_name }}
@@ -49,6 +49,16 @@
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
+                    </div>
+                    <div v-if="trx.transaction_children">
+                        <b>Collective Registration</b>
+                        <div class="text-sm" v-for="child in trx.transaction_children">
+                            <i>{{ child.user_name }}</i>
+                            <div class="flex justify-between">
+                                <div>{{ child.user_email }}</div>
+                                <div>{{ child.nik }}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>

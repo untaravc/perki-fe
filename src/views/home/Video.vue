@@ -3,7 +3,7 @@
     <div class="px-10 lg:px-32">
       <div class="video-container">
         <div
-          class="frame bg-theme cursor-pointer flex justify-center items-center rounded-lg bg-center bg-cover bg-[url('/storage/img/vid-preview-24.png')]">
+          class="frame bg-theme cursor-pointer flex border-4 justify-center items-center rounded-lg bg-center bg-cover bg-[url('/storage/img/vid-preview-24.png')]">
           <iframe
             class="frame bg-theme cursor-pointer flex justify-center items-center rounded-lg bg-center bg-cover bg-[url('/storage/img/vid-preview-24.png')]"
             v-if="play" src="https://www.youtube.com/embed/I08O9HlOZY8?si=GaruPH9xZkZKMA86" title="YouTube video player"
