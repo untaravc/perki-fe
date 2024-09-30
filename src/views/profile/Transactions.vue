@@ -50,11 +50,11 @@
                             </li>
                         </ul>
                     </div>
-                    <div v-if="trx.transaction_children">
-                        <b>Collective Registration</b>
+                    <div v-if="trx.transaction_children && trx.transaction_children.length > 0">
+                        <div class="font-semibold">Collective Registration</div>
                         <div class="text-sm" v-for="child in trx.transaction_children">
                             <i>{{ child.user_name }}</i>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between text-slate-500">
                                 <div>{{ child.user_email }}</div>
                                 <div>{{ child.nik }}</div>
                             </div>

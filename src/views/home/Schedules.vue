@@ -213,6 +213,18 @@
                                 </li>
                             </ul>
                         </div>
+                        <div>
+                            <div class="text-center hover:bg-slate-100 cursor-pointer"
+                                @click="() => { sunday.room_a.show = !sunday.room_a.show }">
+                                <unicon name="angle-down" height="25px" v-if="!sunday.room_a.show">
+                                </unicon>
+                                <unicon name="angle-up" height="25px" v-if="sunday.room_a.show"></unicon>
+                            </div>
+                            <a target="_blank" :href="base_url + sunday.room_a.image"
+                                v-if="sunday.room_a.show && sunday.room_a.image">
+                                <img class="w-full" :src="base_url + sunday.room_a.image" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-span-7 md:col-span-3">
@@ -230,6 +242,18 @@
                                     <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name }}</span>
                                 </li>
                             </ul>
+                        </div>
+                        <div>
+                            <div class="text-center hover:bg-slate-100 cursor-pointer"
+                                @click="() => { sunday.room_b.show = !sunday.room_b.show }">
+                                <unicon name="angle-down" height="25px" v-if="!sunday.room_b.show">
+                                </unicon>
+                                <unicon name="angle-up" height="25px" v-if="sunday.room_b.show"></unicon>
+                            </div>
+                            <a target="_blank" :href="base_url + sunday.room_b.image"
+                                v-if="sunday.room_b.show && sunday.room_b.image">
+                                <img class="w-full" :src="base_url + sunday.room_b.image" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
