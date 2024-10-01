@@ -3,8 +3,12 @@
         <div class="flex justify-between mb-4">
             <div class="text-2xl font-semibold mb-3" id="edit-add">Abstracts</div>
             <div>
-                <button @click="addNew"
+                <button @click="addNew" v-if="is_open"
                     class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    Add New
+                </button>
+                <button v-if="!is_open"
+                    class="text-white bg-slate-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     Add New
                 </button>
             </div>
@@ -300,7 +304,7 @@
 <script>
 import PageLoading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
-
+import moment from 'moment';
 export default {
     components: {
         PageLoading
@@ -314,6 +318,7 @@ export default {
             author_edit_index: '',
             disabled: false,
             data_content: '',
+            is_open: false,
             upload_loader: false,
             open_form: false,
             author_modal: '',
@@ -581,10 +586,16 @@ export default {
             if (list) {
                 this.abstract_form = list
             }
-        }
+        },
     },
     created() {
         this.loadData()
+        console.log(moment().format('YYYY-MM-DD HH:mm'))
+        if (moment().format('YYYY-MM-DD') !== '2024-10-01') {
+            this.is_open = false
+        } else {
+            this.is_open = true
+        }
     },
     mounted() {
         this.author_modal = new Modal(document.getElementById('authorModal'));
