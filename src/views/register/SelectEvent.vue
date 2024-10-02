@@ -355,7 +355,7 @@ export default {
                 { name: '', email: '' },
                 { name: '', email: '' },
                 { name: '', email: '' },
-                { name: '', email: '' },
+                // { name: '', email: '' },
             ],
             events: {
                 symposium: [],
@@ -516,7 +516,7 @@ export default {
                         { name: '', email: '' },
                         { name: '', email: '' },
                         { name: '', email: '' },
-                        { name: '', email: '' },
+                        // { name: '', email: '' },
                     ];
                 }
             } else {

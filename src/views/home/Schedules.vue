@@ -37,7 +37,7 @@
         </div>
         <div v-if="selected === 1" class="p-2 border-b border-slate-900">
             <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
-                Get a minimum of 22 SKP IDI per Workshop
+                Get a minimum of 22 SKP Kemenkes per Workshop
             </div>
             <div class="grid grid-cols-7">
                 <div class="md:col-span-1 col-span-7 row-span-4 text-center">
@@ -110,7 +110,7 @@
         </div>
         <div v-if="selected === 2" class="p-2 border-b border-slate-900">
             <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
-                Get a minimum of 16 SKP IDI per Day Symposium
+                Get a minimum of 16 SKP Kemenkes per Day Symposium
             </div>
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="(saturday, s) in schedule.saturday">
@@ -186,7 +186,7 @@
 
         <div v-if="selected === 3" class="p-2 border-b border-slate-900">
             <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
-                Get a minimum of 16 SKP IDI per Day Symposium
+                Get a minimum of 16 SKP Kemenkes per Day Symposium
             </div>
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="sunday in schedule.sunday">
