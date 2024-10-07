@@ -139,7 +139,7 @@
         </div>
 
         <!--       List-->
-        <div class="c bg-yellow-100 rounded p-4 text-sm flex justify-between">
+        <!-- <div class="c bg-yellow-100 rounded p-4 text-sm flex justify-between">
             <div>
                 We invite you to submit your abstracts for consideration by September 19th.
             </div>
@@ -150,7 +150,7 @@
                     Download Guideline
                 </a>
             </div>
-        </div>
+        </div> -->
         <div class="italic text-sm mt-4 text-center" v-if="data_content.length === 0">
             No Data
         </div>
@@ -164,6 +164,7 @@
                 <div class="text-xs text-blue-500 font-semibold">
                     <span v-if="data.status === 0">On Review</span>
                     <span v-if="data.status === 1">Accepted</span>
+                    <span v-if="data.status === 2">Rejected</span>
                 </div>
             </div>
             <div class="p-4">
@@ -205,14 +206,35 @@
                             }}</span>
                     </div>
                     <div>
-                        <button @click="deleteData(data)"
+                        <button @click="deleteData(data)" v-if="is_open"
                             class="bg-red-700 mx-1 cursor-pointer hover:bg-red-800 items-center text-white px-4 py-1 text-sm rounded-lg">
                             Delete
                         </button>
-                        <button @click="editData(data)"
+                        <button @click="editData(data)" v-if="is_open"
                             class="bg-blue-700 mx-1 cursor-pointer hover:bg-blue-800 items-center text-white px-4 py-1 text-sm rounded-lg">
                             Edit
                         </button>
+                    </div>
+                </div>
+                <div class="text-center rounded-lg my-2 relative">
+                    <label for="poster_upload">
+                        <div
+                            class="bg-slate-200 p-2 w-full cursor-pointer rounded flex justify-center items-center relative">
+                            <page-loading v-model:active="upload_loader" loader="dots" :is-full-page="false" />
+                            <div v-if="!upload_loader">
+                                <unicon name="file" fill="grey"></unicon>
+                                <div class="text-sm italic text-slate-600" v-if="!show_poster">Add poster</div>
+                                <div class="text-sm italic text-slate-600" v-if="show_poster">Update poster</div>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="file" accept="image/*" hidden id="poster_upload" @change="uploadPoster(data.id)">
+                </div>
+                <div v-show="show_poster" class="flex justify-center bg-slate-200 p-2">
+                    <div class="relative">
+                        <a :href="data.image" target="_blank">
+                            <img :src="data.image" alt="" class="max-h-52">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -304,7 +326,6 @@
 <script>
 import PageLoading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
-import moment from 'moment';
 export default {
     components: {
         PageLoading
@@ -321,6 +342,7 @@ export default {
             is_open: false,
             upload_loader: false,
             open_form: false,
+            show_poster: false,
             author_modal: '',
             abstract_form: [],
             abstract_form_list: {
@@ -587,15 +609,45 @@ export default {
                 this.abstract_form = list
             }
         },
+        updatePoster(id, image) {
+            this.authPost('pub/abstracts-poster/' + id, {
+                image: image
+            }).then((data) => {
+                this.loadData()
+            })
+        },
+        uploadPoster(post_id) {
+            let file = document.getElementById("poster_upload").files[0];
+            if (file) {
+                this.upload_loader = true;
+                let form_data = new FormData();
+
+                form_data.append('file', file)
+                form_data.append('model', 'poster')
+                form_data.append('model_id', post_id)
+                form_data.append('title', 'Poster ' + post_id)
+
+                this.authPost('pub/upload-file', form_data)
+                    .then((data) => {
+                        if (data.success) {
+                            this.updatePoster(post_id, data.result.link)
+                            this.show_poster = true
+                        }
+                        this.upload_loader = false;
+                    }).catch((e) => {
+                        this.upload_loader = false;
+                    });
+            }
+        },
     },
     created() {
         this.loadData()
-        console.log(moment().format('YYYY-MM-DD HH:mm'))
-        if (moment().format('YYYY-MM-DD') !== '2024-10-01') {
-            this.is_open = false
-        } else {
-            this.is_open = true
-        }
+        // console.log(moment().format('YYYY-MM-DD HH:mm'))
+        // if (moment().format('YYYY-MM-DD HH') == '2024-10-05 11') {
+        this.is_open = false
+        // } else {
+        //     this.is_open = false
+        // }
     },
     mounted() {
         this.author_modal = new Modal(document.getElementById('authorModal'));

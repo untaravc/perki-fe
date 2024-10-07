@@ -69,7 +69,7 @@
                     <label for="file_upload">
                         <div
                             class="bg-slate-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
-                            <page-loader v-model:active="upload_loader" loader="dots" :is-full-page="false" />
+                            <PageLoading v-model:active="upload_loader" loader="dots" :is-full-page="false" />
                             <div v-if="!upload_loader">
                                 <unicon name="file" fill="grey"></unicon>
                                 <div class="text-sm italic text-slate-600">Select transfer proof</div>
@@ -108,7 +108,12 @@
 </template>
 
 <script>
+import PageLoading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 export default {
+    components: {
+        PageLoading
+    },
     data() {
         return {
             modal: '',
