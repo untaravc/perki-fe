@@ -10,6 +10,7 @@ import Speakers from '../views/speakers/Index.vue'
 import Guidance from '../views/guidance/Index.vue'
 import Plataran from '../views/guidance/Plataran.vue'
 import Venue from '../views/venue/Index.vue'
+import AbstractGuide from '../views/abstracts/Guide.vue'
 import Abstracts from '../views/abstracts/Index.vue'
 import CheckTransaction from '../views/check_transaction/Index.vue'
 import ContactUs from '../views/contact-us/Index.vue'
@@ -126,6 +127,11 @@ const router = createRouter({
 				{
 					path: '/abstracts',
 					name: 'abstracts',
+					component: AbstractGuide,
+				},
+				{
+					path: '/posters',
+					name: 'posters',
 					component: Abstracts,
 				},
 				{

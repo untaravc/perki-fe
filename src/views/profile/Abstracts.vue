@@ -639,15 +639,16 @@ export default {
                     });
             }
         },
+        checkOpenSubmit() {
+            this.authGet('pub/abstracts-submit')
+                .then((data) => {
+                    this.is_open = data.result.open
+                })
+        }
     },
     created() {
         this.loadData()
-        // console.log(moment().format('YYYY-MM-DD HH:mm'))
-        // if (moment().format('YYYY-MM-DD HH') == '2024-10-05 11') {
-        this.is_open = false
-        // } else {
-        //     this.is_open = false
-        // }
+        this.checkOpenSubmit()
     },
     mounted() {
         this.author_modal = new Modal(document.getElementById('authorModal'));
