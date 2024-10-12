@@ -12,6 +12,7 @@ import Plataran from '../views/guidance/Plataran.vue'
 import Venue from '../views/venue/Index.vue'
 import AbstractGuide from '../views/abstracts/Guide.vue'
 import Abstracts from '../views/abstracts/Index.vue'
+import AbstractsShow from '../views/abstracts/Show.vue'
 import CheckTransaction from '../views/check_transaction/Index.vue'
 import ContactUs from '../views/contact-us/Index.vue'
 
@@ -133,6 +134,10 @@ const router = createRouter({
 					path: '/posters',
 					name: 'posters',
 					component: Abstracts,
+				}, {
+					path: '/posters/:id',
+					name: 'poster detail',
+					component: AbstractsShow,
 				},
 				{
 					path: '/check_transaction',

@@ -32,10 +32,8 @@ const config = {
 	ucword(value) {
 		if (!value) return '';
 		value = value.toString();
-		value = value.toLowerCase();
-		return (value + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
-			return $1.toUpperCase();
-		});
+		value = value.toUpperCase();
+		return value
 	},
 	formatDate(value) {
 		if (value) {

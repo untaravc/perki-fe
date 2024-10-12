@@ -26,6 +26,7 @@ import TimerPage from "./Timer.vue";
 import Venue from "./Venue.vue";
 import Menu from "./Menu.vue";
 import EventCta from "./EventCta.vue";
+import WelcomeMessage from './WelcomeMessage.vue'
 
 export default {
     components: {
@@ -38,6 +39,7 @@ export default {
         TimerPage,
         Venue,
         EventCta,
+        // WelcomeMessage,
         Menu
     }
 }

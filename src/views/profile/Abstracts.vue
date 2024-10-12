@@ -230,7 +230,7 @@
                     </label>
                     <input type="file" accept="image/*" hidden id="poster_upload" @change="uploadPoster(data.id)">
                 </div>
-                <div v-show="show_poster" class="flex justify-center bg-slate-200 p-2">
+                <div v-if="data.image" class="flex justify-center bg-slate-200 p-2">
                     <div class="relative">
                         <a :href="data.image" target="_blank">
                             <img :src="data.image" alt="" class="max-h-52">
