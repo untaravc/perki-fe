@@ -3,6 +3,7 @@
         <div class="text-4xl font-bold text-center mb-3">
             POSTER BOARD
         </div>
+
         <div class="grid md:grid-cols-2 grid-cols-1">
             <div>
                 <div class="text-xl">{{ data_content.title }}</div>
@@ -12,7 +13,9 @@
                 <div class="">Keywords: <i>{{ data_content.subtitle }}</i></div>
             </div>
             <div>
-                <img :src="data_content.image" class="max-w-32 w-40 float-right" alt="">
+                <a :href="data_content.image" target="_blank">
+                    <img :src="data_content.image" class="max-w-32 w-40 float-right" alt="">
+                </a>
             </div>
         </div>
         <div class="mb-4">

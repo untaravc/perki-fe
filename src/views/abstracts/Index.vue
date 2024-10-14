@@ -3,6 +3,29 @@
         <div class="text-4xl font-bold text-center mb-3" ref="title">
             POSTER BOARD
         </div>
+        <div class="justify-center mb-4 md:flex hidden">
+            <div class="bg-blue-200 rounded-full flex px-4 py-2 justify-evenly">
+                <div @click="loadPoster()" :class="filter.category === '' ? 'bg-blue-600 text-white' : 'bg-blue-200'"
+                    class="  px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-blue-300">All
+                </div>
+                <div @click="loadPoster('case_report')"
+                    :class="filter.category === 'case_report' ? 'bg-blue-600 text-white' : 'bg-blue-200'"
+                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-blue-300">Case
+                    Report</div>
+                <div @click="loadPoster('research')"
+                    :class="filter.category === 'research' ? 'bg-blue-600 text-white' : 'bg-blue-200'"
+                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-blue-300">
+                    Research</div>
+                <div @click="loadPoster('meta_analysis')"
+                    :class="filter.category === 'meta_analysis' ? 'bg-blue-600 text-white' : 'bg-blue-200'"
+                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-blue-300">Meta
+                    Analisys</div>
+                <div @click="loadPoster('systematic_review')"
+                    :class="filter.category === 'systematic_review' ? 'bg-blue-600 text-white' : 'bg-blue-200'"
+                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-blue-300">
+                    Systematic Review</div>
+            </div>
+        </div>
         <div class="grid md:grid-cols-3 grid-cols-1 gap-4">
             <div v-for="poster in data_content.data" class="bg-gradient-to-br from-indigo-50 to-indigo-200 rounded-lg">
                 <div v-if="poster.status == 1"
@@ -53,13 +76,15 @@ export default {
             data_content: {},
             filter: {
                 type: 'abstract',
+                category: '',
                 year: 2024,
                 page: 1
             }
         }
     },
     methods: {
-        loadPoster() {
+        loadPoster(category = '') {
+            this.filter.category = category
             this.apiGet('pub/posters', this.filter)
                 .then((data) => {
                     this.data_content = data
@@ -78,8 +103,9 @@ export default {
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth' });
             }
-        }
+        },
     },
+
     created() {
         this.loadPoster()
     },
