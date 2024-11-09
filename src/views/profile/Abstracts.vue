@@ -217,7 +217,7 @@
                     </div>
                 </div>
                 <div class="text-center rounded-lg my-2 relative">
-                    <label for="poster_upload">
+                    <label :for="'poster_upload' + data.id">
                         <div
                             class="bg-slate-200 p-2 w-full cursor-pointer rounded flex justify-center items-center relative">
                             <page-loading v-model:active="upload_loader" loader="dots" :is-full-page="false" />
@@ -228,7 +228,8 @@
                             </div>
                         </div>
                     </label>
-                    <input type="file" accept="image/*" hidden id="poster_upload" @change="uploadPoster(data.id)">
+                    <input type="file" accept="image/*" hidden :id="'poster_upload' + data.id"
+                        @change="uploadPoster(data.id)">
                 </div>
                 <div v-if="data.image" class="flex justify-center bg-slate-200 p-2">
                     <div class="relative">
@@ -617,7 +618,8 @@ export default {
             })
         },
         uploadPoster(post_id) {
-            let file = document.getElementById("poster_upload").files[0];
+            console.log(post_id)
+            let file = document.getElementById("poster_upload" + post_id).files[0];
             if (file) {
                 this.upload_loader = true;
                 let form_data = new FormData();

@@ -13,6 +13,10 @@
                     focus:ring-blue-300 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
                     Register
                 </router-link>
+                <!-- <div
+                    class="text-white flex items-center bg-slate-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
+                    Register
+                </div> -->
                 <router-link to="/profile/info" v-if="has_token" class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 
                         focus:outline-none focus:ring-blue-300 md:font-medium rounded-full 
                         text-base px-2.5 py-2.5 text-center mr-3 md:mr-0">
