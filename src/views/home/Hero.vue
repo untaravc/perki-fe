@@ -6,10 +6,11 @@
                 :style="`background-image: url('` + base_url + data_content[index]['poster'] + `')`"></a>
             <div class="md:col-span-3 md:order-1">
                 <div
-                    class="m-5 bg-gradient-to-r from-purple-300 to-cyan-300 rounded-full py-1 px-8 italic text-sm inline-block">
+                    class="m-5 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 rounded-full py-1 px-8 italic text-sm inline-block">
                     {{ data_content[index]['date'] }}
                 </div>
-                <div class="mx-5 mb-5 text-4xl lg:text-6xl  font-bold text-blue-900">
+                <div class="mx-5 mb-5 font-bold text-slate-800"
+                    :class="data_content[index]['title'] && data_content[index]['title'].length > 30 ? 'text-2xl lg:text-4xl' : 'text-4xl lg:text-6xl'">
                     {{ data_content[index]['title'] }}
                 </div>
                 <div class="mx-5 mb-5 lg:w-9/12 text-lg text-slate-600 italic">
@@ -18,14 +19,14 @@
                 <div class="mx-5 flex" v-if="data_content[index]['buttons'].length > 0">
                     <div v-for="btn in data_content[index]['buttons']" class="mx-2">
                         <router-link :to="btn.link"
-                            :class="btn.theme === 'dark' ? 'text-white bg-blue-900' : 'text-blue-900 hover:bg-blue-900 hover:text-white'"
-                            class="flex items-center border border-blue-900 font-medium rounded-full text-lg px-6 py-2 text-center">
+                            :class="btn.theme === 'dark' ? 'text-white bg-slate-800' : 'text-slate-800 hover:bg-slate-800 hover:text-white'"
+                            class="flex items-center border border-slate-800 font-medium rounded-full text-lg px-6 py-2 text-center">
                             <div class="mr-2">{{ btn.text }}</div>
                             <unicon v-if="btn.theme === 'dark'" name="arrow-right" fill="white"></unicon>
                         </router-link>
                     </div>
                 </div>
-                <div class="flex ml-6 mt-4">
+                <div class="flex ml-6 mt-4" v-if="data_content.length > 1">
                     <div @click="prev"
                         class="p-3 mx-1 border border-blue-300 cursor-pointer hover:bg-blue-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-left"></unicon>
@@ -72,7 +73,7 @@ export default {
             clearInterval(this.interval)
         },
         loadData() {
-            this.apiGet('pub/hero-banner', { ref: 2024 })
+            this.apiGet('pub/hero-banner', { ref: 'cvep' })
                 .then((data) => {
                     this.data_content = data.result;
                 })

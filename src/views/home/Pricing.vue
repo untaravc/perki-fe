@@ -6,7 +6,7 @@
         <div class="text-small text-slate-600 mb-5 text-center">
             Register yourself and get a special price
         </div>
-        <div class="grid grid-cols-3 bg-gradient-to-bl from-purple-100 to-cyan-100">
+        <div class="grid grid-cols-3 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300">
             <div class="md:col-span-2 col-span-3 shadow  p-5 rounded-l-none md:rounded-l-lg">
                 <div class="grid grid-cols-3 mb-3 text-white">
                     <div @click="select(pricing.platinum, 1)"

@@ -4,63 +4,104 @@
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
-                        class="rounded-lg bg-amber-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
+                        class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
                         <div class="mb-3">
                             <div class="flex justify-between">
-                                <div class="font-semibold text-amber-900 flex items-center">
+                                <div class="font-semibold text-blue-900 flex items-center">
                                     <unicon name="check-square" width="20" height="20" fill="#243776"></unicon>
                                     <div class="ml-1">{{ events.symposium.name }}</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <!-- <span class="text-xs me-1">Min. 16 SKP/Day</span>
+                                    <span class="text-xs me-1">Min. 16 SKP/Day</span>
                                     <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
-                                        fill="#243776"></unicon> -->
+                                        fill="#243776"></unicon>
                                 </div>
                             </div>
 
                             <div class="text-xs mb-1">
-                                Saturday-Sunday, Feb 22th, 08:00-16:00
+                                Saturday-Sunday, Oct 19th - 20th, 08:00-16:00
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-2 grid gap-2 md:grid-cols-1" v-if="data_raw.workshop && count < 5">
+                    <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if="data_raw.workshop && count < 5">
                         <!-- <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if=""> -->
-                        <div v-for="first in events.workshop" @click="selectWorkshop(first.id, first)"
-                            :class="form.workshop === first.id ? 'bg-amber-200' : 'bg-amber-50'"
-                            class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-amber-200 ">
-                            <div class="mb-3">
-                                <div class="flex justify-between items-center">
-                                    <div>
-                                        <div class="text-sm italic" v-if="!first.available">Full Booked</div>
-                                        <div class="text-sm italic" v-if="first.available">{{ first.quota -
-                                            first.transactions_count }} available</div>
+                        <div>
+                            <div v-for="first in events.first_workshop" @click="selectFirst(first.id, first)"
+                                :class="form.first_workshop === first.id ? 'bg-blue-200' : 'bg-blue-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
+                                <div class="mb-3">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="text-sm italic" v-if="!first.available">Full Booked</div>
+                                            <div class="text-sm italic" v-if="first.available">{{ first.quota -
+                                                first.transactions_count }} available</div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="text-xs">Min. 22 SKP</span>
+                                            <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
+                                                fill="#243776"></unicon>
+                                        </div>
                                     </div>
-                                    <div class="flex items-center">
-                                        <!-- <span class="text-xs">Min. 22 SKP</span>
-                                        <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
-                                            fill="#243776"></unicon> -->
-                                    </div>
-                                </div>
 
-                                <div class="font-semibold text-amber-900 flex">
-                                    <div v-if="first.available" class="flex items-center">
-                                        <unicon v-if="form.workshop === first.id" name="check-square" width="20"
-                                            height="20" fill="#243776"></unicon>
-                                        <unicon v-if="form.workshop !== first.id" name="square" width="20" height="20"
-                                            fill="#243776"></unicon>
+                                    <div class="font-semibold text-blue-900 flex">
+                                        <div v-if="first.available" class="flex items-center">
+                                            <unicon v-if="form.first_workshop === first.id" name="check-square"
+                                                width="20" height="20" fill="#243776"></unicon>
+                                            <unicon v-if="form.first_workshop !== first.id" name="square" width="20"
+                                                height="20" fill="#243776"></unicon>
+                                        </div>
+                                        <div class="ml-1">
+                                            {{ first.name }}
+                                        </div>
                                     </div>
-                                    <div class="ml-1">
-                                        {{ first.name }}
+                                    <div class="text-xs mb-1">
+                                        {{ $filters.formatDayDateTime(first.date_start) }}
+                                    </div>
+                                    <div class="text-xs mb-1 italic">
+                                        {{ first.title }}
                                     </div>
                                 </div>
-                                <div class="text-xs mb-1">
-                                    {{ $filters.formatDayDateTime(first.date_start) }}
-                                </div>
-                                <div class="text-xs mb-1 italic">
-                                    {{ first.title }}
+                            </div>
+                        </div>
+                        <div>
+                            <div v-for="second in events.second_workshop" @click="selectSecond(second.id, second)"
+                                :class="form.second_workshop === second.id ? 'bg-blue-200' : 'bg-blue-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
+                                <div class="mb-3">
+
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="text-sm italic" v-if="!second.available">Full Booked</div>
+                                            <div class="text-sm italic" v-if="second.available">{{ second.quota -
+                                                second.transactions_count }} available</div>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="text-xs">Min. 22 SKP</span>
+                                            <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
+                                                fill="#243776"></unicon>
+                                        </div>
+                                    </div>
+
+                                    <div class="font-semibold text-blue-900 flex">
+                                        <div v-if="second.available" class="flex items-center">
+                                            <unicon v-if="form.second_workshop === second.id" name="check-square"
+                                                width="20" height="20" fill="#243776"></unicon>
+                                            <unicon v-if="form.second_workshop !== second.id" name="square" width="20"
+                                                height="20" fill="#243776"></unicon>
+                                        </div>
+                                        <div class="ml-1">
+                                            <span>{{ second.name }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs mb-1">
+                                        {{ $filters.formatDayDateTime(second.date_start) }}
+                                    </div>
+                                    <div class="text-xs mb-1 italic">
+                                        {{ second.title }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +164,7 @@
                             Voucher Code
                         </div>
                         <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-900 focus:border-amber-500 block w-full p-2.5">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
                         <small class="text-red-800" v-if="pricing.voucher_validation">
                             {{ pricing.voucher_validation }}
                         </small>
@@ -196,7 +237,7 @@
                         </div>
                         <div class="mt-5">
                             <button @click="toPayment" :disabled="disabled"
-                                class="text-white w-full mb-2 bg-amber-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 <BtnLoader v-if="disabled"></BtnLoader>
                                 <span v-if="!disabled">Process to Payment</span>
                             </button>
@@ -232,15 +273,15 @@
                         <div class="grid mb-2 gap-1 grid-cols-3" v-for="(user, i) in users">
                             <div>
                                 <input v-model="user.email" type="text" :placeholder="'email_' + (i + 1) + '@mail.com'"
-                                    class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
+                                    class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500" />
                             </div>
                             <div>
                                 <input v-model="user.name" type="text" :placeholder="'User name ' + (i + 1)"
-                                    class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
+                                    class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500" />
                             </div>
                             <div>
                                 <input v-model="user.nik" type="text" :placeholder="'NIK ' + (i + 1)"
-                                    class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
+                                    class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500" />
                             </div>
                         </div>
                         <div>
@@ -277,11 +318,11 @@
                                 Guidance
                             </button>
                             <a href="http://satusehat.kemkes.go.id/sdmk/register" target="_blank"
-                                class="text-white bg-amber-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 Create Account
                             </a>
                             <button @click="confirm_modal.hide()"
-                                class="text-white bg-amber-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-amber-200 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-200 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 I have an Account
                             </button>
                         </div>
@@ -305,7 +346,8 @@ export default {
             confirm_modal: '',
             form: {
                 symposium: null,
-                workshop: null,
+                first_workshop: null,
+                second_workshop: null,
                 plataran_img: '',
             },
             users: [
@@ -318,7 +360,8 @@ export default {
             ],
             events: {
                 symposium: [],
-                workshop: [],
+                first_workshop: [],
+                second_workshop: [],
             },
             data_raw: {
                 symposium: true,
@@ -340,7 +383,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/events-list-carvep', {
+            this.authGet('pub/events-list-24', {
                 transaction_number: this.$route.query.transaction_number
             })
                 .then((data) => {
@@ -371,7 +414,7 @@ export default {
             this.$router.push('/plataran')
         },
         calculatePrice(mode = 'calculate') {
-            this.authPost('pub/calculate-price-carvep', {
+            this.authPost('pub/calculate-price-24', {
                 items: this.form,
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
@@ -387,15 +430,27 @@ export default {
                     }
                 })
         },
-        selectWorkshop(id, first) {
+        selectFirst(id, first) {
             if (first.available) {
-                if (this.form.workshop !== id) {
-                    this.form.workshop = id
+                if (this.form.first_workshop !== id) {
+                    this.form.first_workshop = id
                 } else {
-                    this.form.workshop = ''
+                    this.form.first_workshop = ''
                 }
             } else {
-                this.form.workshop = ''
+                this.form.first_workshop = ''
+            }
+            this.calculatePrice()
+        },
+        selectSecond(id, second) {
+            if (second.available) {
+                if (this.form.second_workshop !== id) {
+                    this.form.second_workshop = id
+                } else {
+                    this.form.second_workshop = ''
+                }
+            } else {
+                this.form.second_workshop = ''
             }
             this.calculatePrice()
         },
@@ -403,16 +458,25 @@ export default {
             this.member_modal.show()
         },
         toPayment() {
-            // if (!this.form.plataran_img && this.transaction.job_type_code !== "MHSA") {
-            //     this.toaster({ title: "Please upload Plataran Sehat (Screen Shoot)", icon: 'warning' })
-            //     return
-            // }
+            if (
+                (this.form.first_workshop && !this.form.second_workshop) ||
+                (!this.form.first_workshop && this.form.second_workshop)
+            ) {
+                this.toaster({ title: "Please select second workshop", icon: 'warning' })
+                return
+            }
+
+            if (!this.form.plataran_img && this.transaction.job_type_code !== "MHSA") {
+                this.toaster({ title: "Please upload Plataran Sehat (Screen Shoot)", icon: 'warning' })
+                return
+            }
 
             this.disabled = true;
-            this.authPost('pub/create-payment-carvep', {
+            this.authPost('pub/create-payment-24', {
                 items: {
                     symposium: this.form.symposium,
-                    workshop: this.form.workshop,
+                    first_workshop: this.form.first_workshop,
+                    second_workshop: this.form.second_workshop,
                 },
                 props: {
                     nik: this.form.nik,

@@ -1,31 +1,32 @@
 <template>
-    <nav class="px-2 sm:px-4 py-2 bg-gradient-to-r from-purple-300 to-cyan-300 bg-blue-200 fixed w-full z-20 top-0 left-0 "
+    <nav class="px-2 sm:px-4 py-2 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 fixed w-full z-20 top-0 left-0 "
         :class="scrollPosition > 60 ? 'bg-blue-200 border-b border-blue-100' : ''">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center ml-4 sm:ml-0">
                 <!-- <img src="/storage/logo/jcu_color.png" class="h-10 mr-3 sm:h-16" alt="Jogja Cardiology Update"> -->
-                <img src="/storage/logo/jcu24_color.png" class="h-10 mr-3 sm:h-16" alt="Jogja Cardiology Update">
+                <img src="/storage/logo/logo-cvep.png" class="h-10 mr-3 sm:h-16"
+                    alt="Jogja Cardiovascular Epidemiology and Prevention">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <div class="flex md:order-2">
                 <router-link to="/register"
-                    class="text-white flex items-center bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none 
-                    focus:ring-blue-300 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
+                    class="text-white flex items-center bg-slate-700 hover:bg-slate-500 focus:ring-4 focus:outline-none 
+                    focus:ring-amber-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
                     Register
                 </router-link>
                 <!-- <div
                     class="text-white flex items-center bg-slate-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
                     Register
                 </div> -->
-                <router-link to="/profile/info" v-if="has_token" class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 
-                        focus:outline-none focus:ring-blue-300 md:font-medium rounded-full 
+                <router-link to="/profile/info" v-if="has_token" class="text-white bg-slate-700 hover:bg-slate-500 focus:ring-4 
+                        focus:outline-none focus:ring-amber-400 md:font-medium rounded-full 
                         text-base px-2.5 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
                         <unicon name="user-md" fill="#ffffff" height="20px"></unicon>
                     </div>
                 </router-link>
                 <router-link to="/login" v-if="!has_token"
-                    class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-amber-400 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
                         <div>Login</div>
                     </div>
@@ -45,7 +46,7 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
-                    <li>
+                    <!-- <li>
                         <router-link to="/" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Home
@@ -74,7 +75,7 @@
                             class="block py-2 pl-3 pr-4 text-blue-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Sign In
                         </router-link>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
