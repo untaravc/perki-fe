@@ -137,20 +137,6 @@
                 </button>
             </div>
         </div>
-
-        <!--       List-->
-        <!-- <div class="c bg-yellow-100 rounded p-4 text-sm flex justify-between">
-            <div>
-                We invite you to submit your abstracts for consideration by September 19th.
-            </div>
-            <div>
-                <a href="https://src.perki-jogja.com/assets24/docs/abstract-case-report-guidline-jcu-2024.docx"
-                    target="_blank" download
-                    class="bg-slate-200 hover:bg-slate-300 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-sm px-4 py-1.5 text-center">
-                    Download Guideline
-                </a>
-            </div>
-        </div> -->
         <div class="italic text-sm mt-4 text-center" v-if="data_content.length === 0">
             No Data
         </div>

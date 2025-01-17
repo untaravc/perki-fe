@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-3 gap-4">
             <div v-for="(data, idx) in pricing"
-                class="col-span-3 md:col-span-1 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 rounded-lg p-6">
+                class="col-span-3 md:col-span-1 to-gray-300 rounded-lg p-6" :class="idx === 0 ? 'bg-amber-50' : idx === 1 ? 'bg-amber-200' :'bg-amber-100'">
                 <div class="text-md font-semibold">{{ data.title }}</div>
                 <div class="text-sm mb-4">{{ data.subtitle }} <span style="color: #ff000000;">.</span> </div>
                 <div v-if="data.price_sp > 0">

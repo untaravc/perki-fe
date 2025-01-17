@@ -13,14 +13,14 @@
             <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
                 <div class="mb-4">
                     <div class="text-2xl font-bold">Get Special Room Prices </div>
-                    <div class="italic text-blue-800 text-sm">for JCU 2024 participants</div>
+                    <div class="italic text-blue-800 text-sm">for Participants</div>
                 </div>
                 <div class="ml-8 mb-4">
                     <ol class="list-decimal">
                         <li>
                             <router-link to="/register"
                                 class="font-semibold underline text-blue-700">Register</router-link>
-                            yourself at the JCU 2024 Event
+                            yourself at the Event
                         </li>
                         <li>
                             After registering, you will get a link to claim the special price for the
@@ -32,7 +32,7 @@
                 </div>
                 <div class="mb-4">
                     For more detailed information
-                    <a href="https://wa.me/6285865064280?text=Bagaimana cara mendapatkan harga Room khusus, peserta JCU 2024?"
+                    <a href="https://wa.me/6285865064280?text=Bagaimana cara mendapatkan harga Room khusus peserta?"
                         target="_blank" class="italic text-blue-700">https://wa.me/6285865064280</a>
                 </div>
             </div>

@@ -41,7 +41,7 @@
             </div>
             <div class="grid grid-cols-7">
                 <div class="md:col-span-1 col-span-7 row-span-4 text-center">
-                    <div class="inline-block bg-blue-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
                         {{ $filters.formatTime("2023-09-01 08:00:00") }}
                         -
                         {{ $filters.formatTime("2023-09-01 11:00:00") }}
@@ -75,7 +75,7 @@
             </div>
             <div class="grid grid-cols-7">
                 <div class="md:col-span-1 col-span-7 row-span-4 text-center">
-                    <div class="inline-block bg-blue-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
                         {{ $filters.formatTime("2023-09-01 13:00:00") }}
                         -
                         {{ $filters.formatTime("2023-09-01 16:00:00") }}
@@ -115,7 +115,7 @@
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="(saturday, s) in schedule.saturday">
                 <div class="col-span-2 text-center md:col-span-1">
-                    <div class="inline-block bg-blue-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
                         {{ $filters.formatTime(saturday.date_start) }}
                         -
                         {{ $filters.formatTime(saturday.date_end) }}
@@ -191,7 +191,7 @@
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="sunday in schedule.sunday">
                 <div class="col-span-2 text-center md:col-span-1">
-                    <div class="inline-block bg-blue-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
                         {{ $filters.formatTime(sunday.date_start) }}
                         -
                         {{ $filters.formatTime(sunday.date_end) }}

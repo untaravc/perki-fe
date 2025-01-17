@@ -1,9 +1,8 @@
 <template>
-    <nav class="px-2 sm:px-4 py-2 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 fixed w-full z-20 top-0 left-0 "
-        :class="scrollPosition > 60 ? 'bg-blue-200 border-b border-blue-100' : ''">
+    <nav class="px-2 sm:px-4 py-2 bg-gradient-to-br from-orange-400 to-orange-300 fixed w-full z-20 top-0 left-0"
+        >
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center ml-4 sm:ml-0">
-                <!-- <img src="/storage/logo/jcu_color.png" class="h-10 mr-3 sm:h-16" alt="Jogja Cardiology Update"> -->
                 <img src="/storage/logo/logo-cvep.png" class="h-10 mr-3 sm:h-16"
                     alt="Jogja Cardiovascular Epidemiology and Prevention">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>

@@ -99,7 +99,7 @@ export default {
             }
         },
         async loadVideos() {
-            await this.authGet('pub/video-on-demand', { ref: 'jcu24' })
+            await this.authGet('pub/video-on-demand', { ref: '' })
                 .then((data) => {
                     this.data_content = data.result
                 })

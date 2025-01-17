@@ -4,7 +4,7 @@
             <div class="grid grid-cols-3">
                 <div class="col-span-3 md:col-span-2 px-6">
                     <div class="font-semibold text-2xl">
-                        Recording Symposium JCU & Jincartos
+                        Recording Symposium
                     </div>
                     <div class="font-semibold text-sm text-blue-700">
 

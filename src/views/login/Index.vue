@@ -3,7 +3,7 @@
         <div class="flex justify-center items-center" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl">
                 <div>
-                    <img src="/storage/logo/jcu24_color.png" alt="" class="h-16 mb-2">
+                    <img src="/storage/logo/logo-cvep.png" alt="" class="h-16 mb-2">
                 </div>
                 <div class="font-semibold text-xl">Sign In</div>
                 <div class="text-sm min-w-[380px]">Sign in with your account or gmail.</div>

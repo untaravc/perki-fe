@@ -3,9 +3,9 @@
         <div class="my-6" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl">
                 <div>
-                    <img src="/storage/logo/jcu24_color.png" alt="" class="h-16 mb-2">
+                    <img src="/storage/logo/logo-cvep.png" alt="" class="h-16 mb-2">
                 </div>
-                <div class="font-semibold text-xl">Register JCU 2024 in Conjunction with the 7th Jincartos</div>
+                <div class="font-semibold text-xl">Register Event</div>
                 <div class="text-sm">Create your account to register event.</div>
                 <div class="mt-3 grid gap-2 sm:grid-cols-2">
                     <div>

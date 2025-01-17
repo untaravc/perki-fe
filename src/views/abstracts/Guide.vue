@@ -17,13 +17,12 @@
                 <ul class="list-disc ml-4">
                     <li>All abstracts must be submitted in English</li>
                     <li>Before submitting an abstract, registration to the symposium is mandatory via website</li>
-                    <li>JCU accepts following paper/abstract types: Original research, Meta-analysis/systematic review,
+                    <li>The event accepts following paper/abstract types: Original research, Meta-analysis/systematic review,
                         and case report/case series.</li>
                     <li>Please refer to the abstract templates and upload the file attachment (optional) to the online
                         submission</li>
                     <li>Submission is only available via online submission</li>
-                    <li>No submission fee required to submit an abstract to JCU 2024 in conjunction with the 7th
-                        JINCARTOS 2024</li>
+                    <li>No submission fee required to submit an abstract to this event</li>
                     <li>There is no limit to the number of abstracts an author may submit.</li>
                     <li>The abstract should not be exceeded 300 words (excluding the title, authors, and affiliations)
                     </li>

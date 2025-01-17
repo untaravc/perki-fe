@@ -4,7 +4,7 @@
             <Carousel :settings="settings" :wrapAround="true" :breakpoints="breakpoints">
                 <Slide v-for="slide in sliders" :key="slide">
                     <div class="carousel__item">
-                        <img :src="slide.image" class="h-12 skew-x-3" alt="jcu-sponsor">
+                        <img :src="slide.image" class="h-12 skew-x-3" alt="sponsor">
                     </div>
                 </Slide>
             </Carousel>
