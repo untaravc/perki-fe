@@ -388,7 +388,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/abstracts', { ref: 2024 })
+            this.authGet('pub/abstracts', { ref: 'carvep' })
                 .then((data) => {
                     this.data_content = data.result
                 })

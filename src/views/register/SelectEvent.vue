@@ -119,44 +119,44 @@
                         </div>
 
 
-                        <div class="font-semibold mt-5 mb-2">
-                            Voucher Code
-                        </div>
-                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-900 focus:border-amber-500 block w-full p-2.5">
-                        <small class="text-red-800" v-if="pricing.voucher_validation">
-                            {{ pricing.voucher_validation }}
-                        </small>
-                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">
-                            <i>
-                                only applies to non-sponsored participants
-                            </i>
-                        </small>
-                        <div class="text-right mt-3">
-                            <div @click="calculatePrice('check')"
-                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">
-                                Check
-                            </div>
-                        </div>
+<!--                        <div class="font-semibold mt-5 mb-2">-->
+<!--                            Voucher Code-->
+<!--                        </div>-->
+<!--                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"-->
+<!--                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-900 focus:border-amber-500 block w-full p-2.5">-->
+<!--                        <small class="text-red-800" v-if="pricing.voucher_validation">-->
+<!--                            {{ pricing.voucher_validation }}-->
+<!--                        </small>-->
+<!--                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">-->
+<!--                            <i>-->
+<!--                                only applies to non-sponsored participants-->
+<!--                            </i>-->
+<!--                        </small>-->
+<!--                        <div class="text-right mt-3">-->
+<!--                            <div @click="calculatePrice('check')"-->
+<!--                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">-->
+<!--                                Check-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="font-semibold mt-5 mb-2">
-                            Collective Registration
-                        </div>
-                        <div v-if="count >= 5">
-                            <div v-for="user in users">
-                                <b>{{ user.name }}</b>
-                                <div class="flex justify-between">
-                                    <span class="text-sm">{{ user.nik }}</span>
-                                    <span class="text-sm">{{ user.email }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button @click="memberModal"
-                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
-                                Add Member
-                            </button>
-                        </div>
+<!--                        <div class="font-semibold mt-5 mb-2">-->
+<!--                            Collective Registration-->
+<!--                        </div>-->
+<!--                        <div v-if="count >= 5">-->
+<!--                            <div v-for="user in users">-->
+<!--                                <b>{{ user.name }}</b>-->
+<!--                                <div class="flex justify-between">-->
+<!--                                    <span class="text-sm">{{ user.nik }}</span>-->
+<!--                                    <span class="text-sm">{{ user.email }}</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <button @click="memberModal"-->
+<!--                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">-->
+<!--                                Add Member-->
+<!--                            </button>-->
+<!--                        </div>-->
 
                         <div class="font-semibold mt-5 mb-2">
                             Transaction Details

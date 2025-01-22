@@ -79,7 +79,7 @@ export default {
             }
         },
         loadData() {
-            this.authGet('pub/pending-transaction-count?ref=2024')
+            this.authGet('pub/pending-transaction-count?ref=carvep')
                 .then((data) => {
                     this.pending_transaction = data.result.pending_transaction
                     this.abstracts = data.result.abstracts
