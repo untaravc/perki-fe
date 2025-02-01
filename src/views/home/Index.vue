@@ -3,6 +3,7 @@
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
+        <WelcomeMessage></WelcomeMessage>
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
         <Schedule></Schedule>
@@ -17,6 +18,7 @@
 
 <script>
 import Hero from './Hero.vue'
+import WelcomeMessage from './WelcomeMessage.vue'
 // import Video from './Video.vue'
 import Speakers from './Speakers.vue'
 import Schedule from './SchedulesCarvep.vue'
@@ -40,7 +42,7 @@ export default {
         TimerPage,
         Venue,
         // EventCta,
-        // WelcomeMessage,
+        WelcomeMessage,
         // Menu
     }
 }
