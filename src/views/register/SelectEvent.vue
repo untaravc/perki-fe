@@ -119,44 +119,44 @@
                         </div>
 
 
-<!--                        <div class="font-semibold mt-5 mb-2">-->
-<!--                            Voucher Code-->
-<!--                        </div>-->
-<!--                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"-->
-<!--                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-900 focus:border-amber-500 block w-full p-2.5">-->
-<!--                        <small class="text-red-800" v-if="pricing.voucher_validation">-->
-<!--                            {{ pricing.voucher_validation }}-->
-<!--                        </small>-->
-<!--                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">-->
-<!--                            <i>-->
-<!--                                only applies to non-sponsored participants-->
-<!--                            </i>-->
-<!--                        </small>-->
-<!--                        <div class="text-right mt-3">-->
-<!--                            <div @click="calculatePrice('check')"-->
-<!--                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">-->
-<!--                                Check-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <!--                        <div class="font-semibold mt-5 mb-2">-->
+                        <!--                            Voucher Code-->
+                        <!--                        </div>-->
+                        <!--                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"-->
+                        <!--                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-900 focus:border-amber-500 block w-full p-2.5">-->
+                        <!--                        <small class="text-red-800" v-if="pricing.voucher_validation">-->
+                        <!--                            {{ pricing.voucher_validation }}-->
+                        <!--                        </small>-->
+                        <!--                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">-->
+                        <!--                            <i>-->
+                        <!--                                only applies to non-sponsored participants-->
+                        <!--                            </i>-->
+                        <!--                        </small>-->
+                        <!--                        <div class="text-right mt-3">-->
+                        <!--                            <div @click="calculatePrice('check')"-->
+                        <!--                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">-->
+                        <!--                                Check-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
 
-<!--                        <div class="font-semibold mt-5 mb-2">-->
-<!--                            Collective Registration-->
-<!--                        </div>-->
-<!--                        <div v-if="count >= 5">-->
-<!--                            <div v-for="user in users">-->
-<!--                                <b>{{ user.name }}</b>-->
-<!--                                <div class="flex justify-between">-->
-<!--                                    <span class="text-sm">{{ user.nik }}</span>-->
-<!--                                    <span class="text-sm">{{ user.email }}</span>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <button @click="memberModal"-->
-<!--                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">-->
-<!--                                Add Member-->
-<!--                            </button>-->
-<!--                        </div>-->
+                        <div class="font-semibold mt-5 mb-2">
+                            Collective Registration
+                        </div>
+                        <div v-if="count >= 1" class="mb-4">
+                            <div v-for="user in users">
+                                <b>{{ user.name }}</b>
+                                <div class="flex justify-between">
+                                    <span class="text-sm">{{ user.nik }}</span>
+                                    <span class="text-sm">{{ user.email }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button @click="memberModal"
+                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                Add Member
+                            </button>
+                        </div>
 
                         <div class="font-semibold mt-5 mb-2">
                             Transaction Details
@@ -213,7 +213,7 @@
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-3 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-lg font-semibold text-gray-900">
-                            Add Member
+                            Add Collective Registration
                         </h3>
                         <button type="button" @click="member_modal.hide()"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg p-1 ml-auto inline-flex items-center">
@@ -221,25 +221,22 @@
                         </button>
                     </div>
                     <div class="p-6">
-                        <p class="mb-3">
-                            <i>Buy 5 get 1 Free.</i> Add five other <b>General Practitioner</b> to get special Symposium
-                            price (IDR 5.000.000)
-                        </p>
-                        <div class="grid mb-2 gap-1 grid-cols-2">
+                        <div class="grid mb-2 gap-1 grid-cols-3">
                             <div>Email</div>
                             <div>Name</div>
+                            <div>NIK</div>
                         </div>
                         <div class="grid mb-2 gap-1 grid-cols-3" v-for="(user, i) in users">
                             <div>
-                                <input v-model="user.email" type="text" :placeholder="'email_' + (i + 1) + '@mail.com'"
+                                <input v-model="user.email" type="text" :placeholder="'email [' + (i + 1) + ']'"
                                     class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
                             </div>
                             <div>
-                                <input v-model="user.name" type="text" :placeholder="'User name ' + (i + 1)"
+                                <input v-model="user.name" type="text" :placeholder="'Name [' + (i + 1) + ']'"
                                     class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
                             </div>
                             <div>
-                                <input v-model="user.nik" type="text" :placeholder="'NIK ' + (i + 1)"
+                                <input v-model="user.nik" type="text" :placeholder="'NIK [' + (i + 1) + ']'"
                                     class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
                             </div>
                         </div>
@@ -309,12 +306,16 @@ export default {
                 plataran_img: '',
             },
             users: [
-                { name: '', email: '' },
-                { name: '', email: '' },
-                { name: '', email: '' },
-                { name: '', email: '' },
-                { name: '', email: '' },
-                // { name: '', email: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
+                { name: '', email: '', nik: '' },
             ],
             events: {
                 symposium: [],
@@ -442,18 +443,22 @@ export default {
                 }
             })
 
-            if (this.count < 5) {
-                if (confirm("Member less than 5, add more member?")) {
+            if (this.count < 1) {
+                if (confirm("Member less than 1, add more member?")) {
 
                 } else {
                     this.member_modal.hide()
                     this.users = [
-                        { name: '', email: '' },
-                        { name: '', email: '' },
-                        { name: '', email: '' },
-                        { name: '', email: '' },
-                        { name: '', email: '' },
-                        // { name: '', email: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
+                        { name: '', email: '', nik: '' },
                     ];
                 }
             } else {

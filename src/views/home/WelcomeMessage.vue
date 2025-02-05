@@ -1,13 +1,13 @@
 <template>
   <div class="px-2 mb-3 mt-20">
     <div class="max-w-screen-md m-auto py-6 shadow-md bg-white rounded-lg p-6 md:p-10">
-      <div class="text-center text-2xl font-semibold mb-5">Welcome Speech</div>
+      <div class="text-center text-xl font-semibold mb-5">Welcome Speech</div>
       <div className="float-right ml-4 mb-3 w-48 h-60 rounded-md bg-cover bg-center bg-no-repeat"
         style="background-image: url('https://src.perki-jogja.com/assets/photo2/irsad.andi.png');">
 
       </div>
       <div>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-700 leading-relaxed text-sm">
         <div class="mb-3">Dear colleagues,</div>
         <div class="mb-3">
           Cardiovascular disease (CVD) prevention has a great impact in society by reducing the burden of this
