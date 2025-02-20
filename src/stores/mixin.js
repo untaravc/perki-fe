@@ -69,8 +69,9 @@ const mixin = {
 						localStorage.removeItem('perki_user_token');
 					} else if (rc === 422) {
 						response = e.response.data
+					} else {
+						response = e.response.data
 					}
-					return response;
 				})
 
 			return response;

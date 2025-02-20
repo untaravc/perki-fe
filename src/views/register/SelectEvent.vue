@@ -26,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-2 grid gap-2 md:grid-cols-1" v-if="data_raw.workshop && count < 5">
+                    <div class="col-span-2 grid gap-2 md:grid-cols-1" v-if="data_raw.workshop && count < 1">
                         <!-- <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if=""> -->
                         <div v-for="first in events.workshop" @click="selectWorkshop(first.id, first)"
                             :class="form.workshop === first.id ? 'bg-amber-200' : 'bg-amber-50'"

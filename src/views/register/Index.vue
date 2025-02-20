@@ -232,7 +232,7 @@ export default {
             this.apiPost('pub/register', this.form)
                 .then((data) => {
                     this.disabled = false
-                    if (data.status) {
+                    if (data.success) {
                         let trx = data.result.transaction
                         let token = data.result.token
 
@@ -250,11 +250,12 @@ export default {
                     } else {
                         if (data.error === 422) {
                             this.form_errors = data.errors
-                        }
-                        if (data.error === 401) {
+                        } else if (data.error === 401) {
                             if (confirm("Email has already been registered. Login with your email?")) {
                                 this.$router.push('/login');
                             }
+                        } else {
+                            alert(data.message)
                         }
                     }
                 }).catch(() => {
