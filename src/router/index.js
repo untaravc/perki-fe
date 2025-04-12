@@ -15,6 +15,8 @@ import Abstracts from '../views/abstracts/Index.vue'
 import AbstractsShow from '../views/abstracts/Show.vue'
 import CheckTransaction from '../views/check_transaction/Index.vue'
 import ContactUs from '../views/contact-us/Index.vue'
+import PrivacyPolicy from '../views/contact-us/PrivacyPolicy.vue'
+import Licensing from '../views/contact-us/Licensing.vue'
 
 import Profile from '../views/profile/Index.vue'
 import Events from '../views/events/Index.vue'
@@ -55,6 +57,16 @@ const router = createRouter({
 					path: '/contact-us',
 					name: 'contact-us',
 					component: ContactUs,
+				},
+				{
+					path: '/privacy-policy',
+					name: 'privacy-policy',
+					component: PrivacyPolicy,
+				},
+				{
+					path: '/licensing',
+					name: 'licensing',
+					component: Licensing,
 				},
 				{
 					path: '/guidance',

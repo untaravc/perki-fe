@@ -3,15 +3,15 @@
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
-        <WelcomeMessage></WelcomeMessage>
+        <!-- <WelcomeMessage></WelcomeMessage> -->
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
-        <Schedule></Schedule>
+        <!-- <Schedule></Schedule>
         <Pricing></Pricing>
         <div class="bg-amber-50">
             <Speakers></Speakers>
-        </div>
-        <Venue2></Venue2>
+        </div> -->
+        <Venue></Venue>
         <!-- <Sponsors></Sponsors> -->
     </div>
 </template>
@@ -23,7 +23,7 @@ import Speakers from './Speakers.vue'
 import Schedule from './SchedulesCarvep.vue'
 import Pricing from "./PricingCol.vue";
 import TimerPage from "./Timer.vue";
-import Venue2 from "./Venue2.vue";
+import Venue from "./Venue2.vue";
 export default {
     components: {
         Pricing,
@@ -31,7 +31,7 @@ export default {
         Speakers,
         Schedule,
         TimerPage,
-        Venue2,
+        Venue,
         WelcomeMessage,
     }
 }

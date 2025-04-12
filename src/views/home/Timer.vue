@@ -1,12 +1,14 @@
 <template>
     <div class="px-2 mb-3">
-        <div class="max-w-screen-lg m-auto py-6 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 rounded-lg">
+        <div class="max-w-screen-lg m-auto py-6 bg-background-mint rounded-lg">
             <div class="grid grid-cols-3">
                 <div class="col-span-3 md:col-span-1 text-center md:border-r-2 mb-4 border-blue-900">
                     <div class="font-semibold text-lg">Get Ready For The Event</div>
-                    <div>22nd & 23rd of February 2025</div>
-                    <a href="https://maps.app.goo.gl/PD6NVZGZoDrMqzN5A" target="_blank"
-                        class="text-sm text-slate-500 underline cursor-pointer">The Rich Hotel, Yogyakarta</a>
+                    <div>29th & 30th of May 2025</div>
+                    <a href="https://maps.app.goo.gl/SHfPxDQp8TMdxZwP7" target="_blank"
+                        class="text-sm text-slate-500 underline cursor-pointer">Pascasarjana Tahir Foundation, Jl.
+                        Kesehatan No.1,
+                        Yogyakarta</a>
                 </div>
                 <div class="col-span-3 md:col-span-2 flex justify-center items-center">
                     <div class="grid gap:3 md:gap-12 grid-cols-4">
@@ -45,7 +47,7 @@ export default {
     },
     methods: {
         countdown() {
-            const countDownDate = new Date("2025-02-22 08:00:00").getTime();
+            const countDownDate = new Date("2025-05-29 08:00:00").getTime();
 
             let now = new Date().getTime();
             let timeleft = countDownDate - now;

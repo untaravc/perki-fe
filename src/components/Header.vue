@@ -1,23 +1,22 @@
 <template>
-    <nav class="px-2 sm:px-4 py-2 bg-gradient-to-br from-orange-400 to-orange-300 fixed w-full z-20 top-0 left-0"
-        >
+    <nav class="px-2 sm:px-4 py-2 bg-background-mint fixed w-full z-20 top-0 left-0">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center ml-4 sm:ml-0">
-                <img src="/storage/logo/logo-cvep.png" class="h-10 mr-3 sm:h-16"
-                    alt="Jogja Cardiovascular Epidemiology and Prevention">
+                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Flogo_jfu_text_trans.png?alt=media&token=d2983924-d5af-4e5c-a0c8-30f9455a4fd1"
+                    class="h-10 mr-3 sm:h-16" alt="Jogja Foot Ulcer Meeting 2025">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <div class="flex md:order-2">
-                <router-link to="/register"
+                <!-- <router-link to="/register"
                     class="text-white flex items-center bg-slate-700 hover:bg-slate-500 focus:ring-4 focus:outline-none 
                     focus:ring-amber-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
                     Register
-                </router-link>
+                </router-link> -->
                 <!-- <div
                     class="text-white flex items-center bg-slate-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
                     Register
                 </div> -->
-                <router-link to="/profile/info" v-if="has_token" class="text-white bg-slate-700 hover:bg-slate-500 focus:ring-4 
+                <!-- <router-link to="/profile/info" v-if="has_token" class="text-white bg-slate-700 hover:bg-slate-500 focus:ring-4 
                         focus:outline-none focus:ring-amber-400 md:font-medium rounded-full 
                         text-base px-2.5 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
@@ -29,8 +28,8 @@
                     <div class="flex items-center">
                         <div>Login</div>
                     </div>
-                </router-link>
-                <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"
+                </router-link> -->
+                <!-- <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"
                     class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
@@ -40,7 +39,7 @@
                             d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                             clip-rule="evenodd"></path>
                     </svg>
-                </button>
+                </button> -->
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul

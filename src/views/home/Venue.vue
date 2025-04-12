@@ -1,11 +1,11 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2" id="venue">
-        <!-- <div class="text-4xl font-bold text-center mb-3">
+        <div class="text-4xl font-bold text-center mb-3">
             VENUE
         </div>
         <div class="mb-6 text-center">
             The Rich Hotel Yogyakarta
-        </div> -->
+        </div>
         <div class="rounded-xl shadow-sm bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 grid grid-cols-12">
             <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
                 style="background-image: url('/storage/img/the-rich.png')">

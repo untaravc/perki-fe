@@ -5,8 +5,7 @@
                 class="md:order-2 rounded-lg md:col-span-2 relative bg-contain h-96 bg-center bg-no-repeat w-full"
                 :style="`background-image: url('` + base_url + data_content[index]['poster'] + `')`"></a>
             <div class="md:col-span-3 md:order-1">
-                <div
-                    class="m-5 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 rounded-full py-1 px-8 italic text-sm inline-block">
+                <div class="m-5 bg-background-mint rounded-full py-1 px-8 italic font-semibold text-sm inline-block">
                     {{ data_content[index]['date'] }}
                 </div>
                 <div class="mx-5 mb-5 font-bold text-slate-800"
@@ -73,7 +72,7 @@ export default {
             clearInterval(this.interval)
         },
         loadData() {
-            this.apiGet('pub/hero-banner', { ref: 'cvep' })
+            this.apiGet('pub/hero-banner', { ref: 'jfu' })
                 .then((data) => {
                     this.data_content = data.result;
                 })
