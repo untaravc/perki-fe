@@ -10,14 +10,20 @@
                 </div>
                 <div class="mb-2 text-xl">
                     Pascasarjana Tahir Foundation
+                    <div class="italic text-blue-800 text-sm">Symposium & Basic Workshop</div>
                 </div>
                 <div class="mb-2 text-slate-800">
-                    Jl. Kesehatan No.1, Sendowo, Sinduadi, Kec. Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta
-                    55281
+                    Senolowo, Jl. Farmako, Sekip Utara, Kec. Depok, Kabupaten Sleman
+                </div>
+
+                <div class="mb-2 text-xl">
+                    Rsup Dr. Sardjito
+                    <div class="italic text-blue-800 text-sm">Advance Doppler Workshop</div>
+                </div>
+                <div class="mb-2 text-slate-800">
+                    Jl. Kesehatan Jl. Kesehatan Sendowo No.1, Sendowo, Sinduadi, Kec. Mlati, Kabupaten Sleman
                 </div>
             </div>
         </div>
     </div>
 </template>
-<script setup>
-</script>

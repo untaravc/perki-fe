@@ -12,6 +12,7 @@
     "@heroicons/vue": "^2.0.16",
     "axios": "^0.27.2",
     "chart.js": "^4.3.0",
+    "firebase": "^10.14.1",
     "flowbite": "^1.6.3",
     "mitt": "^3.0.0",
     "moment": "^2.29.4",

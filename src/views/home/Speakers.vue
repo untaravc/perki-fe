@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         loadSpeaker() {
-            this.apiGet('pub/speakers', { ref: 'carvep', limit: 8 })
+            this.apiGet('pub/speakers', { ref: 'jfu25', limit: 8 })
                 .then((data) => {
                     this.data_content = data.result
                 })

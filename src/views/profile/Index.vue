@@ -29,7 +29,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/profile/abstracts" class="flex my-3 cursor-pointer justify-between"
+                        <!-- <router-link to="/profile/abstracts" class="flex my-3 cursor-pointer justify-between"
                             @click="active = 'abstracts'">
                             <div class="flex">
                                 <unicon name="file-upload" height="20px" :fill="active === 'abstracts' ? 'blue' : ''">
@@ -39,7 +39,7 @@
                             <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
                                 {{ abstracts }}
                             </div>
-                        </router-link>
+                        </router-link> -->
 
                         <div class="flex my-3 cursor-pointer" @click="logout">
                             <unicon name="signout" height="20px"></unicon>
@@ -79,7 +79,7 @@ export default {
             }
         },
         loadData() {
-            this.authGet('pub/pending-transaction-count?ref=carvep')
+            this.authGet('pub/pending-transaction-count?ref=jfu25')
                 .then((data) => {
                     this.pending_transaction = data.result.pending_transaction
                     this.abstracts = data.result.abstracts

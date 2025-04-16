@@ -11,7 +11,7 @@
                     <router-link to="/privacy-policy" class="mr-4 hover:underline md:mr-6">Privacy Policy</router-link>
                 </li>
                 <li>
-                    <router-link a="/licensing" class="mr-4 hover:underline md:mr-6 ">Licensing</router-link>
+                    <router-link to="/licensing" class="mr-4 hover:underline md:mr-6 ">Licensing</router-link>
                 </li>
                 <li>
                     <router-link to="/contact-us" class="hover:underline active:color-white">Contact</router-link>

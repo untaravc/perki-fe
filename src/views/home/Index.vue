@@ -6,11 +6,11 @@
         <!-- <WelcomeMessage></WelcomeMessage> -->
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
-        <!-- <Schedule></Schedule>
+        <Schedule></Schedule>
         <Pricing></Pricing>
-        <div class="bg-amber-50">
+        <div class="bg-background-mint">
             <Speakers></Speakers>
-        </div> -->
+        </div>
         <Venue></Venue>
         <!-- <Sponsors></Sponsors> -->
     </div>
@@ -20,7 +20,7 @@
 import Hero from './Hero.vue'
 import WelcomeMessage from './WelcomeMessage.vue'
 import Speakers from './Speakers.vue'
-import Schedule from './SchedulesCarvep.vue'
+import Schedule from './SchedulesSimple.vue'
 import Pricing from "./PricingCol.vue";
 import TimerPage from "./Timer.vue";
 import Venue from "./Venue2.vue";

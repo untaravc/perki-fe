@@ -3,7 +3,8 @@
         <div class="flex justify-center items-center" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl">
                 <div>
-                    <img src="/storage/logo/logo-cvep.png" alt="" class="h-16 mb-2">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Flogo_jfu_text_trans.png?alt=media&token=d2983924-d5af-4e5c-a0c8-30f9455a4fd1"
+                        alt="" class="h-16 mb-2">
                 </div>
                 <div class="font-semibold text-xl">Sign In</div>
                 <div class="text-sm min-w-[380px]">Sign in with your account or gmail.</div>
@@ -26,12 +27,12 @@
                         <span v-if="!disabled">Sign In</span>
                     </button>
                 </div>
-                <div class="mt-3 text-center">
+                <!-- <div class="mt-3 text-center">
                     <div class="italic text-slate-500 text-sm mb-2">Sign in with Google</div>
                     <div>
                         <GoogleLogin :callback="loginByGoogle" />
                     </div>
-                </div>
+                </div> -->
                 <div class="mt-3">
                     <router-link to="/forgot-password" class="text-slate-500 font-semibold text-sm mb-2">Forgot your
                         Password?</router-link>

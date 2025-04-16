@@ -50,16 +50,16 @@
                             </li>
                         </ul>
                     </div>
-<!--                    <div v-if="trx.transaction_children && trx.transaction_children.length > 0">-->
-<!--                        <div class="font-semibold">Collective Registration</div>-->
-<!--                        <div class="text-sm" v-for="child in trx.transaction_children">-->
-<!--                            <i>{{ child.user_name }}</i>-->
-<!--                            <div class="flex justify-between text-slate-500">-->
-<!--                                <div>{{ child.user_email }}</div>-->
-<!--                                <div>{{ child.nik }}</div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div v-if="trx.transaction_children && trx.transaction_children.length > 0">-->
+                    <!--                        <div class="font-semibold">Collective Registration</div>-->
+                    <!--                        <div class="text-sm" v-for="child in trx.transaction_children">-->
+                    <!--                            <i>{{ child.user_name }}</i>-->
+                    <!--                            <div class="flex justify-between text-slate-500">-->
+                    <!--                                <div>{{ child.user_email }}</div>-->
+                    <!--                                <div>{{ child.nik }}</div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
                 </div>
                 <div>
                     <div class="font-semibold text-blue-700 text-right">
@@ -92,7 +92,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/transaction-list?ref=carvep',)
+            this.authGet('pub/transaction-list?ref=jfu25',)
                 .then((data) => {
                     this.data_content = data.result;
                 })

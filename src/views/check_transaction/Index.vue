@@ -7,9 +7,8 @@
             Tentrem Hotel Yogyakarta, P. Mangkubumi St. No.72A, Cokrodiningratan, Jetis, Yogyakarta
         </div>
         <div class="rounded-xl shadow-sm bg-blue-100 grid grid-cols-12">
-            <div
-                class="col-span-12 md:col-span-5 min-h-[300px]  bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
-                style="background-image: url('/storage/img/tentrem-hotel.webp')">
+            <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
+                style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Ftahir.webp?alt=media&token=3a731e63-0c2d-4943-a0c4-80888b3593cd')">
             </div>
             <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-4">
                 <div>
@@ -19,12 +18,14 @@
                 <div class="ml-8 mt-4">
                     <ol class="list-decimal">
                         <li>
-                            <router-link to="/register" class="font-semibold underline text-blue-700">Register</router-link>
+                            <router-link to="/register"
+                                class="font-semibold underline text-blue-700">Register</router-link>
                             yourself at the Event
                         </li>
                         <li>
                             After registering, you will get a link to claim the special price for the
-                            <a href="https://goo.gl/maps/4LjYCwk7Ny3v4bh88" target="_blank" class="underline text-blue-700 italic">Tentrem Hotel</a>
+                            <a href="https://goo.gl/maps/4LjYCwk7Ny3v4bh88" target="_blank"
+                                class="underline text-blue-700 italic">Tentrem Hotel</a>
                             rooms
                         </li>
                     </ol>
@@ -32,8 +33,7 @@
                 <div class="mt-4">
                     For more detailed information
                     <a href="https://wa.me/6285865064280?text=Bagaimana cara mendapatkan harga Room khusus peserta?"
-                       target="_blank"
-                       class="italic text-blue-700">https://wa.me/6285865064280</a>
+                        target="_blank" class="italic text-blue-700">https://wa.me/6285865064280</a>
                 </div>
             </div>
         </div>

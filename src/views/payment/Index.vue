@@ -12,7 +12,9 @@
                     <div class="border rounded-tr-md flex justify-between rounded-tl-md p-3 bg-slate-50">
                         <div class="text-base font-semibold">Transfer Bank</div>
                         <div>
-                            <img style="max-height: 25px" src="/storage/logo/Mandiri_logo.png" alt="">
+                            <img style="max-height: 25px"
+                                src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fmandiri-logo.png?alt=media&token=bbf6e2b5-27a1-41ff-b78b-7b1d4ddc6565"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -76,7 +78,8 @@
                             </div>
                         </div>
                     </label>
-                    <input type="file" accept="application/pdf,image/*" hidden id="file_upload" @change="uploadFile">
+                    <input type="file" accept="application/pdf,image/*" hidden id="file_upload" ref="file_upload"
+                        @change="uploadPhoto">
                 </div>
                 <div v-show="show_proof" class="flex justify-center bg-slate-200 p-2">
                     <div class="relative">
@@ -110,6 +113,8 @@
 <script>
 import PageLoading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
+import { upload, randomString } from '../../firebase_upload';
+import moment from 'moment';
 export default {
     components: {
         PageLoading
@@ -142,43 +147,62 @@ export default {
             navigator.clipboard.writeText(copy_text);
             this.toaster({ title: text + ' disalin' })
         },
-        uploadFile() {
-            let file = document.getElementById("file_upload").files[0];
-            if (file) {
-                this.upload_loader = true;
-                let form_data = new FormData();
+        // uploadFile() {
+        //     let file = document.getElementById("file_upload").files[0];
+        //     if (file) {
+        //         this.upload_loader = true;
+        //         let form_data = new FormData();
 
-                form_data.append('file', file)
-                form_data.append('model', 'transaction')
-                form_data.append('model_id', this.transaction.id)
-                form_data.append('title', 'Bukti Transfer ' + this.transaction.number)
+        //         form_data.append('file', file)
+        //         form_data.append('model', 'transaction')
+        //         form_data.append('model_id', this.transaction.id)
+        //         form_data.append('title', 'Bukti Transfer ' + this.transaction.number)
 
-                this.authPost('pub/upload-file', form_data)
-                    .then((data) => {
-                        if (data.success) {
-                            this.transaction.transfer_proof = data.result.link;
-                            this.uploadTransferProof()
-                            this.show_proof = true
-                        }
-                        this.upload_loader = false;
-                    }).catch((e) => {
-                        this.upload_loader = false;
-                    });
+        //         this.authPost('pub/upload-file', form_data)
+        //             .then((data) => {
+        //                 if (data.success) {
+        //                     this.transaction.transfer_proof = data.result.link;
+        //                     this.uploadTransferProof()
+        //                     this.show_proof = true
+        //                 }
+        //                 this.upload_loader = false;
+        //             }).catch((e) => {
+        //                 this.upload_loader = false;
+        //             });
+        //     }
+        // },
+        // uploadTransferProof() {
+        //     this.authPost('pub/transaction-transfer-proof', {
+        //         transaction_id: this.transaction.id,
+        //         transfer_proof_link: this.transaction.transfer_proof
+        //     })
+        //         .then((data) => {
+        //             if (data.success) {
+        //                 this.upload_loader = false;
+        //                 this.loadData()
+        //             }
+        //         }).catch(() => {
+
+        //         })
+        // },
+        async uploadPhoto() {
+            const input = this.$refs.file_upload;
+            console.log(input)
+            if (input && input.files.length > 0) {
+                this.upload_loader = true
+                const file_name = this.generateFileName('TransferProof', input.files[0])
+                this.transaction.transfer_proof = await upload(file_name, input.files[0])
+                this.upload_loader = false
             }
         },
-        uploadTransferProof() {
-            this.authPost('pub/transaction-transfer-proof', {
-                transaction_id: this.transaction.id,
-                transfer_proof_link: this.transaction.transfer_proof
-            })
-                .then((data) => {
-                    if (data.success) {
-                        this.upload_loader = false;
-                        this.loadData()
-                    }
-                }).catch(() => {
+        generateFileName(directory, file) {
+            let name = moment().format("YYYYMMDD-HHmm");
+            name += "-" + randomString(30);
+            const fileExtension = file.name.slice(
+                ((file.name.lastIndexOf(".") - 1) >>> 0) + 2
+            );
 
-                })
+            return `${directory}/${name}.${fileExtension}`;
         }
     },
     mounted() {
