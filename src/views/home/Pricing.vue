@@ -1,9 +1,9 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2" id="package">
-        <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
+        <div class="text-4xl text-rose-900 font-bold mb-1 text-center">
             PRICING
         </div>
-        <div class="text-small text-slate-600 mb-5 text-center">
+        <div class="text-small text-rose-600 mb-5 text-center">
             Register yourself and get a special price
         </div>
         <div class="grid grid-cols-3 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300">
@@ -30,20 +30,19 @@
                     <div class="disc" v-html="selected.desc"></div>
                 </div>
             </div>
-            <div
-                class="md:col-span-1  col-span-3 border-l  border-slate-500 shadow p-5 rounded-r-none md:rounded-r-lg ">
+            <div class="md:col-span-1  col-span-3 border-l  border-rose-500 shadow p-5 rounded-r-none md:rounded-r-lg ">
                 <div class="text-lg font-bold mb-3">{{ selected.name }} </div>
                 <div v-if="selected.price_stdn">
                     <div class="text-base mb-1 italic"></div>
-                    <div class="text-3xl font-bold text-blue-700 mb-2">
+                    <div class="text-3xl font-bold text-rose-700 mb-2">
                         Rp {{ $filters.currency(selected.price_stdn) }}
                     </div>
                 </div>
                 <div class="text-base mb-1 italic">Symposium</div>
-                <div class="text-3xl font-bold text-blue-700 mb-2">
+                <div class="text-3xl font-bold text-rose-700 mb-2">
                     Rp {{ $filters.currency(selected.price_drgn) }}
                 </div>
-                <div class="italic border-b mb-3 border-slate-500">
+                <div class="italic border-b mb-3 border-rose-500">
                     <!-- Early Bird:
                     <span class="font-bold text-lime-700">Rp {{ $filters.currency(selected.price_drgn_eb) }}</span> -->
                 </div>
@@ -55,7 +54,7 @@
                     <div class="italic mb-4" v-if="selected.price_drsp_eb > 0">
                         Normal Price:
                         <span style="text-decoration-thickness: 2px; text-decoration-color: #ff0000aa;"
-                            class="font-bold text-slate-500 line-through">Rp {{
+                            class="font-bold text-rose-500 line-through">Rp {{
                                 $filters.currency(selected.price_drsp_eb) }}</span>
                     </div>
                 </div>

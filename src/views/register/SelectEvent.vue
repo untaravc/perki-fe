@@ -1,10 +1,10 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24" style="min-height: calc(100vh - 133px);">
-        <div class="p-6 border-slate-100 bg-white rounded-xl">
+        <div class="p-6 border-rose-100 bg-white rounded-xl">
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
-                        class="rounded-lg bg-amber-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
+                        class="rounded-lg bg-amber-200 p-4 border cursor-pointer hover:bg-rose-100 mb-3">
                         <div class="mb-3">
                             <div class="flex justify-between">
                                 <div class="font-semibold text-amber-900 flex items-center">
@@ -134,7 +134,7 @@
                         <!--                        </small>-->
                         <!--                        <div class="text-right mt-3">-->
                         <!--                            <div @click="calculatePrice('check')"-->
-                        <!--                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">-->
+                        <!--                                class="text-white cursor-pointer inline-block mb-2 bg-rose-500 hover:bg-rose-600 rounded-lg text-base px-3 py-1 text-center">-->
                         <!--                                Check-->
                         <!--                            </div>-->
                         <!--                        </div>-->
@@ -153,7 +153,7 @@
                         </div>
                         <div>
                             <button @click="memberModal"
-                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="w-full mb-2 bg-rose-200 hover:bg-rose-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
                         </div>
@@ -164,7 +164,7 @@
                         <div class="text-sm border-b">
                             <div v-for="price in pricing.items">
                                 <div class="flex justify-between my-1" v-if="price.price !== 0"
-                                    :class="price.name === 'Total' ? 'border-t border-slate-800 font-semibold' : ''">
+                                    :class="price.name === 'Total' ? 'border-t border-rose-800 font-semibold' : ''">
                                     <div>{{ price.name }}</div>
                                     <div>{{ $filters.currency(price.price) }}</div>
                                 </div>
@@ -172,20 +172,20 @@
                         </div>
                         <div class="text-sm">
                             <div class="flex justify-between  my-1">
-                                <div class="text-slate-600">Subtotal</div>
+                                <div class="text-rose-600">Subtotal</div>
                                 <div class="font-semibold">{{ $filters.currency(pricing.subtotal) }}</div>
                             </div>
                         </div>
                         <div class="text-sm" v-if="pricing.discount_amount !== 0">
                             <div class="flex justify-between  my-1">
-                                <div class="text-slate-500">Voucher Discount</div>
-                                <div class="text-slate-500">{{ $filters.currency(pricing.discount_amount) }}</div>
+                                <div class="text-rose-500">Voucher Discount</div>
+                                <div class="text-rose-500">{{ $filters.currency(pricing.discount_amount) }}</div>
                             </div>
                         </div>
                         <div class="text-sm" v-if="pricing.package_discount !== 0">
                             <div class="flex justify-between  my-1">
-                                <div class="text-slate-500">Package Discount</div>
-                                <div class="text-slate-500">{{ $filters.currency(pricing.package_discount) }}</div>
+                                <div class="text-rose-500">Package Discount</div>
+                                <div class="text-rose-500">{{ $filters.currency(pricing.package_discount) }}</div>
                             </div>
                         </div>
                         <div class="text-sm border-t border-black">
@@ -196,7 +196,7 @@
                         </div>
                         <div class="mt-5">
                             <button @click="toPayment" :disabled="disabled"
-                                class="text-white w-full mb-2 bg-amber-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="text-white w-full mb-2 bg-amber-900 hover:bg-rose-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 <BtnLoader v-if="disabled"></BtnLoader>
                                 <span v-if="!disabled">Process to Payment</span>
                             </button>
@@ -242,7 +242,7 @@
                         </div>
                         <div>
                             <button @click="addMember"
-                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="w-full mb-2 bg-rose-200 hover:bg-rose-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
                         </div>
@@ -274,11 +274,11 @@
                                 Guidance
                             </button>
                             <a href="http://satusehat.kemkes.go.id/sdmk/register" target="_blank"
-                                class="text-white bg-amber-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                class="text-white bg-amber-900 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 Create Account
                             </a>
                             <button @click="confirm_modal.hide()"
-                                class="text-white bg-amber-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-amber-200 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                class="text-white bg-amber-500 hover:bg-rose-600 focus:ring-4 focus:outline-none focus:ring-amber-200 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 I have an Account
                             </button>
                         </div>

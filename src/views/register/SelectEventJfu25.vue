@@ -1,14 +1,14 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24" style="min-height: calc(100vh - 133px);">
-        <div class="p-6 border-slate-100 bg-white rounded-xl">
+        <div class="p-6 border-rose-100 bg-white rounded-xl">
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium" @click="selectSympo()"
-                        :class="form.symposium ? 'bg-blue-200' : 'bg-background-mint'"
-                        class="rounded-lg p-4 border cursor-pointer hover:bg-blue-100 mb-3">
+                        :class="form.symposium ? 'bg-rose-200' : 'bg-background-lightRed'"
+                        class="rounded-lg p-4 border cursor-pointer hover:bg-rose-100 mb-3">
                         <div class="mb-3">
                             <div class="flex justify-between">
-                                <div class="font-semibold text-amber-900 flex items-center">
+                                <div class="font-semibold text-rose-900 flex items-center">
                                     <unicon name="check-square" v-if="form.symposium" width="20" height="20"
                                         fill="#243776"></unicon>
                                     <unicon name="square" v-if="!form.symposium" width="20" height="20" fill="#243776">
@@ -16,24 +16,22 @@
                                     <div class="ml-1">{{ events.symposium.name }}</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <!-- <span class="text-xs me-1">Min. 16 SKP/Day</span>
-                                    <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
-                                        fill="#243776"></unicon> -->
+
                                 </div>
                             </div>
                             <div class="text-xs mb-1">
-                                Thursday, May 29th, 08:00-16:00
+                                Thursday, May 29th, 08:00-12:00
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-2 grid gap-2 md:grid-cols-1" v-if="data_raw.workshop && count < 1">
+                    <div class="col-span-1 grid gap-2 md:grid-cols-1" v-if="data_raw.workshop && count < 1">
                         <!-- <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if=""> -->
                         <div v-for="first in events.workshop" @click="selectWorkshop(first.id, first)"
-                            :class="form.workshop === first.id ? 'bg-blue-200' : 'bg-background-mint'"
-                            class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
+                            :class="form.workshop === first.id ? 'bg-rose-200' : 'bg-background-lightRed'"
+                            class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-rose-200 ">
                             <div class="mb-3">
                                 <div class="flex justify-between items-center">
                                     <div>
@@ -48,7 +46,7 @@
                                     </div>
                                 </div>
 
-                                <div class="font-semibold text-amber-900 flex">
+                                <div class="font-semibold text-rose-900 flex">
                                     <div v-if="first.available" class="flex items-center">
                                         <unicon v-if="form.workshop === first.id" name="check-square" width="20"
                                             height="20" fill="#243776"></unicon>
@@ -126,7 +124,7 @@
                         <!--                            Voucher Code-->
                         <!--                        </div>-->
                         <!--                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"-->
-                        <!--                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-900 focus:border-amber-500 block w-full p-2.5">-->
+                        <!--                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">-->
                         <!--                        <small class="text-red-800" v-if="pricing.voucher_validation">-->
                         <!--                            {{ pricing.voucher_validation }}-->
                         <!--                        </small>-->
@@ -137,7 +135,7 @@
                         <!--                        </small>-->
                         <!--                        <div class="text-right mt-3">-->
                         <!--                            <div @click="calculatePrice('check')"-->
-                        <!--                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">-->
+                        <!--                                class="text-white cursor-pointer inline-block mb-2 bg-rose-500 hover:bg-rose-600 rounded-lg text-base px-3 py-1 text-center">-->
                         <!--                                Check-->
                         <!--                            </div>-->
                         <!--                        </div>-->
@@ -156,7 +154,7 @@
                         </div> -->
                         <!-- <div>
                             <button @click="memberModal"
-                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="w-full mb-2 bg-rose-200 hover:bg-rose-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
                         </div> -->
@@ -167,7 +165,7 @@
                         <div class="text-sm border-b">
                             <div v-for="price in pricing.items">
                                 <div class="flex justify-between my-1" v-if="price.price !== 0"
-                                    :class="price.name === 'Total' ? 'border-t border-slate-800 font-semibold' : ''">
+                                    :class="price.name === 'Total' ? 'border-t border-rose-800 font-semibold' : ''">
                                     <div>{{ price.name }}</div>
                                     <div>{{ $filters.currency(price.price) }}</div>
                                 </div>
@@ -175,20 +173,20 @@
                         </div>
                         <div class="text-sm">
                             <div class="flex justify-between  my-1">
-                                <div class="text-slate-600">Subtotal</div>
+                                <div class="text-rose-600">Subtotal</div>
                                 <div class="font-semibold">{{ $filters.currency(pricing.subtotal) }}</div>
                             </div>
                         </div>
                         <div class="text-sm" v-if="pricing.discount_amount !== 0">
                             <div class="flex justify-between  my-1">
-                                <div class="text-slate-500">Voucher Discount</div>
-                                <div class="text-slate-500">{{ $filters.currency(pricing.discount_amount) }}</div>
+                                <div class="text-rose-500">Voucher Discount</div>
+                                <div class="text-rose-500">{{ $filters.currency(pricing.discount_amount) }}</div>
                             </div>
                         </div>
                         <div class="text-sm" v-if="pricing.package_discount !== 0">
                             <div class="flex justify-between  my-1">
-                                <div class="text-slate-500">Package Discount</div>
-                                <div class="text-slate-500">{{ $filters.currency(pricing.package_discount) }}</div>
+                                <div class="text-rose-500">Package Discount</div>
+                                <div class="text-rose-500">{{ $filters.currency(pricing.package_discount) }}</div>
                             </div>
                         </div>
                         <div class="text-sm border-t border-black">
@@ -199,7 +197,7 @@
                         </div>
                         <div class="mt-5">
                             <button @click="toPayment" :disabled="disabled"
-                                class="text-white w-full mb-2 bg-amber-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="text-white w-full mb-2 bg-rose-900 hover:bg-rose-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 <BtnLoader v-if="disabled"></BtnLoader>
                                 <span v-if="!disabled">Process to Payment</span>
                             </button>
@@ -232,20 +230,20 @@
                         <div class="grid mb-2 gap-1 grid-cols-3" v-for="(user, i) in users">
                             <div>
                                 <input v-model="user.email" type="text" :placeholder="'email [' + (i + 1) + ']'"
-                                    class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
+                                    class="block w-full rounded-lg focus:ring-rose-500 focus:border-rose-500" />
                             </div>
                             <div>
                                 <input v-model="user.name" type="text" :placeholder="'Name [' + (i + 1) + ']'"
-                                    class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
+                                    class="block w-full rounded-lg focus:ring-rose-500 focus:border-rose-500" />
                             </div>
                             <div>
                                 <input v-model="user.nik" type="text" :placeholder="'NIK [' + (i + 1) + ']'"
-                                    class="block w-full rounded-lg focus:ring-amber-500 focus:border-amber-500" />
+                                    class="block w-full rounded-lg focus:ring-rose-500 focus:border-rose-500" />
                             </div>
                         </div>
                         <div>
                             <button @click="addMember"
-                                class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="w-full mb-2 bg-rose-200 hover:bg-rose-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
                         </div>
@@ -277,11 +275,11 @@
                                 Guidance
                             </button>
                             <a href="http://satusehat.kemkes.go.id/sdmk/register" target="_blank"
-                                class="text-white bg-amber-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                class="text-white bg-rose-900 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 Create Account
                             </a>
                             <button @click="confirm_modal.hide()"
-                                class="text-white bg-amber-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-200 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
+                                class="text-white bg-rose-500 hover:bg-rose-600 focus:ring-4 focus:outline-none focus:ring-rose-200 rounded-full text-base px-6 py-1.5 text-center mx-1 my-2 md:mr-0">
                                 I have an Account
                             </button>
                         </div>

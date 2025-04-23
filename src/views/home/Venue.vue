@@ -7,7 +7,7 @@
             The Rich Hotel Yogyakarta
         </div>
         <div class="rounded-xl shadow-sm bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 grid grid-cols-12">
-            <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
+            <div class="col-span-12 md:col-span-5 min-h-[300px] bg-rose-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
                 style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Ftahir.webp?alt=media&token=3a731e63-0c2d-4943-a0c4-80888b3593cd')">
             </div>
             <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="mb-2 text-xl">
                     The Rich Hotel
-                    <div class="italic text-blue-800 text-sm">The Rich Hotel</div>
+                    <div class="italic text-rose-800 text-sm">The Rich Hotel</div>
                 </div>
                 <div>
                     Jl. Magelang No.18 Km.6, Kutu Patran, Sinduadi, Kec. Mlati, Kabupaten Sleman, Daerah Istimewa

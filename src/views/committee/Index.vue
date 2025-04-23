@@ -13,9 +13,9 @@
                             class="w-full bg-purple-300 bg-cover mb-2 rounded-md bg-center bg-no-repeat">
                         </div>
                         <div
-                            class="absolute bottom-0 right-0 left-0 rounded-b-md pb-3 pt-6 px-3 bg-gradient-to-t from-slate-800 to-transparent">
+                            class="absolute bottom-0 right-0 left-0 rounded-b-md pb-3 pt-6 px-3 bg-gradient-to-t from-rose-800 to-transparent">
                             <h4 class="font-semibold text-sm text-white mb-2" v-if="user.data">{{ user.data.name }}</h4>
-                            <h4 class="font-semibold text-xs text-slate-300">{{ user.position }}</h4>
+                            <h4 class="font-semibold text-xs text-rose-300">{{ user.position }}</h4>
                         </div>
                     </div>
                 </div>
@@ -26,8 +26,8 @@
 
             <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
                 <div v-for="user in data.users">
-                    <div class="bg-blue-100 rounded flex min-h-[56px]">
-                        <div class="bg-blue-200 p-2 rounded-l flex items-center">
+                    <div class="bg-rose-100 rounded flex min-h-[56px]">
+                        <div class="bg-rose-200 p-2 rounded-l flex items-center">
                             <unicon name="user-md" width="20px" height="20px" fill="blue" icon-style="line"></unicon>
                         </div>
                         <div class="text-sm font-semibold flex items-center p-2 rounded-r" v-if="user.data">

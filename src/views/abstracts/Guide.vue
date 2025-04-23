@@ -5,19 +5,20 @@
         </div>
         <div v-if="!has_token" class="rounded-xl shadow-sm bg-yellow-200 p-6 mb-4">
             <div>Please
-                <router-link class="text-blue-800 font-semibold italic" to="/login">Login</router-link>
+                <router-link class="text-rose-800 font-semibold italic" to="/login">Login</router-link>
                 or
-                <router-link class="text-blue-800 font-semibold italic" to="/register">Register</router-link>
+                <router-link class="text-rose-800 font-semibold italic" to="/register">Register</router-link>
                 before submit abstract
             </div>
         </div>
-        <div class="rounded-xl shadow-sm bg-blue-100 p-6 mb-4">
+        <div class="rounded-xl shadow-sm bg-rose-100 p-6 mb-4">
             <div class="text-lg mb-2">Requirements</div>
             <div>
                 <ul class="list-disc ml-4">
                     <li>All abstracts must be submitted in English</li>
                     <li>Before submitting an abstract, registration to the symposium is mandatory via website</li>
-                    <li>The event accepts following paper/abstract types: Original research, Meta-analysis/systematic review,
+                    <li>The event accepts following paper/abstract types: Original research, Meta-analysis/systematic
+                        review,
                         and case report/case series.</li>
                     <li>Please refer to the abstract templates and upload the file attachment (optional) to the online
                         submission</li>
@@ -30,11 +31,11 @@
                     <li>Supported attachment file format: graphic, figure, or table is .JPEG or .JPG</li>
                     <li>The abstract paper paper has not previously been published and is not currently being considered
                         for publication elsewhere (i.e. other conference or journal publication)</li>
-                    <li>Download <a class="text-blue-500 font-semibold"
+                    <li>Download <a class="text-rose-500 font-semibold"
                             href="https://src.perki-jogja.com/assets24/docs/abstract-case-report-guidline-jcu-2024.docx"
                             target="_blank" download>Guideline</a></li>
                     <li>Contact:
-                        <a class="italic text-blue-700" target="_blank" href="https://wa.me/62895340394067">+62
+                        <a class="italic text-rose-700" target="_blank" href="https://wa.me/62895340394067">+62
                             895 3403 94067</a> (Aya)
                     </li>
                 </ul>
@@ -42,7 +43,7 @@
         </div>
         <div v-if="has_token" class="flex justify-center">
             <router-link to="/profile/abstracts"
-                class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                class="text-white bg-rose-900 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                 Submit new abstract
             </router-link>
         </div>

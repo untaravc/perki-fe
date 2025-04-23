@@ -6,14 +6,14 @@
         <div class="grid gap-2 grid-cols-12">
             <div class="col-span-3">
                 <div class="text-center p-3 border rounded-lg font-semibold cursor-pointer"
-                    :class="selected === 'day_1_a' ? 'bg-blue-900 text-white hover:text-white hover:bg-blue-800' : 'hover:bg-blue-200'"
+                    :class="selected === 'day_1_a' ? 'bg-rose-900 text-white hover:text-white hover:bg-rose-800' : 'hover:bg-rose-200'"
                     @click="selectSection('day_1_a')">
                     Day 1 Room A
                 </div>
             </div>
             <div class="col-span-3">
                 <div class="text-center p-3 border rounded-lg font-semibold cursor-pointer"
-                    :class="selected === 'day_1_b' ? 'bg-blue-900 text-white hover:text-white hover:bg-blue-800' : 'hover:bg-blue-200'"
+                    :class="selected === 'day_1_b' ? 'bg-rose-900 text-white hover:text-white hover:bg-rose-800' : 'hover:bg-rose-200'"
                     @click="selectSection('day_1_b')">
                     Day 1 Room B
                 </div>
@@ -21,7 +21,7 @@
             <div class="col-span-3">
                 <div class="col-span-3">
                     <div class="text-center p-3 border rounded-lg font-semibold cursor-pointer"
-                        :class="selected === 'day_2_a' ? 'bg-blue-900 text-white hover:text-white hover:bg-blue-800' : 'hover:bg-blue-200'"
+                        :class="selected === 'day_2_a' ? 'bg-rose-900 text-white hover:text-white hover:bg-rose-800' : 'hover:bg-rose-200'"
                         @click="selectSection('day_2_a')">
                         Day 2 Room A
                     </div>
@@ -30,7 +30,7 @@
             <div class="col-span-3">
                 <div class="col-span-3">
                     <div class="text-center p-3 border rounded-lg font-semibold cursor-pointer"
-                        :class="selected === 'day_2_b' ? 'bg-blue-900 text-white hover:text-white hover:bg-blue-800' : 'hover:bg-blue-200'"
+                        :class="selected === 'day_2_b' ? 'bg-rose-900 text-white hover:text-white hover:bg-rose-800' : 'hover:bg-rose-200'"
                         @click="selectSection('day_2_b')">
                         Day 2 Room B
                     </div>
@@ -39,9 +39,9 @@
             <div class="col-span-12 md:col-span-4">
                 <div v-for="data in data_detail" @click="detail_selected = data.slug"
                     class="border first:rounded-t-lg last:rounded-b-lg cursor-pointer">
-                    <div class="text-sm font-semibold p-3 bg-blue-200">{{ data.title }}</div>
+                    <div class="text-sm font-semibold p-3 bg-rose-200">{{ data.title }}</div>
                     <div class="border-t" :class="detail_selected !== data.slug ? 'hidden' : ''">
-                        <div class="text-sm py-2 px-3 hover:text-blue-700 cursor-pointer" @click="loadVideo(detail)"
+                        <div class="text-sm py-2 px-3 hover:text-rose-700 cursor-pointer" @click="loadVideo(detail)"
                             v-for="detail in data.schedule_details">
                             {{ detail.title }}
                         </div>
@@ -49,10 +49,10 @@
                 </div>
             </div>
             <div class="col-span-12 md:col-span-8">
-                <div v-if="video_active.link" class="bg-blue-200 rounded p-4">
+                <div v-if="video_active.link" class="bg-rose-200 rounded p-4">
                     Unduh Materi
                     <div>
-                        <a :href="video_active.link" class="text-blue-600 underline" target="_blank">{{
+                        <a :href="video_active.link" class="text-rose-600 underline" target="_blank">{{
                             video_active.link }}</a>
                     </div>
                 </div>

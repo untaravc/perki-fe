@@ -7,7 +7,7 @@
         <div class="grid md:grid-cols-2 grid-cols-1">
             <div>
                 <div class="text-xl">{{ data_content.title }}</div>
-                <div class="italic text-sm text-slate-500">
+                <div class="italic text-sm text-rose-500">
                     <span v-for="author in data_content.authors">{{ author.surname }}, {{ author.first_name }}; </span>
                 </div>
                 <div class="">Keywords: <i>{{ data_content.subtitle }}</i></div>

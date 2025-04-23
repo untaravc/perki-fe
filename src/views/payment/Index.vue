@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-20 pb-12">
         <div class="flex justify-center items-center" style="min-height: calc(100vh - 195px);">
-            <div class="p-6 border-slate-100 bg-white rounded-xl text-center min-w-[425px] lg:min-w-[450px]">
+            <div class="p-6 border-rose-100 bg-white rounded-xl text-center min-w-[425px] lg:min-w-[450px]">
                 <div v-if="transaction.status < 200">
                     <div class="text-xl mb-4">Complete the Payment</div>
                     <div class="text-2xl text-[#F78F2D] mb-2 font-semibold">
@@ -9,7 +9,7 @@
                     </div>
                     <div class="text-md">before</div>
                     <div class="text-xl mb-4">{{ $filters.formatDayDateTime(transaction.last_time) }}</div>
-                    <div class="border rounded-tr-md flex justify-between rounded-tl-md p-3 bg-slate-50">
+                    <div class="border rounded-tr-md flex justify-between rounded-tl-md p-3 bg-rose-50">
                         <div class="text-base font-semibold">Transfer Bank</div>
                         <div>
                             <img style="max-height: 25px"
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="mb-3 p-2 border rounded">
-                    <div class="text-xs my-1 p-1 bg-blue-100 text-slate-500 rounded grid grid-cols-2">
+                    <div class="text-xs my-1 p-1 bg-rose-100 text-rose-500 rounded grid grid-cols-2">
                         <div>
                             <div class="flex">
                                 <unicon name="user" fill="grey" height="15px" width="15px"></unicon>
@@ -60,8 +60,8 @@
                         <ul class="list-disc">
                             <li class="text-sm" v-for="detail in transaction.transaction_details">
                                 {{ detail.event_name }}
-                                <span class="italic text-slate-500">{{ $filters.formatDateTime(detail.event.date_start)
-                                    }}</span>
+                                <span class="italic text-rose-500">{{ $filters.formatDateTime(detail.event.date_start)
+                                }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
@@ -70,18 +70,18 @@
                 <div v-show="!show_proof">
                     <label for="file_upload">
                         <div
-                            class="bg-slate-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
+                            class="bg-rose-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
                             <PageLoading v-model:active="upload_loader" loader="dots" :is-full-page="false" />
                             <div v-if="!upload_loader">
                                 <unicon name="file" fill="grey"></unicon>
-                                <div class="text-sm italic text-slate-600">Select transfer proof</div>
+                                <div class="text-sm italic text-rose-600">Select transfer proof</div>
                             </div>
                         </div>
                     </label>
                     <input type="file" accept="application/pdf,image/*" hidden id="file_upload" ref="file_upload"
                         @change="uploadPhoto">
                 </div>
-                <div v-show="show_proof" class="flex justify-center bg-slate-200 p-2">
+                <div v-show="show_proof" class="flex justify-center bg-rose-200 p-2">
                     <div class="relative">
                         <a :href="transaction.transfer_proof" target="_blank">
                             <img :src="transaction.transfer_proof" alt="" class="max-h-52">
@@ -96,13 +96,13 @@
                 </div>
                 <label for="file_upload" v-show="show_proof && transaction.status === 120" class="relative">
                     <div
-                        class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-800 border-slate-800 hover:bg-blue-900 text-white">
+                        class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-rose-800 border-rose-800 hover:bg-rose-900 text-white">
                         <span v-if="!upload_loader">Re-upload</span>
                         <span v-if="upload_loader">loading...</span>
                     </div>
                 </label>
                 <router-link to="/profile/transactions"
-                    class="block font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-blue-100 border-slate-800 hover:bg-blue-200 text-blue-800">
+                    class="block font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-rose-100 border-rose-800 hover:bg-rose-200 text-rose-800">
                     Back to Transaction
                 </router-link>
             </div>

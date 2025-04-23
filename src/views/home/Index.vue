@@ -8,7 +8,7 @@
         <!-- <Video></Video> -->
         <Schedule></Schedule>
         <Pricing></Pricing>
-        <div class="bg-background-mint">
+        <div class="bg-background-lightRed">
             <Speakers></Speakers>
         </div>
         <Venue></Venue>

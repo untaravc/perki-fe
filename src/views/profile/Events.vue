@@ -1,35 +1,37 @@
 <template>
     <div>
         <div class="text-2xl font-semibold mb-3">My Event</div>
-        <div v-if="data_content.length === 0" class="p-3 italic text-slate-500">
+        <div v-if="data_content.length === 0" class="p-3 italic text-rose-500">
             no data
         </div>
-        <div class="border-slate-200 border bg-white rounded mb-2" v-for="event in data_content">
-            <div class="bg-slate-100 rounded-t py-3 px-4 flex justify-between">
+        <div class="border-rose-200 border bg-white rounded mb-2" v-for="event in data_content">
+            <div class="bg-rose-100 rounded-t py-3 px-4 flex justify-between">
                 <div class="flex">
                     <unicon name="clock" width="15" height="15"></unicon>
                     <div class="text-xs ml-1" v-if="event.event">
-                        {{$filters.formatDayDateTime(event.event.date_start)}}
+                        {{ $filters.formatDayDateTime(event.event.date_start) }}
                     </div>
                 </div>
-                <div class="text-xs text-blue-500 font-semibold">
-                    <span ></span>
+                <div class="text-xs text-rose-500 font-semibold">
+                    <span></span>
                 </div>
             </div>
             <div class="p-3">
                 <div>
-                    <div class="font-semibold cursor-pointer text-blue-700 hover:text-blue-800">
-                        {{event.event_name}}
+                    <div class="font-semibold cursor-pointer text-rose-700 hover:text-rose-800">
+                        {{ event.event_name }}
                     </div>
                     <div class="" v-if="event.event">
-                        <span>{{event.event.title}}</span>
+                        <span>{{ event.event.title }}</span>
                     </div>
                     <div class="flex justify-end mt-2">
-                        <div class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-2 py-1 text-sm rounded-lg">
+                        <div
+                            class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-2 py-1 text-sm rounded-lg">
                             <unicon name="location-point" fill="white" height="14px" width="14px"></unicon>
                             <div class="ml-1">Location</div>
                         </div>
-                        <div class="bg-blue-700 flex mx-1 cursor-pointer hover:bg-blue-800 items-center text-white px-2 py-1 text-sm rounded-lg">
+                        <div
+                            class="bg-rose-700 flex mx-1 cursor-pointer hover:bg-rose-800 items-center text-white px-2 py-1 text-sm rounded-lg">
                             <unicon name="play" fill="white" height="14px" width="14px"></unicon>
                             <div class="ml-1">Information</div>
                         </div>
@@ -44,15 +46,15 @@
 </template>
 <script>
 export default {
-    data(){
+    data() {
         return {
-            data_content:[],
+            data_content: [],
         }
     },
-    methods:{
-        loadData(){
+    methods: {
+        loadData() {
             this.authGet('pub/event-schedules')
-                .then((data)=>{
+                .then((data) => {
                     this.data_content = data.result
                 })
         }

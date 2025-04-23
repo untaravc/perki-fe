@@ -8,7 +8,7 @@
             </div>
             <div class="grid gap-4 md:grid-cols-4">
                 <div>
-                    <div class="p-6 border-slate-100 bg-white rounded-xl">
+                    <div class="p-6 border-rose-100 bg-white rounded-xl">
                         <router-link to="/profile/info" class="flex my-3 cursor-pointer" @click="active = 'info'">
                             <unicon name="user" height="20px" :fill="active === 'info' ? 'darkblue' : ''"></unicon>
                             <div class="ml-2">Profil</div>
@@ -24,7 +24,7 @@
                                     :fill="active === 'transactions' ? 'darkblue' : ''"></unicon>
                                 <div class="ml-2">Transaction</div>
                             </div>
-                            <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
+                            <div class="bg-rose-200 text-xs flex items-center py-0 px-2 rounded-full">
                                 {{ pending_transaction }}
                             </div>
                         </router-link>
@@ -36,7 +36,7 @@
                                 </unicon>
                                 <div class="ml-2">Abstracts</div>
                             </div>
-                            <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
+                            <div class="bg-rose-200 text-xs flex items-center py-0 px-2 rounded-full">
                                 {{ abstracts }}
                             </div>
                         </router-link> -->
