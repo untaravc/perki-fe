@@ -78,7 +78,7 @@
                     <div class="inline-block bg-rose-100 px-2 py-1 rounded">
                         {{ $filters.formatTime("2023-09-01 08:00:00") }}
                         -
-                        {{ $filters.formatTime("2023-09-01 11:00:00") }}
+                        {{ $filters.formatTime("2023-09-01 16:00:00") }}
                     </div>
                 </div>
                 <div class="col-span-7 md:col-span-6 mb-4 border-b border-rose-300" v-for="ws_hd in schedule.workshop">

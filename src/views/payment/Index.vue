@@ -61,46 +61,85 @@
                             <li class="text-sm" v-for="detail in transaction.transaction_details">
                                 {{ detail.event_name }}
                                 <span class="italic text-rose-500">{{ $filters.formatDateTime(detail.event.date_start)
-                                }}</span>
+                                    }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div v-show="!show_proof">
-                    <label for="file_upload">
-                        <div
-                            class="bg-rose-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
-                            <PageLoading v-model:active="upload_loader" loader="dots" :is-full-page="false" />
-                            <div v-if="!upload_loader">
-                                <unicon name="file" fill="grey"></unicon>
-                                <div class="text-sm italic text-rose-600">Select transfer proof</div>
+                <div class="border-b pb-2">
+                    <div class="text-left font-bold">Upload Transfer Proof</div>
+                    <div v-show="!show_proof">
+                        <label for="file_upload">
+                            <div
+                                class="bg-rose-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
+                                <PageLoading v-model:active="upload_loader" loader="dots" :is-full-page="false" />
+                                <div v-if="!upload_loader">
+                                    <unicon name="file" fill="grey"></unicon>
+                                    <div class="text-sm italic text-rose-600">Select transfer proof</div>
+                                </div>
                             </div>
+                        </label>
+                        <input type="file" accept="application/pdf,image/*" hidden id="file_upload" ref="file_upload"
+                            @change="uploadPhoto">
+                    </div>
+                    <div v-show="show_proof" class="flex justify-center bg-rose-200 p-2">
+                        <div class="relative">
+                            <a :href="transaction.transfer_proof" target="_blank">
+                                <img :src="transaction.transfer_proof" alt="" class="max-h-52">
+                            </a>
+                        </div>
+                    </div>
+                    <div v-if="transaction.status === 120" class="italic">
+                        Proof of transfer successfully uploaded. Waiting for admin confirmation.
+                    </div>
+                    <div v-if="transaction.status === 200" class="italic">
+                        Payment <b>confirmed</b> <span class="">at {{ transaction.paid_at }}</span>
+                    </div>
+                    <label for="file_upload" v-show="show_proof && transaction.status === 120" class="relative">
+                        <div
+                            class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-rose-800 border-rose-800 hover:bg-rose-900 text-white">
+                            <span v-if="!upload_loader">Re-upload Transfer Proof</span>
+                            <span v-if="upload_loader">loading...</span>
                         </div>
                     </label>
-                    <input type="file" accept="application/pdf,image/*" hidden id="file_upload" ref="file_upload"
-                        @change="uploadPhoto">
                 </div>
-                <div v-show="show_proof" class="flex justify-center bg-rose-200 p-2">
-                    <div class="relative">
-                        <a :href="transaction.transfer_proof" target="_blank">
-                            <img :src="transaction.transfer_proof" alt="" class="max-h-52">
-                        </a>
+
+                <div class="border-b pb-2">
+                    <div class="text-left font-bold">Upload Guarantee Letter</div>
+                    <div v-show="!show_proof_gl">
+                        <label for="file_upload_gl">
+                            <div
+                                class="bg-rose-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
+                                <PageLoading v-model:active="upload_loader_gl" loader="dots" :is-full-page="false" />
+                                <div v-if="!upload_loader">
+                                    <unicon name="file" fill="grey"></unicon>
+                                    <div class="text-sm italic text-rose-600">Select Guarantee Letter</div>
+                                </div>
+                            </div>
+                        </label>
+                        <input type="file" accept="application/pdf,image/*" hidden id="file_upload_gl"
+                            ref="file_upload_gl" @change="uploadGl">
                     </div>
-                </div>
-                <div v-if="transaction.status === 120" class="italic">
-                    Proof of transfer successfully uploaded. Waiting for admin confirmation.
-                </div>
-                <div v-if="transaction.status === 200" class="italic">
-                    Payment <b>confirmed</b> <span class="">at {{ transaction.paid_at }}</span>
-                </div>
-                <label for="file_upload" v-show="show_proof && transaction.status === 120" class="relative">
-                    <div
-                        class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-rose-800 border-rose-800 hover:bg-rose-900 text-white">
-                        <span v-if="!upload_loader">Re-upload</span>
-                        <span v-if="upload_loader">loading...</span>
+                    <div v-show="show_proof_gl" class="flex justify-center bg-rose-200 p-2">
+                        <div class="relative">
+                            <a :href="transaction.transfer_proof_gl" target="_blank">
+                                <img :src="transaction.transfer_proof_gl" alt="" class="max-h-52">
+                            </a>
+                        </div>
                     </div>
-                </label>
+                    <div v-if="transaction.status === 119" class="italic">
+                        Guarantee Letter successfully uploaded.
+                    </div>
+                    <label for="file_upload" v-show="show_proof_gl && transaction.status === 119" class="relative">
+                        <div
+                            class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-rose-800 border-rose-800 hover:bg-rose-900 text-white">
+                            <span v-if="!upload_loader_gl">Re-upload Guarantee Letter</span>
+                            <span v-if="upload_loader_gl">loading...</span>
+                        </div>
+                    </label>
+                </div>
+
                 <router-link to="/profile/transactions"
                     class="block font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-rose-100 border-rose-800 hover:bg-rose-200 text-rose-800">
                     Back to Transaction
@@ -124,9 +163,12 @@ export default {
             modal: '',
             show_proof: false,
             upload_loader: false,
+            show_proof_gl: false,
+            upload_loader_gl: false,
             transaction: {
                 transaction_details: [],
                 transfer_proof: '',
+                transfer_proof_gl: '',
             },
         }
     },
@@ -141,58 +183,61 @@ export default {
                     if (this.transaction.transfer_proof) {
                         this.show_proof = true
                     }
+                    if (this.transaction.transfer_proof_gl) {
+                        this.show_proof_gl = true
+                    }
                 })
         },
         copyText(copy_text, text = null) {
             navigator.clipboard.writeText(copy_text);
             this.toaster({ title: text + ' disalin' })
         },
-        // uploadFile() {
-        //     let file = document.getElementById("file_upload").files[0];
-        //     if (file) {
-        //         this.upload_loader = true;
-        //         let form_data = new FormData();
-
-        //         form_data.append('file', file)
-        //         form_data.append('model', 'transaction')
-        //         form_data.append('model_id', this.transaction.id)
-        //         form_data.append('title', 'Bukti Transfer ' + this.transaction.number)
-
-        //         this.authPost('pub/upload-file', form_data)
-        //             .then((data) => {
-        //                 if (data.success) {
-        //                     this.transaction.transfer_proof = data.result.link;
-        //                     this.uploadTransferProof()
-        //                     this.show_proof = true
-        //                 }
-        //                 this.upload_loader = false;
-        //             }).catch((e) => {
-        //                 this.upload_loader = false;
-        //             });
-        //     }
-        // },
-        // uploadTransferProof() {
-        //     this.authPost('pub/transaction-transfer-proof', {
-        //         transaction_id: this.transaction.id,
-        //         transfer_proof_link: this.transaction.transfer_proof
-        //     })
-        //         .then((data) => {
-        //             if (data.success) {
-        //                 this.upload_loader = false;
-        //                 this.loadData()
-        //             }
-        //         }).catch(() => {
-
-        //         })
-        // },
+        async uploadTransferProof() {
+            await this.authPost('pub/transaction-transfer-proof', {
+                transaction_id: this.transaction.id,
+                transfer_proof_link: this.transaction.transfer_proof
+            })
+                .then((data) => {
+                    if (data.success) {
+                        this.upload_loader = false;
+                        this.loadData()
+                    }
+                }).catch(() => { })
+        },
+        async uploadTransferProofGl() {
+            await this.authPost('pub/transaction-transfer-proof', {
+                transaction_id: this.transaction.id,
+                transfer_proof_gl_link: this.transaction.transfer_proof_gl
+            })
+                .then((data) => {
+                    if (data.success) {
+                        this.upload_loader = false;
+                        this.loadData()
+                    }
+                }).catch(() => { })
+        },
         async uploadPhoto() {
             const input = this.$refs.file_upload;
-            console.log(input)
             if (input && input.files.length > 0) {
                 this.upload_loader = true
                 const file_name = this.generateFileName('TransferProof', input.files[0])
                 this.transaction.transfer_proof = await upload(file_name, input.files[0])
+
+                await this.uploadTransferProof()
                 this.upload_loader = false
+                this.show_proof = true
+            }
+        },
+        async uploadGl() {
+            const input = this.$refs.file_upload_gl;
+            if (input && input.files.length > 0) {
+                this.upload_loader_gl = true
+                const file_name = this.generateFileName('TransferProofGl', input.files[0])
+                this.transaction.transfer_proof_gl = await upload(file_name, input.files[0])
+
+                await this.uploadTransferProofGl()
+                this.upload_loader_gl = false
+                this.show_proof_gl = true
             }
         },
         generateFileName(directory, file) {
