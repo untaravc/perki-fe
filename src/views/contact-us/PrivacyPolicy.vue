@@ -3,7 +3,7 @@
     <div class="text-4xl font-bold  text-center">
       Privacy Policy
     </div>
-    <div class="text-small text-rose-600 mb-5 text-center">
+    <div class="text-small text-violet-600 mb-5 text-center">
       Last Updated: April 13, 2025
     </div>
     <div class="mb-12">

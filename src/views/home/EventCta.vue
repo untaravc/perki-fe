@@ -6,13 +6,13 @@
                     <div class="font-semibold text-2xl">
                         Recording Symposium
                     </div>
-                    <div class="font-semibold text-sm text-rose-700">
+                    <div class="font-semibold text-sm text-violet-700">
 
                     </div>
                 </div>
                 <div class="col-span-3 md:col-span-1 flex justify-end px-6 items-center">
                     <button @click="toProtectedPage"
-                        class="bg-rose-900 hover:bg-rose-800 text-rose-200 focus:ring-4 focus:outline-none focus:ring-rose-700 font-medium rounded-lg text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                        class="bg-violet-900 hover:bg-violet-800 text-violet-200 focus:ring-4 focus:outline-none focus:ring-violet-700 font-medium rounded-lg text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                         View
                     </button>
                 </div>

@@ -19,8 +19,8 @@
                 <div class="mx-5 flex" v-if="data_content[index]['buttons'].length > 0">
                     <div v-for="btn in data_content[index]['buttons']" class="mx-2">
                         <router-link :to="btn.link"
-                            :class="btn.theme === 'dark' ? 'text-white bg-rose-800' : 'text-rose-800 hover:bg-rose-800 hover:text-white'"
-                            class="flex items-center border border-rose-800 font-medium rounded-full text-lg px-6 py-2 text-center">
+                            :class="btn.theme === 'dark' ? 'text-white bg-violet-800' : 'text-violet-800 hover:bg-violet-800 hover:text-white'"
+                            class="flex items-center border border-violet-800 font-medium rounded-full text-lg px-6 py-2 text-center">
                             <div class="mr-2">{{ btn.text }}</div>
                             <unicon v-if="btn.theme === 'dark'" name="arrow-right" fill="white"></unicon>
                         </router-link>
@@ -28,11 +28,11 @@
                 </div>
                 <div class="flex ml-6 mt-4" v-if="data_content.length > 1">
                     <div @click="prev"
-                        class="p-3 mx-1 border border-rose-300 cursor-pointer hover:bg-rose-200 h-12 w-12 flex justify-center items-center rounded-full">
+                        class="p-3 mx-1 border border-violet-300 cursor-pointer hover:bg-violet-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-left"></unicon>
                     </div>
                     <div @click="next"
-                        class="p-3 mx-1 border border-rose-300 cursor-pointer hover:bg-rose-200 h-12 w-12 flex justify-center items-center rounded-full">
+                        class="p-3 mx-1 border border-violet-300 cursor-pointer hover:bg-violet-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-right"></unicon>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ export default {
             clearInterval(this.interval)
         },
         loadData() {
-            this.apiGet('pub/hero-banner', { ref: 'jfu' })
+            this.apiGet('pub/hero-banner', { ref: 'jcu25' })
                 .then((data) => {
                     this.data_content = data.result;
                 })

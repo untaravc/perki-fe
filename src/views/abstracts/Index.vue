@@ -4,25 +4,26 @@
             POSTER BOARD
         </div>
         <div class="justify-center mb-4 md:flex hidden">
-            <div class="bg-rose-200 rounded-full flex px-4 py-2 justify-evenly">
-                <div @click="loadPoster()" :class="filter.category === '' ? 'bg-rose-600 text-white' : 'bg-rose-200'"
-                    class="  px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-rose-300">All
+            <div class="bg-violet-200 rounded-full flex px-4 py-2 justify-evenly">
+                <div @click="loadPoster()"
+                    :class="filter.category === '' ? 'bg-violet-600 text-white' : 'bg-violet-200'"
+                    class="  px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-violet-300">All
                 </div>
                 <div @click="loadPoster('case_report')"
-                    :class="filter.category === 'case_report' ? 'bg-rose-600 text-white' : 'bg-rose-200'"
-                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-rose-300">Case
+                    :class="filter.category === 'case_report' ? 'bg-violet-600 text-white' : 'bg-violet-200'"
+                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-violet-300">Case
                     Report</div>
                 <div @click="loadPoster('research')"
-                    :class="filter.category === 'research' ? 'bg-rose-600 text-white' : 'bg-rose-200'"
-                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-rose-300">
+                    :class="filter.category === 'research' ? 'bg-violet-600 text-white' : 'bg-violet-200'"
+                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-violet-300">
                     Research</div>
                 <div @click="loadPoster('meta_analysis')"
-                    :class="filter.category === 'meta_analysis' ? 'bg-rose-600 text-white' : 'bg-rose-200'"
-                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-rose-300">Meta
+                    :class="filter.category === 'meta_analysis' ? 'bg-violet-600 text-white' : 'bg-violet-200'"
+                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-violet-300">Meta
                     Analisys</div>
                 <div @click="loadPoster('systematic_review')"
-                    :class="filter.category === 'systematic_review' ? 'bg-rose-600 text-white' : 'bg-rose-200'"
-                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-rose-300">
+                    :class="filter.category === 'systematic_review' ? 'bg-violet-600 text-white' : 'bg-violet-200'"
+                    class=" px-4 py-1 rounded-full mx-0.5 cursor-pointer hover:bg-violet-300">
                     Systematic Review</div>
             </div>
         </div>
@@ -35,7 +36,7 @@
                 <router-link :to="'/posters/' + poster.id">
                     <div class="p-2 cursor-pointer">
                         <div class="flex justify-between">
-                            <div class="text-rose-500 text-sm">
+                            <div class="text-violet-500 text-sm">
                                 #<span v-if="poster.status === 3">moderated</span>
                                 <span v-if="poster.status === 1">displayed</span>
                             </div>
@@ -47,9 +48,9 @@
                         <div class="text-sm font-medium">{{ $filters.truncate(poster.title, 100) }}</div>
                         <div class="text-xs">
                             {{ $filters.ucword(poster.category) }} |
-                            <span class="italic text-xs text-rose-500">
+                            <span class="italic text-xs text-violet-500">
                                 <span v-for="author in poster.authors">{{ author.surname }}, {{ author.first_name
-                                }}; </span>
+                                    }}; </span>
                             </span>
                         </div>
                     </div>
@@ -59,11 +60,11 @@
         </div>
         <div class="flex justify-center mt-4">
             <div v-if="data_content.prev_page_url" @click="changePage('prev')"
-                class="cursor-pointer p-2 pb-1 rounded m-1 bg-rose-300">
+                class="cursor-pointer p-2 pb-1 rounded m-1 bg-violet-300">
                 <unicon name="angle-left"></unicon>
             </div>
             <div v-if="data_content.next_page_url" @click="changePage('next')"
-                class="cursor-pointer p-2 pb-1 rounded m-1 bg-rose-300">
+                class="cursor-pointer p-2 pb-1 rounded m-1 bg-violet-300">
                 <unicon name="angle-right"></unicon>
             </div>
         </div>

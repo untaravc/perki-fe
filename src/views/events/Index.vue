@@ -12,7 +12,7 @@
                     <h4 class="text-xs">{{ event.subtitle }}</h4>
                     <h4 class="font-semibold mb-2">{{ event.title }}</h4>
                     <div
-                        class="text-white bg-rose-900 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                        class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                         Register Webinar
                     </div>
                 </div>

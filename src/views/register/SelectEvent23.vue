@@ -1,10 +1,10 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24" style="min-height: calc(100vh - 133px);">
-        <div class="p-6 border-rose-100 bg-white rounded-xl">
+        <div class="p-6 border-violet-100 bg-white rounded-xl">
             <div class="mb-4 grid grid-cols-3 gap-4">
                 <div @click="selectPackage('platinum')"
                     v-if="transaction.job_type_code !== 'MHSA' && transaction.job_type_code !== 'COAS'"
-                    class="bg-rose-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
+                    class="bg-violet-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
                     <div class="font-bold text-white">Platinum</div>
                     <unicon v-if="package === 'platinum'" fill="white" name="check-square" width="30" height="30">
                     </unicon>
@@ -17,8 +17,8 @@
                     <unicon v-else name="square" width="30" height="30"></unicon>
                 </div>
                 <div @click="selectPackage('add-on')" v-if="data_raw.has_symposium"
-                    class="border border-rose-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
-                    <div class="font-bold text-rose-800">Silver</div>
+                    class="border border-violet-800 p-4 rounded-lg flex justify-between items-center cursor-pointer">
+                    <div class="font-bold text-violet-800">Silver</div>
                     <unicon v-if="package === 'add-on'" name="check-square" width="30" height="30"></unicon>
                     <unicon v-else fill="darkblue" name="square" width="30" height="30"></unicon>
                 </div>
@@ -26,9 +26,9 @@
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
-                        class="rounded-lg bg-rose-200 p-4 border cursor-pointer hover:bg-rose-100 mb-3">
+                        class="rounded-lg bg-violet-200 p-4 border cursor-pointer hover:bg-violet-100 mb-3">
                         <div class="mb-3">
-                            <div class="font-semibold text-rose-900 flex">
+                            <div class="font-semibold text-violet-900 flex">
                                 <unicon name="check-square" width="20" height="20" fill="#243776"></unicon>
                                 <div class="ml-1">{{ events.symposium.name }}</div>
                             </div>
@@ -54,13 +54,13 @@
                     <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if="data_raw.workshop">
                         <div>
                             <div v-for="morning in events.morning_workshop" @click="selectMorning(morning.id, morning)"
-                                :class="form.morning_workshop === morning.id ? 'bg-rose-200' : 'bg-rose-50'"
-                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-rose-200 ">
+                                :class="form.morning_workshop === morning.id ? 'bg-violet-200' : 'bg-violet-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-violet-200 ">
                                 <div class="mb-3">
                                     <div class="text-sm italic" v-if="!morning.available">Full Booked</div>
                                     <div class="text-sm italic" v-if="morning.available">{{ morning.quota -
                                         morning.transactions_count }} available</div>
-                                    <div class="font-semibold text-rose-900 flex">
+                                    <div class="font-semibold text-violet-900 flex">
                                         <unicon v-if="form.morning_workshop === morning.id" name="check-square"
                                             width="20" height="20" fill="#243776"></unicon>
                                         <unicon v-if="form.morning_workshop !== morning.id" name="square" width="20"
@@ -79,13 +79,13 @@
                         <div>
                             <div v-for="afternoon in events.afternoon_workshop"
                                 @click="selectAfternoon(afternoon.id, afternoon)"
-                                :class="form.afternoon_workshop === afternoon.id ? 'bg-rose-200' : 'bg-rose-50'"
-                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-rose-200 ">
+                                :class="form.afternoon_workshop === afternoon.id ? 'bg-violet-200' : 'bg-violet-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-violet-200 ">
                                 <div class="mb-3">
                                     <div class="text-sm italic" v-if="!afternoon.available">Full Booked</div>
                                     <div class="text-sm italic" v-if="afternoon.available">{{ afternoon.quota -
                                         afternoon.transactions_count }} available</div>
-                                    <div class="font-semibold text-rose-900 flex">
+                                    <div class="font-semibold text-violet-900 flex">
                                         <unicon v-if="form.afternoon_workshop === afternoon.id" name="check-square"
                                             width="20" height="20" fill="#243776"></unicon>
                                         <unicon v-if="form.afternoon_workshop !== afternoon.id" name="square" width="20"
@@ -137,13 +137,13 @@
                             Voucher Code
                         </div>
                         <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
                         <small class="text-red-800" v-if="pricing.voucher_validation">
                             {{ pricing.voucher_validation }}
                         </small>
                         <div class="text-right mt-3">
                             <div @click="calculatePrice('check')"
-                                class="text-white cursor-pointer inline-block mb-2 bg-rose-500 hover:bg-rose-600 rounded-lg text-base px-3 py-1 text-center">
+                                class="text-white cursor-pointer inline-block mb-2 bg-violet-500 hover:bg-violet-600 rounded-lg text-base px-3 py-1 text-center">
                                 Check
                             </div>
                         </div>
@@ -156,7 +156,7 @@
                         </div>
                         <div>
                             <button @click="memberModal"
-                                class="w-full mb-2 bg-rose-200 hover:bg-rose-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="w-full mb-2 bg-violet-200 hover:bg-violet-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
                         </div>
@@ -167,7 +167,7 @@
                         <div class="text-sm border-b">
                             <div v-for="price in pricing.items">
                                 <div class="flex justify-between my-1" v-if="price.price !== 0"
-                                    :class="price.name === 'Total' ? 'border-t border-rose-800 font-semibold' : ''">
+                                    :class="price.name === 'Total' ? 'border-t border-violet-800 font-semibold' : ''">
                                     <div>{{ price.name }}</div>
                                     <div>{{ $filters.currency(price.price) }}</div>
                                 </div>
@@ -175,20 +175,20 @@
                         </div>
                         <div class="text-sm">
                             <div class="flex justify-between  my-1">
-                                <div class="text-rose-600">Subtotal</div>
+                                <div class="text-violet-600">Subtotal</div>
                                 <div class="font-semibold">{{ $filters.currency(pricing.subtotal) }}</div>
                             </div>
                         </div>
                         <div class="text-sm" v-if="pricing.discount_amount !== 0">
                             <div class="flex justify-between  my-1">
-                                <div class="text-rose-500">Voucher Discount</div>
-                                <div class="text-rose-500">{{ $filters.currency(pricing.discount_amount) }}</div>
+                                <div class="text-violet-500">Voucher Discount</div>
+                                <div class="text-violet-500">{{ $filters.currency(pricing.discount_amount) }}</div>
                             </div>
                         </div>
                         <div class="text-sm" v-if="pricing.package_discount !== 0">
                             <div class="flex justify-between  my-1">
-                                <div class="text-rose-500">Package Discount</div>
-                                <div class="text-rose-500">{{ $filters.currency(pricing.package_discount) }}</div>
+                                <div class="text-violet-500">Package Discount</div>
+                                <div class="text-violet-500">{{ $filters.currency(pricing.package_discount) }}</div>
                             </div>
                         </div>
                         <div class="text-sm border-t border-black">
@@ -199,7 +199,7 @@
                         </div>
                         <div class="mt-5">
                             <button @click="toPayment" :disabled="disabled"
-                                class="text-white w-full mb-2 bg-rose-900 hover:bg-rose-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="text-white w-full mb-2 bg-violet-900 hover:bg-violet-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 <BtnLoader v-if="disabled"></BtnLoader>
                                 <span v-if="!disabled">Process to Payment</span>
                             </button>
@@ -235,16 +235,16 @@
                         <div class="grid mb-2 gap-1 grid-cols-2" v-for="(user, i) in users">
                             <div>
                                 <input v-model="user.email" type="text" :placeholder="'email_' + (i + 1) + '@mail.com'"
-                                    class="block w-full rounded-lg focus:ring-rose-500 focus:border-rose-500" />
+                                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500" />
                             </div>
                             <div>
                                 <input v-model="user.name" type="text" :placeholder="'User name ' + (i + 1)"
-                                    class="block w-full rounded-lg focus:ring-rose-500 focus:border-rose-500" />
+                                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500" />
                             </div>
                         </div>
                         <div>
                             <button @click="addMember"
-                                class="w-full mb-2 bg-rose-200 hover:bg-rose-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="w-full mb-2 bg-violet-200 hover:bg-violet-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
                         </div>

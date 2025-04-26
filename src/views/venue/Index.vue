@@ -6,26 +6,26 @@
         <div class="mb-6 text-center">
             Tentrem Hotel Yogyakarta, P. Mangkubumi St. No.72A, Cokrodiningratan, Jetis, Yogyakarta
         </div>
-        <div class="rounded-xl shadow-sm bg-rose-100 grid grid-cols-12 mb-6">
-            <div class="col-span-12 md:col-span-5 min-h-[300px]  bg-rose-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
+        <div class="rounded-xl shadow-sm bg-violet-100 grid grid-cols-12 mb-6">
+            <div class="col-span-12 md:col-span-5 min-h-[300px]  bg-violet-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
                 style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Ftahir.webp?alt=media&token=3a731e63-0c2d-4943-a0c4-80888b3593cd')">
             </div>
             <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
                 <div class="mb-4">
                     <div class="text-2xl font-bold">Get Special Room Prices </div>
-                    <div class="italic text-rose-800 text-sm">for Participants</div>
+                    <div class="italic text-violet-800 text-sm">for Participants</div>
                 </div>
                 <div class="ml-8 mb-4">
                     <ol class="list-decimal">
                         <li>
                             <router-link to="/register"
-                                class="font-semibold underline text-rose-700">Register</router-link>
+                                class="font-semibold underline text-violet-700">Register</router-link>
                             yourself at the Event
                         </li>
                         <li>
                             After registering, you will get a link to claim the special price for the
                             <a href="https://goo.gl/maps/4LjYCwk7Ny3v4bh88" target="_blank"
-                                class="underline text-rose-700 italic">Tentrem Hotel</a>
+                                class="underline text-violet-700 italic">Tentrem Hotel</a>
                             rooms
                         </li>
                     </ol>
@@ -33,12 +33,12 @@
                 <div class="mb-4">
                     For more detailed information
                     <a href="https://wa.me/6285865064280?text=Bagaimana cara mendapatkan harga Room khusus peserta?"
-                        target="_blank" class="italic text-rose-700">https://wa.me/6285865064280</a>
+                        target="_blank" class="italic text-violet-700">https://wa.me/6285865064280</a>
                 </div>
             </div>
         </div>
 
-        <div class="rounded-xl shadow-sm bg-rose-100 p-6">
+        <div class="rounded-xl shadow-sm bg-violet-100 p-6">
             <div class="text-lg mb-2">Special Price</div>
             <table class="w-full text-center table mb-3">
                 <tbody>

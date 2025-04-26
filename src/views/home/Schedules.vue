@@ -1,13 +1,13 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-4 px-2" id="schedule">
-        <div class="text-4xl text-rose-900 font-bold mb-1 text-center">
+        <div class="text-4xl text-violet-900 font-bold mb-1 text-center">
             SCHEDULE
         </div>
-        <div class="text-small text-rose-600 mb-5 text-center">
+        <div class="text-small text-violet-600 mb-5 text-center">
         </div>
         <div class="grid grid-cols-3">
             <div @click="selected = 1"
-                :class="selected === 1 ? 'from-rose-400 to-purple-400' : 'from-purple-800 to-rose-800'"
+                :class="selected === 1 ? 'from-violet-400 to-purple-400' : 'from-purple-800 to-violet-800'"
                 class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:bg-yellow-500 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     FRIDAY
@@ -16,8 +16,8 @@
                 </div>
             </div>
             <div @click="selected = 2"
-                :class="selected === 2 ? 'from-rose-400 to-purple-400' : 'from-purple-800 to-rose-800'"
-                class="text-white py-3 text-center cursor-pointer hover:bg-rose-600 bg-gradient-to-r group transition duration-200">
+                :class="selected === 2 ? 'from-violet-400 to-purple-400' : 'from-purple-800 to-violet-800'"
+                class="text-white py-3 text-center cursor-pointer hover:bg-violet-600 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     SATURDAY
                     <span :class="selected === 2 ? 'max-w-full' : 'max-w-0'"
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div @click="selected = 3"
-                :class="selected === 3 ? 'from-rose-400 to-purple-400' : 'from-purple-800 to-rose-800'"
+                :class="selected === 3 ? 'from-violet-400 to-purple-400' : 'from-purple-800 to-violet-800'"
                 class="text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:bg-indigo-700 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     SUNDAY
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="selected === 1" class="p-2 border-b border-rose-900">
+        <div v-if="selected === 1" class="p-2 border-b border-violet-900">
             <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
                 Get a minimum of 22 SKP Kemenkes per Workshop
             </div>
@@ -46,7 +46,7 @@
                         {{ $filters.formatTime("2023-09-01 11:00:00") }}
                     </div>
                 </div>
-                <div class="col-span-7 md:col-span-6 mb-4 border-b border-rose-300"
+                <div class="col-span-7 md:col-span-6 mb-4 border-b border-violet-300"
                     v-for="ws_hd in schedule.workshop_half_day_1">
                     <div class="grid grid-cols-4">
                         <div class="col-span-3">
@@ -59,7 +59,7 @@
                                     <li v-for="item in ws_hd.schedules">
                                         {{ item.title }}
                                         <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name
-                                        }}</span>
+                                            }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -80,7 +80,7 @@
                         {{ $filters.formatTime("2023-09-01 16:00:00") }}
                     </div>
                 </div>
-                <div class="col-span-7 md:col-span-6 mb-4 border-b border-rose-300"
+                <div class="col-span-7 md:col-span-6 mb-4 border-b border-violet-300"
                     v-for="ws_hd in schedule.workshop_half_day_2">
                     <div class="grid grid-cols-4">
                         <div class="col-span-3">
@@ -93,7 +93,7 @@
                                     <li v-for="item in ws_hd.schedules">
                                         {{ item.title }}
                                         <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name
-                                        }}</span>
+                                            }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -107,11 +107,11 @@
                 </div>
             </div>
         </div>
-        <div v-if="selected === 2" class="p-2 border-b border-rose-900">
+        <div v-if="selected === 2" class="p-2 border-b border-violet-900">
             <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
                 Get a minimum of 16 SKP Kemenkes per Day Symposium
             </div>
-            <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-rose-300"
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-violet-300"
                 v-for="(saturday, s) in schedule.saturday">
                 <div class="col-span-2 text-center md:col-span-1">
                     <div class="inline-block bg-amber-300 px-2 py-1 rounded">
@@ -137,7 +137,7 @@
                             </ul>
                         </div>
                         <div>
-                            <div class="text-center hover:bg-rose-100 cursor-pointer"
+                            <div class="text-center hover:bg-violet-100 cursor-pointer"
                                 @click="() => { saturday.room_a.show = !saturday.room_a.show }">
                                 <unicon name="angle-down" height="25px" v-if="!saturday.room_a.show">
                                 </unicon>
@@ -167,7 +167,7 @@
                             </ul>
                         </div>
                         <div>
-                            <div class="text-center hover:bg-rose-100 cursor-pointer"
+                            <div class="text-center hover:bg-violet-100 cursor-pointer"
                                 @click="() => { saturday.room_b.show = !saturday.room_b.show }">
                                 <unicon name="angle-down" height="25px" v-if="!saturday.room_b.show">
                                 </unicon>
@@ -183,11 +183,11 @@
             </div>
         </div>
 
-        <div v-if="selected === 3" class="p-2 border-b border-rose-900">
+        <div v-if="selected === 3" class="p-2 border-b border-violet-900">
             <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
                 Get a minimum of 16 SKP Kemenkes per Day Symposium
             </div>
-            <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-rose-300"
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-violet-300"
                 v-for="sunday in schedule.sunday">
                 <div class="col-span-2 text-center md:col-span-1">
                     <div class="inline-block bg-amber-300 px-2 py-1 rounded">
@@ -213,7 +213,7 @@
                             </ul>
                         </div>
                         <div>
-                            <div class="text-center hover:bg-rose-100 cursor-pointer"
+                            <div class="text-center hover:bg-violet-100 cursor-pointer"
                                 @click="() => { sunday.room_a.show = !sunday.room_a.show }">
                                 <unicon name="angle-down" height="25px" v-if="!sunday.room_a.show">
                                 </unicon>
@@ -243,7 +243,7 @@
                             </ul>
                         </div>
                         <div>
-                            <div class="text-center hover:bg-rose-100 cursor-pointer"
+                            <div class="text-center hover:bg-violet-100 cursor-pointer"
                                 @click="() => { sunday.room_b.show = !sunday.room_b.show }">
                                 <unicon name="angle-down" height="25px" v-if="!sunday.room_b.show">
                                 </unicon>

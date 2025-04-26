@@ -1,22 +1,22 @@
 <template>
     <div>
         <div class="text-2xl font-semibold mb-3">Transaction</div>
-        <div v-if="data_content.length === 0" class="p-3 italic text-rose-500">
+        <div v-if="data_content.length === 0" class="p-3 italic text-violet-500">
             no data
         </div>
-        <div class="border-rose-200 border bg-white rounded mb-2" v-for="trx in data_content">
-            <div class="bg-rose-100 rounded-t py-3 px-4 flex justify-between">
+        <div class="border-violet-200 border bg-white rounded mb-2" v-for="trx in data_content">
+            <div class="bg-violet-100 rounded-t py-3 px-4 flex justify-between">
                 <div class="flex">
                     <unicon name="clock" width="15" height="15"></unicon>
                     <div class="text-xs ml-1">{{ $filters.formatDateTime(trx.created_at) }}</div>
                 </div>
-                <div class="text-xs text-rose-500 font-semibold">
+                <div class="text-xs text-violet-500 font-semibold">
                     {{ trx.status_label }}
                 </div>
             </div>
             <div class="p-5 flex justify-between">
                 <div>
-                    <div class="font-semibold cursor-pointer underline text-rose-700 hover:text-rose-800">
+                    <div class="font-semibold cursor-pointer underline text-violet-700 hover:text-violet-800">
                         <router-link v-if="trx.status === 100" :to="'/register/event?transaction_number=' + trx.number">
                             {{ trx.number }}
                         </router-link>
@@ -26,7 +26,7 @@
                         </router-link>
                         <span class="font-semibold" v-else>{{ trx.number }}</span>
                     </div>
-                    <div class="text-xs my-1 p-1 bg-rose-100 text-rose-500 rounded grid grid-cols-2">
+                    <div class="text-xs my-1 p-1 bg-violet-100 text-violet-500 rounded grid grid-cols-2">
                         <div>
                             <div class="flex">
                                 <unicon name="user" fill="grey" height="15px" width="15px"></unicon>
@@ -44,7 +44,7 @@
                         <ul class="list-disc" v-if="trx.transaction_details">
                             <li class="text-sm" v-for="detail in trx.transaction_details">
                                 {{ detail.event_name }}
-                                <span class="italic text-rose-500" v-if="detail.event">{{
+                                <span class="italic text-violet-500" v-if="detail.event">{{
                                     $filters.formatDateTime(detail.event.date_start) }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
@@ -54,7 +54,7 @@
                     <!--                        <div class="font-semibold">Collective Registration</div>-->
                     <!--                        <div class="text-sm" v-for="child in trx.transaction_children">-->
                     <!--                            <i>{{ child.user_name }}</i>-->
-                    <!--                            <div class="flex justify-between text-rose-500">-->
+                    <!--                            <div class="flex justify-between text-violet-500">-->
                     <!--                                <div>{{ child.user_email }}</div>-->
                     <!--                                <div>{{ child.nik }}</div>-->
                     <!--                            </div>-->
@@ -62,7 +62,7 @@
                     <!--                    </div>-->
                 </div>
                 <div>
-                    <div class="font-semibold text-rose-700 text-right">
+                    <div class="font-semibold text-violet-700 text-right">
                         {{ $filters.currency(trx.total) }}
                     </div>
                     <router-link v-if="trx.status === 100"

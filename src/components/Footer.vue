@@ -1,8 +1,8 @@
 <template>
     <footer class="p-3 shadow md:px-4 md:py-6 bg-top bg-background-lightRed">
         <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="https://jfu.perki-jogja.com/" class="flex items-center mb-4 sm:mb-0">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Fjfu_logo_text.png?alt=media&token=e615c11d-b4ba-4d4e-af26-11fa2774b5a6"
+            <a href="https://jcu.perki-jogja.com/" class="flex items-center mb-4 sm:mb-0">
+                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU24%2Fjcu_logo_color.png?alt=media&token=21634610-8436-4dce-b9a3-66142509d1ae"
                     class="h-8 mr-3" alt="Jogja Foot Ulcer Meeting 2025" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>

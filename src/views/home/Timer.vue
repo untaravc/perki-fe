@@ -2,11 +2,11 @@
     <div class="px-2 mb-3">
         <div class="max-w-screen-lg m-auto py-6 bg-background-lightRed rounded-lg">
             <div class="grid grid-cols-3">
-                <div class="col-span-3 md:col-span-1 text-center md:border-r-2 mb-4 border-rose-900">
+                <div class="col-span-3 md:col-span-1 text-center md:border-r-2 mb-4 border-violet-900">
                     <div class="font-semibold text-lg">Get Ready For The Event</div>
                     <div>29th & 30th of May 2025</div>
                     <!-- <a href="https://maps.app.goo.gl/SHfPxDQp8TMdxZwP7" target="_blank"
-                        class="text-sm text-rose-500 underline cursor-pointer">Yogyakarta</a> -->
+                        class="text-sm text-violet-500 underline cursor-pointer">Yogyakarta</a> -->
                 </div>
                 <div class="col-span-3 md:col-span-2 flex justify-center items-center">
                     <div class="grid gap:3 md:gap-12 grid-cols-4">

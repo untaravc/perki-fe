@@ -1,14 +1,14 @@
 <template>
     <div>
         <div class="text-2xl font-semibold mb-3">Profile</div>
-        <div class="p-6 border-rose-100 bg-white rounded-xl mb-4">
+        <div class="p-6 border-violet-100 bg-white rounded-xl mb-4">
             <div class="grid gap-2 grid-cols-5">
                 <div>
                     <div style="padding-bottom: 100%" :style="`background-image:url(` + profile.image + `)`"
                         class="w-full bg-purple-300 bg-cover rounded-md bg-center bg-no-repeat">
                     </div>
                     <div class="text-center">
-                        <label for="photo-profile" class="text-center text-sm cursor-pointer text-rose-800">
+                        <label for="photo-profile" class="text-center text-sm cursor-pointer text-violet-800">
                             <span v-if="!disabled">Update Photo</span>
                             <span v-if="disabled">Updating..</span>
                         </label>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="text-right">
                         <a href="#edit-form"
-                            class="text-white bg-rose-800 hover:bg-rose-900 focus:ring-4 focus:outline-none focus:ring-rose-300 rounded-full text-sm px-8 py-1.5 text-center mr-3 md:mr-0"
+                            class="text-white bg-violet-800 hover:bg-violet-900 focus:ring-4 focus:outline-none focus:ring-violet-300 rounded-full text-sm px-8 py-1.5 text-center mr-3 md:mr-0"
                             @click="editForm(profile)">
                             Edit Profile and Password
                         </a>
@@ -49,12 +49,12 @@
                 </div>
             </div>
         </div>
-        <div class="p-6 border-rose-100 bg-white rounded-xl" id="edit-form" v-if="edit_mode">
+        <div class="p-6 border-violet-100 bg-white rounded-xl" id="edit-form" v-if="edit_mode">
             <div class="mb-3">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name<span
                         class="text-red-600">*</span></label>
                 <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('name')">
                     {{ parseErrors('name', 'val') }}
                 </small>
@@ -63,7 +63,7 @@
                 <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone<span
                         class="text-red-600">*</span></label>
                 <input type="text" id="phone" autofocus v-model="form.phone"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('phone')">
                     {{ parseErrors('phone', 'val') }}
                 </small>
@@ -72,7 +72,7 @@
                 <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Institution<span
                         class="text-red-600">*</span></label>
                 <input type="text" id="address" autofocus v-model="form.institution"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('institution')">
                     {{ parseErrors('institution', 'val') }}
                 </small>
@@ -81,7 +81,7 @@
                 <label for="nik" class="block mb-2 text-sm font-medium text-gray-900">NIK<span
                         class="text-red-600">*</span></label>
                 <input type="text" id="nik" autofocus v-model="form.nik"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('nik')">
                     {{ parseErrors('nik', 'val') }}
                 </small>
@@ -90,7 +90,7 @@
                 <label for="city" class="block mb-2 text-sm font-medium text-gray-900">City<span
                         class="text-red-600">*</span></label>
                 <input type="text" id="city" autofocus v-model="form.city"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('city')">
                     {{ parseErrors('city', 'val') }}
                 </small>
@@ -99,7 +99,7 @@
             <div class="mb-3">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Update Password</label>
                 <input type="password" id="password" autofocus v-model="form.password"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
                 <div class="text-xs italic">Leave blank if you don't want to update the password</div>
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('password')">
                     {{ parseErrors('password', 'val') }}
@@ -109,14 +109,14 @@
                 <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900">Confirm New
                     Password</label>
                 <input type="password" id="password_confirmation" autofocus v-model="form.password_confirmation"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('password_confirmation')">
                     {{ parseErrors('password_confirmation', 'val') }}
                 </small>
             </div>
             <div class="flex justify-end">
                 <button @click="updateData" :disabled="disabled"
-                    class="text-white bg-rose-900 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <span v-if="!disabled">Save Changes</span>
                     <span v-if="disabled">Saving..</span>
                 </button>

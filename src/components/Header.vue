@@ -2,21 +2,21 @@
     <nav class="px-2 sm:px-4 py-2 bg-background-lightRed fixed w-full z-20 top-0 left-0">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center ml-4 sm:ml-0">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Fjfu_logo_text.png?alt=media&token=e615c11d-b4ba-4d4e-af26-11fa2774b5a6"
+                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU24%2Fjcu_logo_color.png?alt=media&token=21634610-8436-4dce-b9a3-66142509d1ae"
                     class="h-10 mr-3 sm:h-16" alt="Jogja Foot Ulcer Meeting 2025">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <div class="flex md:order-2">
-                <router-link to="/register"
-                    class="text-white flex items-center bg-rose-700 hover:bg-rose-500 focus:ring-4 focus:outline-none 
+                <!-- <router-link to="/register"
+                    class="text-white flex items-center bg-violet-700 hover:bg-violet-500 focus:ring-4 focus:outline-none 
                     focus:ring-amber-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
                     Register
-                </router-link>
+                </router-link> -->
                 <!--                <div-->
-                <!--                    class="text-white flex items-center bg-rose-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">-->
+                <!--                    class="text-white flex items-center bg-violet-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">-->
                 <!--                    Register-->
                 <!--                </div>-->
-                <router-link to="/profile/info" v-if="has_token" class="text-white bg-rose-700 hover:bg-rose-500 focus:ring-4
+                <!-- <router-link to="/profile/info" v-if="has_token" class="text-white bg-violet-700 hover:bg-violet-500 focus:ring-4
                         focus:outline-none focus:ring-amber-400 md:font-medium rounded-full
                         text-base px-2.5 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
@@ -24,11 +24,11 @@
                     </div>
                 </router-link>
                 <router-link to="/login" v-if="!has_token"
-                    class="text-white bg-rose-900 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-amber-400 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-amber-400 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
                         <div>Login</div>
                     </div>
-                </router-link>
+                </router-link> -->
                 <!-- <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"
                     class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky" aria-expanded="false">
@@ -46,31 +46,31 @@
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
                     <!-- <li>
                         <router-link to="/" @click="toggleMenu"
-                            class="block home py-2 pl-3 pr-4 text-rose-900 rounded md:bg-transparent md:p-0"
+                            class="block home py-2 pl-3 pr-4 text-violet-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Home
                         </router-link>
                     </li>
                     <li>
                         <router-link to="/guidance" @click="toggleMenu"
-                            class="block home py-2 pl-3 pr-4 text-rose-900 rounded md:bg-transparent md:p-0"
+                            class="block home py-2 pl-3 pr-4 text-violet-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Guidance
                         </router-link>
                     </li>
                     <li>
                         <router-link to="/committee" @click="toggleMenu"
-                            class="block home py-2 pl-3 pr-4 text-rose-900 rounded md:bg-transparent md:p-0"
+                            class="block home py-2 pl-3 pr-4 text-violet-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Committee
                         </router-link>
                     </li>
                     <li v-if="has_token">
                         <router-link to="/profile/events" @click="toggleMenu"
-                            class="block py-2 pl-3 pr-4 text-rose-900 rounded md:bg-transparent md:p-0"
+                            class="block py-2 pl-3 pr-4 text-violet-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">My Account
                         </router-link>
                     </li>
                     <li v-if="!has_token">
                         <router-link to="/login" @click="toggleMenu"
-                            class="block py-2 pl-3 pr-4 text-rose-900 rounded md:bg-transparent md:p-0"
+                            class="block py-2 pl-3 pr-4 text-violet-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Sign In
                         </router-link>
                     </li> -->

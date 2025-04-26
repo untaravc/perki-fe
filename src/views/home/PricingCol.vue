@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-3 gap-4">
             <div v-for="(data, idx) in pricing" class="col-span-3 md:col-span-1 to-gray-300 rounded-lg p-6"
-                :class="idx === 0 ? 'bg-rose-50' : idx === 1 ? 'bg-rose-200' : 'bg-rose-100'">
+                :class="idx === 0 ? 'bg-violet-50' : idx === 1 ? 'bg-violet-200' : 'bg-violet-100'">
                 <div class="text-md font-semibold mb-4">{{ data.title }}</div>
                 <!-- <div class="text-sm mb-4">{{ data.subtitle }} <span style="color: #ff000000;">.</span> </div> -->
                 <div v-if="data.price_sp > 0">
@@ -21,11 +21,11 @@
                 </div>
                 <div class="mt-4 mb-4">
                     <router-link to="/register"
-                        class="block border-2 border-rose-400 hover:bg-rose-400 focus:ring-2 focus:outline-none focus:ring-rose-400 font-normal md:font-medium rounded-md text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center">
+                        class="block border-2 border-violet-400 hover:bg-violet-400 focus:ring-2 focus:outline-none focus:ring-violet-400 font-normal md:font-medium rounded-md text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center">
                         Register
                     </router-link>
                 </div>
-                <div class="border-t border-rose-300"></div>
+                <div class="border-t border-violet-300"></div>
                 <div class="check mt-4">
                     <ul>
                         <li v-for="item in data.items" class="text-sm">

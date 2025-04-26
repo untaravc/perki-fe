@@ -3,7 +3,7 @@
         <div class="text-4xl font-bold mb-1 text-center">
             SPEAKERS
         </div>
-        <div class="text-small text-rose-700 mb-5 text-center">
+        <div class="text-small text-violet-700 mb-5 text-center">
             The speakers are experts in Cardiology and Vascular Medicine as well as related fields local and national
             level
         </div>
@@ -13,8 +13,8 @@
                     class="w-full bg-purple-300 bg-cover mb-2 rounded-md bg-center bg-no-repeat">
                 </div>
                 <div>
-                    <h4 class="font-bold text-base text-rose-700">{{ data.name }}</h4>
-                    <div class="text-xs text-neutral-material-700 text-rose-600">{{ data.desc }}</div>
+                    <h4 class="font-bold text-base text-violet-700">{{ data.name }}</h4>
+                    <div class="text-xs text-neutral-material-700 text-violet-600">{{ data.desc }}</div>
                 </div>
             </div>
         </div>

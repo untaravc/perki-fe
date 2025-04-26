@@ -2,16 +2,16 @@
     <div class="" style="min-height: calc(100vh - 165px);">
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
-        <TimerPage></TimerPage>
+        <!-- <TimerPage></TimerPage> -->
         <!-- <WelcomeMessage></WelcomeMessage> -->
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
-        <Schedule></Schedule>
+        <!-- <Schedule></Schedule>
         <Pricing></Pricing>
         <div class="bg-background-lightRed">
             <Speakers></Speakers>
         </div>
-        <Venue></Venue>
+        <Venue></Venue> -->
         <!-- <Sponsors></Sponsors> -->
     </div>
 </template>
