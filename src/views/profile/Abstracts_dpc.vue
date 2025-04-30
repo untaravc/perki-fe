@@ -4,7 +4,7 @@
             <div class="text-2xl font-semibold mb-3" id="edit-add">Abstracts</div>
             <div>
                 <button @click="addNew"
-                    class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     Add New
                 </button>
             </div>
@@ -14,7 +14,7 @@
                 <b v-if="!edit_mode">Add New Abstract</b>
                 <b v-if="edit_mode">Edit Abstract</b>
             </div>
-            <div class="relative border border-violet-500 rounded-lg p-2">
+            <div class="relative border border-red-500 rounded-lg p-2">
                 <page-loading v-model:active="upload_loader" loader="bars" :is-full-page="false" />
                 <div class="flex justify-between">
                     <input type="file" id="file-upload" accept="application/pdf" hidden @change="uploadFile">
@@ -22,7 +22,7 @@
                         <unicon name="image" fill="blue"></unicon>
                         <span class="text-sm ml-2">{{ $filters.truncate(type.name, 30) }}</span>
                     </a>
-                    <label for="file-upload" class="cursor-pointer bg-violet-800 text-white py-1 px-3 rounded-lg">Select
+                    <label for="file-upload" class="cursor-pointer bg-red-800 text-white py-1 px-3 rounded-lg">Select
                         File</label>
                 </div>
             </div>
@@ -33,7 +33,7 @@
             <div class="mb-2">
                 <label class="text-sm">Title</label>
                 <input type="text" v-model="form.title"
-                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500">
+                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('title')">
                     {{ parseErrors('title', 'val') }}
                 </small>
@@ -41,15 +41,14 @@
             <div class="mb-2">
                 <label class="text-sm">Author(s) (separate by comma)</label>
                 <input type="text" v-model="form.subtitle"
-                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500">
+                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('subtitle')">
                     {{ parseErrors('subtitle', 'val') }}
                 </small>
             </div>
             <div class="mb-2">
                 <label class="text-sm">Category</label>
-                <select v-model="form.category"
-                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500">
+                <select v-model="form.category" class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500">
                     <option value="research">Research</option>
                     <option value="case_report">Case Report</option>
                 </select>
@@ -60,19 +59,19 @@
             <div class="mb-2">
                 <label class="text-sm">Abstract</label>
                 <textarea rows="10" v-model="form.body"
-                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500"></textarea>
+                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500"></textarea>
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('body')">
                     {{ parseErrors('body', 'val') }}
                 </small>
             </div>
             <div class="text-right">
                 <button @click="addData" :disabled="disabled" v-if="!edit_mode"
-                    class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <span v-if="!disabled">Save</span>
                     <span v-if="disabled">Loading..</span>
                 </button>
                 <button @click="updateData" :disabled="disabled" v-if="edit_mode"
-                    class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <span v-if="!disabled">Save changes</span>
                     <span v-if="disabled">Loading..</span>
                 </button>
@@ -80,22 +79,22 @@
         </div>
 
         <!--       List-->
-        <div class="border-violet-200 border bg-white rounded mb-2" v-for="data in data_content">
-            <div class="bg-violet-100 rounded-t py-3 px-4 flex justify-between">
+        <div class="border-red-200 border bg-white rounded mb-2" v-for="data in data_content">
+            <div class="bg-red-100 rounded-t py-3 px-4 flex justify-between">
                 <div class="flex">
                     <unicon name="clock" width="15" height="15"></unicon>
                     <div class="text-xs ml-1">{{ $filters.formatDateTime(data.created_at) }}</div>
                 </div>
-                <div class="text-xs text-violet-500 font-semibold">
+                <div class="text-xs text-red-500 font-semibold">
                     <span v-if="data.status === 0">On Review</span>
                     <span v-if="data.status === 1">Accepted</span>
                 </div>
             </div>
             <div class="p-4">
-                <div class="font-semibold text-violet-700 hover:text-violet-800">
+                <div class="font-semibold text-red-700 hover:text-red-800">
                     {{ data.title }}
                 </div>
-                <div class="italic text-sm text-violet-500">
+                <div class="italic text-sm text-red-500">
                     {{ data.subtitle }}
                 </div>
                 <div class="text-sm">
@@ -106,7 +105,7 @@
                         <span v-if="data.category === 'research'"
                             class="px-2 py-1 font-semibold bg-green-200 rounded text-xs">{{ data.category }}</span>
                         <span v-if="data.category === 'case_report'"
-                            class="px-2 py-1 font-semibold bg-violet-200 rounded text-xs">{{ data.category }}</span>
+                            class="px-2 py-1 font-semibold bg-red-200 rounded text-xs">{{ data.category }}</span>
                     </div>
                     <div>
                         <button @click="deleteData(data)"
@@ -114,7 +113,7 @@
                             Delete
                         </button>
                         <button @click="editData(data)"
-                            class="bg-violet-700 mx-1 cursor-pointer hover:bg-violet-800 items-center text-white px-4 py-1 text-sm rounded-lg">
+                            class="bg-red-700 mx-1 cursor-pointer hover:bg-red-800 items-center text-white px-4 py-1 text-sm rounded-lg">
                             Edit
                         </button>
                     </div>

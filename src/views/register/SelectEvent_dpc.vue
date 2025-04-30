@@ -1,16 +1,16 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-24">
-        <div class="p-6 border-violet-100 bg-white rounded-xl">
+        <div class="p-6 border-red-100 bg-white rounded-xl">
             <div class="grid gap-4 md:grid-cols-3">
                 <div class="">
                     <div class="font-semibold text-lg min-h-[56px]">
                         Symposium & <br>
                         Saturday Workshop
                     </div>
-                    <div class="rounded-tl-lg rounded-tr-lg bg-violet-50 p-4 border cursor-pointer hover:bg-violet-100"
+                    <div class="rounded-tl-lg rounded-tr-lg bg-red-50 p-4 border cursor-pointer hover:bg-red-100"
                         @click="selectSympo(events.symposium.id)">
                         <div class="mb-3">
-                            <div class="font-semibold text-violet-900 flex">
+                            <div class="font-semibold text-red-900 flex">
                                 {{ events.symposium.name }}
                             </div>
                             <div class="text-xs mb-1">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <div class="text-sm font-semibold text-violet-700 text-right">
+                            <div class="text-sm font-semibold text-red-700 text-right">
                                 Rp {{ $filters.currency(events.symposium.price) }}
                             </div>
                             <div>
@@ -36,9 +36,9 @@
                         </div>
                     </div>
                     <div v-for="half_day in events.half_day" @click="selectHalfDay(half_day.id, events.symposium.id)"
-                        class="bg-violet-50 p-4 border last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-violet-100 ">
+                        class="bg-red-50 p-4 border last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-red-100 ">
                         <div class="mb-3">
-                            <div class="font-semibold text-violet-900 flex">
+                            <div class="font-semibold text-red-900 flex">
                                 <unicon v-if="form.workshop_half_day === half_day.id" name="check-square" width="20"
                                     height="20" fill="#243776"></unicon>
                                 <unicon v-if="form.workshop_half_day !== half_day.id" name="square" width="20"
@@ -58,9 +58,9 @@
                 <div class="">
                     <div class="font-semibold text-lg min-h-[56px]">Sunday Workshop</div>
                     <div v-for="full_day in events.full_day" @click="selectFullDay(full_day.id)"
-                        class="rounded-lg bg-violet-50 p-4 border cursor-pointer hover:bg-violet-100 mb-3">
+                        class="rounded-lg bg-red-50 p-4 border cursor-pointer hover:bg-red-100 mb-3">
                         <div class="mb-3">
-                            <div class="font-semibold text-violet-900 flex">
+                            <div class="font-semibold text-red-900 flex">
                                 {{ full_day.name }}
                             </div>
                             <div class="text-xs mb-1">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="flex justify-between items-center">
-                            <div class="text-sm font-semibold text-violet-700 text-right">
+                            <div class="text-sm font-semibold text-red-700 text-right">
                                 Rp {{ $filters.currency(full_day.price) }}
                             </div>
                             <div>
@@ -117,10 +117,10 @@
                             Voucher Code
                         </div>
                         <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-900 focus:border-violet-500 block w-full p-2.5">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-900 focus:border-red-500 block w-full p-2.5">
                         <div class="text-right mt-3">
                             <div @click="calculatePrice('check')"
-                                class="text-white cursor-pointer inline-block mb-2 bg-violet-500 hover:bg-violet-600 rounded-lg text-base px-3 py-1 text-center">
+                                class="text-white cursor-pointer inline-block mb-2 bg-red-500 hover:bg-red-600 rounded-lg text-base px-3 py-1 text-center">
                                 Check
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                         <div class="text-sm" v-if="pricing.count > 0">
                             <div v-for="price in pricing.items">
                                 <div class="flex justify-between" v-if="price.price !== 0"
-                                    :class="price.name === 'Total' ? 'border-t border-violet-800 font-semibold' : ''">
+                                    :class="price.name === 'Total' ? 'border-t border-red-800 font-semibold' : ''">
                                     <div>{{ price.name }}</div>
                                     <div>{{ $filters.currency(price.price) }}</div>
                                 </div>
@@ -142,14 +142,14 @@
                                 <div>Event</div>
                                 <div>0</div>
                             </div>
-                            <div class="flex justify-between border-t border-violet-800 font-semibold">
+                            <div class="flex justify-between border-t border-red-800 font-semibold">
                                 <div>Total</div>
                                 <div>0</div>
                             </div>
                         </div>
                         <div class="mt-5">
                             <button @click="toPayment"
-                                class="text-white w-full mb-2 bg-violet-900 hover:bg-violet-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                class="text-white w-full mb-2 bg-red-900 hover:bg-red-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Process to Payment
                             </button>
                         </div>

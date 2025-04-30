@@ -1,33 +1,37 @@
 <template>
-    <div class="" style="min-height: calc(100vh - 165px);">
-        <Hero></Hero>
+    <div class="" style="min-height: calc(100vh - 133px);">
+        <HeroCarousel></HeroCarousel>
+        <!-- <Hero></Hero> -->
         <!-- <EventCta></EventCta> -->
         <!-- <TimerPage></TimerPage> -->
         <!-- <WelcomeMessage></WelcomeMessage> -->
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
-        <!-- <Schedule></Schedule>
-        <Pricing></Pricing>
+        <!-- <Schedule></Schedule> -->
+        <!-- <Pricing></Pricing>
         <div class="bg-background-lightRed">
             <Speakers></Speakers>
-        </div>
-        <Venue></Venue> -->
+        </div> -->
         <!-- <Sponsors></Sponsors> -->
+        <!-- <Venue></Venue> -->
     </div>
 </template>
 
 <script>
-import Hero from './Hero.vue'
+// import Hero from './Hero.vue'
+import HeroCarousel from './HeroCarousel.vue'
 import WelcomeMessage from './WelcomeMessage.vue'
 import Speakers from './Speakers.vue'
 import Schedule from './SchedulesSimple.vue'
 import Pricing from "./PricingCol.vue";
 import TimerPage from "./Timer.vue";
 import Venue from "./Venue2.vue";
+// import Sponsors from "./Sponsors.vue";
 export default {
     components: {
         Pricing,
-        Hero,
+        // Hero,
+        HeroCarousel,
         Speakers,
         Schedule,
         TimerPage,

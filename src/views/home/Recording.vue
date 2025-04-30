@@ -6,13 +6,13 @@
                     <div class="font-semibold text-2xl">
                         On-Demand Recordings
                     </div>
-                    <div class="font-semibold text-sm text-violet-700">
+                    <div class="font-semibold text-sm text-red-700">
                         Jogja Cardilogy Update - Jincartos Symposium
                     </div>
                 </div>
                 <div class="col-span-3 md:col-span-1 flex justify-end px-6 items-center">
                     <button @click="toProtectedPage"
-                        class="bg-violet-900 hover:bg-violet-800 text-violet-200 focus:ring-4 focus:outline-none focus:ring-violet-700 font-medium rounded-lg text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                        class="bg-red-900 hover:bg-red-800 text-red-200 focus:ring-4 focus:outline-none focus:ring-red-700 font-medium rounded-lg text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                         View
                     </button>
                 </div>

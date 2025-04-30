@@ -14,17 +14,16 @@ module.exports = {
       },
       colors: {
         primary: {
-          red: '#da3931',
-          blue: '#3278b3',
+          coklat: '#654104',
+          hijau: '#5f6304',
+          merah: '#b44241',
+          oren: '#ee9052',
         },
         background: {
-          default: '#f9f7f4',    // Off-white/cream
-          light: '#f0f2f5',      // Light grey
-          beige: '#f5f2ea',      // Soft beige
-          lightBlue: '#edf5fb',  // Very light blue
-          lightRed: '#fdf0ef',   // Very light red
-          mint: '#eaf8f5',       // Light mint
-          sand: '#f5f0e6',       // Soft sand
+          default: '#F2F2F2', // Abu muda
+          green: '#D0F0C0', // Hijau
+          merah: '#b44241',
+          oren: '#ee9052',
         }
       }
     },

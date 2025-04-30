@@ -6,21 +6,21 @@
                 :style="`background-image: url('` + data_content[index]['poster'] + `')`"></a>
             <div class="md:col-span-3 md:order-1">
                 <div
-                    class="m-5 bg-background-lightRed rounded-full py-1 px-8 italic font-semibold text-sm inline-block">
+                    class="m-5 bg-background-default rounded-full py-1 px-8 italic font-semibold text-sm inline-block text-primary-oren">
                     {{ data_content[index]['date'] }}
                 </div>
-                <div class="mx-5 mb-5 font-bold text-blue-800"
+                <div class="mx-5 mb-5 font-bold text-primary-merah"
                     :class="data_content[index]['title'] && data_content[index]['title'].length > 30 ? 'text-2xl lg:text-4xl' : 'text-4xl lg:text-6xl'">
                     {{ data_content[index]['title'] }}
                 </div>
-                <div class="mx-5 mb-5 lg:w-9/12 text-lg text-blue-600 italic">
+                <div class="mx-5 mb-5 lg:w-9/12 text-lg text-primary-merah italic">
                     {{ data_content[index]['subtitle'] }}
                 </div>
                 <div class="mx-5 flex" v-if="data_content[index]['buttons'].length > 0">
                     <div v-for="btn in data_content[index]['buttons']" class="mx-2">
                         <router-link :to="btn.link"
-                            :class="btn.theme === 'dark' ? 'text-white bg-violet-800' : 'text-violet-800 hover:bg-violet-800 hover:text-white'"
-                            class="flex items-center border border-violet-800 font-medium rounded-full text-lg px-6 py-2 text-center">
+                            :class="btn.theme === 'dark' ? 'text-white bg-red-800' : 'text-red-800 hover:bg-red-800 hover:text-white'"
+                            class="flex items-center border border-red-800 font-medium rounded-full text-lg px-6 py-2 text-center">
                             <div class="mr-2">{{ btn.text }}</div>
                             <unicon v-if="btn.theme === 'dark'" name="arrow-right" fill="white"></unicon>
                         </router-link>
@@ -28,11 +28,11 @@
                 </div>
                 <div class="flex ml-6 mt-4" v-if="data_content.length > 1">
                     <div @click="prev"
-                        class="p-3 mx-1 border border-violet-300 cursor-pointer hover:bg-violet-200 h-12 w-12 flex justify-center items-center rounded-full">
+                        class="p-3 mx-1 border border-red-300 cursor-pointer hover:bg-red-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-left"></unicon>
                     </div>
                     <div @click="next"
-                        class="p-3 mx-1 border border-violet-300 cursor-pointer hover:bg-violet-200 h-12 w-12 flex justify-center items-center rounded-full">
+                        class="p-3 mx-1 border border-red-300 cursor-pointer hover:bg-red-200 h-12 w-12 flex justify-center items-center rounded-full">
                         <unicon name="angle-right"></unicon>
                     </div>
                 </div>

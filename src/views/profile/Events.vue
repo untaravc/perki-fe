@@ -1,24 +1,24 @@
 <template>
     <div>
         <div class="text-2xl font-semibold mb-3">My Event</div>
-        <div v-if="data_content.length === 0" class="p-3 italic text-violet-500">
+        <div v-if="data_content.length === 0" class="p-3 italic text-red-500">
             no data
         </div>
-        <div class="border-violet-200 border bg-white rounded mb-2" v-for="event in data_content">
-            <div class="bg-violet-100 rounded-t py-3 px-4 flex justify-between">
+        <div class="border-red-200 border bg-white rounded mb-2" v-for="event in data_content">
+            <div class="bg-red-100 rounded-t py-3 px-4 flex justify-between">
                 <div class="flex">
                     <unicon name="clock" width="15" height="15"></unicon>
                     <div class="text-xs ml-1" v-if="event.event">
                         {{ $filters.formatDayDateTime(event.event.date_start) }}
                     </div>
                 </div>
-                <div class="text-xs text-violet-500 font-semibold">
+                <div class="text-xs text-red-500 font-semibold">
                     <span></span>
                 </div>
             </div>
             <div class="p-3">
                 <div>
-                    <div class="font-semibold cursor-pointer text-violet-700 hover:text-violet-800">
+                    <div class="font-semibold cursor-pointer text-red-700 hover:text-red-800">
                         {{ event.event_name }}
                     </div>
                     <div class="" v-if="event.event">
@@ -31,7 +31,7 @@
                             <div class="ml-1">Location</div>
                         </div>
                         <div
-                            class="bg-violet-700 flex mx-1 cursor-pointer hover:bg-violet-800 items-center text-white px-2 py-1 text-sm rounded-lg">
+                            class="bg-red-700 flex mx-1 cursor-pointer hover:bg-red-800 items-center text-white px-2 py-1 text-sm rounded-lg">
                             <unicon name="play" fill="white" height="14px" width="14px"></unicon>
                             <div class="ml-1">Information</div>
                         </div>

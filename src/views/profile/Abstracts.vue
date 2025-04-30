@@ -4,11 +4,11 @@
             <div class="text-2xl font-semibold mb-3" id="edit-add">Abstracts</div>
             <div>
                 <button @click="addNew" v-if="is_open"
-                    class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     Add New
                 </button>
                 <button v-if="!is_open"
-                    class="text-white bg-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-red-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     Add New
                 </button>
             </div>
@@ -49,7 +49,7 @@
                                 </td>
                                 <td class="px-4 py-2">
                                     <span @click="editAuthorModal(author, i)"
-                                        class="cursor-pointer underline font-bold text-violet-700 hover:text-violet-900 mr-1">edit</span>
+                                        class="cursor-pointer underline font-bold text-red-700 hover:text-red-900 mr-1">edit</span>
                                     <span @click="deleteAuthor(i)"
                                         class="cursor-pointer underline font-bold text-red-700 hover:text-red-900 mr-1">delete</span>
                                 </td>
@@ -57,7 +57,7 @@
                             <tr>
                                 <td colspan="6" class="text-center px-4 py-2">
                                     <button @click="addAuthorModal"
-                                        class="font-semibold text-violet-700 hover:text-violet-800">Add Author</button>
+                                        class="font-semibold text-red-700 hover:text-red-800">Add Author</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -68,7 +68,7 @@
             <div class="mb-2">
                 <label>Title</label>
                 <textarea type="text" v-model="form.title"
-                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500"></textarea>
+                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500"></textarea>
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('title')">
                     {{ parseErrors('title', 'val') }}
                 </small>
@@ -76,7 +76,7 @@
             <div class="mb-2">
                 <label>Keyword(s) (separate by semicolon ';')</label>
                 <input type="text" v-model="form.subtitle"
-                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500">
+                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500">
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('subtitle')">
                     {{ parseErrors('subtitle', 'val') }}
                 </small>
@@ -84,7 +84,7 @@
             <div class="mb-4">
                 <label>Category</label>
                 <select v-model="form.category" @change="updateBodySections"
-                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500">
+                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500">
                     <option value="research">Research</option>
                     <option value="case_report">Case Report</option>
                     <option value="systematic_review">Systematic Review</option>
@@ -103,16 +103,16 @@
                         <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
                     </label>
                     <textarea rows="5" v-model="body_form.content" @keyup="countWords"
-                        class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500"></textarea>
+                        class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500"></textarea>
                 </div>
-                <div class="italic text-violet-400 text-sm font-semibold">
+                <div class="italic text-red-400 text-sm font-semibold">
                     Word count: {{ word_count }}/300
                 </div>
             </div>
 
             <div class="mb-2">
                 <label>Additional Image/Graph (optional)</label>
-                <div class="relative border border-violet-500 rounded-lg p-2">
+                <div class="relative border border-red-500 rounded-lg p-2">
                     <page-loading v-model:active="upload_loader" loader="bars" :is-full-page="false" />
                     <div class="flex justify-between">
                         <input type="file" id="file-upload" accept="image/*" hidden @change="uploadFile">
@@ -121,19 +121,19 @@
                             <span class="text-sm ml-2">{{ $filters.truncate(form.file, 30) }}</span>
                         </a>
                         <label for="file-upload"
-                            class="cursor-pointer bg-violet-800 text-white py-1 px-3 rounded-lg">Select
+                            class="cursor-pointer bg-red-800 text-white py-1 px-3 rounded-lg">Select
                             Image</label>
                     </div>
                 </div>
             </div>
             <div class="text-right">
                 <button @click="addData" :disabled="disabled" v-if="!edit_mode"
-                    class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <span v-if="!disabled">Save</span>
                     <span v-if="disabled">Loading..</span>
                 </button>
                 <button @click="updateData" :disabled="disabled" v-if="edit_mode"
-                    class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <span v-if="!disabled">Save changes</span>
                     <span v-if="disabled">Loading..</span>
                 </button>
@@ -142,36 +142,36 @@
         <div class="italic text-sm mt-4 text-center" v-if="data_content.length === 0">
             No Data
         </div>
-        <div class="border-violet-200 border bg-white rounded mb-2" v-if="data_content.length > 0"
+        <div class="border-red-200 border bg-white rounded mb-2" v-if="data_content.length > 0"
             v-for="data in data_content">
-            <div class="bg-violet-100 rounded-t py-3 px-4 flex justify-between">
+            <div class="bg-red-100 rounded-t py-3 px-4 flex justify-between">
                 <div class="flex">
                     <unicon name="clock" width="15" height="15"></unicon>
                     <div class="text-xs ml-1">{{ $filters.formatDateTime(data.created_at) }}</div>
                 </div>
-                <div class="text-xs text-violet-500 font-semibold">
+                <div class="text-xs text-red-500 font-semibold">
                     <span v-if="data.status === 0">On Review</span>
                     <span v-if="data.status === 1">Accepted</span>
                     <span v-if="data.status === 2">Rejected</span>
                 </div>
             </div>
             <div class="p-4">
-                <div class="font-semibold text-violet-700 hover:text-violet-800">
+                <div class="font-semibold text-red-700 hover:text-red-800">
                     {{ data.title }}
                 </div>
-                <div class="italic text-sm text-violet-500">
+                <div class="italic text-sm text-red-500">
                     <span v-for="author in data.authors">{{ author.surname }}, {{ author.first_name }}; </span>
                 </div>
                 <div class="text-sm" v-if="data.body_parsed">
                     <p v-for="item in data.body_parsed"><b>{{ item.title }}:</b>{{ item.content }}</p>
                 </div>
                 <div class="italic text-sm" v-if="data.file">
-                    Attachment: <a target="_blank" class="text-sm italic text-violet-700 hover:text-violet-900"
+                    Attachment: <a target="_blank" class="text-sm italic text-red-700 hover:text-red-900"
                         :href="data.file">
                         {{ data.file }}
                     </a>
                 </div>
-                <div class="italic text-sm text-violet-500">
+                <div class="italic text-sm text-red-500">
                     {{ data.subtitle }}
                 </div>
                 <div class="flex justify-between">
@@ -181,7 +181,7 @@
                                 data.category
                             }}</span>
                         <span v-if="data.category === 'case_report'"
-                            class="px-2 py-1 font-semibold bg-violet-200 rounded text-xs">{{
+                            class="px-2 py-1 font-semibold bg-red-200 rounded text-xs">{{
                                 data.category
                             }}</span>
                         <span v-if="data.category === 'systematic_review'"
@@ -199,7 +199,7 @@
                             Delete
                         </button>
                         <button @click="editData(data)" v-if="is_open"
-                            class="bg-violet-700 mx-1 cursor-pointer hover:bg-violet-800 items-center text-white px-4 py-1 text-sm rounded-lg">
+                            class="bg-red-700 mx-1 cursor-pointer hover:bg-red-800 items-center text-white px-4 py-1 text-sm rounded-lg">
                             Edit
                         </button>
                     </div>
@@ -207,19 +207,19 @@
                 <div class="text-center rounded-lg my-2 relative">
                     <label :for="'poster_upload' + data.id">
                         <div
-                            class="bg-violet-200 p-2 w-full cursor-pointer rounded flex justify-center items-center relative">
+                            class="bg-red-200 p-2 w-full cursor-pointer rounded flex justify-center items-center relative">
                             <page-loading v-model:active="upload_loader" loader="dots" :is-full-page="false" />
                             <div v-if="!upload_loader">
                                 <unicon name="file" fill="grey"></unicon>
-                                <div class="text-sm italic text-violet-600" v-if="!show_poster">Add poster</div>
-                                <div class="text-sm italic text-violet-600" v-if="show_poster">Update poster</div>
+                                <div class="text-sm italic text-red-600" v-if="!show_poster">Add poster</div>
+                                <div class="text-sm italic text-red-600" v-if="show_poster">Update poster</div>
                             </div>
                         </div>
                     </label>
                     <input type="file" accept="image/*" hidden :id="'poster_upload' + data.id"
                         @change="uploadPoster(data.id)">
                 </div>
-                <div v-if="data.image" class="flex justify-center bg-violet-200 p-2">
+                <div v-if="data.image" class="flex justify-center bg-red-200 p-2">
                     <div class="relative">
                         <a :href="data.image" target="_blank">
                             <img :src="data.image" alt="" class="max-h-52">
@@ -248,7 +248,7 @@
                             <div class="col-span-2">
                                 <label for="">Title</label>
                                 <select v-model="author_form.title"
-                                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500">
+                                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500">
                                     <option value="mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
                                 </select>
@@ -256,24 +256,24 @@
                             <div class="col-span-5">
                                 <label for="">First Name</label>
                                 <input v-model="author_form.first_name" type="text"
-                                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500" />
+                                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500" />
                             </div>
                             <div class="col-span-5">
                                 <label for="">Surname</label>
                                 <input v-model="author_form.surname" type="text"
-                                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500" />
+                                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500" />
                             </div>
                         </div>
                         <div class="grid gap-1 grid-cols-2">
                             <div>
                                 <label for="">Email</label>
                                 <input v-model="author_form.email" type="text"
-                                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500" />
+                                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500" />
                             </div>
                             <div>
                                 <label for="">Institution</label>
                                 <input v-model="author_form.institution" type="text"
-                                    class="block w-full rounded-lg focus:ring-violet-500 focus:border-violet-500" />
+                                    class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500" />
                             </div>
                         </div>
                         <div>
@@ -282,14 +282,14 @@
                                 <div class="flex items-center mr-2">
                                     <input id="presenter" type="checkbox" :value="1" name="author_type"
                                         v-model="author_form.is_presenter"
-                                        class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="presenter"
                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Presenter</label>
                                 </div>
                                 <div class="flex items-center">
                                     <input checked id="corresponding" type="checkbox" :value="1" name="author_type"
                                         v-model="author_form.is_corresponding"
-                                        class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="corresponding"
                                         class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Corresponding</label>
                                 </div>
@@ -297,11 +297,11 @@
                         </div>
                         <div class="text-right">
                             <button @click="pushAuthor" v-if="!author_edit_mode"
-                                class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 rounded-full text-base px-6 py-1.5 text-center mr-3 md:mr-0">
+                                class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-full text-base px-6 py-1.5 text-center mr-3 md:mr-0">
                                 Add Author
                             </button>
                             <button @click="author_modal.hide()" v-if="author_edit_mode"
-                                class="text-white bg-violet-900 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 rounded-full text-base px-6 py-1.5 text-center mr-3 md:mr-0">
+                                class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-full text-base px-6 py-1.5 text-center mr-3 md:mr-0">
                                 Update Author
                             </button>
                         </div>

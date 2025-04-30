@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="text-center mt-8">
-        <div class="text-base text-violet-500 my-3"></div>
+        <div class="text-base text-red-500 my-3"></div>
       </div>
     </div>
   </div>
