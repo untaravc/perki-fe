@@ -119,27 +119,25 @@
                             </a>
                         </div>
 
-
-                        <!--                        <div class="font-semibold mt-5 mb-2">-->
-                        <!--                            Voucher Code-->
-                        <!--                        </div>-->
-                        <!--                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"-->
-                        <!--                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">-->
-                        <!--                        <small class="text-red-800" v-if="pricing.voucher_validation">-->
-                        <!--                            {{ pricing.voucher_validation }}-->
-                        <!--                        </small>-->
-                        <!--                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">-->
-                        <!--                            <i>-->
-                        <!--                                only applies to non-sponsored participants-->
-                        <!--                            </i>-->
-                        <!--                        </small>-->
-                        <!--                        <div class="text-right mt-3">-->
-                        <!--                            <div @click="calculatePrice('check')"-->
-                        <!--                                class="text-white cursor-pointer inline-block mb-2 bg-rose-500 hover:bg-rose-600 rounded-lg text-base px-3 py-1 text-center">-->
-                        <!--                                Check-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-
+                        <div class="font-semibold mt-5 mb-2">
+                            Voucher Code
+                        </div>
+                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-900 focus:border-rose-500 block w-full p-2.5">
+                        <small class="text-red-800" v-if="pricing.voucher_validation">
+                            {{ pricing.voucher_validation }}
+                        </small>
+                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">
+                            <i>
+                                only applies to non-sponsored participants
+                            </i>
+                        </small>
+                        <div class="text-right mt-3">
+                            <div @click="calculatePrice('check')"
+                                class="text-white cursor-pointer inline-block mb-2 bg-rose-500 hover:bg-rose-600 rounded-lg text-base px-3 py-1 text-center">
+                                Check
+                            </div>
+                        </div>
                         <!-- <div class="font-semibold mt-5 mb-2">
                             Collective Registration
                         </div>
