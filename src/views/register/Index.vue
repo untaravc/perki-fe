@@ -80,7 +80,7 @@
                         <div>
                             <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Student Card
                                 Photo<span class="text-red-600">*</span></label>
-                            <input type="file" accept="image/*" id="file-upload" @change="uploadFile">
+                            <input type="file" accept="image/*" id="file-upload" @change="uploadFile" ref="file_upload">
                             <small class="text-xs text-red-600 italic" v-if="parseErrors('identity_photo')">
                                 {{ parseErrors('identity_photo', 'val') }}
                             </small>
@@ -175,6 +175,7 @@
 </template>
 
 <script>
+import { upload, generateFileName } from '../../firebase_upload';
 export default {
     data() {
         return {
@@ -277,23 +278,34 @@ export default {
                 return message
             }
         },
-        uploadFile() {
-            this.upload_loader = true;
-            let file = document.getElementById("file-upload").files[0];
-            if (file) {
-                let form_data = new FormData();
 
-                form_data.append('file', file)
+        // uploadFile() {
+        //     this.upload_loader = true;
+        //     let file = document.getElementById("file-upload").files[0];
+        //     if (file) {
+        //         let form_data = new FormData();
 
-                this.apiPost('pub/upload-file', form_data)
-                    .then((data) => {
-                        this.form.identity_photo = data.result.link;
-                        this.upload_loader = false;
-                    }).catch((e) => {
-                        this.upload_loader = false;
-                    });
-            } else {
-                this.upload_loader = false;
+        //         form_data.append('file', file)
+
+        //         this.apiPost('pub/upload-file', form_data)
+        //             .then((data) => {
+        //                 this.form.identity_photo = data.result.link;
+        //                 this.upload_loader = false;
+        //             }).catch((e) => {
+        //                 this.upload_loader = false;
+        //             });
+        //     } else {
+        //         this.upload_loader = false;
+        //     }
+        // },
+        async uploadFile() {
+            const input = this.$refs.file_upload;
+            if (input && input.files.length > 0) {
+                this.upload_loader = true
+                const file_name = generateFileName('StudentCard', input.files[0])
+                this.form.identity_photo = await upload(file_name, input.files[0])
+                this.upload_loader = false
+                this.show_proof = true
             }
         },
     },

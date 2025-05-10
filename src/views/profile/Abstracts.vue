@@ -482,6 +482,8 @@ export default {
             } else {
                 this.upload_loader = false;
             }
+
+
         },
         addNew() {
             this.edit_mode = false;
