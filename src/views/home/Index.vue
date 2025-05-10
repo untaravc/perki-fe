@@ -3,7 +3,7 @@
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
-        <!-- <WelcomeMessage></WelcomeMessage> -->
+        <WelcomeMessage></WelcomeMessage>
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
         <Schedule></Schedule>

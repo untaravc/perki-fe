@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="selected === 1" class="p-2 border-b border-rose-900">
+        <div v-if="selected === 1" class="p-2">
             <!-- <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
                 Get a minimum of 16 SKP Kemenkes per Day Symposium
             </div> -->
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="selected === 2" class="p-2 border-b border-rose-900">
+        <div v-if="selected === 2" class="p-2">
             <!-- <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
                 Get a minimum of 22 SKP Kemenkes per Workshop
             </div> -->
@@ -93,7 +93,7 @@
                                     <li v-for="item in ws_hd.schedules">
                                         {{ item.title }}
                                         <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name
-                                            }}</span>
+                                        }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -107,7 +107,11 @@
                 </div>
             </div>
         </div>
-
+        <a target="_blank"
+            href="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Fbooklet_jfu_2025.pdf?alt=media&token=c60d9e92-d306-4644-9ec3-79233c173cdd"
+            class="block text-center bg-rose-100 py-2 font-semibold mb-2 rounded-md">
+            Download Booklet
+        </a>
     </div>
 </template>
 
