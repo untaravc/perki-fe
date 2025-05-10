@@ -61,7 +61,7 @@
                             <li class="text-sm" v-for="detail in transaction.transaction_details">
                                 {{ detail.event_name }}
                                 <span class="italic text-rose-500">{{ $filters.formatDateTime(detail.event.date_start)
-                                    }}</span>
+                                }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
@@ -152,7 +152,7 @@
 <script>
 import PageLoading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
-import { upload, randomString } from '../../firebase_upload';
+import { upload, generateFileName } from '../../firebase_upload';
 import moment from 'moment';
 export default {
     components: {
@@ -232,7 +232,7 @@ export default {
             const input = this.$refs.file_upload_gl;
             if (input && input.files.length > 0) {
                 this.upload_loader_gl = true
-                const file_name = this.generateFileName('TransferProofGl', input.files[0])
+                const file_name = generateFileName('TransferProofGl', input.files[0])
                 this.transaction.transfer_proof_gl = await upload(file_name, input.files[0])
 
                 await this.uploadTransferProofGl()
@@ -240,15 +240,6 @@ export default {
                 this.show_proof_gl = true
             }
         },
-        generateFileName(directory, file) {
-            let name = moment().format("YYYYMMDD-HHmm");
-            name += "-" + randomString(30);
-            const fileExtension = file.name.slice(
-                ((file.name.lastIndexOf(".") - 1) >>> 0) + 2
-            );
-
-            return `${directory}/${name}.${fileExtension}`;
-        }
     },
     mounted() {
         this.modal = new Modal(document.getElementById('defaultModal'));

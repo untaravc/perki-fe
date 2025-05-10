@@ -3,7 +3,7 @@
         <div class="my-6" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-rose-100 bg-white rounded-xl">
                 <div>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Flogo_jfu_text_trans.png?alt=media&token=d2983924-d5af-4e5c-a0c8-30f9455a4fd1"
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Fjfu_logo_text.png?alt=media&token=e615c11d-b4ba-4d4e-af26-11fa2774b5a6"
                         alt="" class="h-16 mb-2">
                 </div>
                 <div class="font-semibold text-xl">Register Event</div>
@@ -80,7 +80,7 @@
                         <div>
                             <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Student Card
                                 Photo<span class="text-red-600">*</span></label>
-                            <input type="file" accept="image/*" id="file-upload" @change="uploadFile">
+                            <input type="file" accept="image/*" id="file-upload" @change="uploadFile" ref="file_upload">
                             <small class="text-xs text-red-600 italic" v-if="parseErrors('identity_photo')">
                                 {{ parseErrors('identity_photo', 'val') }}
                             </small>
@@ -175,6 +175,7 @@
 </template>
 
 <script>
+import { upload, generateFileName } from '../../firebase_upload';
 export default {
     data() {
         return {
@@ -277,23 +278,34 @@ export default {
                 return message
             }
         },
-        uploadFile() {
-            this.upload_loader = true;
-            let file = document.getElementById("file-upload").files[0];
-            if (file) {
-                let form_data = new FormData();
 
-                form_data.append('file', file)
+        // uploadFile() {
+        //     this.upload_loader = true;
+        //     let file = document.getElementById("file-upload").files[0];
+        //     if (file) {
+        //         let form_data = new FormData();
 
-                this.apiPost('pub/upload-file', form_data)
-                    .then((data) => {
-                        this.form.identity_photo = data.result.link;
-                        this.upload_loader = false;
-                    }).catch((e) => {
-                        this.upload_loader = false;
-                    });
-            } else {
-                this.upload_loader = false;
+        //         form_data.append('file', file)
+
+        //         this.apiPost('pub/upload-file', form_data)
+        //             .then((data) => {
+        //                 this.form.identity_photo = data.result.link;
+        //                 this.upload_loader = false;
+        //             }).catch((e) => {
+        //                 this.upload_loader = false;
+        //             });
+        //     } else {
+        //         this.upload_loader = false;
+        //     }
+        // },
+        async uploadFile() {
+            const input = this.$refs.file_upload;
+            if (input && input.files.length > 0) {
+                this.upload_loader = true
+                const file_name = generateFileName('StudentCard', input.files[0])
+                this.form.identity_photo = await upload(file_name, input.files[0])
+                this.upload_loader = false
+                this.show_proof = true
             }
         },
     },

@@ -109,7 +109,7 @@
                             Plataran Sehat (Screen Shoot)
                         </div>
                         <div>
-                            <input type="file" accept="image/*" id="file-upload" @change="uploadFile">
+                            <input type="file" accept="image/*" id="file-upload" @change="uploadFile" ref="file_upload">
                         </div>
 
                         <div class="mb-2 p-2" v-if="form.plataran_img">
@@ -290,6 +290,7 @@
 </template>
 
 <script>
+import { upload, generateFileName } from '../../firebase_upload';
 export default {
     data() {
         return {
@@ -470,24 +471,13 @@ export default {
                 this.calculatePrice()
             }
         },
-        uploadFile() {
-            this.upload_loader = true;
-            let file = document.getElementById("file-upload").files[0];
-            if (file) {
-                let form_data = new FormData();
-
-                form_data.append('file', file)
-
-                this.apiPost('pub/upload-file', form_data)
-                    .then((data) => {
-                        this.form.plataran_img = data.result.link;
-                        this.upload_loader = false;
-                        document.getElementById("file-upload").value = ''
-                    }).catch((e) => {
-                        this.upload_loader = false;
-                    });
-            } else {
-                this.upload_loader = false;
+        async uploadFile() {
+            const input = this.$refs.file_upload;
+            if (input && input.files.length > 0) {
+                this.upload_loader = true
+                const file_name = generateFileName('PlataranSehat', input.files[0])
+                this.form.plataran_img = await upload(file_name, input.files[0])
+                this.upload_loader = false
             }
         },
     },
