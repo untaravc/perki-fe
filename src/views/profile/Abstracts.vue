@@ -115,7 +115,8 @@
                 <div class="relative border border-red-500 rounded-lg p-2">
                     <page-loading v-model:active="upload_loader" loader="bars" :is-full-page="false" />
                     <div class="flex justify-between">
-                        <input type="file" id="file-upload" accept="image/*" hidden @change="uploadFile">
+                        <input type="file" id="file-upload" accept="image/*" hidden @change="uploadFile"
+                            ref="file_upload">
                         <a class="items-center block" target="_blank" :href="form.file">
                             <unicon name="image" fill="blue"></unicon>
                             <span class="text-sm ml-2">{{ $filters.truncate(form.file, 30) }}</span>
@@ -314,6 +315,7 @@
 
 <script>
 import PageLoading from 'vue-loading-overlay';
+import { upload, generateFileName } from '../../firebase_upload';
 import 'vue-loading-overlay/dist/css/index.css';
 export default {
     components: {
@@ -390,7 +392,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/abstracts', { ref: 'jfu25' })
+            this.authGet('pub/abstracts', { section: 'jcu25' })
                 .then((data) => {
                     this.data_content = data.result
                 })
@@ -464,26 +466,14 @@ export default {
                 this.form.authors = new_author
             }
         },
-        uploadFile() {
-            this.upload_loader = true;
-            let file = document.getElementById("file-upload").files[0];
-            if (file) {
-                let form_data = new FormData();
-
-                form_data.append('file', file)
-
-                this.authPost('pub/upload-file', form_data)
-                    .then((data) => {
-                        this.form.file = data.result.link;
-                        this.upload_loader = false;
-                    }).catch((e) => {
-                        this.upload_loader = false;
-                    });
-            } else {
-                this.upload_loader = false;
+        async uploadFile() {
+            const input = this.$refs.file_upload;
+            if (input && input.files.length > 0) {
+                this.upload_loader = true
+                const file_name = generateFileName('Abstracts', input.files[0])
+                this.form.file = await upload(file_name, input.files[0])
+                this.upload_loader = false
             }
-
-
         },
         addNew() {
             this.edit_mode = false;
@@ -499,6 +489,7 @@ export default {
                 file: '',
                 body: '',
                 status: '',
+                section: 'jcu25',
                 authors: [],
             }
         },
@@ -512,7 +503,7 @@ export default {
             this.form.body = this.abstract_form
             this.authPost('pub/abstracts', this.form)
                 .then((data) => {
-                    if (data.status) {
+                    if (data.success) {
                         this.form_errors = [];
                         this.toaster({ title: data.message })
 
@@ -566,7 +557,7 @@ export default {
             this.form.body = this.abstract_form
             this.authPost('pub/abstracts/' + this.form.id, this.form)
                 .then((data) => {
-                    if (data.status) {
+                    if (data.success) {
                         this.form_errors = [];
                         this.toaster({ title: data.message })
 
@@ -607,34 +598,19 @@ export default {
                 this.loadData()
             })
         },
-        uploadPoster(post_id) {
-            console.log(post_id)
+        async uploadPoster(post_id) {
             let file = document.getElementById("poster_upload" + post_id).files[0];
             if (file) {
-                this.upload_loader = true;
-                let form_data = new FormData();
+                const file_name = generateFileName('PosterAbstracts', file)
+                const file_url = await upload(file_name, file)
 
-                form_data.append('file', file)
-                form_data.append('model', 'poster')
-                form_data.append('model_id', post_id)
-                form_data.append('title', 'Poster ' + post_id)
-
-                this.authPost('pub/upload-file', form_data)
-                    .then((data) => {
-                        if (data.success) {
-                            this.updatePoster(post_id, data.result.link)
-                            this.show_poster = true
-                        }
-                        this.upload_loader = false;
-                    }).catch((e) => {
-                        this.upload_loader = false;
-                    });
+                this.updatePoster(post_id, file_url)
             }
         },
         checkOpenSubmit() {
             this.authGet('pub/abstracts-submit')
                 .then((data) => {
-                    this.is_open = data.result.open
+                    this.is_open = true
                 })
         }
     },

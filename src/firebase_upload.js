@@ -3,7 +3,7 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import moment from "moment";
 
 async function upload(fileName, file) {
-  const path = "Perki/JFU25/" + fileName;
+  const path = "Perki/JCU25/" + fileName;
   const storageRef = ref(storage, path);
   await uploadBytes(storageRef, file);
   return await getDownloadURL(ref(storage, path))
