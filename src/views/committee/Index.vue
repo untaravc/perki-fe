@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-28 pb-12 px-2">
+    <div class="max-w-screen-lg m-auto pt-28 pb-12 px-2 min-h-96">
         <div class="text-4xl font-bold mb-8 text-center">
             COMMITTEE
         </div>
@@ -28,7 +28,7 @@
                 <div v-for="user in data.users">
                     <div class="bg-red-100 rounded flex min-h-[56px]">
                         <div class="bg-red-200 p-2 rounded-l flex items-center">
-                            <unicon name="user-md" width="20px" height="20px" fill="blue" icon-style="line"></unicon>
+                            <unicon name="user-md" width="20px" height="20px" fill="red" icon-style="line"></unicon>
                         </div>
                         <div class="text-sm font-semibold flex items-center p-2 rounded-r" v-if="user.data">
                             {{ user.data.name }}
@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         loadSpeaker() {
-            this.apiGet('pub/committee', { ref: 2024 })
+            this.apiGet('pub/committee', { section: 'jcu25' })
                 .then((data) => {
                     this.data_content = data.result
                 })

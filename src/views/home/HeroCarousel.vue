@@ -31,18 +31,21 @@
                     </div>
                 </div>
             </Slide>
+            <template #addons>
+                <CarouselNavigation />
+            </template>
         </Carousel>
     </div>
 </template>
 <script>
 import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import { Carousel, Slide, Pagination, Navigation as CarouselNavigation } from 'vue3-carousel'
 export default {
     components: {
         Carousel,
         Slide,
         Pagination,
-        Navigation,
+        CarouselNavigation,
     },
     data() {
         return {
@@ -58,7 +61,10 @@ export default {
                     poster: '',
                     buttons: [],
                 }
-            ]
+            ],
+            breakpoints: {
+
+            }
         }
     },
     methods: {
@@ -96,3 +102,32 @@ export default {
     }
 }
 </script>
+
+<style>
+.carousel__next {
+    left: 60px;
+}
+
+.carousel__prev {
+    left: 10px;
+}
+
+.carousel__next,
+.carousel__prev {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    top: 72%;
+
+}
+
+@media (max-width: 768px) {
+
+    .carousel__next,
+    .carousel__prev {
+        top: 95%;
+    }
+}
+</style>

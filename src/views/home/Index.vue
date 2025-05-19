@@ -1,9 +1,8 @@
 <template>
     <div class="" style="min-height: calc(100vh - 133px);">
         <HeroCarousel></HeroCarousel>
-        <!-- <Hero></Hero> -->
         <!-- <EventCta></EventCta> -->
-        <!-- <TimerPage></TimerPage> -->
+        <TimerPage></TimerPage>
         <!-- <WelcomeMessage></WelcomeMessage> -->
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
@@ -13,7 +12,7 @@
             <Speakers></Speakers>
         </div> -->
         <!-- <Sponsors></Sponsors> -->
-        <!-- <Venue></Venue> -->
+        <Venue></Venue>
     </div>
 </template>
 
@@ -30,7 +29,6 @@ import Venue from "./Venue2.vue";
 export default {
     components: {
         Pricing,
-        // Hero,
         HeroCarousel,
         Speakers,
         Schedule,

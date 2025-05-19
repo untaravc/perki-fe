@@ -14,6 +14,7 @@ import Unicon from 'vue-unicons'
 
 import icons from './icons'
 import BtnLoader from './components/ButtonLoader.vue'
+// import VueGoogleMaps from '@fawmi/vue-google-maps';
 
 Unicon.add(icons)
 
@@ -28,6 +29,11 @@ app.use(Unicon)
 		clientId: '915570477762-nstlaod9tq5fbfsunchui21ulg9ogph0.apps.googleusercontent.com'
 	})
 	.use(router)
+	// .use(VueGoogleMaps, {
+	// 	load: {
+	// 		key: 'AIzaSyCoQyl6WwUyIgDQgaMpIbPF9tD-uT4VBJA',
+	// 	},
+	// })
 	.mixin(mixin)
 
 // filter

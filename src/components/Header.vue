@@ -45,25 +45,25 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
                     class="flex flex-col p-4 mt-4 border border-gray-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700 bg-white md:bg-transparent">
-                    <!-- <li>
+                    <li>
                         <router-link to="/" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Home
                         </router-link>
                     </li>
-                    <li>
+                    <!-- <li>
                         <router-link to="/guidance" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Guidance
                         </router-link>
-                    </li>
+                    </li> -->
                     <li>
                         <router-link to="/committee" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Committee
                         </router-link>
                     </li>
-                    <li v-if="has_token">
+                    <!-- <li v-if="has_token">
                         <router-link to="/profile/events" @click="toggleMenu"
                             class="block py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">My Account

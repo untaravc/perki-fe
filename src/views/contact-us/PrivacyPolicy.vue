@@ -1,127 +1,127 @@
 <template>
-  <div class="max-w-screen-lg m-auto pt-28 pb-12 px-2" style="min-height: calc(100vh - 130px)">
-    <div class="text-4xl font-bold  text-center">
-      Privacy Policy
-    </div>
-    <div class="text-small text-red-600 mb-5 text-center">
-      Last Updated: April 13, 2025
-    </div>
-    <div class="mb-12">
-      <div class="text-2xl font-bold">
-        1. Introduction
-      </div>
-      <p class="mb-2">Welcome to JFU Perki-Jogja ("we," "our," or "us"). This Privacy Policy explains how we collect,
-        use, disclose,
-        and
-        safeguard your information when you visit our website jfu.perki-jogja.com, including any related mobile
-        application (collectively, the "Site").</p>
-      <p class="mb-4">
-        We are committed to protecting your personal information and your right to privacy. Please read this Privacy
-        Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Site.
+  <div class="max-w-3xl mx-auto px-4 pb-8 pt-24">
+    <h1 class="text-3xl font-bold mb-6 text-center">Privacy Policy</h1>
+
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">1. Introduction</h2>
+      <p>
+        Welcome to <strong>JCU Perki-Jogja</strong> ("we," "our," or "us"). This Privacy Policy explains how we collect,
+        use, disclose, and safeguard your information when you visit our website <a href="https://jju.perki-jogja.com"
+          class="text-blue-600 hover:underline">jcu.perki-jogja.com</a>, including any related mobile application
+        (collectively, the "Site").
       </p>
-      <div class="text-2xl font-bold">
-        2. Information We Collect
-      </div>
-      We collect information that you provide directly to us when you:
+      <p class="mt-2">
+        We are committed to protecting your personal information and your right to privacy. Please read this Privacy
+        Policy carefully. If you do not agree with the terms, please do not access the Site.
+      </p>
+    </section>
 
-      Create an account
-      Register for events
-      Submit abstracts
-      Complete payment transactions
-      Upload transfer proof
-      Communicate with us
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">2. Information We Collect</h2>
+      <p>We collect information that you provide directly to us when you:</p>
+      <ul class="list-disc ml-6 mt-2 space-y-1">
+        <li>Create an account</li>
+        <li>Register for events</li>
+        <li>Submit abstracts</li>
+        <li>Complete payment transactions</li>
+        <li>Upload transfer proof</li>
+        <li>Communicate with us</li>
+      </ul>
 
-      2.1 Personal Information
-      This may include:
+      <h3 class="font-semibold mt-4">2.1 Personal Information</h3>
+      <ul class="list-disc ml-6 mt-1 space-y-1">
+        <li>Name, email address, phone number, and professional credentials</li>
+        <li>Billing information and payment details</li>
+        <li>Abstract submissions and academic content</li>
+        <li>Account login credentials</li>
+      </ul>
 
-      Name, email address, phone number, and professional credentials
-      Billing information and payment details
-      Abstract submissions and academic content
-      Account login credentials
+      <h3 class="font-semibold mt-4">2.2 Automatically Collected Information</h3>
+      <ul class="list-disc ml-6 mt-1 space-y-1">
+        <li>Device information (browser type, operating system, IP address)</li>
+        <li>Usage data (pages visited, time spent, clicks)</li>
+        <li>Cookies and similar tracking technologies</li>
+      </ul>
+    </section>
 
-      2.2 Automatically Collected Information
-      When you visit our Site, we may automatically collect:
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">3. Use of Your Information</h2>
+      <ul class="list-disc ml-6 mt-1 space-y-1">
+        <li>Create and manage your account</li>
+        <li>Process event registrations and payments</li>
+        <li>Review and publish accepted abstracts</li>
+        <li>Send notifications, reminders, certificates, and invoices</li>
+        <li>Improve our website functionality and user experience</li>
+        <li>Comply with legal obligations</li>
+      </ul>
+    </section>
 
-      Device information (browser type, operating system, IP address)
-      Usage data (pages visited, time spent, clicks)
-      Cookies and similar tracking technologies
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">4. Sharing Your Information</h2>
+      <p>We may share your information with:</p>
+      <ul class="list-disc ml-6 mt-2 space-y-1">
+        <li>Event organizers and administrators</li>
+        <li>Payment processors to complete transactions</li>
+        <li>Service providers who assist in website operation</li>
+        <li>Legal authorities when required by law</li>
+      </ul>
+      <p class="mt-2 font-semibold">We do not sell your personal information to third parties.</p>
+    </section>
 
-      <div class="text-2xl font-bold">
-        3. Use of Your Information
-      </div>
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">5. Data Security</h2>
+      <p>
+        We implement appropriate technical and organizational measures to protect your personal information. However, no
+        method of transmission over the Internet or electronic storage is 100% secure, so we cannot guarantee absolute
+        security.
+      </p>
+    </section>
 
-      We use the information we collect to:
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">6. Data Retention</h2>
+      <p>
+        We retain your personal information only as long as necessary to fulfill the purposes outlined in this policy
+        unless a longer retention period is required by law.
+      </p>
+    </section>
 
-      Create and manage your account
-      Process event registrations and payments
-      Review and publish accepted abstracts
-      Send notifications, reminders, certificates, and invoices
-      Improve our website functionality and user experience
-      Comply with legal obligations
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">7. Your Rights</h2>
+      <p>Depending on your location, you may have the right to:</p>
+      <ul class="list-disc ml-6 mt-2 space-y-1">
+        <li>Access your personal information</li>
+        <li>Correct inaccurate or incomplete information</li>
+        <li>Delete your personal information</li>
+        <li>Restrict or object to processing</li>
+        <li>Request data portability</li>
+      </ul>
+      <p class="mt-2">To exercise these rights, please contact us using the details below.</p>
+    </section>
 
-      <div class="text-2xl font-bold">
-        4. Sharing Your Information
-      </div>
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">8. Children's Privacy</h2>
+      <p>
+        Our Site is not directed to children under 18. We do not knowingly collect personal information from children.
+        If you believe we have collected such information, please contact us immediately.
+      </p>
+    </section>
 
-      We may share your information with:
-
-      Event organizers and administrators
-      Payment processors to complete transactions
-      Service providers who assist in website operation
-      Legal authorities when required by law
-
-      We do not sell your personal information to third parties.
-      <div class="text-2xl font-bold">
-        5. Data Security
-      </div>
-
-      We implement appropriate technical and organizational measures to protect your personal information. However, no
-      method of transmission over the Internet or electronic storage is 100% secure, so we cannot guarantee absolute
-      security.
-
-      <div class="text-2xl font-bold">
-        6. Data Retention
-      </div>
-      We will retain your personal information only for as long as necessary to fulfill the purposes outlined in this
-      Privacy Policy, unless a longer retention period is required by law.
-      <div class="text-2xl font-bold">
-        7. Your Rights
-      </div>
-      Depending on your location, you may have rights regarding your personal information, including:
-
-      Access to your personal information
-      Correction of inaccurate or incomplete information
-      Deletion of your personal information
-      Restriction or objection to processing
-      Data portability
-
-      To exercise these rights, please contact us using the details provided below.
-
-      <div class="text-2xl font-bold">
-        8. Children's Privacy
-      </div>
-      Our Site is not directed to children under 18. We do not knowingly collect personal information from children. If
-      you believe we have collected information from a child, please contact us immediately.
-      <div class="text-2xl font-bold">
-        9. Updates to This Policy
-      </div>
-      <div class="mb-4">
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">9. Updates to This Policy</h2>
+      <p>
         We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last
         Updated" date. We encourage you to review this Privacy Policy frequently.
-      </div>
+      </p>
+    </section>
 
-      <div class="text-2xl font-bold">
-        10. Contact Us
-      </div>
-      If you have questions about this Privacy Policy, please contact us at:
-      <ol>
-        <li>
-          Email: perki.yogyakarta@gmail.com
-        </li>
-        <li>
-          Address: Jl. Kesehatan No.1, Senolowo, Sinduadi, Daerah Istimewa Yogyakarta 55281
-        </li>
-      </ol>
-    </div>
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">10. Contact Us</h2>
+      <p>If you have questions about this Privacy Policy, please contact us at:</p>
+      <ul class="list-none ml-0 mt-2 space-y-1">
+        <li><strong>Email:</strong> <a href="mailto:perki.yogyakarta@gmail.com"
+            class="text-blue-600 hover:underline">perki.yogyakarta@gmail.com</a></li>
+        <li><strong>Address:</strong> Jl. Kesehatan No.1, Senolowo, Sinduadi, Daerah Istimewa Yogyakarta 55281</li>
+      </ul>
+    </section>
   </div>
 </template>
