@@ -138,7 +138,7 @@
                                 Check
                             </div>
                         </div>
-                        <!-- <div class="font-semibold mt-5 mb-2">
+                        <div class="font-semibold mt-5 mb-2">
                             Collective Registration
                         </div>
                         <div v-if="count >= 1" class="mb-4">
@@ -149,13 +149,13 @@
                                     <span class="text-sm">{{ user.email }}</span>
                                 </div>
                             </div>
-                        </div> -->
-                        <!-- <div>
+                        </div>
+                        <div>
                             <button @click="memberModal"
                                 class="w-full mb-2 bg-rose-200 hover:bg-rose-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
-                        </div> -->
+                        </div>
 
                         <div class="font-semibold mt-5 mb-2">
                             Transaction Details
