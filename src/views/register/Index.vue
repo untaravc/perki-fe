@@ -7,7 +7,8 @@
                         alt="" class="h-16 mb-2">
                 </div>
                 <div class="font-semibold text-xl">Register Event</div>
-                <div class="text-sm">Create your account to register event.</div>
+                <div class="text-sm" v-if="open_registration">Create your account to register event.</div>
+                <div class="text-sm rounded text-red-500 p-2 bg-red-50 text-center font-bold" v-if="!open_registration">Registration Session has Ended</div>
                 <div class="mt-3 grid gap-2 sm:grid-cols-2">
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name<span
@@ -157,7 +158,7 @@
                         {{ parseErrors('password', 'val') }}
                     </small>
                 </div>
-                <div class="mt-3">
+                <div class="mt-3" v-if="open_registration">
                     <button @click="registerEmail" :disabled="disabled"
                         class="text-white w-full mb-2 bg-rose-900 hover:bg-rose-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                         <BtnLoader v-if="disabled"></BtnLoader>
@@ -187,6 +188,7 @@ export default {
             },
             logged_in: false,
             data_valid: false,
+            open_registration: true,
             form: {
                 id: '',
                 name: '',
@@ -279,25 +281,14 @@ export default {
             }
         },
 
-        // uploadFile() {
-        //     this.upload_loader = true;
-        //     let file = document.getElementById("file-upload").files[0];
-        //     if (file) {
-        //         let form_data = new FormData();
-
-        //         form_data.append('file', file)
-
-        //         this.apiPost('pub/upload-file', form_data)
-        //             .then((data) => {
-        //                 this.form.identity_photo = data.result.link;
-        //                 this.upload_loader = false;
-        //             }).catch((e) => {
-        //                 this.upload_loader = false;
-        //             });
-        //     } else {
-        //         this.upload_loader = false;
-        //     }
-        // },
+        loadRegistration() {
+            this.apiGet('pub/registration')
+                .then((data) => {
+                    if(data.success !== true){
+                        this.open_registration = false
+                    }
+                })
+        },
         async uploadFile() {
             const input = this.$refs.file_upload;
             if (input && input.files.length > 0) {
@@ -311,6 +302,8 @@ export default {
     },
     created() {
         this.loadJobType();
+        this.loadRegistration()
+
 
         if (localStorage.getItem('perki_user_token')) {
             this.getProfile()
