@@ -18,26 +18,24 @@
                     <li>All abstracts must be submitted in English</li>
                     <li>Before submitting an abstract, registration to the symposium is mandatory via website</li>
                     <li>The event accepts following paper/abstract types: Original research, Meta-analysis/systematic
-                        review,
-                        and case report/case series.</li>
+                        review, and case report/case series.</li>
                     <li>Please refer to the abstract templates and upload the file attachment (optional) to the online
                         submission</li>
                     <li>Submission is only available via online submission</li>
                     <li>No submission fee required to submit an abstract to this event</li>
                     <li>There is no limit to the number of abstracts an author may submit.</li>
-                    <li>The abstract should not be exceeded 300 words (excluding the title, authors, and affiliations)
+                    <li>The abstract should not be exceeded 350 words (excluding the title, authors, and affiliations)
                     </li>
                     <li>All abstract submitted are reviewed and selected by members of the Peer Reviewers.</li>
                     <li>Supported attachment file format: graphic, figure, or table is .JPEG or .JPG</li>
                     <li>The abstract paper paper has not previously been published and is not currently being considered
                         for publication elsewhere (i.e. other conference or journal publication)</li>
                     <li>Download <a class="text-red-500 font-semibold"
-                            href="https://src.perki-jogja.com/assets24/docs/abstract-case-report-guidline-jcu-2024.docx"
+                            href="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2FJCU_2025_abstract_template.docx?alt=media&token=f27dbee2-b1a5-4bea-9b4b-9aa398dc0a3d"
                             target="_blank" download>Guideline</a></li>
-                    <li>Contact:
-                        <a class="italic text-red-700" target="_blank" href="https://wa.me/62895340394067">+62
-                            895 3403 94067</a> (Aya)
-                    </li>
+                    <!-- <li>Contact:
+                        <a class="italic text-red-700" target="_blank" href="https://wa.me/62895340394067">+62 895 3403 94067</a> (Aya)
+                    </li> -->
                 </ul>
             </div>
         </div>

@@ -6,7 +6,7 @@
                 :style="`background-image: url('` + data_content[index]['poster'] + `')`"></a>
             <div class="md:col-span-3 md:order-1">
                 <div
-                    class="m-5 bg-background-default rounded-full py-1 px-8 italic font-semibold text-sm inline-block text-primary-oren">
+                    class="m-5 bg-background-default rounded-full py-1 px-8 italic font-semibold text-sm inline-block text-white">
                     {{ data_content[index]['date'] }}
                 </div>
                 <div class="mx-5 mb-5 font-bold text-primary-merah"

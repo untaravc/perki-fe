@@ -14,15 +14,15 @@ module.exports = {
       },
       colors: {
         primary: {
-          coklat: '#654104',
+          coklat: '#fcb426',
           hijau: '#5f6304',
-          merah: '#b44241',
+          merah: '#b80a29',
           oren: '#ee9052',
         },
         background: {
-          default: '#F2F2F2', // Abu muda
+          default: '#fcb426', // Abu muda
           green: '#D0F0C0', // Hijau
-          merah: '#b44241',
+          merah: '#b80a29',
           oren: '#ee9052',
         }
       }

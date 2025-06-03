@@ -1,18 +1,17 @@
 <template>
-    <div class="max-w-screen-lg m-auto grid grid-cols-4 gap-2 md:grid-cols-4 mt-16 mb-8">
-        <div
+    <div class="max-w-screen-lg m-auto grid gap-2 md:grid-cols-2 mt-16 mb-8 px-3">
+        <!-- <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <a href="#schedule">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
-                    <!-- <v-icon name="bi-table" scale="1.5" fill="blue" /> -->
                     <unicon name="schedule" fill="lighblue" width="36px" height="36px"></unicon>
                 </div>
                 <div class="text-sm font-semibold text-center">
                     Schedule
                 </div>
             </a>
-        </div>
-        <div
+        </div> -->
+        <!-- <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg  bg-gradient-to-bl from-purple-100 to-cyan-100">
             <a href="#package">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
@@ -22,8 +21,8 @@
                     Pricing
                 </div>
             </a>
-        </div>
-        <div
+        </div> -->
+        <!-- <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <a href="#speaker">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
@@ -33,19 +32,19 @@
                     Speakers
                 </div>
             </a>
-        </div>
-        <!-- <div
+        </div> -->
+        <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <a href="#venue">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
                     <unicon name="location-pin-alt" fill="#e02523" width="36px" height="36px"></unicon>
                 </div>
                 <div class="text-sm font-semibold text-center">
-                    Accommodation
+                    Venue
                 </div>
             </a>
-        </div> -->
-        <!-- <div
+        </div>
+        <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <router-link to="/abstracts">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
@@ -55,8 +54,8 @@
                     Abstract <br> Submission
                 </div>
             </router-link>
-        </div> -->
-        <div
+        </div>
+        <!-- <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <router-link to="/posters">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
@@ -66,6 +65,6 @@
                     Poster <br> Board
                 </div>
             </router-link>
-        </div>
+        </div> -->
     </div>
 </template>

@@ -4,7 +4,7 @@
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
         <!-- <WelcomeMessage></WelcomeMessage> -->
-        <!-- <Menu></Menu> -->
+        <Menu></Menu>
         <!-- <Video></Video> -->
         <!-- <Schedule></Schedule> -->
         <!-- <Pricing></Pricing>
@@ -25,7 +25,7 @@ import Schedule from './SchedulesSimple.vue'
 import Pricing from "./PricingCol.vue";
 import TimerPage from "./Timer.vue";
 import Venue from "./Venue2.vue";
-// import Sponsors from "./Sponsors.vue";
+import Menu from "./Menu.vue"
 export default {
     components: {
         Pricing,
@@ -35,6 +35,7 @@ export default {
         TimerPage,
         Venue,
         WelcomeMessage,
+        Menu,
     }
 }
 </script>

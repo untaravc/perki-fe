@@ -95,7 +95,6 @@
                 </small>
             </div>
             <div class="mb-4">
-                <!--            <label>Abstract ({{ abstracts_count.body_total }}/300 words)</label>-->
                 <label>Abstract</label>
                 <div class="mb-2" v-for="body_form in abstract_form">
                     <label class="text-sm" title="Provide 1 or 2 sentences that explain the context of the study.">
@@ -106,7 +105,7 @@
                         class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500"></textarea>
                 </div>
                 <div class="italic text-red-400 text-sm font-semibold">
-                    Word count: {{ word_count }}/300
+                    Word count: {{ word_count }}/350
                 </div>
             </div>
 
@@ -205,7 +204,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="text-center rounded-lg my-2 relative">
+                <!-- <div class="text-center rounded-lg my-2 relative">
                     <label :for="'poster_upload' + data.id">
                         <div
                             class="bg-red-200 p-2 w-full cursor-pointer rounded flex justify-center items-center relative">
@@ -219,7 +218,7 @@
                     </label>
                     <input type="file" accept="image/*" hidden :id="'poster_upload' + data.id"
                         @change="uploadPoster(data.id)">
-                </div>
+                </div> -->
                 <div v-if="data.image" class="flex justify-center bg-red-200 p-2">
                     <div class="relative">
                         <a :href="data.image" target="_blank">
@@ -338,30 +337,31 @@ export default {
             abstract_form: [],
             abstract_form_list: {
                 research: [
-                    { field: "introduction", title: "INTRODUCTION" },
-                    { field: "methods", title: "METHODS" },
-                    { field: "result", title: "RESULT" },
-                    { field: "discussion", title: "DISCUSSION" },
-                    { field: "conclusion", title: "CONCLUSION" },
+                    { field: "background", title: "Background" },
+                    { field: "aim", title: "Aim" },
+                    { field: "method", title: "Method" },
+                    { field: "results", title: "Results" },
+                    { field: "conclusions", title: "Conclusions" },
                 ],
                 case_report: [
-                    { field: "introduction", title: "INTRODUCTION" },
-                    { field: "case_presentation", title: "CASE PRESENTATION" },
-                    // { field: "discussion", title: "DISCUSSION" },
-                    { field: "conclusion", title: "CONCLUSION" },
+                    { field: "background", title: "Background" },
+                    { field: "case_illustration", title: "Case Illustration" },
+                    { field: "discussion", title: "Discussion" },
+                    { field: "conclusions", title: "Conclusions" },
                 ],
                 systematic_review: [
-                    { field: "introduction", title: "INTRODUCTION" },
-                    // { field: "discussion", title: "DISCUSSION" },
-                    { field: "methods", title: "METHODS" },
-                    { field: "result", title: "RESULT" },
-                    { field: "conclusion", title: "CONCLUSION" },
+                    { field: "background", title: "Background" },
+                    { field: "aim", title: "Aim" },
+                    { field: "method", title: "Method" },
+                    { field: "results", title: "Results" },
+                    { field: "conclusions", title: "Conclusions" },
                 ],
                 meta_analysis: [
-                    { field: "introduction", title: "INTRODUCTION" },
-                    { field: "method", title: "METHODS" },
-                    { field: "discussion", title: "DISCUSSION" },
-                    { field: "conclusion", title: "CONCLUSION" },
+                    { field: "background", title: "Background" },
+                    { field: "aim", title: "Aim" },
+                    { field: "method", title: "Method" },
+                    { field: "results", title: "Results" },
+                    { field: "conclusions", title: "Conclusions" },
                 ]
             },
             form: {
@@ -495,7 +495,7 @@ export default {
         },
         addData() {
             // this.disabled = true
-            if (this.word_count > 300) {
+            if (this.word_count > 350) {
                 alert("Abstract to long.")
                 return;
             }
@@ -549,7 +549,7 @@ export default {
             this.edit_mode = true;
         },
         updateData() {
-            if (this.word_count > 300) {
+            if (this.word_count > 350) {
                 alert("Abstract to long.")
                 return;
             }
