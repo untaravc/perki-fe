@@ -1,9 +1,9 @@
 <template>
     <nav class="px-2 sm:px-4 py-2 bg-center bg-cover bg-no-repeat fixed w-full z-20 top-0 left-0"
-        style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Fbg-top.png?alt=media&token=7304e6a6-511f-4fb6-af19-7dff429fb3f3');">
+        style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Fbg-orange.webp?alt=media&token=e6c9dad4-d521-4d75-bb4f-bf036f71459a');">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center ml-4 sm:ml-0">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Flogo-jcu25.webp?alt=media&token=0a3ec7ae-e39c-4a00-8393-1f49d6a22131"
+                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Flogo-jcu-25.webp?alt=media&token=95ab8bb9-bdc7-49d6-a11c-dc7db56760ce"
                     class="h-10 mr-3 sm:h-16" alt="Jogja Foot Ulcer Meeting 2025">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>

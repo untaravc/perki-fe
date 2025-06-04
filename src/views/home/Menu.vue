@@ -34,7 +34,7 @@
             </a>
         </div> -->
         <div
-            class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
+            class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-orange-100 to-red-100">
             <a href="#venue">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
                     <unicon name="location-pin-alt" fill="#e02523" width="36px" height="36px"></unicon>
@@ -45,7 +45,7 @@
             </a>
         </div>
         <div
-            class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
+            class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-orange-100 to-red-100">
             <router-link to="/abstracts">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
                     <unicon name="file-upload" fill="purple" width="36px" height="36px"></unicon>

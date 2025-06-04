@@ -114,7 +114,7 @@ export default {
 
 .carousel__next,
 .carousel__prev {
-    background: rgba(0, 0, 0, 0.3);
+    background: #fcb42660;
     border-radius: 50%;
     width: 40px;
     height: 40px;

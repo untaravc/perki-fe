@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-28 pb-12 px-2 min-h-96">
+    <div class="max-w-screen-lg m-auto pt-28 pb-12 px-2 min-h-[calc(100vh-130px)]">
         <div class="text-4xl font-bold mb-8 text-center">
             COMMITTEE
         </div>

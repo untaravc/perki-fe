@@ -12,19 +12,19 @@
                     <div class="grid gap:3 md:gap-12 grid-cols-4">
                         <div class="text-center">
                             <div class="text-4xl font-bold text-background-default">{{ days }}</div>
-                            <div class="text-sm text-primary-oren">Days</div>
+                            <div class="text-sm text-orange-100">Days</div>
                         </div>
                         <div class="text-center">
                             <div class="text-4xl font-bold text-background-default">{{ hours }}</div>
-                            <div class="text-sm text-primary-oren">Hours</div>
+                            <div class="text-sm text-orange-100">Hours</div>
                         </div>
                         <div class="text-center">
                             <div class="text-4xl font-bold text-background-default">{{ minutes }}</div>
-                            <div class="text-sm text-primary-oren">Minutes</div>
+                            <div class="text-sm text-orange-100">Minutes</div>
                         </div>
                         <div class="text-center">
                             <div class="text-4xl font-bold text-background-default">{{ seconds }}</div>
-                            <div class="text-sm text-primary-oren">Seconds</div>
+                            <div class="text-sm text-orange-100">Seconds</div>
                         </div>
                     </div>
                 </div>
