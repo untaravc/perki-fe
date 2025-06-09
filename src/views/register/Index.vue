@@ -3,7 +3,7 @@
         <div class="my-6" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-red-100 bg-white rounded-xl">
                 <div>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Flogo-jcu25.webp?alt=media&token=0a3ec7ae-e39c-4a00-8393-1f49d6a22131"
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Flogo-jcu-25.webp?alt=media&token=95ab8bb9-bdc7-49d6-a11c-dc7db56760ce"
                         alt="" class="h-16 mb-2">
                 </div>
                 <div class="font-semibold text-xl">Register Event</div>
@@ -14,9 +14,9 @@
                                 class="text-red-600">*</span></label>
                         <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-900 focus:border-red-500 block w-full p-2.5">
-                        <small class="text-xs text-red-900 italic">
+                        <!-- <small class="text-xs text-red-900 italic">
                             for certificate writing
-                        </small>
+                        </small> -->
                         <small class="text-xs text-red-600 italic" v-if="parseErrors('name')">
                             {{ parseErrors('name', 'val') }}
                         </small>
@@ -199,7 +199,7 @@ export default {
                 password_confirmation: '',
                 identity_photo: '',
                 nik: '',
-                ref: 'jfu25',
+                section: 'jcu25',
             },
             form_errors: []
         }
@@ -278,26 +278,6 @@ export default {
                 return message
             }
         },
-
-        // uploadFile() {
-        //     this.upload_loader = true;
-        //     let file = document.getElementById("file-upload").files[0];
-        //     if (file) {
-        //         let form_data = new FormData();
-
-        //         form_data.append('file', file)
-
-        //         this.apiPost('pub/upload-file', form_data)
-        //             .then((data) => {
-        //                 this.form.identity_photo = data.result.link;
-        //                 this.upload_loader = false;
-        //             }).catch((e) => {
-        //                 this.upload_loader = false;
-        //             });
-        //     } else {
-        //         this.upload_loader = false;
-        //     }
-        // },
         async uploadFile() {
             const input = this.$refs.file_upload;
             if (input && input.files.length > 0) {

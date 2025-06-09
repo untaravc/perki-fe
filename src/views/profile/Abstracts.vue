@@ -85,10 +85,12 @@
                 <label>Category</label>
                 <select v-model="form.category" @change="updateBodySections"
                     class="block w-full rounded-lg focus:ring-red-500 focus:border-red-500">
-                    <option value="research">Research</option>
-                    <option value="case_report">Case Report</option>
-                    <option value="systematic_review">Systematic Review</option>
-                    <option value="meta_analysis">Meta Analysis</option>
+                    <option value="research">Research Student & General Practitioner</option>
+                    <option value="research_sp">Research Resident & Specialist</option>
+                    <option value="case_report">Case Report Student & General Practitioner</option>
+                    <option value="case_report_sp">Case Report Resident & Specialist</option>
+                    <option value="systematic_review">Systematic Review / Meta Analysis</option>
+                    <!-- <option value="meta_analysis">Meta Analysis</option> -->
                 </select>
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('category')">
                     {{ parseErrors('category', 'val') }}
@@ -343,7 +345,20 @@ export default {
                     { field: "results", title: "Results" },
                     { field: "conclusions", title: "Conclusions" },
                 ],
+                research_sp: [
+                    { field: "background", title: "Background" },
+                    { field: "aim", title: "Aim" },
+                    { field: "method", title: "Method" },
+                    { field: "results", title: "Results" },
+                    { field: "conclusions", title: "Conclusions" },
+                ],
                 case_report: [
+                    { field: "background", title: "Background" },
+                    { field: "case_illustration", title: "Case Illustration" },
+                    { field: "discussion", title: "Discussion" },
+                    { field: "conclusions", title: "Conclusions" },
+                ],
+                case_report_sp: [
                     { field: "background", title: "Background" },
                     { field: "case_illustration", title: "Case Illustration" },
                     { field: "discussion", title: "Discussion" },

@@ -4,7 +4,7 @@
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
         <!-- <WelcomeMessage></WelcomeMessage> -->
-        <Menu></Menu>
+        <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
         <!-- <Schedule></Schedule> -->
         <!-- <Pricing></Pricing>
