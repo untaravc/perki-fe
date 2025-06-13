@@ -3,8 +3,8 @@
         <HeroCarousel></HeroCarousel>
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
-        <!-- <WelcomeMessage></WelcomeMessage> -->
-        <!-- <Menu></Menu> -->
+        <Menu></Menu>
+        <WelcomeMessage></WelcomeMessage>
         <!-- <Video></Video> -->
         <!-- <Schedule></Schedule> -->
         <!-- <Pricing></Pricing>

@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.apiGet('pub/pricing', { ref: 'jfu25' })
+            this.apiGet('pub/pricing', { ref: 'jcu25' })
                 .then((data) => {
                     this.pricing = data.result
                 })

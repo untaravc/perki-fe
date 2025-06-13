@@ -7,8 +7,7 @@
             Tentrem Hotel Yogyakarta, P. Mangkubumi St. No.72A, Cokrodiningratan, Jetis, Yogyakarta
         </div>
         <div class="rounded-xl shadow-sm bg-red-100 grid grid-cols-12 mb-6">
-            <div class="col-span-12 md:col-span-5 min-h-[300px]  bg-red-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
-                style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJFU25%2Ftahir.webp?alt=media&token=3a731e63-0c2d-4943-a0c4-80888b3593cd')">
+            <div class="col-span-12 md:col-span-5 min-h-[300px]  bg-red-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat">
             </div>
             <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
                 <div class="mb-4">

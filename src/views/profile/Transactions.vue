@@ -2,7 +2,8 @@
     <div>
         <div class="text-2xl font-semibold mb-3">Transaction</div>
         <div v-if="data_content.length === 0" class="p-3 italic text-red-500">
-            no data
+            No Transaction, <router-link class="font-semibold hover:cursor-pointer; text-primary-merah" to="/register">
+                Register?</router-link>
         </div>
         <div class="border-red-200 border bg-white rounded mb-2" v-for="trx in data_content">
             <div class="bg-red-100 rounded-t py-3 px-4 flex justify-between">
@@ -92,7 +93,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/transaction-list?ref=jfu25',)
+            this.authGet('pub/transaction-list?ref=jcu25',)
                 .then((data) => {
                     this.data_content = data.result;
                 })

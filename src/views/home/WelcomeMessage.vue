@@ -3,46 +3,47 @@
     <div class="max-w-screen-md m-auto py-6 shadow-md bg-white rounded-lg p-6 md:p-10">
       <div class="text-center text-xl font-semibold mb-5">Welcome Speech</div>
       <div className="float-right ml-4 mb-3 w-48 h-60 rounded-md bg-cover bg-center bg-no-repeat"
-        style="background-image: url('https://src.perki-jogja.com/assets/photo2/irsad.andi.png');">
-
+        style="transform: scaleX(-1); background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FSpeakers%2Fv2%2Ffirandi.saputra.png?alt=media&token=0443f747-8bd5-4b9a-bf4b-05e03cfda498');">
       </div>
       <div>
         <div className="text-gray-700 leading-relaxed text-sm">
-          <div class="mb-3">Dear colleagues,</div>
+          <div class="mb-3">Dear Professors, Doctors, and Healthcare Professionals,</div>
           <div class="mb-3">
-            Cardiovascular disease (CVD) prevention has a great impact in society by reducing the burden of this
-            devastating disease. The effort to bring CVD prevention from specialized clinical practice to general
-            practitioner led to its societal broader impact. One of the successful CVD prevention impacts is the longer
-            life expectancy and healthy longevity in the community.
+            As the field of cardiovascular medicine continues to evolve, addressing emergencies with precision, speed,
+            and contextual relevance has become more crucial than ever. In response to these growing demands, the
+            Indonesian Heart Association - Jogjakarta Chapter (PERKI Jogja), in collaboration with the Faculty of
+            Medicine, Public Health, and Nursing, Universitas Gadjah Mada (FK-KMK UGM), proudly presents Jogja
+            Cardiology Update 2025.
           </div>
           <div class="mb-3">
-            In the beginning of 2025, Jogja CARdioVascular Epidemiology and Prevention Forum (CARVEP) 2025, an inaugural
-            annual cardiovascular scientific meeting held by the Indonesian Heart Association Jogjakarta Branch (PERKI
-            Cabang Jogjakarta) in collaboration with the Department of Cardiology and Vascular Medicine, Faculty of
-            Medicine, Public Health and Nursing Universitas Gadjah Mada, is held in The Rich Hotel, Yogyakarta (22-23
-            February 2025).
+            Carrying the theme “The Future of Cardiovascular Emergency: Aligning Global Progress with Local Needs”, this
+            year’s JCU aims to bridge the latest international advances with the unique challenges and needs of local
+            healthcare systems. The scientific meeting will once again be held in an offline format, providing the
+            opportunity for direct interaction, active discussion, and meaningful networking.
           </div>
           <div class="mb-3">
-            CARVEP2025 takes the theme “Cardiovascular Disease Prevention and Longevity: Connecting the Dots”.
-            International and national CVD prevention experts will gather together delivering us the topic related to
-            CVD
-            prevention, CVD epidemiology and Longevity. Not only symposium, CARVEP2025 also bring the Workshops related
-            to
-            CVD prevention, namely Cardiopulmonary Exercise Test (CPET) and Ambulatory Blood Pressure Measurements
-            (ABPM)
-            workshops
+            JCU 2025 will be held in conjunction with two significant events: the 8th Jogja International Cardiovascular
+            Topic Series (JINCARTOS) 2025 and the 1st INA-PH Meeting, hosted by the Indonesian Working Group of
+            Pulmonary Hypertension. This combined forum will explore a wide spectrum of critical topics—from frontline
+            cardiovascular emergencies to the complexities of pulmonary hypertension—guided by national and
+            international experts in their fields.
           </div>
           <div class="mb-3">
-            CARVEP2025 expects all medical doctors, health professionals, and students are able to join this event and
-            blend together for sharing and caring about CVD epidemiology and prevention. CARVEP2025 committee looks
-            forward to the presence of all of you and add my best wishes for a successful event.
+            We invite clinicians, researchers, healthcare professionals, and students to take part in this important
+            gathering. Through plenary sessions, symposiums, workshops, and abstract presentations, participants will
+            gain new insights, enhance clinical competence, and contribute to shaping the future of cardiovascular care.
           </div>
           <div class="mb-3">
-            See you at CARVEP2025!
+            Jogja Cardiology Update 2025 will take place from August 1 to 3, 2025, in Jogjakarta. On behalf of the
+            organizing committee, we look forward to welcoming you to this enriching and collaborative scientific event.
+
           </div>
           <div class="mb-3">
-            <b>Irsad Andi Arso, MSc, MD</b> <br>
-            Chairperson Jogja CARdioVascular Epidemiology and Prevention Forum (CARVEP) 2025
+            <span>Warm regards,</span>
+            <br>
+            <span>Organizing Committee</span>
+            <br>
+            <span>Jogja Cardiology Update 2025</span>
           </div>
         </div>
       </div>

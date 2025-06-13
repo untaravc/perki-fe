@@ -90,16 +90,15 @@
                     <option value="case_report">Case Report Student & General Practitioner</option>
                     <option value="case_report_sp">Case Report Resident & Specialist</option>
                     <option value="systematic_review">Systematic Review / Meta Analysis</option>
-                    <!-- <option value="meta_analysis">Meta Analysis</option> -->
                 </select>
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('category')">
                     {{ parseErrors('category', 'val') }}
                 </small>
             </div>
-            <div class="mb-4">
+            <div class="mb-4" v-if="form.category !== ''">
                 <label>Abstract</label>
                 <div class="mb-2" v-for="body_form in abstract_form">
-                    <label class="text-sm" title="Provide 1 or 2 sentences that explain the context of the study.">
+                    <label class="text-sm" :title="body_form.info">
                         {{ body_form.title }}
                         <unicon name="info-circle" width="15px" height="15px" fill="grey"></unicon>
                     </label>
@@ -339,44 +338,44 @@ export default {
             abstract_form: [],
             abstract_form_list: {
                 research: [
-                    { field: "background", title: "Background" },
-                    { field: "aim", title: "Aim" },
-                    { field: "method", title: "Method" },
-                    { field: "results", title: "Results" },
-                    { field: "conclusions", title: "Conclusions" },
+                    { field: "background", title: "Background", info: "Provide 1 or 2 sentences that explain the context of the study." },
+                    { field: "aim", title: "Aim", info: "State the precise objective, the specific hypothesis to be tested, or both." },
+                    { field: "method", title: "Method", info: "Describe the study design, including the use of cells, animal models, or human subjects. Identify the control group. Identify specific methods and procedures. Describe interventions, if used. " },
+                    { field: "results", title: "Results", info: "Report the most important findings, including results of statistical analyses." },
+                    { field: "conclusions", title: "Conclusions", info: "Summarize in 1 or 2 sentences the primary outcomes of the study, including their potential clinical importance, if relevant (avoid generalizations)." },
                 ],
                 research_sp: [
-                    { field: "background", title: "Background" },
-                    { field: "aim", title: "Aim" },
-                    { field: "method", title: "Method" },
-                    { field: "results", title: "Results" },
-                    { field: "conclusions", title: "Conclusions" },
+                    { field: "background", title: "Background", info: "Provide 1 or 2 sentences that explain the context of the study." },
+                    { field: "aim", title: "Aim", info: "State the precise objective, the specific hypothesis to be tested, or both." },
+                    { field: "method", title: "Method", info: "Describe the study design, including the use of cells, animal models, or human subjects. Identify the control group. Identify specific methods and procedures. Describe interventions, if used. " },
+                    { field: "results", title: "Results", info: "Report the most important findings, including results of statistical analyses." },
+                    { field: "conclusions", title: "Conclusions", info: "Summarize in 1 or 2 sentences the primary outcomes of the study, including their potential clinical importance, if relevant (avoid generalizations)." },
                 ],
                 case_report: [
-                    { field: "background", title: "Background" },
-                    { field: "case_illustration", title: "Case Illustration" },
-                    { field: "discussion", title: "Discussion" },
-                    { field: "conclusions", title: "Conclusions" },
+                    { field: "background", title: "Background", info: "Provide 1 or 2 sentences that explain the context of the case, including the relevance and importance" },
+                    { field: "case_illustration", title: "Case Illustration", info: "Report the case in sequence. Describe the history, examination and investigations adequately. Include the patient’s treatment, progress and outcome." },
+                    { field: "discussion", title: "Discussion", info: "Discuss the lesson from the case. Report a literature review of other similar cases. Describe how this case is different from those previously reported. Explain the rationale for reporting the case." },
+                    { field: "conclusions", title: "Conclusions", info: "Summarize in 1 or 2 sentences the case including their potential clinical importance." },
                 ],
                 case_report_sp: [
-                    { field: "background", title: "Background" },
-                    { field: "case_illustration", title: "Case Illustration" },
-                    { field: "discussion", title: "Discussion" },
-                    { field: "conclusions", title: "Conclusions" },
+                    { field: "background", title: "Background", info: "Provide 1 or 2 sentences that explain the context of the case, including the relevance and importance" },
+                    { field: "case_illustration", title: "Case Illustration", info: "Report the case in sequence. Describe the history, examination and investigations adequately. Include the patient’s treatment, progress and outcome." },
+                    { field: "discussion", title: "Discussion", info: "Discuss the lesson from the case. Report a literature review of other similar cases. Describe how this case is different from those previously reported. Explain the rationale for reporting the case." },
+                    { field: "conclusions", title: "Conclusions", info: "Summarize in 1 or 2 sentences the case including their potential clinical importance." },
                 ],
                 systematic_review: [
-                    { field: "background", title: "Background" },
-                    { field: "aim", title: "Aim" },
-                    { field: "method", title: "Method" },
-                    { field: "results", title: "Results" },
-                    { field: "conclusions", title: "Conclusions" },
+                    { field: "background", title: "Background", info: "Provide 1 or 2 sentences that explain the context of the study." },
+                    { field: "aim", title: "Aim", info: "State the precise objective, the specific hypothesis to be tested, or both." },
+                    { field: "method", title: "Method", info: "Describe the study design, including the use of cells, animal models, or human subjects. Identify the control group. Identify specific methods and procedures. Describe interventions, if used. " },
+                    { field: "results", title: "Results", info: "Report the most important findings, including results of statistical analyses." },
+                    { field: "conclusions", title: "Conclusions", info: "Summarize in 1 or 2 sentences the primary outcomes of the study, including their potential clinical importance, if relevant (avoid generalizations)." },
                 ],
                 meta_analysis: [
-                    { field: "background", title: "Background" },
-                    { field: "aim", title: "Aim" },
-                    { field: "method", title: "Method" },
-                    { field: "results", title: "Results" },
-                    { field: "conclusions", title: "Conclusions" },
+                    { field: "background", title: "Background", info: "Provide 1 or 2 sentences that explain the context of the study." },
+                    { field: "aim", title: "Aim", info: "State the precise objective, the specific hypothesis to be tested, or both." },
+                    { field: "method", title: "Method", info: "Describe the study design, including the use of cells, animal models, or human subjects. Identify the control group. Identify specific methods and procedures. Describe interventions, if used. " },
+                    { field: "results", title: "Results", info: "Report the most important findings, including results of statistical analyses." },
+                    { field: "conclusions", title: "Conclusions", info: "Summarize in 1 or 2 sentences the primary outcomes of the study, including their potential clinical importance, if relevant (avoid generalizations)." },
                 ]
             },
             form: {
