@@ -4,7 +4,7 @@
             SCHEDULE
         </div>
         <div class="text-small text-blue-600 mb-5 text-center">
-            Jogja Foot Ulcer Meeting 2025
+            Jogja Cardiology Update 2025
         </div>
         <div class="grid grid-cols-2">
             <div @click="selected = 1" :class="selected === 1 ? 'bg-red-400 text-white' : 'bg-red-100'"
@@ -93,7 +93,7 @@
                                     <li v-for="item in ws_hd.schedules">
                                         {{ item.title }}
                                         <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name
-                                            }}</span>
+                                        }}</span>
                                     </li>
                                 </ul>
                             </div>

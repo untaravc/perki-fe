@@ -420,10 +420,7 @@ export default {
 
             this.disabled = true;
             this.authPost('pub/create-payment-jcu25', {
-                items: {
-                    symposium: this.form.symposium,
-                    workshop: this.form.workshop,
-                },
+                items: this.form,
                 props: {
                     nik: this.form.nik,
                     plataran_img: this.form.plataran_img,

@@ -61,7 +61,7 @@
                             <li class="text-sm" v-for="detail in transaction.transaction_details">
                                 {{ detail.event_name }}
                                 <span class="italic text-rose-500">{{ $filters.formatDateTime(detail.event.date_start)
-                                }}</span>
+                                    }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
@@ -153,7 +153,7 @@
 import PageLoading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 import { upload, generateFileName } from '../../firebase_upload';
-import moment from 'moment';
+
 export default {
     components: {
         PageLoading

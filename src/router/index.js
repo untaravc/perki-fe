@@ -19,16 +19,19 @@ import PrivacyPolicy from '../views/contact-us/PrivacyPolicy.vue'
 import Licensing from '../views/contact-us/Licensing.vue'
 
 import Profile from '../views/profile/Index.vue'
-import Events from '../views/events/Index.vue'
 import ProfileInfo from '../views/profile/Info.vue'
 import ProfileEvents from '../views/profile/Events.vue'
 import ProfileTransactions from '../views/profile/Transactions.vue'
 import ProfileAbstracts from '../views/profile/Abstracts.vue'
+import ProfileEcg from '../views/profile/Ecg.vue'
+import Events from '../views/events/Index.vue'
 import Committee from '../views/committee/Index.vue'
 import Logas from '../views/logas/Index.vue'
 import ForgotPassword from '../views/login/ForgotPassword.vue'
 import ResetPassword from '../views/login/ResetPassword.vue'
 import Videos from '../views/videos/Index.vue'
+import EcgChampionshipInfo from '../views/ecg/Info.vue'
+import EcgChampionshipRegister from '../views/ecg/Register.vue'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -157,6 +160,16 @@ const router = createRouter({
 					component: CheckTransaction,
 				},
 				{
+					path: '/ecg-championship-info',
+					name: 'ecg-championship-info',
+					component: EcgChampionshipInfo,
+				},
+				{
+					path: '/ecg-championship-register',
+					name: 'ecg-championship-register',
+					component: EcgChampionshipRegister,
+				},
+				{
 					path: '/logas',
 					name: 'logas',
 					component: Logas,
@@ -185,6 +198,11 @@ const router = createRouter({
 							path: 'abstracts',
 							name: 'profile-abstracts',
 							component: ProfileAbstracts,
+						},
+						{
+							path: 'ecg',
+							name: 'profile-ecg',
+							component: ProfileEcg,
 						},
 					]
 				},

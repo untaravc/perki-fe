@@ -2,11 +2,16 @@
     <nav class="px-2 sm:px-4 py-2 bg-center bg-cover bg-no-repeat fixed w-full z-20 top-0 left-0"
         style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Fbg-orange.webp?alt=media&token=e6c9dad4-d521-4d75-bb4f-bf036f71459a');">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
-            <a href="/" class="flex items-center ml-4 sm:ml-0">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Flogo-jcu-25.webp?alt=media&token=95ab8bb9-bdc7-49d6-a11c-dc7db56760ce"
-                    class="h-10 mr-3 sm:h-16" alt="Jogja Foot Ulcer Meeting 2025">
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
-            </a>
+            <div class="flex">
+                <a href="/" class="flex items-center ml-4 sm:ml-0">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Flogo-jcu-2025-icon.webp?alt=media&token=fd4a5663-8954-4920-9eb5-e497d7274fe8"
+                        class="h-10 mr-3 sm:h-12" alt="Jogja Cardiology Update 2025">
+                </a>
+                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Flogo-only-jincartos.webp?alt=media&token=7bdf3127-cf35-458e-a006-7b8721ed25f0"
+                    class="h-10 mr-3 sm:h-12 hidden md:block" alt="The 8th Jincartos">
+                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Flogo-only-inaph.webp?alt=media&token=a74b7d5c-da7b-4aad-adef-9f259441c6ec"
+                    class="h-10 mr-3 sm:h-12 hidden md:block" alt="The 1st InaPH">
+            </div>
             <div class="flex md:order-2">
                 <router-link to="/register"
                     class="text-white flex items-center bg-background-merah hover:bg-red-800 focus:ring-4 focus:outline-none
@@ -34,7 +39,7 @@
                     </div>
                 </router-link>
 
-                <!-- <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"
+                <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"
                     class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
@@ -44,7 +49,7 @@
                             d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                             clip-rule="evenodd"></path>
                     </svg>
-                </button> -->
+                </button>
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
@@ -63,8 +68,14 @@
                     </li> -->
                     <li>
                         <router-link to="/committee" @click="toggleMenu"
-                            class="block home py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
+                            class="block committee py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">Committee
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/ecg-championship-info" @click="toggleMenu"
+                            class="block ecg py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
+                            aria-current="page">ECG Championship
                         </router-link>
                     </li>
                     <!-- <li v-if="has_token">

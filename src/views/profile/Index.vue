@@ -1,14 +1,9 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-16">
         <div class="py-8 px-2" style="min-height: calc(100vh - 195px);">
-            <div class="flex py-6">
-                <div>
-                    My Account
-                </div>
-            </div>
             <div class="grid gap-4 md:grid-cols-4">
                 <div>
-                    <div class="p-6 border-red-100 bg-white rounded-xl">
+                    <div class="px-6 border-red-100 bg-white rounded-xl">
                         <router-link to="/profile/info" class="flex my-3 cursor-pointer" @click="active = 'info'">
                             <unicon name="user" height="20px" :fill="active === 'info' ? 'darkblue' : ''"></unicon>
                             <div class="ml-2">Profil</div>
@@ -38,6 +33,14 @@
                             </div>
                             <div class="bg-red-200 text-xs flex items-center py-0 px-2 rounded-full">
                                 {{ abstracts }}
+                            </div>
+                        </router-link>
+                        <router-link to="/profile/ecg" class="flex my-3 cursor-pointer justify-between"
+                            @click="active = 'ecg'">
+                            <div class="flex">
+                                <unicon name="trophy" height="20px" :fill="active === 'ecg' ? 'blue' : ''">
+                                </unicon>
+                                <div class="ml-2">ECG Smart Championship</div>
                             </div>
                         </router-link>
 
