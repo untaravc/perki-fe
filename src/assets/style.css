@@ -20,3 +20,9 @@
 .text-theme-accent {
     color: var(--color-theme-accent);
 }
+
+.gradient-bg {
+  background: linear-gradient(-45deg, #f5d5ab, #fdfcf5, #f5d5ab, #fdfcf5);
+  background-size: 400% 400%;
+  animation: gradient-x 15s ease infinite;
+}

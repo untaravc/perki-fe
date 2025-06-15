@@ -4,7 +4,10 @@
       ECG Smart Championship
     </div>
     <div v-if="!state.has_token" class="mb-8 text-center">
-      Create Account to Register
+      <router-link to="/register?url=/ecg-championship-register"
+        class="text-white bg-background-merah hover:bg-red-800 focus:ring-4 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
+        Create Account to Register
+      </router-link>
     </div>
     <div v-if="state.has_token" class="mb-8 text-center">
       <router-link to="/ecg-championship-register"

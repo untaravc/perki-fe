@@ -1,30 +1,30 @@
 <template>
     <div class="px-2 mb-3">
-        <div class="max-w-screen-lg m-auto py-6 bg-primary-merah rounded-lg">
-            <div class="grid grid-cols-3 ">
-                <div class="col-span-3 md:col-span-1 text-center md:border-r-2 mb-4 border-red-900">
-                    <div class="font-semibold text-lg text-white">Get Ready For The Event</div>
-                    <div class="text-slate-200">1st - 3rd of August 2025</div>
+        <div class="max-w-screen-lg m-auto py-6 gradient-bg rounded-lg">
+            <div class="grid grid-cols-12">
+                <div class="col-span-12 md:col-span-7 px-10 text-center md:text-left">
+                    <div class="font-semibold text-2xl">Get Ready For The Event</div>
+                    <div class="">1st - 3rd of August 2025</div>
                     <a href="https://maps.app.goo.gl/wf47tvH2gYBBrvVG7" target="_blank"
-                        class="text-sm text-slate-200 underline cursor-pointer">Tentrem Hotel, Yogyakarta</a>
+                        class="text-sm  underline cursor-pointer">Tentrem Hotel, Yogyakarta</a>
                 </div>
-                <div class="col-span-3 md:col-span-2 flex justify-center items-center">
-                    <div class="grid gap:3 md:gap-12 grid-cols-4">
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-background-default">{{ days }}</div>
-                            <div class="text-sm text-orange-100">Days</div>
+                <div class="col-span-12 md:col-span-5 flex justify-center items-center">
+                    <div class="grid gap-4 md:gap-12 grid-cols-4">
+                        <div class="text-center rounded-lg">
+                            <div class="text-4xl font-bold text-background-merah">{{ days }}</div>
+                            <div class="text-sm">Days</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-background-default">{{ hours }}</div>
-                            <div class="text-sm text-orange-100">Hours</div>
+                            <div class="text-4xl font-bold text-primary-coklat">{{ hours }}</div>
+                            <div class="text-sm">Hours</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-background-default">{{ minutes }}</div>
-                            <div class="text-sm text-orange-100">Minutes</div>
+                            <div class="text-4xl font-bold text-primary-oren">{{ minutes }}</div>
+                            <div class="text-sm">Minutes</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-bold text-background-default">{{ seconds }}</div>
-                            <div class="text-sm text-orange-100">Seconds</div>
+                            <div class="text-4xl font-bold text-primary-hijau">{{ seconds }}</div>
+                            <div class="text-sm">Seconds</div>
                         </div>
                     </div>
                 </div>

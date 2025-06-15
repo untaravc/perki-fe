@@ -14,9 +14,10 @@
             </div>
             <div class="flex md:order-2">
                 <router-link to="/register"
-                    class="text-white flex items-center bg-background-merah hover:bg-red-800 focus:ring-4 focus:outline-none
-                    focus:ring-red-600 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
-                    Register
+                    class="text-white flex items-center bg-background-merah hover:bg-red-800 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
+                    <div class="flex items-center">
+                        <div>Register</div>
+                    </div>
                 </router-link>
 
                 <!-- <div
@@ -33,7 +34,7 @@
                 </router-link>
 
                 <router-link to="/login" v-if="!has_token"
-                    class="text-white bg-background-merah hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-600 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-white flex items-center bg-background-merah hover:bg-red-800 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
                     <div class="flex items-center">
                         <div>Login</div>
                     </div>
@@ -66,12 +67,6 @@
                             aria-current="page">Guidance
                         </router-link>
                     </li> -->
-                    <li>
-                        <router-link to="/committee" @click="toggleMenu"
-                            class="block committee py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
-                            aria-current="page">Committee
-                        </router-link>
-                    </li>
                     <li>
                         <router-link to="/ecg-championship-info" @click="toggleMenu"
                             class="block ecg py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"

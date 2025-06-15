@@ -180,14 +180,14 @@ export default {
             user_name: '',
             institution: '',
             flag: 'leader',
-            document_link: 'asd',
+            document_link: '',
           },
           {
             id: '',
             user_name: '',
             institution: '',
             flag: 'member',
-            document_link: 'asd',
+            document_link: '',
           },
           {
             id: '',
