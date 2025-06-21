@@ -35,14 +35,14 @@
                                 {{ abstracts }}
                             </div>
                         </router-link>
-                        <router-link to="/profile/ecg" class="flex my-3 cursor-pointer justify-between"
+                        <!-- <router-link to="/profile/ecg" class="flex my-3 cursor-pointer justify-between"
                             @click="active = 'ecg'">
                             <div class="flex">
                                 <unicon name="trophy" height="20px" :fill="active === 'ecg' ? 'blue' : ''">
                                 </unicon>
                                 <div class="ml-2">ECG Smart Championship</div>
                             </div>
-                        </router-link>
+                        </router-link> -->
 
                         <div class="flex my-3 cursor-pointer" @click="logout">
                             <unicon name="signout" height="20px"></unicon>
@@ -90,6 +90,7 @@ export default {
         }
     },
     created() {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         this.loadData()
         this.emitter.emit("update-header");
     }

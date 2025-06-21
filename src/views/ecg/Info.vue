@@ -3,17 +3,17 @@
     <div class="text-4xl font-bold mb-8 text-center">
       ECG Smart Championship
     </div>
-    <div v-if="!state.has_token" class="mb-8 text-center">
+    <!-- <div v-if="!state.has_token" class="mb-8 text-center">
       <router-link to="/register?url=/ecg-championship-register"
         class="text-white bg-background-merah hover:bg-red-800 focus:ring-4 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
         Create Account to Register
       </router-link>
-    </div>
-    <div v-if="state.has_token" class="mb-8 text-center">
-      <router-link to="/ecg-championship-register"
+    </div> -->
+    <div class="mb-8 text-center">
+      <a href="https://bit.ly/pendaftaranESCJCU2025" target="_blank"
         class="text-white bg-background-merah hover:bg-red-800 focus:ring-4 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
         Register Your Team
-      </router-link>
+      </a>
     </div>
     <div class="mb-8">
       <img
@@ -34,9 +34,12 @@ import { reactive } from 'vue';
 export default {
   name: 'EcgInfo',
   setup() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
     const state = reactive({
       has_token: localStorage.getItem('perki_user_token') ? true : false,
     });
+
 
     return {
       state,

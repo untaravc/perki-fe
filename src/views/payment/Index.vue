@@ -61,7 +61,7 @@
                             <li class="text-sm" v-for="detail in transaction.transaction_details">
                                 {{ detail.event_name }}
                                 <span class="italic text-rose-500">{{ $filters.formatDateTime(detail.event.date_start)
-                                    }}</span>
+                                }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
@@ -220,7 +220,7 @@ export default {
             const input = this.$refs.file_upload;
             if (input && input.files.length > 0) {
                 this.upload_loader = true
-                const file_name = this.generateFileName('TransferProof', input.files[0])
+                const file_name = generateFileName('TransferProof', input.files[0])
                 this.transaction.transfer_proof = await upload(file_name, input.files[0])
 
                 await this.uploadTransferProof()

@@ -78,6 +78,13 @@
                             <small class="text-xs text-red-600 italic" v-if="parseErrors('job_type_code')">
                                 {{ parseErrors('job_type_code', 'val') }}
                             </small>
+                            <div class="text-xs p-1 bg-yellow-50 mt-1">
+                                <ul class="list-disc ml-4">
+                                    <li>SKP is only granted to specialists in Cardiology (SpJP), Internal Medicine
+                                        (SpPD), Obstetrics and Gynecology (SpOG), General Practitioners, and Nurses.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="mt-3 flex justify-between"
                             v-if="form.job_type_code === 'MHSA' || form.job_type_code === 'COAS'">
@@ -304,6 +311,7 @@ export default {
         },
     },
     created() {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         this.loadJobType();
 
         if (localStorage.getItem('perki_user_token')) {

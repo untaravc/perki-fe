@@ -1,30 +1,52 @@
 <template>
-    <div class="px-2 mb-3">
-        <div class="max-w-screen-lg m-auto py-6 gradient-bg rounded-lg">
-            <div class="grid grid-cols-12">
-                <div class="col-span-12 md:col-span-7 px-10 text-center md:text-left">
-                    <div class="font-semibold text-2xl">Get Ready For The Event</div>
-                    <div class="">1st - 3rd of August 2025</div>
+    <div class="px-2 mb-12">
+        <div
+            class="max-w-screen-lg mx-auto py-8 px-6 bg-gradient-to-r from-brand-red to-brand-orange rounded-2xl shadow-2xl relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+            <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-12">
+            </div>
+
+            <div class="relative z-10 grid grid-cols-12 gap-6 items-center">
+                <div class="col-span-12 md:col-span-7 px-4 text-center md:text-left text-white">
+                    <h2 class="font-bold text-3xl md:text-4xl mb-3 leading-tight">
+                        Get Ready For The Event
+                    </h2>
+                    <div class="text-xl md:text-2xl font-semibold mb-3 text-white/90">
+                        1st - 3rd of August 2025
+                    </div>
                     <a href="https://maps.app.goo.gl/wf47tvH2gYBBrvVG7" target="_blank"
-                        class="text-sm  underline cursor-pointer">Tentrem Hotel, Yogyakarta</a>
+                        class="inline-flex items-center text-white/80 hover:text-white transition-colors duration-300 group">
+                        <i
+                            class="uil uil-location-pin-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="underline decoration-2 underline-offset-4">Tentrem Hotel, Yogyakarta</span>
+                        <i
+                            class="uil uil-external-link-alt ml-2 text-sm group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
                 </div>
+
                 <div class="col-span-12 md:col-span-5 flex justify-center items-center">
-                    <div class="grid gap-4 md:gap-12 grid-cols-4">
-                        <div class="text-center rounded-lg">
-                            <div class="text-4xl font-bold text-background-merah">{{ days }}</div>
-                            <div class="text-sm">Days</div>
+                    <div class="grid gap-6 grid-cols-4 w-full max-w-md">
+                        <div
+                            class="text-center p-4 bg-white/15 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/25 transition-all duration-300 animate-float">
+                            <div class="text-3xl md:text-4xl font-bold text-white mb-1" id="days">{{ days }}</div>
+                            <div class="text-xs md:text-sm text-white/80 font-medium">Days</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-primary-coklat">{{ hours }}</div>
-                            <div class="text-sm">Hours</div>
+                        <div class="text-center p-4 bg-white/15 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/25 transition-all duration-300 animate-float"
+                            style="animation-delay: 0.5s;">
+                            <div class="text-3xl md:text-4xl font-bold text-white mb-1" id="hours">{{ hours }}</div>
+                            <div class="text-xs md:text-sm text-white/80 font-medium">Hours</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-primary-oren">{{ minutes }}</div>
-                            <div class="text-sm">Minutes</div>
+                        <div class="text-center p-4 bg-white/15 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/25 transition-all duration-300 animate-float"
+                            style="animation-delay: 1s;">
+                            <div class="text-3xl md:text-4xl font-bold text-white mb-1" id="minutes">{{ minutes }}</div>
+                            <div class="text-xs md:text-sm text-white/80 font-medium">Minutes</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-primary-hijau">{{ seconds }}</div>
-                            <div class="text-sm">Seconds</div>
+                        <div class="text-center p-4 bg-white/15 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/25 transition-all duration-300 animate-float"
+                            style="animation-delay: 1.5s;">
+                            <div class="text-3xl md:text-4xl font-bold text-white mb-1" id="seconds">{{ seconds }}</div>
+                            <div class="text-xs md:text-sm text-white/80 font-medium">Seconds</div>
                         </div>
                     </div>
                 </div>

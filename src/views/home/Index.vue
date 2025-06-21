@@ -25,7 +25,7 @@ import Schedule from './SchedulesSimple.vue'
 import Pricing from "./PricingCol.vue";
 import TimerPage from "./Timer.vue";
 import Venue from "./Venue2.vue";
-import Menu from "./Menu.vue"
+import Menu from "./Menu2.vue"
 export default {
     components: {
         Pricing,
@@ -36,6 +36,9 @@ export default {
         Venue,
         WelcomeMessage,
         Menu,
+    },
+    setup() {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 }
 </script>
