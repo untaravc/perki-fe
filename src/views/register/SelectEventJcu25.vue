@@ -22,7 +22,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid gap-2 grid-cols-2" v-if="data_raw.workshop && count < 1">
+                    <div class="grid gap-2 grid-cols-2 mb-2" v-if="data_raw.workshop && count < 1">
                         <div v-for="ws in events.workshop" @click="selectWorkshop(ws)"
                             :class="form.workshop_first === ws.slug || form.workshop_second === ws.slug ? 'bg-red-200' : 'bg-background-lightRed', ws.grid === 1 ? 'col-span-1  ' : 'col-span-2'"
                             class="p-4 border rounded-lg cursor-pointer hover:bg-red-200">
@@ -60,6 +60,45 @@
                                 </div>
                                 <div class="text-xs mb-1 italic">
                                     {{ ws.title }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid gap-2 grid-cols-2" v-if="events.accommodations">
+                        <div v-for="(acm, a) in events.accommodations" @click="selectAcm(a, acm)"
+                            :class="form.acm_first === acm.slug || form.acm_second === acm.slug ? 'bg-red-200' : 'bg-background-lightRed'"
+                            class="p-4 border rounded-lg cursor-pointer hover:bg-red-200 col-span-2">
+                            <div class="mb-3">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-sm italic" v-if="!acm.available">Full Booked</div>
+                                        <div class="text-sm italic" v-if="acm.available">{{ acm.quota -
+                                            acm.transactions_count }} available</div>
+                                    </div>
+                                </div>
+
+                                <div class="font-semibold text-red-900 flex">
+                                    <div v-if="acm.available" class="flex items-center">
+                                        <unicon v-if="form.acm_first === acm.slug || form.acm_second === acm.slug"
+                                            name="check-square" width="20" height="20" fill="#243776"></unicon>
+                                        <unicon v-if="form.acm_first !== acm.slug && form.acm_second !== acm.slug"
+                                            name="square" width="20" height="20" fill="#243776"></unicon>
+                                    </div>
+                                    <div class="ml-1">
+                                        {{ acm.name }}
+                                    </div>
+                                </div>
+                                <div class="text-xs mb-1">
+                                    {{ $filters.formatDayDateTime(acm.date_start) }}
+                                    -
+                                    {{ $filters.formatDayDateTime(acm.date_end) }} (GMT+7)
+                                </div>
+                                <div class="text-xs mb-1">
+                                    <b>{{ acm.title }}</b> {{ acm.subtitle }}
+                                </div>
+                                <div class="text-xs mb-1 italic">
+                                    {{ acm.body }}
                                 </div>
                             </div>
                         </div>
@@ -302,6 +341,8 @@ export default {
                 workshop_first: null,
                 workshop_second: null,
                 plataran_img: '',
+                acm_first: null,
+                acm_second: null,
             },
             users: [
                 { name: '', email: '', nik: '' },
@@ -318,6 +359,7 @@ export default {
             events: {
                 symposium: [],
                 workshop: [],
+                accommodations: [],
             },
             data_raw: {
                 symposium: true,
@@ -411,6 +453,14 @@ export default {
         },
         memberModal() {
             this.member_modal.show()
+        },
+        selectAcm(idx, acm) {
+            if (idx === 0) {
+                this.form.acm_first === acm.slug ? this.form.acm_first = null : this.form.acm_first = acm.slug
+            } else {
+                this.form.acm_second === acm.slug ? this.form.acm_second = null : this.form.acm_second = acm.slug
+            }
+            this.calculatePrice()
         },
         toPayment() {
             // if (!this.form.plataran_img && this.transaction.job_type_code !== "MHSA") {

@@ -61,7 +61,7 @@
                             <li class="text-sm" v-for="detail in transaction.transaction_details">
                                 {{ detail.event_name }}
                                 <span class="italic text-rose-500">{{ $filters.formatDateTime(detail.event.date_start)
-                                }}</span>
+                                    }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
                             </li>
                         </ul>
@@ -110,18 +110,18 @@
                     <div v-show="!show_proof_gl">
                         <label for="file_upload_gl">
                             <div
-                                class="bg-red-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
+                                class="bg-slate-200 h-36 w-full cursor-pointer rounded flex justify-center items-center relative">
                                 <PageLoading v-model:active="upload_loader_gl" loader="dots" :is-full-page="false" />
                                 <div v-if="!upload_loader">
                                     <unicon name="file" fill="grey"></unicon>
-                                    <div class="text-sm italic text-red-600">Select Guarantee Letter</div>
+                                    <div class="text-sm italic text-slate-700">Select Guarantee Letter</div>
                                 </div>
                             </div>
                         </label>
                         <input type="file" accept="application/pdf,image/*" hidden id="file_upload_gl"
                             ref="file_upload_gl" @change="uploadGl">
                     </div>
-                    <div v-show="show_proof_gl" class="flex justify-center bg-red-200 p-2">
+                    <div v-show="show_proof_gl" class="flex justify-center bg-slate-200 p-2">
                         <div class="relative">
                             <a :href="transaction.transfer_proof_gl" target="_blank">
                                 <img :src="transaction.transfer_proof_gl" alt="" class="max-h-52">

@@ -1,11 +1,9 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-4 px-2" id="schedule">
-        <div class="text-4xl text-red-900 font-bold mb-1 text-center">
+        <div class="text-4xl text-red-900 font-bold mb-1 text-center mb-6">
             SCHEDULE
         </div>
-        <div class="text-small text-red-600 mb-5 text-center">
-        </div>
-        <div class="grid grid-cols-3">
+        <div class="grid grid-cols-3 mb-4">
             <div @click="selected = 1"
                 :class="selected === 1 ? 'from-red-400 to-purple-400' : 'from-purple-800 to-red-800'"
                 class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:bg-yellow-500 bg-gradient-to-r group transition duration-200">
@@ -34,93 +32,60 @@
                 </div>
             </div>
         </div>
-        <div v-if="selected === 1" class="p-2 border-b border-red-900">
-            <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
-                Get a minimum of 22 SKP Kemenkes per Workshop
-            </div>
-            <div class="grid grid-cols-7">
-                <div class="md:col-span-1 col-span-7 row-span-4 text-center">
-                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
-                        {{ $filters.formatTime("2023-09-01 08:00:00") }}
-                        -
-                        {{ $filters.formatTime("2023-09-01 11:00:00") }}
-                    </div>
+        <div v-if="selected === 1">
+            <div class="grid grid-cols-2 gap-2 mb-4">
+                <div
+                    class="inline-block bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 px-2 py-1 rounded text-center font-semibold">
+                    {{ $filters.formatTime("2025-08-01 08:00:00") }}
+                    -
+                    {{ $filters.formatTime("2025-08-01 11:00:00") }}
                 </div>
-                <div class="col-span-7 md:col-span-6 mb-4 border-b border-red-300"
-                    v-for="ws_hd in schedule.workshop_half_day_1">
-                    <div class="grid grid-cols-4">
-                        <div class="col-span-3">
-                            <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
-                            <div class="text-base font-semibold">
-                                {{ ws_hd.title }}
-                            </div>
-                            <div class="text-sm my-2 pl-6">
-                                <ul class="list-disc">
-                                    <li v-for="item in ws_hd.schedules">
-                                        {{ item.title }}
-                                        <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name
-                                        }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-span-1">
-                            <a target="_blank" :href="base_url + ws_hd.image">
-                                <img class="w-full" :src="base_url + ws_hd.image" alt="">
-                            </a>
-                        </div>
-                    </div>
+                <div
+                    class="inline-block bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 px-2 py-1 rounded text-center font-semibold">
+                    {{ $filters.formatTime("2025-08-01 13:00:00") }}
+                    -
+                    {{ $filters.formatTime("2025-08-01 16:00:00") }}
                 </div>
-            </div>
-            <div class="grid grid-cols-7">
-                <div class="md:col-span-1 col-span-7 row-span-4 text-center">
-                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
-                        {{ $filters.formatTime("2023-09-01 13:00:00") }}
-                        -
-                        {{ $filters.formatTime("2023-09-01 16:00:00") }}
+                <div v-for="(workshop, f) in schedule.workshops"
+                    class="text-center border border-red-300 rounded-lg p-2"
+                    :class="f < 2 ? 'col-span-2' : 'col-span-1'">
+                    <div class="text-indigo-700 font-bold">{{ workshop.name }}</div>
+                    <div class="text-base font-semibold">
+                        {{ workshop.title }}
                     </div>
-                </div>
-                <div class="col-span-7 md:col-span-6 mb-4 border-b border-red-300"
-                    v-for="ws_hd in schedule.workshop_half_day_2">
-                    <div class="grid grid-cols-4">
-                        <div class="col-span-3">
-                            <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
-                            <div class="text-base font-semibold">
-                                {{ ws_hd.title }}
-                            </div>
-                            <div class="text-sm my-2 pl-6">
-                                <ul class="list-disc">
-                                    <li v-for="item in ws_hd.schedules">
-                                        {{ item.title }}
-                                        <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name
-                                        }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-span-1 mb-2">
-                            <a target="_blank" :href="base_url + ws_hd.image">
-                                <img class="w-full rounded-md" :src="base_url + ws_hd.image" alt="">
-                            </a>
-                        </div>
+                    <div class="text-sm my-2 pl-6">
+                        <ul class="list-disc">
+                            <li v-for="item in workshop.schedules">
+                                {{ item.title }}
+                                <span class="font-semibold" v-if="item.speaker"><br>{{ item.speaker.name
+                                    }}</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div v-if="selected === 2" class="p-2 border-b border-red-900">
-            <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
-                Get a minimum of 16 SKP Kemenkes per Day Symposium
+        <div v-if="selected === 2">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-6 mb-4">
+                <div
+                    class="inline-block col-span-3 bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 px-2 py-1 rounded text-center font-semibold">
+                    ROOM A
+                </div>
+                <div
+                    class="inline-block col-span-3 bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 px-2 py-1 rounded text-center font-semibold">
+                    ROOM B
+                </div>
             </div>
-            <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-red-300"
-                v-for="(saturday, s) in schedule.saturday">
-                <div class="col-span-2 text-center md:col-span-1">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-6 mb-4" v-for="(saturday, s) in schedule.saturday">
+                <!-- <div class="col-span-2 text-center md:col-span-1">
                     <div class="inline-block bg-amber-300 px-2 py-1 rounded">
                         {{ $filters.formatTime(saturday.date_start) }}
                         -
                         {{ $filters.formatTime(saturday.date_end) }}
                     </div>
-                </div>
-                <div class="col-span-2 md:col-span-3">
+                </div> -->
+
+                <div class="col-span-3 border border-red-300 rounded-lg p-2">
                     <div v-if="saturday.room_a">
                         <div class="text-indigo-700 font-bold">
                             {{ saturday.room_a.name }}
@@ -136,7 +101,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        <!-- <div>
                             <div class="text-center hover:bg-red-100 cursor-pointer"
                                 @click="() => { saturday.room_a.show = !saturday.room_a.show }">
                                 <unicon name="angle-down" height="25px" v-if="!saturday.room_a.show">
@@ -147,10 +112,10 @@
                                 v-if="saturday.room_a.show && saturday.room_a.image">
                                 <img class="w-full" :src="base_url + saturday.room_a.image" alt="">
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="col-span-2 md:col-span-3">
+                <div class="col-span-3 border border-red-300 rounded-lg p-2">
                     <div v-if="saturday.room_b">
                         <div class="text-indigo-700 font-bold">
                             {{ saturday.room_b.name }}
@@ -166,7 +131,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        <!-- <div>
                             <div class="text-center hover:bg-red-100 cursor-pointer"
                                 @click="() => { saturday.room_b.show = !saturday.room_b.show }">
                                 <unicon name="angle-down" height="25px" v-if="!saturday.room_b.show">
@@ -177,26 +142,32 @@
                                 v-if="saturday.room_b.show && saturday.room_b.image">
                                 <img class="w-full" :src="base_url + saturday.room_b.image" alt="">
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
 
-        <div v-if="selected === 3" class="p-2 border-b border-red-900">
-            <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
-                Get a minimum of 16 SKP Kemenkes per Day Symposium
+        <div v-if="selected === 3">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-6 mb-4">
+                <div
+                    class="inline-block col-span-3 bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 px-2 py-1 rounded text-center font-semibold">
+                    ROOM A
+                </div>
+                <div
+                    class="inline-block col-span-3 bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 px-2 py-1 rounded text-center font-semibold">
+                    ROOM B
+                </div>
             </div>
-            <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-red-300"
-                v-for="sunday in schedule.sunday">
-                <div class="col-span-2 text-center md:col-span-1">
+            <div class="grid grid-cols-2 gap-2 md:grid-cols-6 mb-4" v-for="sunday in schedule.sunday">
+                <!-- <div class="col-span-2 text-center md:col-span-1">
                     <div class="inline-block bg-amber-300 px-2 py-1 rounded">
                         {{ $filters.formatTime(sunday.date_start) }}
                         -
                         {{ $filters.formatTime(sunday.date_end) }}
                     </div>
-                </div>
-                <div class="col-span-7 md:col-span-3">
+                </div> -->
+                <div class="col-span-3 border border-red-300 rounded-lg p-2">
                     <div v-if="sunday.room_a">
                         <div class="text-indigo-700 font-bold">
                             {{ sunday.room_a.name }}
@@ -212,7 +183,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        <!-- <div>
                             <div class="text-center hover:bg-red-100 cursor-pointer"
                                 @click="() => { sunday.room_a.show = !sunday.room_a.show }">
                                 <unicon name="angle-down" height="25px" v-if="!sunday.room_a.show">
@@ -223,10 +194,10 @@
                                 v-if="sunday.room_a.show && sunday.room_a.image">
                                 <img class="w-full" :src="base_url + sunday.room_a.image" alt="">
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="col-span-7 md:col-span-3">
+                <div class="col-span-3 border border-red-300 rounded-lg p-2">
                     <div v-if="sunday.room_b">
                         <div class="text-indigo-700 font-bold">
                             {{ sunday.room_b.name }}
@@ -242,7 +213,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        <!-- <div>
                             <div class="text-center hover:bg-red-100 cursor-pointer"
                                 @click="() => { sunday.room_b.show = !sunday.room_b.show }">
                                 <unicon name="angle-down" height="25px" v-if="!sunday.room_b.show">
@@ -253,7 +224,7 @@
                                 v-if="sunday.room_b.show && sunday.room_b.image">
                                 <img class="w-full" :src="base_url + sunday.room_b.image" alt="">
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -268,8 +239,7 @@ export default {
             selected: 1,
             show: false,
             schedule: {
-                workshop_half_day_1: [],
-                workshop_half_day_2: [],
+                workshops: [],
                 friday: [],
                 saturday: [],
             },
@@ -277,7 +247,7 @@ export default {
     },
     methods: {
         getSchedule() {
-            this.apiGet('pub/schedule', { ref: 2024 })
+            this.apiGet('pub/schedule', { section: 'jcu25' })
                 .then((data) => {
                     this.schedule = data.result
                 })

@@ -215,13 +215,13 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="z-index: 10;"
+    <!-- <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="z-index: 10;"
       class="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center hover-lift group shadow-lg">
       <svg class="w-5 h-5 text-white group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor"
         viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
       </svg>
-    </button>
+    </button> -->
   </footer>
 </template>
 <style scoped>

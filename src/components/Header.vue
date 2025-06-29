@@ -61,18 +61,18 @@
                             aria-current="page">Home
                         </router-link>
                     </li>
-                    <!-- <li>
+                    <li>
                         <router-link to="/guidance" @click="toggleMenu"
                             class="block home py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
-                            aria-current="page">Guidance
+                            aria-current="page">Information
                         </router-link>
-                    </li> -->
-                    <li>
+                    </li>
+                    <!-- <li>
                         <router-link to="/ecg-championship-info" @click="toggleMenu"
                             class="block ecg py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"
                             aria-current="page">ECG Championship
                         </router-link>
-                    </li>
+                    </li> -->
                     <!-- <li v-if="has_token">
                         <router-link to="/profile/events" @click="toggleMenu"
                             class="block py-2 pl-3 pr-4 text-red-900 rounded md:bg-transparent md:p-0"

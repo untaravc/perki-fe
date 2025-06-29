@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-28 pb-12 px-2" style="min-height: calc(100vh - 133px);">
         <div class="text-4xl font-bold mb-8 text-center">
-            GUIDANCE
+            Information
         </div>
         <div class="grid grid-cols-3 gap-3">
             <a :href="event.link" target="_blank" class="col-span-3 md:col-span-1" v-for="event in data_content">
@@ -13,7 +13,7 @@
                     <h4 class="font-semibold mb-2">{{ event.title }}</h4>
                     <div
                         class="text-white bg-red-900 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
-                        Open Document
+                        Open Detail
                     </div>
                 </div>
             </a>
@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         loadEvents() {
-            this.apiGet('pub/guidance?ref=2024')
+            this.apiGet('pub/guidance?section=jcu25')
                 .then((data) => {
                     this.data_content = data.result
                 })

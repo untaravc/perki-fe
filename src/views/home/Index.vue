@@ -6,7 +6,7 @@
         <Menu></Menu>
         <WelcomeMessage></WelcomeMessage>
         <!-- <Video></Video> -->
-        <!-- <Schedule></Schedule> -->
+        <Schedule></Schedule>
         <!-- <Pricing></Pricing>
         <div class="bg-background-lightRed">
             <Speakers></Speakers>
@@ -21,7 +21,7 @@
 import HeroCarousel from './HeroCarousel.vue'
 import WelcomeMessage from './WelcomeMessage.vue'
 import Speakers from './Speakers.vue'
-import Schedule from './SchedulesSimple.vue'
+import Schedule from './Schedules.vue'
 import Pricing from "./PricingCol.vue";
 import TimerPage from "./Timer.vue";
 import Venue from "./Venue2.vue";

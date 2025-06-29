@@ -1,8 +1,8 @@
 <template>
-    <div class="max-w-screen-lg m-auto mt-16 pt-4 mb-8">
+    <div class="max-w-screen-lg m-auto mt-16 pt-4 mb-20 md:mb-8">
         <Carousel :settings="settings" :wrapAround="true" :breakpoints="breakpoints">
             <Slide v-for="slide in data_content" :key="slide">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="grid md:grid-cols-2 gap-12 items-center md:px-16">
                     <!-- Content -->
                     <div class="space-y-8">
                         <div class="space-y-6">
@@ -42,9 +42,9 @@
                     </div>
                 </div>
             </Slide>
-            <!-- <template #addons>
+            <template #addons>
                 <CarouselNavigation />
-            </template> -->
+            </template>
         </Carousel>
     </div>
 </template>
@@ -115,11 +115,11 @@ export default {
 </script>
 <style>
 .carousel__next {
-    left: 60px;
+    right: 0%;
 }
 
 .carousel__prev {
-    left: 10px;
+    left: 0%;
 }
 
 .carousel__next,
@@ -129,15 +129,22 @@ export default {
     width: 40px;
     height: 40px;
     color: white;
-    top: 72%;
-
+    top: 50%;
 }
 
 @media (max-width: 768px) {
 
     .carousel__next,
     .carousel__prev {
-        top: 95%;
+        top: 105%;
+    }
+
+    .carousel__next {
+        right: 30%;
+    }
+
+    .carousel__prev {
+        left: 30%;
     }
 }
 </style>
