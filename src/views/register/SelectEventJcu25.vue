@@ -67,7 +67,7 @@
 
                     <div class="grid gap-2 grid-cols-2" v-if="events.accommodations">
                         <div v-for="(acm, a) in events.accommodations" @click="selectAcm(a, acm)"
-                            :class="form.acm_first === acm.slug || form.acm_second === acm.slug ? 'bg-red-200' : 'bg-background-lightRed'"
+                            :class="form.acm_first === acm.slug || form.acm_second === acm.slug || form.acm_third === acm.slug ? 'bg-red-200' : 'bg-background-lightRed'"
                             class="p-4 border rounded-lg cursor-pointer hover:bg-red-200 col-span-2">
                             <div class="mb-3">
                                 <div class="flex justify-between items-center">
@@ -80,9 +80,11 @@
 
                                 <div class="font-semibold text-red-900 flex">
                                     <div v-if="acm.available" class="flex items-center">
-                                        <unicon v-if="form.acm_first === acm.slug || form.acm_second === acm.slug"
+                                        <unicon
+                                            v-if="form.acm_first === acm.slug || form.acm_second === acm.slug || form.acm_third === acm.slug"
                                             name="check-square" width="20" height="20" fill="#243776"></unicon>
-                                        <unicon v-if="form.acm_first !== acm.slug && form.acm_second !== acm.slug"
+                                        <unicon
+                                            v-if="form.acm_first !== acm.slug && form.acm_second !== acm.slug && form.acm_third !== acm.slug"
                                             name="square" width="20" height="20" fill="#243776"></unicon>
                                     </div>
                                     <div class="ml-1">
@@ -193,49 +195,54 @@
                             </button>
                         </div>
 
-                        <div class="font-semibold mt-5 mb-2">
-                            Transaction Details
-                        </div>
-                        <div class="text-sm border-b">
-                            <div v-for="price in pricing.items">
-                                <div class="flex justify-between my-1" v-if="price.price !== 0"
-                                    :class="price.name === 'Total' ? 'border-t border-red-800 font-semibold' : ''">
-                                    <div>{{ price.name }}</div>
-                                    <div>{{ $filters.currency(price.price) }}</div>
+                        <div class="relative">
+                            <PageLoading v-model:active="loader" loader="dots" :is-full-page="false" />
+                            <div class="font-semibold mt-5 mb-2">
+                                Transaction Details
+                            </div>
+                            <div class="text-sm border-b">
+                                <div v-for="price in pricing.items">
+                                    <div class="flex justify-between my-1" v-if="price.price !== 0"
+                                        :class="price.name === 'Total' ? 'border-t border-red-800 font-semibold' : ''">
+                                        <div>{{ price.name }}</div>
+                                        <div>{{ $filters.currency(price.price) }}</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-sm">
-                            <div class="flex justify-between  my-1">
-                                <div class="text-red-600">Subtotal</div>
-                                <div class="font-semibold">{{ $filters.currency(pricing.subtotal) }}</div>
+                            <div class="text-sm">
+                                <div class="flex justify-between  my-1">
+                                    <div class="text-red-600">Subtotal</div>
+                                    <div class="font-semibold">{{ $filters.currency(pricing.subtotal) }}</div>
+                                </div>
+                            </div>
+                            <div class="text-sm" v-if="pricing.discount_amount !== 0">
+                                <div class="flex justify-between  my-1">
+                                    <div class="text-red-500">Voucher Discount</div>
+                                    <div class="text-red-500">{{ $filters.currency(pricing.discount_amount) }}</div>
+                                </div>
+                            </div>
+                            <div class="text-sm" v-if="pricing.package_discount !== 0">
+                                <div class="flex justify-between  my-1">
+                                    <div class="text-red-500">Package Discount</div>
+                                    <div class="text-red-500">{{ $filters.currency(pricing.package_discount) }}</div>
+                                </div>
+                            </div>
+                            <div class="text-sm border-t border-black">
+                                <div class="flex justify-between  my-1">
+                                    <div class="font-semibold">TOTAL</div>
+                                    <div class="font-semibold">{{ $filters.currency(pricing.total) }}</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <button @click="toPayment" :disabled="disabled"
+                                    class="text-white w-full mb-2 bg-red-900 hover:bg-red-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                                    <BtnLoader v-if="disabled"></BtnLoader>
+                                    <span v-if="!disabled">Process to Payment</span>
+                                </button>
                             </div>
                         </div>
-                        <div class="text-sm" v-if="pricing.discount_amount !== 0">
-                            <div class="flex justify-between  my-1">
-                                <div class="text-red-500">Voucher Discount</div>
-                                <div class="text-red-500">{{ $filters.currency(pricing.discount_amount) }}</div>
-                            </div>
-                        </div>
-                        <div class="text-sm" v-if="pricing.package_discount !== 0">
-                            <div class="flex justify-between  my-1">
-                                <div class="text-red-500">Package Discount</div>
-                                <div class="text-red-500">{{ $filters.currency(pricing.package_discount) }}</div>
-                            </div>
-                        </div>
-                        <div class="text-sm border-t border-black">
-                            <div class="flex justify-between  my-1">
-                                <div class="font-semibold">TOTAL</div>
-                                <div class="font-semibold">{{ $filters.currency(pricing.total) }}</div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <button @click="toPayment" :disabled="disabled"
-                                class="text-white w-full mb-2 bg-red-900 hover:bg-red-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
-                                <BtnLoader v-if="disabled"></BtnLoader>
-                                <span v-if="!disabled">Process to Payment</span>
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -327,13 +334,18 @@
 
 <script>
 import { upload, generateFileName } from '../../firebase_upload';
+import PageLoading from 'vue-loading-overlay';
 export default {
+    components: {
+        PageLoading
+    },
     data() {
         return {
             count: 0,
             selected: 2,
             voucher: '',
             disabled: false,
+            loader: true,
             member_modal: '',
             confirm_modal: '',
             form: {
@@ -343,6 +355,7 @@ export default {
                 plataran_img: '',
                 acm_first: null,
                 acm_second: null,
+                acm_third: null,
             },
             users: [
                 { name: '', email: '', nik: '' },
@@ -412,6 +425,7 @@ export default {
             this.$router.push('/plataran')
         },
         calculatePrice(mode = 'calculate') {
+            this.loader = true
             this.authPost('pub/calculate-price-jcu25', {
                 items: this.form,
                 voucher: this.voucher,
@@ -419,6 +433,7 @@ export default {
                 users: this.users,
             })
                 .then((data) => {
+                    this.loader = false
                     this.pricing = data.result
 
                     if (data.message) {
@@ -426,6 +441,8 @@ export default {
                             this.toaster({ title: data.message, icon: 'none' })
                         }
                     }
+                }).catch(() => {
+                    this.loader = false
                 })
         },
         selectWorkshop(ws) {
@@ -455,10 +472,13 @@ export default {
             this.member_modal.show()
         },
         selectAcm(idx, acm) {
+            console.log(idx, acm)
             if (idx === 0) {
                 this.form.acm_first === acm.slug ? this.form.acm_first = null : this.form.acm_first = acm.slug
-            } else {
+            } if (idx === 1) {
                 this.form.acm_second === acm.slug ? this.form.acm_second = null : this.form.acm_second = acm.slug
+            } else if (idx === 2) {
+                this.form.acm_third === acm.slug ? this.form.acm_third = null : this.form.acm_third = acm.slug
             }
             this.calculatePrice()
         },
