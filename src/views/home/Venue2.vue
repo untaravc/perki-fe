@@ -5,16 +5,20 @@
         </div>
         <div class="mb-6 text-center"> Tentrem Hotel Yogyakarta, P. Mangkubumi St. No.72A, Cokrodiningratan, Jetis,
             Yogyakarta </div>
-        <div class="rounded-xl shadow-sm bg-background-lightRed grid grid-cols-12">
+        <div class="shadow-sm bg-background-lightRed grid grid-cols-12">
             <div class="col-span-12 md:col-span-7 min-h-[300px] bg-center bg-cover bg-no-repeat">
                 <GoogleMap api-key="AIzaSyCoQyl6WwUyIgDQgaMpIbPF9tD-uT4VBJA" class="" style="width: 100%; height: 100%"
                     :center="center" :zoom="15">
                     <Marker :options="markerOptions" />
                 </GoogleMap>
             </div>
-            <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 rounded-b-xl md:rounded-bl-none md:rounded-r-xl bg-center bg-cover bg-no-repeat"
+            <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 bg-center bg-cover bg-no-repeat md:rounded-tr-xl"
                 style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU25%2Ftentrem-hotel.webp?alt=media&token=fb80169e-7812-4906-ade3-35315c5441bf');">
             </div>
+            <router-link to="/venue"
+                class="col-span-12 text-center py-4 cursor-pointer bg-gradient-to-r from-brand-red to-brand-orange hover:brightness-50 text-white font-semibold rounded-b-xl">
+                View Room Info
+            </router-link>
         </div>
     </div>
 </template>
@@ -25,7 +29,7 @@ import { GoogleMap, Marker } from 'vue3-google-map'
 export default {
     components: { GoogleMap, Marker },
     setup() {
-        const center = { lat: -7.7743194, lng: 110.3689792 }
+        const center = { lat: -7.7740034, lng: 110.3684772 }
         const markerOptions = { position: center, title: 'Tentrem Hotel' }
 
         return { markerOptions, center }
@@ -34,7 +38,7 @@ export default {
 </script>
 <style>
 .mapdiv {
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px 0 0 0;
 }
 
 @media (max-width: 768px) {
