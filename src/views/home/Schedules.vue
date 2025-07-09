@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-4 px-2" id="schedule">
-        <div class="text-4xl text-red-900 font-bold mb-1 text-center mb-6">
+        <div class="text-4xl text-red-900 font-bold text-center mb-6">
             SCHEDULE
         </div>
         <div class="grid grid-cols-3 mb-4">

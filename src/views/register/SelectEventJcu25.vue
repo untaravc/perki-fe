@@ -113,12 +113,12 @@
                                     <button :class="isSelectedKing(a, acm) ? 'bg-red-500' : 'bg-red-100 text-black'"
                                         class="px-2 rounded-full  hover:bg-red-400 font-semibold "
                                         @click="selectAcm(a, acm, 'king')">
-                                        King Bed Size {{ isSelectedKing(a, acm) }}
+                                        King Bed Size
                                     </button>
                                     <button :class="isSelectedTwin(a, acm) ? 'bg-red-500' : 'bg-red-100 text-black'"
                                         class="px-2 rounded-full  hover:bg-red-400 font-semibold"
                                         @click="selectAcm(a, acm, 'twin')">
-                                        Double Twin Bed Size {{ isSelectedTwin(a, acm) }}
+                                        Double Twin Bed Size
                                     </button>
                                 </div>
                             </div>
@@ -535,6 +535,20 @@ export default {
             //     this.toaster({ title: "Please upload Plataran Sehat (Screen Shoot)", icon: 'warning' })
             //     return
             // }
+
+            if (this.form.workshop_first === 'jcu25-ws-3' || this.form.workshop_first === 'jcu25-ws-5') {
+                if (!this.form.workshop_second) {
+                    this.toaster({ title: "Please select 2 Workshops", icon: 'warning' })
+                    return
+                }
+            }
+
+            if (this.form.workshop_second === 'jcu25-ws-4' || this.form.workshop_second === 'jcu25-ws-6') {
+                if (!this.form.workshop_first) {
+                    this.toaster({ title: "Please select 2 Workshops", icon: 'warning' })
+                    return
+                }
+            }
 
             this.disabled = true;
             this.authPost('pub/create-payment-jcu25', {
