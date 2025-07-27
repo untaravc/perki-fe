@@ -624,7 +624,7 @@ export default {
         checkOpenSubmit() {
             this.authGet('pub/abstracts-submit')
                 .then((data) => {
-                    this.is_open = true
+                    this.is_open = data.result.open
                 })
         }
     },

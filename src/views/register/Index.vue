@@ -8,6 +8,13 @@
                 </div>
                 <div class="font-semibold text-xl">Register Event</div>
                 <div class="text-sm">Create your account to register event.</div>
+                <div class="text-xs p-3 bg-yellow-50 mt-1">
+                    <div class="font-semibold">CLOSE REGISTRATION:</div>
+                    <ul class="list-disc ml-4">
+                        <li>Workshop - Tue, 29th July 2025, 12.00 WIB</li>
+                        <li>Symposium - Wed, 30th July 2025, 12.00 WIB</li>
+                    </ul>
+                </div>
                 <form>
                     <div class="mt-3 grid gap-2 sm:grid-cols-2">
                         <div>
@@ -175,17 +182,12 @@
                             {{ parseErrors('password', 'val') }}
                         </small>
                     </div>
-                    <div class="mt-3">
+                    <div class="mt-3" v-if="open_register">
                         <button @click="registerEmail" :disabled="disabled"
                             class="text-white w-full mb-2 bg-red-900 hover:bg-red-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                             <BtnLoader v-if="disabled"></BtnLoader>
                             <span v-if="!disabled">Register</span>
                         </button>
-                        <!-- <button v-if="!logged_in"
-                        class="inline-block w-full text-base text-neutral-700 px-8 py-2.5 text-center rounded-full border hover:bg-neutral-100">
-                        <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fgoogle-logo.png?alt=media&token=02624286-d17c-4ae5-8ccb-db75dce977b2" class="inline-block aspect-square w-5 xl:w-5" alt="">
-                        <span> Register with Google</span>
-                    </button> -->
                     </div>
                 </form>
             </div>
@@ -201,6 +203,7 @@ export default {
             disabled: false,
             eye_icon: false,
             referral_code: false,
+            open_register: false,
             data_raw: {
                 job_types: []
             },
@@ -225,6 +228,12 @@ export default {
         }
     },
     methods: {
+        loadOpenRegister() {
+            this.apiGet('pub/open-register')
+                .then((data) => {
+                    this.open_register =  data.result.open_register
+                })
+        },
         loadJobType() {
             this.apiGet('pub/get-job-types')
                 .then((data) => {
@@ -313,6 +322,7 @@ export default {
     created() {
         window.scrollTo({ top: 0, behavior: 'smooth' })
         this.loadJobType();
+        this.loadOpenRegister();
 
         if (localStorage.getItem('perki_user_token')) {
             this.getProfile()

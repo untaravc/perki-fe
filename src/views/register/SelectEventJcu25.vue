@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid gap-2 grid-cols-2 mb-2" v-if="data_raw.workshop && count < 1">
+                    <div class="grid gap-2 grid-cols-2 mb-2" v-if="data_raw.workshop && events.workshop.length > 0 && count < 1">
                         <div v-for="ws in events.workshop" @click="selectWorkshop(ws)"
                             :class="form.workshop_first === ws.slug || form.workshop_second === ws.slug ? 'bg-red-200' : 'bg-background-lightRed', ws.grid === 1 ? 'col-span-1  ' : 'col-span-2'"
                             class="p-4 border rounded-lg cursor-pointer hover:bg-red-200">
@@ -66,60 +66,62 @@
                         </div>
                     </div>
 
-                    <div class="font-semibold text-lg mb-2" v-if="count < 1">Hotel Room</div>
-                    <div class="text-xs mb-2 font-semibold" v-if="count < 1">All bookings are subject to room
-                        availability at the time of
-                        reservation.
-                    </div>
-                    <div class="grid gap-2 grid-cols-2" v-if="events.accommodations && count < 1">
-                        <div v-for="(acm, a) in events.accommodations" class="col-span-2">
-                            <div :class="form.acm_first === acm.slug || form.acm_second === acm.slug || form.acm_third === acm.slug || form.acm_fourth === acm.slug ? 'bg-red-200' : 'bg-background-lightRed'"
-                                class="p-4 border rounded-lg cursor-pointer">
-                                <div class="mb-3">
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <div class="text-sm italic" v-if="!acm.available">Full Booked</div>
-                                            <div class="text-sm italic" v-if="acm.available">{{ acm.quota -
-                                                acm.transactions_count }} available</div>
+                    <div v-if="events.accommodations.length > 0">
+                        <div class="font-semibold text-lg mb-2" v-if="count < 1">Hotel Room</div>
+                        <div class="text-xs mb-2 font-semibold" v-if="count < 1">All bookings are subject to room
+                            availability at the time of
+                            reservation.
+                        </div>
+                        <div class="grid gap-2 grid-cols-2" v-if="events.accommodations && count < 1">
+                            <div v-for="(acm, a) in events.accommodations" class="col-span-2">
+                                <div :class="form.acm_first === acm.slug || form.acm_second === acm.slug || form.acm_third === acm.slug || form.acm_fourth === acm.slug ? 'bg-red-200' : 'bg-background-lightRed'"
+                                    class="p-4 border rounded-lg cursor-pointer">
+                                    <div class="mb-3">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <div class="text-sm italic" v-if="!acm.available">Full Booked</div>
+                                                <div class="text-sm italic" v-if="acm.available">{{ acm.quota -
+                                                    acm.transactions_count }} available</div>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="font-semibold text-red-900 flex">
-                                        <div v-if="acm.available" class="flex items-center">
-                                            <unicon
-                                                v-if="form.acm_first === acm.slug || form.acm_second === acm.slug || form.acm_third === acm.slug || form.acm_fourth === acm.slug"
-                                                name="check-square" width="20" height="20" fill="#243776"></unicon>
-                                            <unicon
-                                                v-if="form.acm_first !== acm.slug && form.acm_second !== acm.slug && form.acm_third !== acm.slug && form.acm_fourth !== acm.slug"
-                                                name="square" width="20" height="20" fill="#243776"></unicon>
+                                        <div class="font-semibold text-red-900 flex">
+                                            <div v-if="acm.available" class="flex items-center">
+                                                <unicon
+                                                    v-if="form.acm_first === acm.slug || form.acm_second === acm.slug || form.acm_third === acm.slug || form.acm_fourth === acm.slug"
+                                                    name="check-square" width="20" height="20" fill="#243776"></unicon>
+                                                <unicon
+                                                    v-if="form.acm_first !== acm.slug && form.acm_second !== acm.slug && form.acm_third !== acm.slug && form.acm_fourth !== acm.slug"
+                                                    name="square" width="20" height="20" fill="#243776"></unicon>
+                                            </div>
+                                            <div class="ml-1">
+                                                {{ acm.name }}
+                                            </div>
                                         </div>
-                                        <div class="ml-1">
-                                            {{ acm.name }}
+                                        <div class="text-xs mb-1">
+                                            {{ $filters.formatDayDateTime(acm.date_start) }}
+                                            -
+                                            {{ $filters.formatDayDateTime(acm.date_end) }} (GMT+7)
+                                        </div>
+                                        <div class="text-xs mb-1">
+                                            <b>{{ acm.title }}</b> {{ acm.subtitle }}
+                                        </div>
+                                        <div class="text-xs mb-1 italic">
+                                            {{ acm.body }}
                                         </div>
                                     </div>
-                                    <div class="text-xs mb-1">
-                                        {{ $filters.formatDayDateTime(acm.date_start) }}
-                                        -
-                                        {{ $filters.formatDayDateTime(acm.date_end) }} (GMT+7)
-                                    </div>
-                                    <div class="text-xs mb-1">
-                                        <b>{{ acm.title }}</b> {{ acm.subtitle }}
-                                    </div>
-                                    <div class="text-xs mb-1 italic">
-                                        {{ acm.body }}
-                                    </div>
-                                </div>
-                                <div class="grid gap-2 grid-cols-2">
-                                    <button :class="isSelectedKing(a, acm) ? 'bg-red-500' : 'bg-red-100 text-black'"
+                                    <div class="grid gap-2 grid-cols-2">
+                                        <!-- <button :class="isSelectedKing(a, acm) ? 'bg-red-500' : 'bg-red-100 text-black'"
                                         class="px-2 rounded-full  hover:bg-red-400 font-semibold "
                                         @click="selectAcm(a, acm, 'king')">
                                         King Bed Size
-                                    </button>
-                                    <button :class="isSelectedTwin(a, acm) ? 'bg-red-500' : 'bg-red-100 text-black'"
-                                        class="px-2 rounded-full  hover:bg-red-400 font-semibold"
-                                        @click="selectAcm(a, acm, 'twin')">
-                                        Double Twin Bed Size
-                                    </button>
+                                    </button> -->
+                                        <button :class="isSelectedTwin(a, acm) ? 'bg-red-500' : 'bg-red-100 text-black'"
+                                            class="px-2 rounded-full  hover:bg-red-400 font-semibold"
+                                            @click="selectAcm(a, acm, 'twin')">
+                                            Double Twin Bed Size
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -491,6 +493,7 @@ export default {
             this.member_modal.show()
         },
         selectAcm(idx, acm, size) {
+            if (acm.available === false) return
             if (idx === 0) {
                 this.form.acm_first === acm.slug ? this.form.acm_first = null : this.form.acm_first = acm.slug
                 this.form.acm_first_tag = size
