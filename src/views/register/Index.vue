@@ -3,7 +3,7 @@
         <div class="my-6" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl">
                 <div>
-                    <img src="/storage/logo/logo-cvep.png" alt="" class="h-16 mb-2">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Flogo-cvep.png?alt=media&token=786a4e0e-65ff-4206-a033-330b8995e56a" alt="" class="h-16 mb-2">
                 </div>
                 <div class="font-semibold text-xl">Register Event</div>
                 <div class="text-sm">Create your account to register event.</div>
@@ -164,7 +164,7 @@
                     </button>
                     <!-- <button v-if="!logged_in"
                         class="inline-block w-full text-base text-neutral-700 px-8 py-2.5 text-center rounded-full border hover:bg-neutral-100">
-                        <img src="/storage/img/google-logo.png" class="inline-block aspect-square w-5 xl:w-5" alt="">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fgoogle-logo.png?alt=media&token=02624286-d17c-4ae5-8ccb-db75dce977b2" class="inline-block aspect-square w-5 xl:w-5" alt="">
                         <span> Register with Google</span>
                     </button> -->
                 </div>

@@ -9,7 +9,7 @@
         <div class="rounded-xl shadow-sm bg-blue-100 grid grid-cols-12">
             <div
                 class="col-span-12 md:col-span-5 min-h-[300px]  bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
-                style="background-image: url('/storage/img/tentrem-hotel.webp')">
+                style="background-image: url('/')">
             </div>
             <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-4">
                 <div>

@@ -7,7 +7,7 @@
             <div class="rounded-xl shadow-sm bg-blue-100 grid grid-cols-12">
                 <a href="https://goo.gl/maps/bKWMrkskfq1YFgJb6" target="_blank"
                     class="col-span-12 cursor-pointer hover:brightness-50 md:col-span-5 min-h-[300px]  bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
-                    style="background-image: url('/storage/img/map-rss.png')">
+                    style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Fmap-rss.png?alt=media&token=8f60e97f-5529-4ced-926e-661642573ca3')">
                 </a>
                 <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
                     <div class="mb-4">
@@ -29,8 +29,8 @@
                     <div class="ml-8 mb-4">
                         <ol class="list-disc">
                             <li>
-                                Aya: <a class="italic text-blue-700" target="_blank"
-                                    href="https://wa.me/62895340394067">+62 895 3403 94067</a>
+                                Latifah: <a class="italic text-blue-700" target="_blank"
+                                    href="https://wa.me/6285865064280">+62 858 6506 4280</a>
                             </li>
                         </ol>
                     </div>

@@ -12,7 +12,7 @@
                     <div class="border rounded-tr-md flex justify-between rounded-tl-md p-3 bg-slate-50">
                         <div class="text-base font-semibold">Transfer Bank</div>
                         <div>
-                            <img style="max-height: 25px" src="/storage/logo/Mandiri_logo.png" alt="">
+                            <img style="max-height: 25px" src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fmandiri-logo.png?alt=media&token=bbf6e2b5-27a1-41ff-b78b-7b1d4ddc6565" alt="">
                         </div>
                     </div>
                 </div>

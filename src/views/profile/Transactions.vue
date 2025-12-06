@@ -20,7 +20,7 @@
                         <router-link v-if="trx.status === 100" :to="'/register/event?transaction_number=' + trx.number">
                             {{ trx.number }}
                         </router-link>
-                        <router-link v-else="trx.status === 110 || trx.status === 120"
+                        <router-link v-else-if="trx.status === 110 || trx.status === 120"
                             :to="'/payment?transaction_number=' + trx.number">
                             {{ trx.number }}
                         </router-link>

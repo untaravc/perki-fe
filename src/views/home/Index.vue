@@ -3,14 +3,14 @@
         <Hero></Hero>
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
-        <WelcomeMessage></WelcomeMessage>
+        <!-- <WelcomeMessage></WelcomeMessage> -->
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
-        <Schedule></Schedule>
-        <Pricing></Pricing>
-        <div class="bg-amber-50">
+        <!-- <Schedule></Schedule> -->
+        <!-- <Pricing></Pricing> -->
+        <!-- <div class="bg-amber-50">
             <Speakers></Speakers>
-        </div>
+        </div> -->
         <Venue2></Venue2>
         <!-- <Sponsors></Sponsors> -->
     </div>

@@ -34,31 +34,33 @@
                                 <th class="px-4 py-2">Action</th>
                             </tr>
                         </thead>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                            v-for="(author, i) in form.authors">
-                            <td class="px-4 py-2">{{ i + 1 }}</td>
-                            <td class="px-4 py-2">{{ author.title }}</td>
-                            <td class="px-4 py-2">{{ author.first_name }}</td>
-                            <td class="px-4 py-2">{{ author.surname }}</td>
-                            <!--                            <td  class="px-4 py-2">{{ author.email }}</td>-->
-                            <!--                            <td  class="px-4 py-2">{{ author.institution }}</td>-->
-                            <td class="px-4 py-2">
-                                <span v-if="author.is_presenter">presenter</span>
-                                <span v-if="author.is_corresponding"><br>corresponding</span>
-                            </td>
-                            <td class="px-4 py-2">
-                                <span @click="editAuthorModal(author, i)"
-                                    class="cursor-pointer underline font-bold text-blue-700 hover:text-blue-900 mr-1">edit</span>
-                                <span @click="deleteAuthor(i)"
-                                    class="cursor-pointer underline font-bold text-red-700 hover:text-red-900 mr-1">delete</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" class="text-center px-4 py-2">
-                                <button @click="addAuthorModal"
-                                    class="font-semibold text-blue-700 hover:text-blue-800">Add Author</button>
-                            </td>
-                        </tr>
+                        <tbody>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                v-for="(author, i) in form.authors">
+                                <td class="px-4 py-2">{{ i + 1 }}</td>
+                                <td class="px-4 py-2">{{ author.title }}</td>
+                                <td class="px-4 py-2">{{ author.first_name }}</td>
+                                <td class="px-4 py-2">{{ author.surname }}</td>
+                                <!--                            <td  class="px-4 py-2">{{ author.email }}</td>-->
+                                <!--                            <td  class="px-4 py-2">{{ author.institution }}</td>-->
+                                <td class="px-4 py-2">
+                                    <span v-if="author.is_presenter">presenter</span>
+                                    <span v-if="author.is_corresponding"><br>corresponding</span>
+                                </td>
+                                <td class="px-4 py-2">
+                                    <span @click="editAuthorModal(author, i)"
+                                        class="cursor-pointer underline font-bold text-blue-700 hover:text-blue-900 mr-1">edit</span>
+                                    <span @click="deleteAuthor(i)"
+                                        class="cursor-pointer underline font-bold text-red-700 hover:text-red-900 mr-1">delete</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="text-center px-4 py-2">
+                                    <button @click="addAuthorModal"
+                                        class="font-semibold text-blue-700 hover:text-blue-800">Add Author</button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

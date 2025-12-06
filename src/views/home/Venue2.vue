@@ -2,24 +2,23 @@
     <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2" id="venue">
         <div class="rounded-xl shadow-sm bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 grid grid-cols-12">
             <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
-                 style="background-image: url('/storage/img/the-rich.png')">
+                 style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Fartotel.webp?alt=media&token=a9af9f36-1560-4fe6-90aa-e56ce8afa2b3')">
             </div>
             <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
                 <div class="mb-4">
                     <div class="text-2xl font-bold">Venue</div>
                     <!-- <div class="italic text-blue-800 text-sm">The Rich Hotel</div> -->
                 </div>
-                <div class="mb-2 text-xl">
-                    The Rich Hotel (Symposium)
+                <div class="text-xl font-semibold">
+                    Artotel Suites Bianti, Yogyakarta (Symposium)
                 </div>
-                <div class="mb-2 text-slate-800">
-                    Jl. Magelang No.18 Km.6, Kutu Patran, Sinduadi, Kec. Mlati, Kabupaten Sleman, Daerah Istimewa
-                    Yogyakarta 55284
+                <div class="mb-4 text-slate-600  text-sm">
+                    Jl. Urip Sumoharjo No.37, Klitren, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta
                 </div>
-                <div class="mb-2 text-xl">
+                <div class="text-xl font-semibold">
                     RSUP Dr. Sardjito (Workshop)
                 </div>
-                <div class="text-slate-800">
+                <div class="text-slate-600 text-sm">
                     Gedung Pusat Jantung Terpadu. Jalan Kesehatan Sekip, Jl. Kesehatan Sendowo No.1, Sendowo, Sinduadi, Mlati,
                     Sleman Regency, Yogyakarta
                 </div>
