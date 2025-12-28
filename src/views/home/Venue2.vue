@@ -9,19 +9,19 @@
                     <div class="text-2xl font-bold">Venue</div>
                     <!-- <div class="italic text-blue-800 text-sm">The Rich Hotel</div> -->
                 </div>
-                <div class="text-xl font-semibold">
-                    Artotel Suites Bianti, Yogyakarta (Symposium)
+                <div class="text-2xl font-semibold">
+                    Artotel Suites Bianti, Yogyakarta
                 </div>
-                <div class="mb-4 text-slate-600  text-sm">
+                <div class="mb-4 text-slate-600  text-md">
                     Jl. Urip Sumoharjo No.37, Klitren, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta
                 </div>
-                <div class="text-xl font-semibold">
+                <!-- <div class="text-xl font-semibold">
                     RSUP Dr. Sardjito (Workshop)
                 </div>
                 <div class="text-slate-600 text-sm">
                     Gedung Pusat Jantung Terpadu. Jalan Kesehatan Sekip, Jl. Kesehatan Sendowo No.1, Sendowo, Sinduadi, Mlati,
                     Sleman Regency, Yogyakarta
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

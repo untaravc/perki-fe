@@ -4,7 +4,7 @@
             <div class="grid grid-cols-3">
                 <div class="col-span-3 md:col-span-1 text-center md:border-r-2 mb-4 border-blue-900">
                     <div class="font-semibold text-lg">Get Ready For The Event</div>
-                    <div>14nd & 15rd of February 2025</div>
+                    <div>14th of February 2026</div>
                     <a href="https://maps.app.goo.gl/zUcyBdCLJ7qqKAks7" target="_blank"
                         class="text-sm text-slate-500 underline cursor-pointer">Artotel Suites Bianti, Yogyakarta</a>
                 </div>
