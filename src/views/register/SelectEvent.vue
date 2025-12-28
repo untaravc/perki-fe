@@ -4,7 +4,7 @@
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
                     <div v-if="data_raw.symposium"
-                        class="rounded-lg bg-amber-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
+                        class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
                         <div class="mb-3">
                             <div class="flex justify-between">
                                 <div class="font-semibold text-amber-900 flex items-center">
@@ -19,7 +19,7 @@
                             </div>
 
                             <div class="text-xs mb-1">
-                                Saturday-Sunday, Feb 22th, 08:00-16:00
+                                Saturday, Feb 14th, 08:00-16:00
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}
@@ -104,7 +104,7 @@
                             </div>
                         </div>
 
-                        <div class="font-semibold mt-5 mb-2">
+                        <!-- <div class="font-semibold mt-5 mb-2">
                             Plataran Sehat (Screen Shoot)
                         </div>
                         <div>
@@ -116,7 +116,7 @@
                                 <div class="w-full h-32 bg-center bg-cover bg-no-repeat"
                                     :style="'background-image:url(' + form.plataran_img + ')'" alt=""></div>
                             </a>
-                        </div>
+                        </div> -->
 
 
                         <!--                        <div class="font-semibold mt-5 mb-2">-->
@@ -139,7 +139,7 @@
                         <!--                            </div>-->
                         <!--                        </div>-->
 
-                        <div class="font-semibold mt-5 mb-2">
+                        <!-- <div class="font-semibold mt-5 mb-2">
                             Collective Registration
                         </div>
                         <div v-if="count >= 1" class="mb-4">
@@ -150,13 +150,13 @@
                                     <span class="text-sm">{{ user.email }}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div>
+                        </div> -->
+                        <!-- <div>
                             <button @click="memberModal"
                                 class="w-full mb-2 bg-slate-200 hover:bg-slate-100 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 Add Member
                             </button>
-                        </div>
+                        </div> -->
 
                         <div class="font-semibold mt-5 mb-2">
                             Transaction Details
@@ -341,7 +341,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/events-list-carvep', {
+            this.authGet('pub/events-list-carvep26', {
                 transaction_number: this.$route.query.transaction_number
             })
                 .then((data) => {
@@ -372,7 +372,7 @@ export default {
             this.$router.push('/plataran')
         },
         calculatePrice(mode = 'calculate') {
-            this.authPost('pub/calculate-price-carvep', {
+            this.authPost('pub/calculate-price-carvep26', {
                 items: this.form,
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
@@ -410,7 +410,7 @@ export default {
             // }
 
             this.disabled = true;
-            this.authPost('pub/create-payment-carvep', {
+            this.authPost('pub/create-payment-carvep26', {
                 items: {
                     symposium: this.form.symposium,
                     workshop: this.form.workshop,
@@ -424,7 +424,7 @@ export default {
                 package: this.package,
                 users: this.users,
             }).then((data) => {
-                if (data.status) {
+                if (data.success) {
                     this.$router.push('/payment?transaction_number=' + this.$route.query.transaction_number)
                     this.emitter.emit("update-header");
                 } else {
