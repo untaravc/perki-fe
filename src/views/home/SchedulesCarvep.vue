@@ -126,7 +126,7 @@ export default {
     },
     methods: {
         getSchedule() {
-            this.apiGet('pub/schedule', { ref: 'carvep' })
+            this.apiGet('pub/schedule', { ref: 'carvep26' })
                 .then((data) => {
                     this.schedule = data.result
                 })

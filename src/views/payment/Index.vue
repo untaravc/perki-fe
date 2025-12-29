@@ -131,7 +131,7 @@
                     <div v-if="transaction.status === 119" class="italic">
                         Guarantee Letter successfully uploaded.
                     </div>
-                    <label for="file_upload" v-show="show_proof_gl && transaction.status === 119" class="relative">
+                    <label for="file_upload" v-show="show_proof_gl && transaction.status === 120" class="relative">
                         <div
                             class="border font-semibold cursor-pointer rounded-full py-2 mt-3 w-full bg-red-800 border-red-800 hover:bg-red-900 text-white">
                             <span v-if="!upload_loader_gl">Re-upload Guarantee Letter</span>

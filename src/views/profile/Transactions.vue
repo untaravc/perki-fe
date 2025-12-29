@@ -66,13 +66,13 @@
                         {{ $filters.currency(trx.total) }}
                     </div>
                     <router-link v-if="trx.status === 100"
-                        class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
+                        class="bg-blue-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
                         :to="'/register/event?transaction_number=' + trx.number">
                         Detail
                         <unicon name="angle-right" fill="white" height="14px" width="14px"></unicon>
                     </router-link>
                     <router-link v-else="trx.status === 110 || trx.status === 120"
-                        class="bg-green-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
+                        class="bg-blue-700 flex mx-1 cursor-pointer hover:bg-green-800 items-center text-white px-4 py-1 text-sm rounded-lg"
                         :to="'/payment?transaction_number=' + trx.number">
                         Detail
                         <unicon name="angle-right" fill="white" height="14px" width="14px"></unicon>
@@ -92,7 +92,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/transaction-list?ref=carvep',)
+            this.authGet('pub/transaction-list?ref=carvep26',)
                 .then((data) => {
                     this.data_content = data.result;
                 })
