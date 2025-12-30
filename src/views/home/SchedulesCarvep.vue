@@ -6,7 +6,7 @@
         <div class="text-small text-slate-600 mb-5 text-center">
             Jogja Cardiovascular Epidemiology and Prevention Forum 2025
         </div>
-        <div class="grid grid-cols-2">
+        <!-- <div class="grid grid-cols-2">
             <div @click="selected = 1"
                 :class="selected === 1 ? 'bg-amber-400 text-white' : 'bg-amber-100'"
                 class="py-3 text-center rounded-tl-lg cursor-pointer hover:bg-amber-500 group transition duration-200">
@@ -25,7 +25,7 @@
                         class="block max-w-0 group-hover:max-w-full transition-all duration-200 h-0.5 bg-white"></span>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div v-if="selected === 2" class="p-2 border-b border-slate-900">
             <!-- <div class="text-center bg-yellow-200 py-1 font-semibold mb-2 rounded-md">
                 Get a minimum of 22 SKP Kemenkes per Workshop
