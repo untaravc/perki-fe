@@ -346,7 +346,11 @@ export default {
             })
                 .then((data) => {
                     this.events = data.result.items
-                    this.form.symposium = this.events.symposium['id'];
+                    if(this.events.symposium){
+                        this.form.symposium = this.events.symposium['id'];
+                    } else {
+                        this.data_raw.symposium = false
+                    }
 
                     this.transaction = data.result.transaction
 
@@ -408,6 +412,11 @@ export default {
             //     this.toaster({ title: "Please upload Plataran Sehat (Screen Shoot)", icon: 'warning' })
             //     return
             // }
+
+            if(this.form.workshop === null){
+                this.toaster({ title: "Please select workshop", icon: 'warning' })
+                return
+            }
 
             this.disabled = true;
             this.authPost('pub/create-payment-carvep26', {
