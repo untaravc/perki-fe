@@ -15,6 +15,11 @@
                 <div class="mb-4 text-slate-600  text-md">
                     Jl. Urip Sumoharjo No.37, Klitren, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta
                 </div>
+                <div class="mt-6">
+                    <div class="text-lg font-semibold">Special rate:</div>
+                    <div class="text-slate-700">Studio Room: IDR 850.000</div>
+                    <div class="text-slate-700">Executive Room: IDR 1.250.000</div>
+                </div>
                 <!-- <div class="text-xl font-semibold">
                     RSUP Dr. Sardjito (Workshop)
                 </div>
