@@ -34,8 +34,7 @@
                             href="https://src.perki-jogja.com/assets24/docs/abstract-case-report-guidline-jcu-2024.docx"
                             target="_blank" download>Guideline</a></li>
                     <li>Contact:
-                        <a class="italic text-blue-700" target="_blank" href="https://wa.me/62895340394067">+62
-                            895 3403 94067</a> (Aya)
+                        <a class="italic text-blue-700" target="_blank" href="https://wa.me/6282277967753">6282277967753</a> (Latifah)
                     </li>
                 </ul>
             </div>

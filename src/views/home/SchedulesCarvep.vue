@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-4 px-2" id="schedule">
-        <div class="text-4xl text-blue-900 font-bold mb-1 text-center">
+        <div class="text-4xl text-blue-900 font-bold mb-1 text-center tracking-tight">
             SCHEDULE
         </div>
         <div class="text-small text-slate-600 mb-5 text-center">
@@ -27,6 +27,11 @@
             </div>
         </div>
         <div v-if="selected === 1" class="p-2 border-b border-slate-900">
+            <div
+                class="inline-flex items-center gap-2 text-sm font-semibold text-blue-900 bg-blue-50 border border-blue-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                SKP Kemenkes : 6
+            </div>
             <div class="grid grid-cols-7" v-for="sympo in schedule.symposium">
                 <div class="md:col-span-1 col-span-7 row-span-4 text-center">
                     <div class="inline-block bg-amber-300 px-2 py-1 rounded">
@@ -62,6 +67,11 @@
             </div>
         </div>
         <div v-if="selected === 2" class="p-2 border-b border-slate-900">
+            <div
+                class="inline-flex items-center gap-2 text-sm font-semibold text-purple-900 bg-purple-50 border border-purple-200 px-4 py-1.5 rounded-full mb-4 shadow-sm">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+                SKP Kemenkes General Lecture &amp; Specialist: 7,5; Nurs: 4,5
+            </div>
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="(workshop, s) in schedule.workshops">
                 <div class="col-span-2 text-center md:col-span-1">

@@ -32,8 +32,8 @@
                 </div>
                 <div class="mb-4">
                     For more detailed information
-                    <a href="https://wa.me/6285865064280?text=Bagaimana cara mendapatkan harga Room khusus peserta?"
-                        target="_blank" class="italic text-blue-700">https://wa.me/6285865064280</a>
+                    <a href="https://wa.me/6282277967753?text=Bagaimana cara mendapatkan harga Room khusus peserta?"
+                        target="_blank" class="italic text-blue-700">https://wa.me/6282277967753</a>
                 </div>
             </div>
         </div>

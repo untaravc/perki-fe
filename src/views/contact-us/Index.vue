@@ -30,7 +30,7 @@
                         <ol class="list-disc">
                             <li>
                                 Latifah: <a class="italic text-blue-700" target="_blank"
-                                    href="https://wa.me/6285865064280">+62 858 6506 4280</a>
+                                    href="https://wa.me/6282277967753">+6282277967753</a>
                             </li>
                         </ol>
                     </div>

@@ -12,9 +12,9 @@
                                     <div class="ml-1">{{ events.symposium.name }}</div>
                                 </div>
                                 <div class="flex items-center">
-                                    <!-- <span class="text-xs me-1">Min. 16 SKP/Day</span>
-                                    <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
-                                        fill="#243776"></unicon> -->
+                                    <div class="text-xs text-blue-900" v-if="events.symposium.skp_tag">
+                                        {{ events.symposium.skp_tag }}
+                                    </div>
                                 </div>
                             </div>
 
@@ -39,9 +39,9 @@
                                             first.transactions_count }} available</div>
                                     </div>
                                     <div class="flex items-center">
-                                        <!-- <span class="text-xs">Min. 22 SKP</span>
-                                        <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
-                                            fill="#243776"></unicon> -->
+                                        <div class="text-xs text-blue-900" v-if="first.skp_tag">
+                                            {{ first.skp_tag }}
+                                        </div>
                                     </div>
                                 </div>
 
