@@ -413,7 +413,7 @@ export default {
             //     return
             // }
 
-            if(this.form.workshop === null){
+            if(this.form.workshop === null || this.form.workshop === ""){
                 this.toaster({ title: "Please select workshop", icon: 'warning' })
                 return
             }
