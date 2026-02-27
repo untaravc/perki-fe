@@ -390,7 +390,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/abstracts', { ref: 'carvep26' })
+            this.authGet('pub/abstracts', { ref: 'jvm26' })
                 .then((data) => {
                     this.data_content = data.result
                 })

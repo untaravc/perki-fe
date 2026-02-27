@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-screen-lg m-auto pt-12 pb-12 px-2" id="venue">
-        <div class="rounded-xl shadow-sm bg-gradient-to-br from-blue-400 via-blue-100 to-red-300 grid grid-cols-12">
+        <div class="rounded-xl shadow-sm bg-red-300 grid grid-cols-12">
             <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
                  style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Fartotel.webp?alt=media&token=a9af9f36-1560-4fe6-90aa-e56ce8afa2b3')">
             </div>

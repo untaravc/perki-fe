@@ -8,7 +8,7 @@
         </div> -->
         <div class="rounded-xl shadow-sm bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 grid grid-cols-12">
             <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
-                style="background-image: url('/https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Fartotel.webp?alt=media&token=a9af9f36-1560-4fe6-90aa-e56ce8afa2b3')">
+                style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Fartotel.webp?alt=media&token=a9af9f36-1560-4fe6-90aa-e56ce8afa2b3')">
             </div>
             <div class="col-span-12 md:col-span-7 md:rounded-r-xl p-6">
                 <div class="mb-4">
@@ -22,7 +22,7 @@
                     Jl. Urip Sumoharjo No.37, Klitren, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta
                 </div>
                 <div class="flex justify-end mb-4">
-                    <a href="https://www.google.com/maps/search/?api=1&query=-7.7527757,110.3609245" target="_blank"
+                    <a href="https://maps.app.goo.gl/3EN8DDCy9ZixcuHGA" target="_blank"
                         to="venue"
                         class="mx-1 px-3 py-1 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-cyan-500 hover:to-purple-500 rounded-lg text-white">
                         Get Location

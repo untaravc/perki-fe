@@ -11,7 +11,7 @@
         <!-- <div class="bg-amber-50">
             <Speakers></Speakers>
         </div> -->
-        <Venue2></Venue2>
+        <Venue></Venue>
         <!-- <Sponsors></Sponsors> -->
     </div>
 </template>
@@ -20,10 +20,10 @@
 import Hero from './Hero.vue'
 import WelcomeMessage from './WelcomeMessage.vue'
 import Speakers from './Speakers.vue'
-import Schedule from './SchedulesCarvep.vue'
+import Schedule from './SchedulesSingleDay.vue'
 import Pricing from "./PricingCol.vue";
 import TimerPage from "./Timer.vue";
-import Venue2 from "./Venue2.vue";
+import Venue from "./Venue.vue";
 export default {
     components: {
         Pricing,
@@ -31,7 +31,7 @@ export default {
         Speakers,
         Schedule,
         TimerPage,
-        Venue2,
+        Venue,
         WelcomeMessage,
     }
 }

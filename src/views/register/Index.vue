@@ -224,6 +224,7 @@ export default {
                         this.form.phone = res.phone
                         this.form.identity_photo = res.identity_photo
                         this.form.nik = res.nik
+                        this.form.section = 'jvm26'
                     }
                 })
         },

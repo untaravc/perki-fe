@@ -92,7 +92,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/transaction-list?ref=carvep26',)
+            this.authGet('pub/transaction-list?ref=jvm26',)
                 .then((data) => {
                     this.data_content = data.result;
                 })

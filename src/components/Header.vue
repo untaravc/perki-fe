@@ -1,5 +1,5 @@
 <template>
-    <nav class="px-2 sm:px-4 py-2 bg-gradient-to-br from-blue-600 to-red-600 fixed w-full z-20 top-0 left-0"
+    <nav class="px-2 sm:px-4 py-2 bg-red-600 fixed w-full z-20 top-0 left-0"
         >
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
             <a href="/" class="flex items-center ml-4 sm:ml-0">

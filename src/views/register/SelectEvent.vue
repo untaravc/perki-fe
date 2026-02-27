@@ -341,7 +341,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/events-list-carvep26', {
+            this.authGet('pub/events-list-jvm26', {
                 transaction_number: this.$route.query.transaction_number
             })
                 .then((data) => {
@@ -376,7 +376,7 @@ export default {
             this.$router.push('/plataran')
         },
         calculatePrice(mode = 'calculate') {
-            this.authPost('pub/calculate-price-carvep26', {
+            this.authPost('pub/calculate-price-jvm26', {
                 items: this.form,
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
@@ -408,18 +408,8 @@ export default {
             this.member_modal.show()
         },
         toPayment() {
-            // if (!this.form.plataran_img && this.transaction.job_type_code !== "MHSA") {
-            //     this.toaster({ title: "Please upload Plataran Sehat (Screen Shoot)", icon: 'warning' })
-            //     return
-            // }
-
-            if(this.form.workshop === null || this.form.workshop === ""){
-                this.toaster({ title: "Please select workshop", icon: 'warning' })
-                return
-            }
-
             this.disabled = true;
-            this.authPost('pub/create-payment-carvep26', {
+            this.authPost('pub/create-payment-jvm26', {
                 items: {
                     symposium: this.form.symposium,
                     workshop: this.form.workshop,
