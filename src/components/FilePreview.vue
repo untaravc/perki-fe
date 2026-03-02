@@ -3,19 +3,19 @@
         <span v-if="type.ext === 'pdf'">
             <div class="p-3 bg-yellow-300 rounded-full">
                 <a :href="link" target="_blank">
-                    <unicon name="file-alt" fill="red"></unicon>
+                    <unicon name="file-alt" fill="#97262e"></unicon>
                 </a>
             </div>
             <div class="text-sm">{{ $filters.truncate(type.name, 15) }}</div>
         </span>
         <span v-else-if="type.ext === 'xls' || type.ext === 'xlsx'">
             <a class="btn btn-sm btn-outline-success" :href="link" download>
-                <unicon name="file-alt" fill="green"></unicon> {{ $filters.truncate(type.name, 10) }}
+                <unicon name="file-alt" fill="#0f4d89"></unicon> {{ $filters.truncate(type.name, 10) }}
             </a>
         </span>
         <span v-else-if="type.ext === 'doc' || type.ext === 'docx'">
             <a class="btn btn-sm btn-outline-primary" :href="link" download>
-                <unicon name="file-alt" fill="blue"></unicon> {{ $filters.truncate(type.name, 10) }}
+                <unicon name="file-alt" fill="#7f1f28"></unicon> {{ $filters.truncate(type.name, 10) }}
             </a>
         </span>
         <span v-else-if="type.ext === 'png' || type.ext === 'jpg' || type.ext === 'jpeg'">
@@ -24,7 +24,7 @@
         </span>
         <span v-else>
             <a class="btn btn-sm btn-outline-info" :href="link" download>
-                <unicon name="file-alt" fill="yellow"></unicon> {{ $filters.truncate(type.name, 10) }}
+                <unicon name="file-alt" fill="#bc646a"></unicon> {{ $filters.truncate(type.name, 10) }}
             </a>
         </span>
     </span>
@@ -51,11 +51,11 @@ export default {
 
 <style>
 .text-link {
-    border: 1px solid blue;
+    border: 1px solid #ab585a;
     border-radius: 10px;
 }
 
 .text-link:hover {
-    background-color: #e5d3f6;
+    background-color: #f7edef;
 }
 </style>

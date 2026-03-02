@@ -20,7 +20,7 @@
                     <input type="file" id="file-upload" accept="application/pdf" hidden
                            @change="uploadFile">
                     <a class="flex items-center block" target="_blank" :href="form.file">
-                        <unicon name="image" fill="blue"></unicon>
+                        <unicon name="image" fill="#7f1f28"></unicon>
                         <span class="text-sm ml-2">{{ $filters.truncate(type.name, 30) }}</span>
                     </a>
                     <label for="file-upload" class="cursor-pointer bg-blue-800 text-white py-1 px-3 rounded-lg">Select

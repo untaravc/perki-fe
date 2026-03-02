@@ -3,7 +3,7 @@
         <div class="flex justify-center items-center" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl">
                 <div>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Flogo-cvep.png?alt=media&token=786a4e0e-65ff-4206-a033-330b8995e56a" alt="" class="h-16 mb-2">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fjvm26%2Flogo-jvm26-h500.png?alt=media&token=9c472860-bb97-4168-ba1d-a46db23f1d64" alt="" class="h-16 mb-2">
                 </div>
                 <div class="font-semibold text-xl">Sign In</div>
                 <div class="text-sm min-w-[380px]">Sign in with your account or gmail.</div>

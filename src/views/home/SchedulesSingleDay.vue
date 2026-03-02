@@ -9,7 +9,7 @@
         <div class="grid grid-cols-2">
             <div @click="selected = 1"
                 :class="selected === 1 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
-                class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:bg-yellow-500 bg-gradient-to-r group transition duration-200">
+                class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:brightness-110 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     SYMPOSIUM
                     <span :class="selected === 1 ? 'max-w-full' : 'max-w-0'"
@@ -18,7 +18,7 @@
             </div>
             <div @click="selected = 2"
                 :class="selected === 2 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
-                class="text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:bg-indigo-700 bg-gradient-to-r group transition duration-200">
+                class="text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:brightness-110 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     WORKSHOP
                     <span :class="selected === 2 ? 'max-w-full' : 'max-w-0'"
@@ -29,7 +29,7 @@
         <div v-if="selected === 1" class="p-2 border-b border-slate-900">
             <div class="grid grid-cols-7" v-for="sympo in schedule.symposium" :key="sympo.id || sympo.slug || sympo.date_start">
                 <div class="md:col-span-1 col-span-7 row-span-4 text-center">
-                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-blue-200 px-2 py-1 rounded">
                         {{ $filters.formatTime(sympo.date_start) }}
                         -
                         {{ $filters.formatTime(sympo.date_end) }}
@@ -38,7 +38,7 @@
                 <div class="col-span-7 md:col-span-6 mb-4 border-b border-slate-300">
                     <div class="grid grid-cols-4">
                         <div class="col-span-3">
-                            <div class="text-indigo-700 font-bold">{{ sympo.room_a.name }}</div>
+                            <div class="text-blue-800 font-bold">{{ sympo.room_a.name }}</div>
                             <div class="text-base font-semibold">
                                 {{ sympo.room_a.title }}
                             </div>
@@ -64,7 +64,7 @@
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="(workshop, s) in schedule.workshops" :key="workshop.id || workshop.slug || s">
                 <div class="col-span-2 text-center md:col-span-1">
-                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-blue-200 px-2 py-1 rounded">
                         {{ $filters.formatTime(workshop.date_start) }}
                         -
                         {{ $filters.formatTime(workshop.date_end) }}
@@ -72,7 +72,7 @@
                 </div>
                 <div :class="workshop.room_b ? 'col-span-2 md:col-span-3' : 'col-span-2 md:col-span-6'">
                     <div v-if="workshop.room_a">
-                        <div class="text-indigo-700 font-bold">
+                        <div class="text-blue-800 font-bold">
                             {{ workshop.room_a.name }}
                         </div>
                         <div class="text-base font-semibold">
@@ -102,7 +102,7 @@
                 </div>
                 <div class="col-span-2 md:col-span-3">
                     <div v-if="workshop.room_b">
-                        <div class="text-indigo-700 font-bold">
+                        <div class="text-blue-800 font-bold">
                             {{ workshop.room_b.name }}
                         </div>
                         <div class="text-base font-semibold">

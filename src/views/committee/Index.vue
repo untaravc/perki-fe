@@ -28,7 +28,7 @@
                 <div v-for="user in data.users">
                     <div class="bg-blue-100 rounded flex min-h-[56px]">
                         <div class="bg-blue-200 p-2 rounded-l flex items-center">
-                            <unicon name="user-md" width="20px" height="20px" fill="blue" icon-style="line"></unicon>
+                            <unicon name="user-md" width="20px" height="20px" fill="#7f1f28" icon-style="line"></unicon>
                         </div>
                         <div class="text-sm font-semibold flex items-center p-2 rounded-r" v-if="user.data">
                             {{ user.data.name }}

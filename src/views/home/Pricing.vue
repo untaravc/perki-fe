@@ -6,7 +6,7 @@
         <div class="text-small text-slate-600 mb-5 text-center">
             Register yourself and get a special price
         </div>
-        <div class="grid grid-cols-3 bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300">
+        <div class="grid grid-cols-3 bg-gradient-to-br from-blue-200 via-purple-100 to-cyan-100">
             <div class="md:col-span-2 col-span-3 shadow  p-5 rounded-l-none md:rounded-l-lg">
                 <div class="grid grid-cols-3 mb-3 text-white">
                     <div @click="select(pricing.platinum, 1)"
@@ -49,7 +49,7 @@
                 </div>
                 <div v-if="selected.price_drsp">
                     <div class="text-base mb-1 italic">Symposium & 2 Workshops</div>
-                    <div class="text-3xl font-bold text-lime-600 mb-2">
+                    <div class="text-3xl font-bold text-indigo-900 mb-2">
                         Rp {{ $filters.currency(selected.price_drsp) }}
                     </div>
                     <div class="italic mb-4" v-if="selected.price_drsp_eb > 0">

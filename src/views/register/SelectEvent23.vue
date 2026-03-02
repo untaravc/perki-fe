@@ -22,7 +22,7 @@
                     <div class="font-bold text-blue-800">Silver</div>
                     <unicon v-if="package === 'add-on'" name="check-square" width="30"
                             height="30"></unicon>
-                    <unicon v-else fill="darkblue" name="square" width="30" height="30"></unicon>
+                    <unicon v-else fill="#641920" name="square" width="30" height="30"></unicon>
                 </div>
             </div>
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
@@ -33,7 +33,7 @@
                             <div class="font-semibold text-blue-900 flex">
                                 <unicon name="check-square" width="20"
                                         height="20"
-                                        fill="#243776"></unicon>
+                                        fill="#7f1f28"></unicon>
                                 <div class="ml-1">{{ events.symposium.name }}</div>
                             </div>
                             <div class="text-xs mb-1">
@@ -51,10 +51,10 @@
                             <unicon v-if="data_raw.workshop" name="check-square" @click="data_raw.workshop = false"
                                     width="25"
                                     height="25"
-                                    fill="#243776"></unicon>
+                                    fill="#7f1f28"></unicon>
                             <unicon v-if="!data_raw.workshop" name="square" width="25" @click="data_raw.workshop = true"
                                     height="25"
-                                    fill="#243776"></unicon>
+                                    fill="#7f1f28"></unicon>
                         </div>
                     </div>
 
@@ -70,10 +70,10 @@
                                         <unicon v-if="form.morning_workshop === morning.id" name="check-square"
                                                 width="20"
                                                 height="20"
-                                                fill="#243776"></unicon>
+                                                fill="#7f1f28"></unicon>
                                         <unicon v-if="form.morning_workshop !== morning.id" name="square" width="20"
                                                 height="20"
-                                                fill="#243776"></unicon>
+                                                fill="#7f1f28"></unicon>
                                         <div class="ml-1">{{ morning.name }}</div>
                                     </div>
                                     <div class="text-xs mb-1">
@@ -96,10 +96,10 @@
                                         <unicon v-if="form.afternoon_workshop === afternoon.id" name="check-square"
                                                 width="20"
                                                 height="20"
-                                                fill="#243776"></unicon>
+                                                fill="#7f1f28"></unicon>
                                         <unicon v-if="form.afternoon_workshop !== afternoon.id" name="square" width="20"
                                                 height="20"
-                                                fill="#243776"></unicon>
+                                                fill="#7f1f28"></unicon>
                                         <div class="ml-1">{{ afternoon.name }}</div>
                                     </div>
                                     <div class="text-xs mb-1">

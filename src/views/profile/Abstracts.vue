@@ -117,7 +117,7 @@
                     <div class="flex justify-between">
                         <input type="file" id="file-upload" accept="image/*" hidden @change="uploadFile">
                         <a class="items-center block" target="_blank" :href="form.file">
-                            <unicon name="image" fill="blue"></unicon>
+                            <unicon name="image" fill="#7f1f28"></unicon>
                             <span class="text-sm ml-2">{{ $filters.truncate(form.file, 30) }}</span>
                         </a>
                         <label for="file-upload"

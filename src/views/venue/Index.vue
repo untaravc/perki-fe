@@ -89,13 +89,13 @@ table {
 table,
 td,
 th {
-    border: 1px solid lightblue;
+    border: 1px solid #cf9fa0;
     padding-top: 2px;
     padding-bottom: 2px;
 }
 
 table {
     border-collapse: collapse;
-    border-color: blue;
+    border-color: #ab585a;
 }
 </style>

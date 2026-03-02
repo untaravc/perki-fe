@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-span-3 md:col-span-1 flex justify-end px-6 items-center">
                     <button @click="toProtectedPage"
-                        class="bg-blue-900 hover:bg-blue-800 text-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-700 font-medium rounded-lg text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                        class="bg-blue-900 hover:bg-blue-800 text-white focus:ring-4 focus:outline-none focus:ring-blue-400 font-medium rounded-lg text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                         View
                     </button>
                 </div>

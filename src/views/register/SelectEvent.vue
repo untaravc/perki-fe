@@ -8,7 +8,7 @@
                         <div class="mb-3">
                             <div class="flex justify-between">
                                 <div class="font-semibold text-blue-900 flex items-center">
-                                    <unicon name="check-square" width="20" height="20" fill="#243776"></unicon>
+                                    <unicon name="check-square" width="20" height="20" fill="#7f1f28"></unicon>
                                     <div class="ml-1">{{ events.symposium.name }}</div>
                                 </div>
                                 <div class="flex items-center">
@@ -48,9 +48,9 @@
                                 <div class="font-semibold text-blue-900 flex">
                                     <div v-if="first.available" class="flex items-center">
                                         <unicon v-if="form.workshop === first.id" name="check-square" width="20"
-                                            height="20" fill="#243776"></unicon>
+                                            height="20" fill="#7f1f28"></unicon>
                                         <unicon v-if="form.workshop !== first.id" name="square" width="20" height="20"
-                                            fill="#243776"></unicon>
+                                            fill="#7f1f28"></unicon>
                                     </div>
                                     <div class="ml-1">
                                         {{ first.name }}

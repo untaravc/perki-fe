@@ -9,7 +9,7 @@
         <div class="grid grid-cols-3">
             <div @click="selected = 1"
                 :class="selected === 1 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
-                class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:bg-yellow-500 bg-gradient-to-r group transition duration-200">
+                class="text-white py-3 text-center rounded-tl-lg cursor-pointer hover:brightness-110 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     FRIDAY
                     <span :class="selected === 1 ? 'max-w-full' : 'max-w-0'"
@@ -18,7 +18,7 @@
             </div>
             <div @click="selected = 2"
                 :class="selected === 2 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
-                class="text-white py-3 text-center cursor-pointer hover:bg-cyan-600 bg-gradient-to-r group transition duration-200">
+                class="text-white py-3 text-center cursor-pointer hover:brightness-110 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     SATURDAY
                     <span :class="selected === 2 ? 'max-w-full' : 'max-w-0'"
@@ -27,7 +27,7 @@
             </div>
             <div @click="selected = 3"
                 :class="selected === 3 ? 'from-cyan-400 to-purple-400' : 'from-purple-800 to-cyan-800'"
-                class="text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:bg-indigo-700 bg-gradient-to-r group transition duration-200">
+                class="text-white py-3 text-center cursor-pointer  rounded-tr-lg hover:brightness-110 bg-gradient-to-r group transition duration-200">
                 <div class="text-2xl font-bold inline-block">
                     SUNDAY
                     <span :class="selected === 3 ? 'max-w-full' : 'max-w-0'"
@@ -38,7 +38,7 @@
         <div v-if="selected === 1" class="p-2 border-b border-slate-900">
             <div class="grid grid-cols-7">
                 <div class="md:col-span-1 col-span-7 row-span-4 text-center">
-                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-blue-200 px-2 py-1 rounded">
                         {{ $filters.formatTime("2023-09-01 08:00:00") }}
                         -
                         {{ $filters.formatTime("2023-09-01 11:00:00") }}
@@ -48,7 +48,7 @@
                     v-for="ws_hd in schedule.workshop_half_day_1">
                     <div class="grid grid-cols-4">
                         <div class="col-span-3">
-                            <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
+                            <div class="text-blue-800 font-bold">{{ ws_hd.name }}</div>
                             <div class="text-base font-semibold">
                                 {{ ws_hd.title }}
                             </div>
@@ -72,7 +72,7 @@
             </div>
             <div class="grid grid-cols-7">
                 <div class="md:col-span-1 col-span-7 row-span-4 text-center">
-                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-blue-200 px-2 py-1 rounded">
                         {{ $filters.formatTime("2023-09-01 13:00:00") }}
                         -
                         {{ $filters.formatTime("2023-09-01 16:00:00") }}
@@ -82,7 +82,7 @@
                     v-for="ws_hd in schedule.workshop_half_day_2">
                     <div class="grid grid-cols-4">
                         <div class="col-span-3">
-                            <div class="text-indigo-700 font-bold">{{ ws_hd.name }}</div>
+                            <div class="text-blue-800 font-bold">{{ ws_hd.name }}</div>
                             <div class="text-base font-semibold">
                                 {{ ws_hd.title }}
                             </div>
@@ -109,7 +109,7 @@
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="(saturday, s) in schedule.saturday">
                 <div class="col-span-2 text-center md:col-span-1">
-                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-blue-200 px-2 py-1 rounded">
                         {{ $filters.formatTime(saturday.date_start) }}
                         -
                         {{ $filters.formatTime(saturday.date_end) }}
@@ -117,7 +117,7 @@
                 </div>
                 <div class="col-span-2 md:col-span-3">
                     <div v-if="saturday.room_a">
-                        <div class="text-indigo-700 font-bold">
+                        <div class="text-blue-800 font-bold">
                             {{ saturday.room_a.name }}
                         </div>
                         <div class="text-base font-semibold">
@@ -147,7 +147,7 @@
                 </div>
                 <div class="col-span-2 md:col-span-3">
                     <div v-if="saturday.room_b">
-                        <div class="text-indigo-700 font-bold">
+                        <div class="text-blue-800 font-bold">
                             {{ saturday.room_b.name }}
                         </div>
                         <div class="text-base font-semibold">
@@ -182,7 +182,7 @@
             <div class="grid grid-cols-2 gap-2 md:grid-cols-7 mb-4 border-b border-slate-300"
                 v-for="sunday in schedule.sunday">
                 <div class="col-span-2 text-center md:col-span-1">
-                    <div class="inline-block bg-amber-300 px-2 py-1 rounded">
+                    <div class="inline-block bg-blue-200 px-2 py-1 rounded">
                         {{ $filters.formatTime(sunday.date_start) }}
                         -
                         {{ $filters.formatTime(sunday.date_end) }}
@@ -190,7 +190,7 @@
                 </div>
                 <div class="col-span-7 md:col-span-3">
                     <div v-if="sunday.room_a">
-                        <div class="text-indigo-700 font-bold">
+                        <div class="text-blue-800 font-bold">
                             {{ sunday.room_a.name }}
                         </div>
                         <div class="text-base font-semibold">
@@ -220,7 +220,7 @@
                 </div>
                 <div class="col-span-7 md:col-span-3">
                     <div v-if="sunday.room_b">
-                        <div class="text-indigo-700 font-bold">
+                        <div class="text-blue-800 font-bold">
                             {{ sunday.room_b.name }}
                         </div>
                         <div class="text-base font-semibold">

@@ -1,8 +1,8 @@
 :root {
-    --bg-theme-accent: linear-gradient(90deg, rgba(90, 212, 91, 1) 0%, rgba(7, 226, 136, 1) 100%);
-    --bg-theme: linear-gradient(163deg, rgba(6, 2, 1, 1) 0%, rgba(33, 53, 112, 1) 100%);
-    --color-theme: #18234b;
-    --color-theme-accent: #58d55d;
+    --bg-theme-accent: linear-gradient(90deg, #bc646a 0%, #97262e 100%);
+    --bg-theme: linear-gradient(163deg, #f9f7f8 0%, #cf9fa0 45%, #ab585a 100%);
+    --color-theme: #7f1f28;
+    --color-theme-accent: #97262e;
 }
 
 .bg-theme-accent {

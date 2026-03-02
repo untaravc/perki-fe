@@ -4,7 +4,7 @@
             <div class="p-6 border-red-100 bg-white rounded-xl text-center min-w-[425px] lg:min-w-[450px]">
                 <div v-if="transaction.status < 200">
                     <div class="text-xl mb-4">Complete the Payment</div>
-                    <div class="text-2xl text-[#F78F2D] mb-2 font-semibold">
+                    <div class="text-2xl text-[#97262e] mb-2 font-semibold">
                         Rp {{ $filters.currency(transaction.total) }}
                     </div>
                     <div class="text-md">before</div>

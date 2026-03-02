@@ -8,13 +8,13 @@
                         <div class="mb-3">
                             <div class="flex justify-between">
                                 <div class="font-semibold text-blue-900 flex items-center">
-                                    <unicon name="check-square" width="20" height="20" fill="#243776"></unicon>
+                                    <unicon name="check-square" width="20" height="20" fill="#7f1f28"></unicon>
                                     <div class="ml-1">{{ events.symposium.name }}</div>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="text-xs me-1">Min. 16 SKP/Day</span>
                                     <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
-                                        fill="#243776"></unicon>
+                                        fill="#7f1f28"></unicon>
                                 </div>
                             </div>
 
@@ -42,16 +42,16 @@
                                         <div class="flex items-center">
                                             <span class="text-xs">Min. 22 SKP</span>
                                             <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
-                                                fill="#243776"></unicon>
+                                                fill="#7f1f28"></unicon>
                                         </div>
                                     </div>
 
                                     <div class="font-semibold text-blue-900 flex">
                                         <div v-if="first.available" class="flex items-center">
                                             <unicon v-if="form.first_workshop === first.id" name="check-square"
-                                                width="20" height="20" fill="#243776"></unicon>
+                                                width="20" height="20" fill="#7f1f28"></unicon>
                                             <unicon v-if="form.first_workshop !== first.id" name="square" width="20"
-                                                height="20" fill="#243776"></unicon>
+                                                height="20" fill="#7f1f28"></unicon>
                                         </div>
                                         <div class="ml-1">
                                             {{ first.name }}
@@ -81,16 +81,16 @@
                                         <div class="flex items-center">
                                             <span class="text-xs">Min. 22 SKP</span>
                                             <unicon name="bookmark" width="20" height="20" style="rotate: -90deg;"
-                                                fill="#243776"></unicon>
+                                                fill="#7f1f28"></unicon>
                                         </div>
                                     </div>
 
                                     <div class="font-semibold text-blue-900 flex">
                                         <div v-if="second.available" class="flex items-center">
                                             <unicon v-if="form.second_workshop === second.id" name="check-square"
-                                                width="20" height="20" fill="#243776"></unicon>
+                                                width="20" height="20" fill="#7f1f28"></unicon>
                                             <unicon v-if="form.second_workshop !== second.id" name="square" width="20"
-                                                height="20" fill="#243776"></unicon>
+                                                height="20" fill="#7f1f28"></unicon>
                                         </div>
                                         <div class="ml-1">
                                             <span>{{ second.name }}</span>

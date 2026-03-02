@@ -6,7 +6,7 @@
         <div class="mb-6 text-center">
             The Rich Hotel Yogyakarta
         </div> -->
-        <div class="rounded-xl shadow-sm bg-gradient-to-br from-amber-400 via-amber-100 to-gray-300 grid grid-cols-12">
+        <div class="rounded-xl shadow-sm bg-gradient-to-br from-blue-200 via-purple-100 to-cyan-100 grid grid-cols-12">
             <div class="col-span-12 md:col-span-5 min-h-[300px] bg-blue-300 rounded-t-xl md:rounded-tr-none md:rounded-l-xl bg-center bg-cover bg-no-repeat"
                 style="background-image: url('https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Fartotel.webp?alt=media&token=a9af9f36-1560-4fe6-90aa-e56ce8afa2b3')">
             </div>

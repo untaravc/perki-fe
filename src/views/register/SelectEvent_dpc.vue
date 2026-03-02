@@ -41,10 +41,10 @@
                             <div class="font-semibold text-blue-900 flex">
                                 <unicon v-if="form.workshop_half_day === half_day.id" name="check-square" width="20"
                                         height="20"
-                                        fill="#243776"></unicon>
+                                        fill="#7f1f28"></unicon>
                                 <unicon v-if="form.workshop_half_day !== half_day.id" name="square" width="20"
                                         height="20"
-                                        fill="#243776"></unicon>
+                                        fill="#7f1f28"></unicon>
                                 <div class="ml-1">{{ half_day.name }}</div>
                             </div>
                             <div class="text-xs mb-1">

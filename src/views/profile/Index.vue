@@ -10,18 +10,18 @@
                 <div>
                     <div class="p-6 border-slate-100 bg-white rounded-xl">
                         <router-link to="/profile/info" class="flex my-3 cursor-pointer" @click="active = 'info'">
-                            <unicon name="user" height="20px" :fill="active === 'info' ? 'darkblue' : ''"></unicon>
+                            <unicon name="user" height="20px" :fill="active === 'info' ? '#641920' : ''"></unicon>
                             <div class="ml-2">Profil</div>
                         </router-link>
                         <!-- <router-link to="/profile/events" class="flex my-3 cursor-pointer" @click="active = 'events'">
-                            <unicon name="youtube" height="20px" :fill="active === 'events' ? 'blue' : ''"></unicon>
+                            <unicon name="youtube" height="20px" :fill="active === 'events' ? '#7f1f28' : ''"></unicon>
                             <div class="ml-2">My Event</div>
                         </router-link> -->
                         <router-link to="/profile/transactions" class="flex justify-between my-3 cursor-pointer"
                             @click="active = 'transactions'">
                             <div class="flex">
                                 <unicon name="shopping-cart" height="20px"
-                                    :fill="active === 'transactions' ? 'darkblue' : ''"></unicon>
+                                    :fill="active === 'transactions' ? '#641920' : ''"></unicon>
                                 <div class="ml-2">Transaction</div>
                             </div>
                             <div class="bg-slate-200 text-xs flex items-center py-0 px-2 rounded-full">
@@ -32,7 +32,7 @@
                         <!-- <router-link to="/profile/abstracts" class="flex my-3 cursor-pointer justify-between"
                             @click="active = 'abstracts'">
                             <div class="flex">
-                                <unicon name="file-upload" height="20px" :fill="active === 'abstracts' ? 'blue' : ''">
+                                <unicon name="file-upload" height="20px" :fill="active === 'abstracts' ? '#7f1f28' : ''">
                                 </unicon>
                                 <div class="ml-2">Abstracts</div>
                             </div>
@@ -94,7 +94,7 @@ export default {
 </script>
 <style>
 .router-link-exact-active {
-    color: darkblue;
+    color: #641920;
     font-weight: 500;
 }
 </style>

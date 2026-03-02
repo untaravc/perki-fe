@@ -1,10 +1,10 @@
 <template>
-    <nav class="px-2 sm:px-4 py-2 bg-red-600 fixed w-full z-20 top-0 left-0"
-        >
+    <nav class="px-2 sm:px-4 py-2 bg-white/95 backdrop-blur-sm shadow-sm fixed w-full z-20 top-0 left-0">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
-            <a href="/" class="flex items-center ml-4 sm:ml-0">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fcarvep26%2Flogo-cvep.png?alt=media&token=786a4e0e-65ff-4206-a033-330b8995e56a" class="h-10 mr-3 sm:h-16"
-                    alt="Jogja Cardiovascular Epidemiology and Prevention">
+            <a href="/" class="flex items-center ml-2 sm:ml-0">
+                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fjvm26%2Flogo-jvm26-h500.png?alt=media&token=9c472860-bb97-4168-ba1d-a46db23f1d64"
+                    class="h-12 md:h-20 w-auto object-contain mr-3"
+                    alt="Jogja Vascular Meeting 2026 Logo">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <div class="flex md:order-2">
