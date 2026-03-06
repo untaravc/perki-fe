@@ -31,7 +31,7 @@ export default {
     },
     methods: {
         loadSpeaker() {
-            this.apiGet('pub/speakers', { ref: 2024 })
+            this.apiGet('pub/speakers', { ref: 2026 })
                 .then((data) => {
                     this.data_content = data.result
                 })

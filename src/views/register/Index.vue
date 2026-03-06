@@ -197,7 +197,7 @@ export default {
                 password_confirmation: '',
                 identity_photo: '',
                 nik: '',
-                ref: 2024,
+                ref: 2026,
             },
             form_errors: []
         }

@@ -4,7 +4,7 @@
             SCHEDULE
         </div>
         <div class="text-small text-slate-600 mb-5 text-center">
-            Jogja Cardiology Update 2024 in conjunction with The Seventh Jogja International Cardiovascular Topic Series
+            Jogja Vascular Meeting 2026 in conjunction with The Seventh Jogja International Cardiovascular Topic Series
         </div>
         <div class="grid grid-cols-2">
             <div @click="selected = 1"

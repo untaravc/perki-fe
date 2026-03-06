@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         loadSpeaker() {
-            this.apiGet('pub/committee', { ref: 2024 })
+            this.apiGet('pub/committee', { ref: 2026 })
                 .then((data) => {
                     this.data_content = data.result
                 })

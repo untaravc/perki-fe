@@ -84,7 +84,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.apiGet('pub/pricing', { ref: 2024 })
+            this.apiGet('pub/pricing', { ref: 2026 })
                 .then((data) => {
                     this.pricing = data.result
 

@@ -31,7 +31,7 @@
                     <li>The abstract paper paper has not previously been published and is not currently being considered
                         for publication elsewhere (i.e. other conference or journal publication)</li>
                     <li>Download <a class="text-blue-500 font-semibold"
-                            href="https://src.perki-jogja.com/assets24/docs/abstract-case-report-guidline-jcu-2024.docx"
+                            href="https://src.perki-jogja.com/assets24/docs/abstract-case-report-guidline-jcu-2026.docx"
                             target="_blank" download>Guideline</a></li>
                     <li>Contact:
                         <a class="italic text-blue-700" target="_blank" href="https://wa.me/6282277967753">6282277967753</a> (Latifah)

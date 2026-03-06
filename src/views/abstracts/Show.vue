@@ -41,7 +41,7 @@ export default {
             data_content: {},
             filter: {
                 type: 'abstract',
-                year: 2024
+                year: 2026
             }
         }
     },

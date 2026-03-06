@@ -19,7 +19,7 @@
                             </div>
 
                             <div class="text-xs mb-1">
-                                Saturday, Feb 14th, 08:00-16:00
+                                Friday, May 1st, 08:00-12:00
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}

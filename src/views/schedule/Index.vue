@@ -5,7 +5,7 @@
                 JADWAL ACARA
             </div>
             <div class="text-small text-slate-600 mb-5 text-center">
-                Jogja Cardiology Update 2023 in conjunction with The Sixth Jogja International Cardiovascular Topik
+                Jogja Vascular Meeting 2023 in conjunction with The Sixth Jogja International Cardiovascular Topik
                 Series
             </div>
             <div class="grid grid-cols-3">

@@ -77,7 +77,7 @@ export default {
             filter: {
                 type: 'abstract',
                 category: '',
-                year: 2024,
+                year: 2026,
                 page: 1
             }
         }
