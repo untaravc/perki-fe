@@ -3,12 +3,16 @@
         <div class="p-6 border-slate-100 bg-white rounded-xl">
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
-                    <div v-if="data_raw.symposium"
-                        class="rounded-lg bg-blue-200 p-4 border cursor-pointer hover:bg-blue-100 mb-3">
+                    <div v-if="data_raw.symposium" @click="selectSymposium"
+                        :class="form.symposium ? 'bg-blue-200' : 'bg-blue-50'"
+                        class="rounded-lg p-4 border cursor-pointer hover:bg-blue-100 mb-3">
                         <div class="mb-3">
                             <div class="flex justify-between">
                                 <div class="font-semibold text-blue-900 flex items-center">
-                                    <unicon name="check-square" width="20" height="20" fill="#7f1f28"></unicon>
+                                    <unicon v-if="form.symposium" name="check-square" width="20" height="20"
+                                        fill="#7f1f28"></unicon>
+                                    <unicon v-if="!form.symposium" name="square" width="20" height="20"
+                                        fill="#7f1f28"></unicon>
                                     <div class="ml-1">{{ events.symposium.name }}</div>
                                 </div>
                                 <div class="flex items-center">
@@ -404,10 +408,23 @@ export default {
             }
             this.calculatePrice()
         },
+        selectSymposium() {
+            if (this.form.symposium) {
+                this.form.symposium = ''
+            } else {
+                this.form.symposium = this.events.symposium.id
+            }
+            this.calculatePrice()
+        },
         memberModal() {
             this.member_modal.show()
         },
         toPayment() {
+            if (!this.form.symposium && !this.form.workshop) {
+                this.toaster({ title: "Please select at least one event", icon: 'warning' })
+                return
+            }
+
             this.disabled = true;
             this.authPost('pub/create-payment-jvm26', {
                 items: {
