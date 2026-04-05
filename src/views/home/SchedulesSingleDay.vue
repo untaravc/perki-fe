@@ -51,11 +51,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- <div class="col-span-1">
-                            <a target="_blank" :href="base_url + ws_hd.image">
-                                <img class="w-full" :src="base_url + ws_hd.image" alt="">
+                        <div class="col-span-1">
+                            <a target="_blank" :href="sympo.room_a.image">
+                                <img class="w-full" :src="sympo.room_a.image" alt="">
                             </a>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,48 +86,18 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- <div>
-                            <div class="text-center hover:bg-slate-100 cursor-pointer"
+                        <div>
+                            <div class="text-center hover:bg-slate-100 cursor-pointer" v-if="workshop.room_a.image"
                                 @click="() => { workshop.room_a.show = !workshop.room_a.show }">
                                 <unicon name="angle-down" height="25px" v-if="!workshop.room_a.show">
                                 </unicon>
                                 <unicon name="angle-up" height="25px" v-if="workshop.room_a.show"></unicon>
                             </div>
-                            <a target="_blank" :href="base_url + saturday.room_a.image"
-                                v-if="saturday.room_a.show && saturday.room_a.image">
-                                <img class="w-full" :src="base_url + saturday.room_a.image" alt="">
+                            <a target="_blank" :href="workshop.room_a.image"
+                                v-if="workshop.room_a.show && workshop.room_a.image">
+                                <img class="w-full" :src="workshop.room_a.image" alt="">
                             </a>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-span-2 md:col-span-3">
-                    <div v-if="workshop.room_b">
-                        <div class="text-blue-800 font-bold">
-                            {{ workshop.room_b.name }}
                         </div>
-                        <div class="text-base font-semibold">
-                            {{ workshop.room_b.title }}
-                        </div>
-                        <div class="text-sm my-2 pl-6">
-                            <ul class="list-disc">
-                                <li v-for="item in getRoomItems(workshop.room_b)" :key="item.id || item.slug || item.title">
-                                    {{ item.title || item.name }}
-                                    <span class="font-semibold" v-if="getSpeakerName(item)"><br>{{ getSpeakerName(item) }}</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- <div>
-                            <div class="text-center hover:bg-slate-100 cursor-pointer"
-                                @click="() => { workshop.room_b.show = !workshop.room_b.show }">
-                                <unicon name="angle-down" height="25px" v-if="!workshop.room_b.show">
-                                </unicon>
-                                <unicon name="angle-up" height="25px" v-if="workshop.room_b.show"></unicon>
-                            </div>
-                            <a target="_blank" :href="base_url + saturday.room_b.image"
-                                v-if="saturday.room_b.show && saturday.room_b.image">
-                                <img class="w-full" :src="base_url + saturday.room_b.image" alt="">
-                            </a>
-                        </div> -->
                     </div>
                 </div>
             </div>
