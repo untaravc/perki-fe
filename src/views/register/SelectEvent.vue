@@ -3,6 +3,10 @@
         <div class="p-6 border-slate-100 bg-white rounded-xl">
             <div class="grid gap-4 md:grid-cols-3 col-span-2">
                 <div class="col-span-2">
+                    <div v-if="!registration_available"
+                        class="rounded-lg p-4 border bg-slate-50 text-slate-700 mb-3">
+                        <div class="font-semibold">registration not available</div>
+                    </div>
                     <div v-if="data_raw.symposium" @click="selectSymposium"
                         :class="form.symposium ? 'bg-blue-200' : 'bg-blue-50'"
                         class="rounded-lg p-4 border cursor-pointer hover:bg-blue-100 mb-3">
@@ -123,25 +127,25 @@
                         </div> -->
 
 
-                        <!--                        <div class="font-semibold mt-5 mb-2">-->
-                        <!--                            Voucher Code-->
-                        <!--                        </div>-->
-                        <!--                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"-->
-                        <!--                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">-->
-                        <!--                        <small class="text-red-800" v-if="pricing.voucher_validation">-->
-                        <!--                            {{ pricing.voucher_validation }}-->
-                        <!--                        </small>-->
-                        <!--                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">-->
-                        <!--                            <i>-->
-                        <!--                                only applies to non-sponsored participants-->
-                        <!--                            </i>-->
-                        <!--                        </small>-->
-                        <!--                        <div class="text-right mt-3">-->
-                        <!--                            <div @click="calculatePrice('check')"-->
-                        <!--                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">-->
-                        <!--                                Check-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
+                        <div class="font-semibold mt-5 mb-2">
+                            Voucher Code
+                        </div>
+                        <input type="text" id="institution" placeholder="input voucher code" v-model="voucher"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                        <small class="text-red-800" v-if="pricing.voucher_validation">
+                            {{ pricing.voucher_validation }}
+                        </small>
+                        <small v-if="transaction.job_type_code === 'PRKI'" style="color: #ed9292;">
+                            <i>
+                                only applies to non-sponsored participants
+                            </i>
+                        </small>
+                        <div class="text-right mt-3">
+                            <div @click="calculatePrice('check')"
+                                class="text-white cursor-pointer inline-block mb-2 bg-slate-500 hover:bg-slate-600 rounded-lg text-base px-3 py-1 text-center">
+                                Check
+                            </div>
+                        </div>
 
                         <!-- <div class="font-semibold mt-5 mb-2">
                             Collective Registration
@@ -199,7 +203,7 @@
                             </div>
                         </div>
                         <div class="mt-5">
-                            <button @click="toPayment" :disabled="disabled"
+                            <button v-if="registration_available" @click="toPayment" :disabled="disabled"
                                 class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                                 <BtnLoader v-if="disabled"></BtnLoader>
                                 <span v-if="!disabled">Process to Payment</span>
@@ -302,6 +306,7 @@ export default {
             selected: 2,
             voucher: '',
             disabled: false,
+            registration_available: true,
             member_modal: '',
             confirm_modal: '',
             form: {
@@ -349,6 +354,23 @@ export default {
                 transaction_number: this.$route.query.transaction_number
             })
                 .then((data) => {
+                    if (!data || data.success === false) {
+                        this.registration_available = false
+                        this.events = { symposium: null, workshop: [] }
+                        this.data_raw.symposium = false
+                        this.data_raw.workshop = false
+                        this.pricing = {
+                            items: [],
+                            subtotal: 0,
+                            package_discount: 0,
+                            voucher_validation: '',
+                            discount_amount: 0,
+                            total: 0,
+                        }
+                        return
+                    }
+
+                    this.registration_available = true
                     this.events = data.result.items
                     if(this.events.symposium){
                         this.form.symposium = this.events.symposium['id'];
