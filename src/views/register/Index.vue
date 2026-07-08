@@ -3,7 +3,7 @@
         <div class="my-6" style="min-height: calc(100vh - 195px);">
             <div class="p-6 border-slate-100 bg-white rounded-xl">
                 <div>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fjvm26%2Flogo-jvm26-h500.png?alt=media&token=9c472860-bb97-4168-ba1d-a46db23f1d64" alt="" class="h-16 mb-2">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU26%2Flogo_jcu26.png?alt=media&token=35d5c58c-1c43-47fc-8fe0-9b611950eaba" alt="" class="h-16 mb-2">
                 </div>
                 <div class="font-semibold text-xl">Register Event</div>
                 <div class="text-sm">Create your account to register event.</div>
@@ -224,7 +224,7 @@ export default {
                         this.form.phone = res.phone
                         this.form.identity_photo = res.identity_photo
                         this.form.nik = res.nik
-                        this.form.section = 'jvm26'
+                        this.form.section = 'jcu26'
                     }
                 })
         },

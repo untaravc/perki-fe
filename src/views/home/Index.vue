@@ -6,12 +6,12 @@
         <!-- <WelcomeMessage></WelcomeMessage> -->
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
-        <Schedule></Schedule>
+        <!-- <Schedule></Schedule> -->
         <!-- <Pricing></Pricing> -->
         <!-- <div class="bg-amber-50">
             <Speakers></Speakers>
         </div> -->
-        <Venue></Venue>
+        <!-- <Venue></Venue> -->
         <!-- <Sponsors></Sponsors> -->
     </div>
 </template>

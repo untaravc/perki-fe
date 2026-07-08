@@ -350,7 +350,7 @@ export default {
     },
     methods: {
         loadData() {
-            this.authGet('pub/events-list-jvm26', {
+            this.authGet('pub/events-list-jcu26', {
                 transaction_number: this.$route.query.transaction_number
             })
                 .then((data) => {
@@ -402,7 +402,7 @@ export default {
             this.$router.push('/plataran')
         },
         calculatePrice(mode = 'calculate') {
-            this.authPost('pub/calculate-price-jvm26', {
+            this.authPost('pub/calculate-price-jcu26', {
                 items: this.form,
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number,
@@ -448,7 +448,7 @@ export default {
             }
 
             this.disabled = true;
-            this.authPost('pub/create-payment-jvm26', {
+            this.authPost('pub/create-payment-jcu26', {
                 items: {
                     symposium: this.form.symposium,
                     workshop: this.form.workshop,

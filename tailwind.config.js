@@ -9,32 +9,72 @@ module.exports = {
     extend:
     {
       colors: {
+        // Poster palette — Jogja Cardiology Update 2026
+        // Primary: deep maroon (mapped onto `blue`)
         blue: {
-          50: '#fcf7f8',
-          100: '#f7edef',
-          200: '#efd8da',
-          300: '#e2b8bb',
-          400: '#cf8b90',
-          500: '#bc646a',
-          600: '#a74a51',
-          700: '#97262e',
+          50: '#fbf4f4',
+          100: '#f7e7e8',
+          200: '#efd0d2',
+          300: '#e2adb0',
+          400: '#cf8085',
+          500: '#bc5860',
+          600: '#a73c44',
+          700: '#9b1c22',
           800: '#7f1f28',
           900: '#641920',
           950: '#3d0e13'
         },
+        // Secondary: navy blue (mapped onto `indigo`) — poster "CARDIOLOGY UPDATE"
         indigo: {
-          50: '#f2f6fb',
-          100: '#dbe8f6',
-          200: '#bfd6ee',
-          300: '#95bcdf',
-          400: '#669cc9',
-          500: '#447dad',
-          600: '#2f6594',
-          700: '#1f537d',
-          800: '#174364',
-          900: '#0f4d89',
-          950: '#0a2d4f'
+          50: '#f1f6fb',
+          100: '#dde9f4',
+          200: '#c0d6ea',
+          300: '#93b7d7',
+          400: '#5f8fbd',
+          500: '#3d6da0',
+          600: '#2d5583',
+          700: '#26466a',
+          800: '#1e3a5f',
+          900: '#172c48',
+          950: '#101d30'
         },
+        // Antique gold (mapped onto `yellow` and `amber`) — poster ornaments & "JOGJA"
+        yellow: {
+          50: '#fbf7eb',
+          100: '#f5ead0',
+          200: '#ecd7a0',
+          300: '#e0bd6a',
+          400: '#d4a743',
+          500: '#c69a3a',
+          600: '#a97f2f',
+          700: '#866125',
+          800: '#6e4f24',
+          900: '#5c4222',
+          950: '#362512'
+        },
+        amber: {
+          50: '#fbf7eb',
+          100: '#f5ead0',
+          200: '#ecd7a0',
+          300: '#e0bd6a',
+          400: '#d4a743',
+          500: '#c69a3a',
+          600: '#a97f2f',
+          700: '#866125',
+          800: '#6e4f24',
+          900: '#5c4222',
+          950: '#362512'
+        },
+        // Cream / sand — poster background
+        cream: {
+          50: '#fdfbf6',
+          100: '#f8f2e6',
+          200: '#f1e8d4',
+          300: '#e6d7b8',
+          400: '#d8c090',
+          500: '#c9a860'
+        },
+        // Warm rose tones that harmonize with maroon (purple/cyan aliases)
         purple: {
           50: '#fdf8f8',
           100: '#f7e8e8',

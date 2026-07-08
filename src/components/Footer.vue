@@ -2,7 +2,7 @@
     <footer class="p-3 shadow md:px-4 md:py-6 bg-top bg-gradient-to-br from-slate-200 to-slate-300">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="https://carvep.perki-jogja.com/" class="flex items-center mb-4 sm:mb-0">
-                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2Fjvm26%2Flogo-jvm26-h500.png?alt=media&token=9c472860-bb97-4168-ba1d-a46db23f1d64" class="h-8 mr-3" alt="Jogja Vascular Meeting" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU26%2Flogo_jcu26.png?alt=media&token=35d5c58c-1c43-47fc-8fe0-9b611950eaba" class="h-8 mr-3" alt="Jogja Cardiology Update" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm sm:mb-0 dark:text-gray-400">

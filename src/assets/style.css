@@ -1,8 +1,15 @@
 :root {
-    --bg-theme-accent: linear-gradient(90deg, #bc646a 0%, #97262e 100%);
-    --bg-theme: linear-gradient(163deg, #f9f7f8 0%, #cf9fa0 45%, #ab585a 100%);
+    /* Poster palette — Jogja Cardiology Update 2026 */
+    --color-maroon: #9b1c22;
+    --color-gold: #c69a3a;
+    --color-navy: #1e3a5f;
+    --color-cream: #f8f2e6;
+
+    --bg-theme-accent: linear-gradient(90deg, #bc5860 0%, #9b1c22 100%);
+    --bg-theme: linear-gradient(163deg, #fdfbf6 0%, #f1e8d4 45%, #d8c090 100%);
+    --bg-theme-gold: linear-gradient(90deg, #d4a743 0%, #a97f2f 100%);
     --color-theme: #7f1f28;
-    --color-theme-accent: #97262e;
+    --color-theme-accent: #9b1c22;
 }
 
 .bg-theme-accent {
@@ -13,10 +20,22 @@
     background: var(--bg-theme);
 }
 
+.bg-theme-gold {
+    background: var(--bg-theme-gold);
+}
+
+.bg-cream {
+    background: var(--color-cream);
+}
+
 .text-theme {
     color: var(--color-theme);
 }
 
 .text-theme-accent {
     color: var(--color-theme-accent);
+}
+
+.text-gold {
+    color: var(--color-gold);
 }

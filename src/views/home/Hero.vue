@@ -73,7 +73,7 @@ export default {
             clearInterval(this.interval)
         },
         loadData() {
-            this.apiGet('pub/hero-banner', { ref: 'jvm26' })
+            this.apiGet('pub/hero-banner', { ref: 'jcu26' })
                 .then((data) => {
                     this.data_content = data.result;
                 })
