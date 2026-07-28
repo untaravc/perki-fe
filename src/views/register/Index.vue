@@ -13,9 +13,9 @@
                                 class="text-red-600">*</span></label>
                         <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                        <small class="text-xs text-blue-900 italic">
+                        <!-- <small class="text-xs text-blue-900 italic">
                             for certificate writing
-                        </small>
+                        </small> -->
                         <small class="text-xs text-red-600 italic" v-if="parseErrors('name')">
                             {{ parseErrors('name', 'val') }}
                         </small>
@@ -157,7 +157,7 @@
                     </small>
                 </div>
                 <div class="mt-3">
-                    <button @click="registerEmail" :disabled="disabled"
+                    <button @click="registerEmailToProfile" :disabled="disabled"
                         class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
                         <BtnLoader v-if="disabled"></BtnLoader>
                         <span v-if="!disabled">Register</span>
@@ -246,6 +246,41 @@ export default {
                         }
                         if (this.$route.query.url) {
                             this.$router.push(this.$route.query.url);
+                        }
+                        this.emitter.emit("update-header");
+                    } else {
+                        if (data.error === 422) {
+                            this.form_errors = data.errors
+                        } else if (data.error === 401) {
+                            if (confirm("Email has already been registered. Login with your email?")) {
+                                this.$router.push('/login');
+                            }
+                        } else {
+                            alert(data.message)
+                        }
+                    }
+                }).catch(() => {
+                    this.disabled = false
+                })
+        },
+        // after success register, go to /profile instead of select event.
+        // registerEmail (above) is left untouched for future use.
+        registerEmailToProfile() {
+            this.disabled = true
+            this.apiPost('pub/register', this.form)
+                .then((data) => {
+                    this.disabled = false
+                    if (data.success) {
+                        let token = data.result.token
+
+                        if (token) {
+                            localStorage.setItem('perki_user_token', data.result.token)
+                        }
+
+                        if (this.$route.query.url) {
+                            this.$router.push(this.$route.query.url);
+                        } else {
+                            this.$router.push('/profile/abstracts');
                         }
                         this.emitter.emit("update-header");
                     } else {

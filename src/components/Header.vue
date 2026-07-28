@@ -8,15 +8,11 @@
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <div class="flex md:order-2">
-                <!-- <router-link to="/register"
-                    class="text-white flex items-center bg-slate-700 hover:bg-slate-500 focus:ring-4 focus:outline-none 
+                <router-link to="/register"
+                    class="text-white flex items-center bg-slate-700 hover:bg-slate-500 focus:ring-4 focus:outline-none
                     focus:ring-red-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
                     Register
-                </router-link> -->
-                <div
-                    class="text-white flex items-center bg-slate-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
-                    Register
-                </div>
+                </router-link>
                 <router-link to="/profile/info" v-if="has_token" class="text-white bg-slate-700 hover:bg-slate-500 focus:ring-4 
                         focus:outline-none focus:ring-red-400 md:font-medium rounded-full 
                         text-base px-2.5 py-2.5 text-center mr-3 md:mr-0">
@@ -24,12 +20,12 @@
                         <unicon name="user-md" fill="#ffffff" height="20px"></unicon>
                     </div>
                 </router-link>
-                <!-- <router-link to="/login" v-if="!has_token"
+                <router-link to="/login" v-if="!has_token"
                     class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-red-400 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
                     <div class="flex items-center">
                         <div>Login</div>
                     </div>
-                </router-link> -->
+                </router-link>
                 <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"
                     class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky" aria-expanded="false">

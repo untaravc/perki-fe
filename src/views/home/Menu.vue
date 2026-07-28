@@ -45,7 +45,7 @@
                 </div>
             </a>
         </div> -->
-        <!-- <div
+        <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <router-link to="/abstracts">
                 <div class="flex justify-center mx-auto items-center w-16 h-16 rounded-full mb-2 bg-white">
@@ -55,7 +55,7 @@
                     Abstract <br> Submission
                 </div>
             </router-link>
-        </div> -->
+        </div>
         <div
             class="flex justify-center col-span-2 md:col-span-1 shadow-sm p-4 rounded-lg bg-gradient-to-bl from-purple-100 to-cyan-100">
             <router-link to="/posters">

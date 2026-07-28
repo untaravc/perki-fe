@@ -85,10 +85,9 @@
                 <label>Category</label>
                 <select v-model="form.category" @change="updateBodySections"
                     class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                    <option value="research">Research</option>
-                    <option value="case_report">Case Report</option>
-                    <option value="systematic_review">Systematic Review</option>
-                    <option value="meta_analysis">Meta Analysis</option>
+                    <option value="research">Original Research</option>
+                    <option value="case_report">Case Report / Case Series</option>
+                    <option value="systematic_review">Systematic Review / Meta-analysis</option>
                 </select>
                 <small class="text-xs text-red-600 italic" v-if="parseErrors('category')">
                     {{ parseErrors('category', 'val') }}
@@ -106,7 +105,7 @@
                         class="block w-full rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
                 </div>
                 <div class="italic text-slate-400 text-sm font-semibold">
-                    Word count: {{ word_count }}/300
+                    Word count: {{ word_count }}/350
                 </div>
             </div>
 
@@ -115,7 +114,7 @@
                 <div class="relative border border-slate-500 rounded-lg p-2">
                     <page-loading v-model:active="upload_loader" loader="bars" :is-full-page="false" />
                     <div class="flex justify-between">
-                        <input type="file" id="file-upload" accept="image/*" hidden @change="uploadFile">
+                        <input type="file" id="file-upload" accept="image/jpeg" hidden @change="uploadFile">
                         <a class="items-center block" target="_blank" :href="form.file">
                             <unicon name="image" fill="#7f1f28"></unicon>
                             <span class="text-sm ml-2">{{ $filters.truncate(form.file, 30) }}</span>
@@ -177,21 +176,13 @@
                 <div class="flex justify-between">
                     <div>
                         <span v-if="data.category === 'research'"
-                            class="px-2 py-1 font-semibold bg-green-200 rounded text-xs">{{
-                                data.category
-                            }}</span>
+                            class="px-2 py-1 font-semibold bg-green-200 rounded text-xs">Original Research</span>
                         <span v-if="data.category === 'case_report'"
-                            class="px-2 py-1 font-semibold bg-blue-200 rounded text-xs">{{
-                                data.category
-                            }}</span>
+                            class="px-2 py-1 font-semibold bg-blue-200 rounded text-xs">Case Report / Case Series</span>
                         <span v-if="data.category === 'systematic_review'"
-                            class="px-2 py-1 font-semibold bg-purple-200 rounded text-xs">{{
-                                data.category
-                            }}</span>
+                            class="px-2 py-1 font-semibold bg-purple-200 rounded text-xs">Systematic Review / Meta-analysis</span>
                         <span v-if="data.category === 'meta_analysis'"
-                            class="px-2 py-1 font-semibold bg-teal-200 rounded text-xs">{{
-                                data.category
-                            }}</span>
+                            class="px-2 py-1 font-semibold bg-teal-200 rounded text-xs">Systematic Review / Meta-analysis</span>
                     </div>
                     <div>
                         <button @click="deleteData(data)" v-if="is_open"
@@ -336,31 +327,25 @@ export default {
             abstract_form: [],
             abstract_form_list: {
                 research: [
-                    { field: "introduction", title: "INTRODUCTION" },
+                    { field: "background", title: "BACKGROUND" },
+                    { field: "objective", title: "OBJECTIVE" },
                     { field: "methods", title: "METHODS" },
-                    { field: "result", title: "RESULT" },
-                    { field: "discussion", title: "DISCUSSION" },
+                    { field: "result", title: "RESULTS" },
                     { field: "conclusion", title: "CONCLUSION" },
                 ],
                 case_report: [
-                    { field: "introduction", title: "INTRODUCTION" },
+                    { field: "background", title: "BACKGROUND" },
                     { field: "case_presentation", title: "CASE PRESENTATION" },
-                    // { field: "discussion", title: "DISCUSSION" },
+                    { field: "discussion", title: "DISCUSSION" },
                     { field: "conclusion", title: "CONCLUSION" },
                 ],
                 systematic_review: [
-                    { field: "introduction", title: "INTRODUCTION" },
-                    // { field: "discussion", title: "DISCUSSION" },
+                    { field: "background", title: "BACKGROUND" },
+                    { field: "objective", title: "OBJECTIVE" },
                     { field: "methods", title: "METHODS" },
-                    { field: "result", title: "RESULT" },
+                    { field: "result", title: "RESULTS" },
                     { field: "conclusion", title: "CONCLUSION" },
                 ],
-                meta_analysis: [
-                    { field: "introduction", title: "INTRODUCTION" },
-                    { field: "method", title: "METHODS" },
-                    { field: "discussion", title: "DISCUSSION" },
-                    { field: "conclusion", title: "CONCLUSION" },
-                ]
             },
             form: {
                 id: '',
@@ -502,7 +487,7 @@ export default {
         },
         addData() {
             // this.disabled = true
-            if (this.word_count > 300) {
+            if (this.word_count > 350) {
                 alert("Abstract to long.")
                 return;
             }
@@ -556,7 +541,7 @@ export default {
             this.edit_mode = true;
         },
         updateData() {
-            if (this.word_count > 300) {
+            if (this.word_count > 350) {
                 alert("Abstract to long.")
                 return;
             }

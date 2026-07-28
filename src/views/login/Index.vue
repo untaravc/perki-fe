@@ -74,7 +74,7 @@ export default {
             this.apiPost('pub/login-by-google', {
                 id_token: callback.credential
             }).then((data) => {
-                if (data.status) {
+                if (data.success) {
                     localStorage.setItem('perki_user_token', data.result.token)
                     let destination = this.$route.query.to
                     if (destination) {
