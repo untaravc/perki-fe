@@ -231,7 +231,7 @@ export default {
                 voucher: this.voucher,
                 transaction_number: this.$route.query.transaction_number
             }).then((data)=>{
-                    if(data.status){
+                    if(data.success){
                         this.$router.push('/payment?transaction_number=' + this.$route.query.transaction_number)
                         this.emitter.emit("update-header");
                     } else {

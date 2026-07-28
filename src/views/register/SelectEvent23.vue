@@ -424,7 +424,7 @@ export default {
                 package: this.package,
                 users: this.users,
             }).then((data) => {
-                if (data.status) {
+                if (data.success) {
                     this.$router.push('/payment?transaction_number=' + this.$route.query.transaction_number)
                     this.emitter.emit("update-header");
                 } else {
