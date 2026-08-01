@@ -1,34 +1,43 @@
 <template>
-    <div class="max-w-screen-lg m-auto pt-16 px-2">
+    <div class="relative overflow-hidden max-w-screen-lg mx-auto pt-16 px-4">
+        <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <div
+                class="absolute -top-24 -right-32 h-96 w-96 rounded-full bg-gradient-to-br from-violet-200 to-teal-200 opacity-60 blur-3xl">
+            </div>
+            <div
+                class="absolute top-72 -left-32 h-80 w-80 rounded-full bg-gradient-to-br from-teal-200 to-sky-200 opacity-50 blur-3xl">
+            </div>
+        </div>
+
         <div class="my-6" style="min-height: calc(100vh - 195px);">
-            <div class="p-6 border-slate-100 bg-white rounded-xl">
+            <div class="p-6 sm:p-8 bg-white rounded-3xl shadow-xl shadow-slate-200/70 ring-1 ring-slate-100">
                 <div>
-                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU26%2Flogo_jcu26.png?alt=media&token=35d5c58c-1c43-47fc-8fe0-9b611950eaba" alt="" class="h-16 mb-2">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU26%2Flogo_jcu26.png?alt=media&token=35d5c58c-1c43-47fc-8fe0-9b611950eaba" alt="" class="h-16 mb-4">
                 </div>
-                <div class="font-semibold text-xl">Register Event</div>
-                <div class="text-sm">Create your account to register event.</div>
-                <div class="mt-3 grid gap-2 sm:grid-cols-2">
+                <div class="font-bold text-2xl text-slate-900">Register Event</div>
+                <div class="text-sm text-slate-500">Create your account to register event.</div>
+                <div class="mt-4 grid gap-3 sm:grid-cols-2">
                     <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Full Name<span
-                                class="text-red-600">*</span></label>
+                        <label for="name" class="block mb-2 text-sm font-medium text-slate-700">Full Name<span
+                                class="text-red-500">*</span></label>
                         <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                            class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                         <!-- <small class="text-xs text-blue-900 italic">
                             for certificate writing
                         </small> -->
-                        <small class="text-xs text-red-600 italic" v-if="parseErrors('name')">
+                        <small class="text-xs text-red-500 italic" v-if="parseErrors('name')">
                             {{ parseErrors('name', 'val') }}
                         </small>
                     </div>
                     <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">ID Number (NIK)<span
-                                class="text-red-600">*</span></label>
+                        <label for="name" class="block mb-2 text-sm font-medium text-slate-700">ID Number (NIK)<span
+                                class="text-red-500">*</span></label>
                         <input type="text" id="nik" placeholder="" autofocus v-model="form.nik"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                        <small class="text-xs text-red-600 italic" v-if="parseErrors('nik')">
+                            class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                        <small class="text-xs text-red-500 italic" v-if="parseErrors('nik')">
                             {{ parseErrors('nik', 'val') }}
                         </small>
-                        <div class="text-xs p-1 bg-yellow-50 mt-1">
+                        <div class="text-xs p-2 bg-violet-50 border border-violet-100 rounded-lg mt-1 text-slate-600">
                             <ul class="list-disc ml-4">
                                 <li>NIK is needed to invite participants into Plataran Sehat</li>
                                 <li>For Participants who are not willing to fill in the NIK column, they cannot learn
@@ -39,48 +48,48 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid gap-2 sm:grid-cols-2 mt-3">
+                <div class="grid gap-3 sm:grid-cols-2 mt-3">
                     <div>
-                        <label for="address" class="block mb-2 text-sm font-medium text-gray-900">City, Province
-                            <span class="text-red-600">*</span></label>
+                        <label for="address" class="block mb-2 text-sm font-medium text-slate-700">City, Province
+                            <span class="text-red-500">*</span></label>
                         <input type="text" id="address" placeholder="ex. Sleman, DI Yogyakarta" v-model="form.city"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                        <small class="text-xs text-red-600 italic" v-if="parseErrors('city')">
+                            class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                        <small class="text-xs text-red-500 italic" v-if="parseErrors('city')">
                             {{ parseErrors('city', 'val') }}
                         </small>
                     </div>
                     <div>
-                        <label for="institution" class="block mb-2 text-sm font-medium text-gray-900">Institution <span
-                                class="text-red-600">*</span></label>
+                        <label for="institution" class="block mb-2 text-sm font-medium text-slate-700">Institution <span
+                                class="text-red-500">*</span></label>
                         <input type="text" id="institution" placeholder="ex. Universitas Gadjah Mada"
                             v-model="form.institution"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                        <small class="text-xs text-red-600 italic" v-if="parseErrors('institution')">
+                            class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                        <small class="text-xs text-red-500 italic" v-if="parseErrors('institution')">
                             {{ parseErrors('institution', 'val') }}
                         </small>
                     </div>
                 </div>
-                <div class="grid gap-2 sm:grid-cols-2 mt-3">
+                <div class="grid gap-3 sm:grid-cols-2 mt-3">
                     <div class="mt-3">
-                        <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Member Type<span
-                                class="text-red-600">*</span></label>
+                        <label for="job_type" class="block mb-2 text-sm font-medium text-slate-700">Member Type<span
+                                class="text-red-500">*</span></label>
                         <select id="job_type" v-model="form.job_type_code"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                             <option value="" selected>== Select Type ==</option>
                             <option :value="job.code" :key="job.code" v-for="job in data_raw.job_types">{{ job.name }}
                             </option>
                         </select>
-                        <small class="text-xs text-red-600 italic" v-if="parseErrors('job_type_code')">
+                        <small class="text-xs text-red-500 italic" v-if="parseErrors('job_type_code')">
                             {{ parseErrors('job_type_code', 'val') }}
                         </small>
                     </div>
                     <div class="mt-3 flex justify-between"
                         v-if="form.job_type_code === 'MHSA' || form.job_type_code === 'COAS'">
                         <div>
-                            <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Student Card
-                                Photo<span class="text-red-600">*</span></label>
+                            <label for="job_type" class="block mb-2 text-sm font-medium text-slate-700">Student Card
+                                Photo<span class="text-red-500">*</span></label>
                             <input type="file" accept="image/*" id="file-upload" @change="uploadFile">
-                            <small class="text-xs text-red-600 italic" v-if="parseErrors('identity_photo')">
+                            <small class="text-xs text-red-500 italic" v-if="parseErrors('identity_photo')">
                                 {{ parseErrors('identity_photo', 'val') }}
                             </small>
                         </div>
@@ -92,37 +101,37 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone (Whatsapp Number)<span
-                            class="text-red-600">*</span></label>
+                    <label for="phone" class="block mb-2 text-sm font-medium text-slate-700">Phone (Whatsapp Number)<span
+                            class="text-red-500">*</span></label>
                     <input type="tel" id="phone" placeholder="ex. 081234567890" v-model="form.phone"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                    <small class="text-xs text-red-600 italic" v-if="parseErrors('phone')">
+                        class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    <small class="text-xs text-red-500 italic" v-if="parseErrors('phone')">
                         {{ parseErrors('phone', 'val') }}
                     </small>
                 </div>
                 <div class="mt-3">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-Mail <span
-                            class="text-red-600">*</span></label>
+                    <label for="email" class="block mb-2 text-sm font-medium text-slate-700">E-Mail <span
+                            class="text-red-500">*</span></label>
                     <input type="text" id="email" placeholder="ex. mail@example.com" v-model="form.email"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                    <small class="text-xs text-red-600 italic" v-if="parseErrors('email')">
+                        class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    <small class="text-xs text-red-500 italic" v-if="parseErrors('email')">
                         {{ parseErrors('email', 'val') }}
                     </small>
-                    <div class="text-xs bg-yellow-50 mt-1 p-2">
+                    <div class="text-xs bg-violet-50 border border-violet-100 rounded-lg mt-1 p-2 text-slate-600">
                         Please use the same email as the one registered to your Plataran Sehat account. Don't have one?
-                        <a target="_blank" class="font-semibold text-blue-700 hover:text-blue-600"
+                        <a target="_blank" class="font-semibold text-violet-600 hover:text-violet-700"
                             href="https://satusehat.kemkes.go.id/sdmk/register">Register at Plataran
                             Sehat.</a>
                     </div>
                 </div>
-                <div class="grid gap-2 sm:grid-cols-2 mt-3" v-if="!logged_in">
+                <div class="grid gap-3 sm:grid-cols-2 mt-3" v-if="!logged_in">
                     <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Create New
-                            Password<span class="text-red-600">*</span></label>
+                        <label for="password" class="block mb-2 text-sm font-medium text-slate-700">Create New
+                            Password<span class="text-red-500">*</span></label>
                         <div class="relative">
                             <input :type="eye_icon ? 'text' : 'password'" id="password" v-model="form.password"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
-                            <button type="button" class="p-2 show-password absolute top-1/2 right-2 -translate-y-1/2"
+                                class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                            <button type="button" class="p-2 show-password absolute top-1/2 right-2 -translate-y-1/2 text-slate-400 hover:text-violet-600"
                                 @click="eye_icon = !eye_icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" v-if="eye_icon" width="24" height="24"
                                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -147,18 +156,18 @@
                         </div>
                     </div>
                     <div>
-                        <label for="password-confirmation" class="block mb-2 text-sm font-medium text-gray-900">Confirm
-                            Your Password <span class="text-red-600">*</span></label>
+                        <label for="password-confirmation" class="block mb-2 text-sm font-medium text-slate-700">Confirm
+                            Your Password <span class="text-red-500">*</span></label>
                         <input type="password" id="password-confirmation" v-model="form.password_confirmation"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5">
+                            class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                     </div>
-                    <small class="text-xs text-red-600 italic" v-if="parseErrors('password')">
+                    <small class="text-xs text-red-500 italic" v-if="parseErrors('password')">
                         {{ parseErrors('password', 'val') }}
                     </small>
                 </div>
-                <div class="mt-3">
+                <div class="mt-5">
                     <button @click="registerEmailToProfile" :disabled="disabled"
-                        class="text-white w-full mb-2 bg-blue-900 hover:bg-blue-800 font-medium rounded-full text-base px-8 py-2.5 text-center">
+                        class="text-white w-full mb-2 bg-gradient-to-r from-violet-600 to-teal-500 hover:shadow-lg hover:shadow-violet-200 font-medium rounded-full text-base px-8 py-2.5 text-center transition-shadow duration-200">
                         <BtnLoader v-if="disabled"></BtnLoader>
                         <span v-if="!disabled">Register</span>
                     </button>
@@ -212,7 +221,7 @@ export default {
         getProfile() {
             this.authGet('pub/profile')
                 .then((data) => {
-                    if (data.status) {
+                    if (data.success) {
                         let res = data.result
                         this.logged_in = true;
 

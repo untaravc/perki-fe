@@ -99,8 +99,7 @@ const mixin = {
 					window.location = '/login'
 					localStorage.removeItem('perki_user_token');
 				} else if (rc === 422) {
-					response.status = false;
-					response.errors = '';
+					response = e.response.data
 				}
 			})
 
@@ -169,8 +168,7 @@ const mixin = {
 					window.location = '/login'
 					localStorage.removeItem('perki_user_token');
 				} else if (rc === 422) {
-					response.status = false;
-					response.errors = '';
+					response = e.response.data
 				}
 			})
 

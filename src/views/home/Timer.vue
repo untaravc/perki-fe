@@ -1,30 +1,38 @@
 <template>
-    <div class="px-2 mb-3">
-        <div class="max-w-screen-lg m-auto py-6 bg-gradient-to-r from-purple-200 to-blue-200 rounded-lg">
-            <div class="grid grid-cols-3">
-                <div class="col-span-3 md:col-span-1 text-center md:border-r-2 mb-4 border-blue-900">
-                    <div class="font-semibold text-lg">Get Ready For The Event</div>
-                    <div>1st - 3rd of October 2026</div>
-                    <a href="https://maps.app.goo.gl/zUcyBdCLJ7qqKAks7" target="_blank"
-                        class="text-sm text-slate-500 underline cursor-pointer">Royal Ambarrukmo Hotel, Yogyakarta</a>
+    <div class="px-4 mb-6">
+        <div
+            class="max-w-screen-lg mx-auto rounded-3xl bg-white shadow-xl shadow-slate-200/70 ring-1 ring-slate-100 overflow-hidden">
+            <div class="grid md:grid-cols-5">
+                <div
+                    class="md:col-span-2 p-6 md:p-8 flex flex-col justify-center bg-gradient-to-br from-violet-600 to-teal-500 text-white">
+                    <div
+                        class="inline-flex items-center gap-2 mb-3 w-fit rounded-full bg-white/15 py-1 px-4 text-xs font-medium tracking-wide uppercase">
+                        Get Ready For The Event
+                    </div>
+                    <div class="text-2xl font-bold mb-3">1st &ndash; 3rd of October 2026</div>
+                    <a href="https://maps.app.goo.gl/5u56URP6pNwnBpP86" target="_blank"
+                        class="inline-flex items-center gap-1.5 text-sm text-white/85 hover:text-white transition-colors w-fit">
+                        <unicon name="map-pin" fill="currentColor" width="16"></unicon>
+                        <span class="underline underline-offset-2">Royal Ambarrukmo Hotel, Yogyakarta</span>
+                    </a>
                 </div>
-                <div class="col-span-3 md:col-span-2 flex justify-center items-center">
-                    <div class="grid gap:3 md:gap-12 grid-cols-4">
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-purple-700">{{ days }}</div>
-                            <div class="text-sm">Days</div>
+                <div class="md:col-span-3 p-6 md:p-8 flex items-center justify-center">
+                    <div class="grid grid-cols-4 gap-3 sm:gap-6 w-full">
+                        <div class="text-center rounded-2xl bg-violet-50 py-4 px-2">
+                            <div class="text-3xl sm:text-4xl font-bold text-violet-600 tabular-nums">{{ days }}</div>
+                            <div class="text-xs sm:text-sm text-slate-500 mt-1">Days</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-indigo-900">{{ hours }}</div>
-                            <div class="text-sm">Hours</div>
+                        <div class="text-center rounded-2xl bg-fuchsia-50 py-4 px-2">
+                            <div class="text-3xl sm:text-4xl font-bold text-fuchsia-500 tabular-nums">{{ hours }}</div>
+                            <div class="text-xs sm:text-sm text-slate-500 mt-1">Hours</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-indigo-600">{{ minutes }}</div>
-                            <div class="text-sm">Minutes</div>
+                        <div class="text-center rounded-2xl bg-sky-50 py-4 px-2">
+                            <div class="text-3xl sm:text-4xl font-bold text-sky-500 tabular-nums">{{ minutes }}</div>
+                            <div class="text-xs sm:text-sm text-slate-500 mt-1">Minutes</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-700">{{ seconds }}</div>
-                            <div class="text-sm">Seconds</div>
+                        <div class="text-center rounded-2xl bg-teal-50 py-4 px-2">
+                            <div class="text-3xl sm:text-4xl font-bold text-teal-500 tabular-nums">{{ seconds }}</div>
+                            <div class="text-xs sm:text-sm text-slate-500 mt-1">Seconds</div>
                         </div>
                     </div>
                 </div>

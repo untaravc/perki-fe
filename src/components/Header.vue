@@ -1,33 +1,31 @@
 <template>
-    <nav class="px-2 sm:px-4 py-2 bg-white/95 backdrop-blur-sm shadow-sm fixed w-full z-20 top-0 left-0">
+    <nav class="px-2 sm:px-4 py-2 bg-white/90 backdrop-blur-md border-b border-slate-100 fixed w-full z-20 top-0 left-0">
         <div class="max-w-screen-lg m-auto flex flex-wrap items-center justify-between mx-auto">
-            <a href="/" class="flex items-center ml-2 sm:ml-0">
+            <a href="/" class="flex items-center ml-2 sm:ml-0 transition-opacity hover:opacity-80">
                 <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU26%2Flogo_jcu26.png?alt=media&token=35d5c58c-1c43-47fc-8fe0-9b611950eaba"
                     class="h-12 md:h-20 w-auto object-contain mr-3"
                     alt="Jogja Cardiology Update 2026 Logo">
                 <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
-            <div class="flex md:order-2">
+            <div class="flex md:order-2 items-center">
                 <router-link to="/register"
-                    class="text-white flex items-center bg-slate-700 hover:bg-slate-500 focus:ring-4 focus:outline-none
-                    focus:ring-red-400 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3">
+                    class="flex items-center text-white bg-gradient-to-r from-violet-600 to-teal-500 hover:shadow-lg hover:shadow-violet-200 focus:ring-4 focus:outline-none
+                    focus:ring-violet-200 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3 transition-shadow duration-200">
                     Register
                 </router-link>
-                <router-link to="/profile/info" v-if="has_token" class="text-white bg-slate-700 hover:bg-slate-500 focus:ring-4 
-                        focus:outline-none focus:ring-red-400 md:font-medium rounded-full 
-                        text-base px-2.5 py-2.5 text-center mr-3 md:mr-0">
-                    <div class="flex items-center">
-                        <unicon name="user-md" fill="#ffffff" height="20px"></unicon>
-                    </div>
+                <router-link to="/profile/info" v-if="has_token"
+                    class="flex items-center justify-center h-9 w-9 md:h-11 md:w-11 text-violet-700 bg-violet-50 hover:bg-violet-100 focus:ring-4
+                        focus:outline-none focus:ring-violet-200 rounded-full text-center mr-3 md:mr-0 transition-colors">
+                    <unicon name="user-md" fill="currentColor" height="20px"></unicon>
                 </router-link>
                 <router-link to="/login" v-if="!has_token"
-                    class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-red-400 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0">
+                    class="text-slate-700 bg-white border border-slate-200 hover:border-violet-300 hover:text-violet-700 focus:ring-4 focus:outline-none focus:ring-violet-100 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0 transition-colors">
                     <div class="flex items-center">
                         <div>Login</div>
                     </div>
                 </router-link>
                 <button data-collapse-toggle="navbar-sticky" type="button" ref="toggle_menu"
-                    class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    class="inline-flex items-center p-2 text-sm text-slate-500 rounded-lg md:hidden hover:bg-violet-50 hover:text-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-200"
                     aria-controls="navbar-sticky" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
