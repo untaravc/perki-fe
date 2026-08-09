@@ -35,6 +35,8 @@
     </div>
 </template>
 <script>
+import { applyRouteMeta } from '../../utils/seo'
+
 export default {
     data() {
         return {
@@ -50,6 +52,13 @@ export default {
             this.apiGet('pub/posters/' + this.$route.params.id, this.filter)
                 .then((data) => {
                     this.data_content = data.result
+
+                    if (this.data_content?.title) {
+                        applyRouteMeta({
+                            title: `${this.data_content.title} | Jogja Cardiology Update 2026`,
+                            description: this.data_content.subtitle || this.$route.meta.description,
+                        }, this.$route.path)
+                    }
                 })
         }
     },
