@@ -166,7 +166,7 @@
                     </small>
                 </div>
                 <div class="mt-5">
-                    <button @click="registerEmailToProfile" :disabled="disabled"
+                    <button @click="registerEmail" :disabled="disabled"
                         class="text-white w-full mb-2 bg-gradient-to-r from-violet-600 to-teal-500 hover:shadow-lg hover:shadow-violet-200 font-medium rounded-full text-base px-8 py-2.5 text-center transition-shadow duration-200">
                         <BtnLoader v-if="disabled"></BtnLoader>
                         <span v-if="!disabled">Register</span>
@@ -206,6 +206,7 @@ export default {
                 password_confirmation: '',
                 identity_photo: '',
                 nik: '',
+                section: 'jcu26',
                 ref: 2026,
             },
             form_errors: []
@@ -251,7 +252,7 @@ export default {
                         }
 
                         if (trx) {
-                            this.$router.push('register/event?transaction_number=' + trx.number);
+                            this.$router.push('/register/event?transaction_number=' + trx.number);
                         }
                         if (this.$route.query.url) {
                             this.$router.push(this.$route.query.url);
@@ -272,8 +273,8 @@ export default {
                     this.disabled = false
                 })
         },
-        // after success register, go to /profile instead of select event.
-        // registerEmail (above) is left untouched for future use.
+        // alternative flow: after success register, go to /profile instead of select event.
+        // kept for future use — registerEmail (above) is the live handler.
         registerEmailToProfile() {
             this.disabled = true
             this.apiPost('pub/register', this.form)

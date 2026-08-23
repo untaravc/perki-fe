@@ -34,42 +34,97 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-2 grid gap-2 md:grid-cols-1" v-if="data_raw.workshop && count < 1">
-                        <!-- <div class="col-span-2 grid gap-2 md:grid-cols-2" v-if=""> -->
-                        <div v-for="first in events.workshop" @click="selectWorkshop(first.id, first)"
-                            :class="form.workshop === first.id ? 'bg-blue-200' : 'bg-blue-50'"
-                            class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200 ">
-                            <div class="mb-3">
+                    <div v-if="data_raw.workshop && count < 1" class="mb-3">
+                        <div class="font-semibold text-blue-900 mb-1">Workshops</div>
+                        <div class="text-xs text-slate-600 mb-2">
+                            Workshops are sold as a pair — pick one morning and one afternoon session.
+                        </div>
+
+                        <div class="text-sm font-semibold text-slate-700 mt-3 mb-1">Morning (08.00 &ndash; 11.00)</div>
+                        <div class="grid gap-2 md:grid-cols-1">
+                            <div v-for="ws in morningWorkshops" :key="ws.id" @click="selectWorkshop(ws)"
+                                :class="isWorkshopSelected(ws) ? 'bg-blue-200' : 'bg-blue-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200">
+                                <div class="mb-3">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm italic" v-if="!first.available">Full Booked</div>
-                                        <div class="text-sm italic" v-if="first.available">{{ first.quota -
-                                            first.transactions_count }} available</div>
+                                        <div class="text-sm italic" v-if="!ws.available">Full Booked</div>
+                                        <div class="text-sm italic" v-else>{{ ws.quota - ws.transactions_count }} available</div>
                                     </div>
-                                    <div class="flex items-center">
-                                        <div class="text-xs text-blue-900" v-if="first.skp_tag">
-                                            {{ first.skp_tag }}
-                                        </div>
-                                    </div>
+                                    <div class="text-xs text-blue-900" v-if="ws.skp_tag">{{ ws.skp_tag }}</div>
                                 </div>
-
                                 <div class="font-semibold text-blue-900 flex">
-                                    <div v-if="first.available" class="flex items-center">
-                                        <unicon v-if="form.workshop === first.id" name="check-square" width="20"
-                                            height="20" fill="#7f1f28"></unicon>
-                                        <unicon v-if="form.workshop !== first.id" name="square" width="20" height="20"
-                                            fill="#7f1f28"></unicon>
+                                    <div v-if="ws.available" class="flex items-center">
+                                        <unicon v-if="isWorkshopSelected(ws)" name="check-square" width="20" height="20" fill="#7f1f28"></unicon>
+                                        <unicon v-else name="square" width="20" height="20" fill="#7f1f28"></unicon>
                                     </div>
-                                    <div class="ml-1">
-                                        {{ first.name }}
+                                    <div class="ml-1">{{ ws.name }}</div>
+                                </div>
+                                <div class="text-xs mb-1">{{ $filters.formatDayDateTime(ws.date_start) }}</div>
+                                <div class="text-xs mb-1 italic">{{ ws.title }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-sm font-semibold text-slate-700 mt-4 mb-1">Afternoon (13.00 &ndash; 16.00)</div>
+                        <div class="grid gap-2 md:grid-cols-1">
+                            <div v-for="ws in afternoonWorkshops" :key="ws.id" @click="selectWorkshop(ws)"
+                                :class="isWorkshopSelected(ws) ? 'bg-blue-200' : 'bg-blue-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200">
+                                <div class="mb-3">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-sm italic" v-if="!ws.available">Full Booked</div>
+                                        <div class="text-sm italic" v-else>{{ ws.quota - ws.transactions_count }} available</div>
                                     </div>
+                                    <div class="text-xs text-blue-900" v-if="ws.skp_tag">{{ ws.skp_tag }}</div>
                                 </div>
-                                <div class="text-xs mb-1">
-                                    {{ $filters.formatDayDateTime(first.date_start) }}
+                                <div class="font-semibold text-blue-900 flex">
+                                    <div v-if="ws.available" class="flex items-center">
+                                        <unicon v-if="isWorkshopSelected(ws)" name="check-square" width="20" height="20" fill="#7f1f28"></unicon>
+                                        <unicon v-else name="square" width="20" height="20" fill="#7f1f28"></unicon>
+                                    </div>
+                                    <div class="ml-1">{{ ws.name }}</div>
                                 </div>
-                                <div class="text-xs mb-1 italic">
-                                    {{ first.title }}
+                                <div class="text-xs mb-1">{{ $filters.formatDayDateTime(ws.date_start) }}</div>
+                                <div class="text-xs mb-1 italic">{{ ws.title }}</div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-if="events.accommodations && events.accommodations.length" class="mb-3">
+                        <div class="font-semibold text-blue-900 mb-1">Add on: Deluxe Room</div>
+                        <div class="text-xs text-slate-600 mb-2">
+                            Royal Ambarukmo Hotel Yogyakarta &mdash; 1&ndash;2 persons, non-smoking.
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="text-sm font-semibold text-slate-700 mb-1">Bed type</div>
+                            <div class="flex gap-2">
+                                <div v-for="bed in bed_types" :key="bed.value" @click="form.accommodation_tag = bed.value"
+                                    :class="form.accommodation_tag === bed.value ? 'bg-blue-200 border-blue-400' : 'bg-blue-50'"
+                                    class="px-3 py-2 border rounded-lg cursor-pointer hover:bg-blue-100 text-sm">
+                                    <div class="font-semibold text-blue-900">{{ bed.label }}</div>
+                                    <div class="text-xs text-slate-600">{{ bed.quota }} quota left</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid gap-2 md:grid-cols-1">
+                            <div v-for="acm in events.accommodations" :key="acm.id" @click="selectAccommodation(acm)"
+                                :class="form.accommodation === acm.slug ? 'bg-blue-200' : 'bg-blue-50'"
+                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200">
+                                <div class="flex justify-between items-center">
+                                    <div class="font-semibold text-blue-900 flex items-center">
+                                        <unicon v-if="form.accommodation === acm.slug" name="check-square" width="20" height="20" fill="#7f1f28"></unicon>
+                                        <unicon v-else name="square" width="20" height="20" fill="#7f1f28"></unicon>
+                                        <div class="ml-1">{{ acm.name }}</div>
+                                    </div>
+                                    <div class="font-semibold text-blue-900 text-sm">{{ $filters.currency(acm.price) }}</div>
+                                </div>
+                                <div class="text-xs mt-1 italic">{{ acm.subtitle }}</div>
+                                <div class="text-sm italic" v-if="!acm.available">Full Booked</div>
                             </div>
                         </div>
                     </div>
@@ -311,9 +366,16 @@ export default {
             confirm_modal: '',
             form: {
                 symposium: null,
-                workshop: null,
+                workshop_first: null,
+                workshop_second: null,
+                accommodation: null,
+                accommodation_tag: 'twin',
                 plataran_img: '',
             },
+            bed_types: [
+                { value: 'twin', label: 'Twin Bed', quota: 10 },
+                { value: 'double', label: 'Double Bed', quota: 5 },
+            ],
             users: [
                 { name: '', email: '', nik: '' },
                 { name: '', email: '', nik: '' },
@@ -329,6 +391,7 @@ export default {
             events: {
                 symposium: [],
                 workshop: [],
+                accommodations: [],
             },
             data_raw: {
                 symposium: true,
@@ -348,6 +411,14 @@ export default {
             }
         }
     },
+    computed: {
+        morningWorkshops() {
+            return (this.events.workshop || []).filter(ws => ws.session === 'morning')
+        },
+        afternoonWorkshops() {
+            return (this.events.workshop || []).filter(ws => ws.session === 'afternoon')
+        },
+    },
     methods: {
         loadData() {
             this.authGet('pub/events-list-jcu26', {
@@ -356,7 +427,7 @@ export default {
                 .then((data) => {
                     if (!data || data.success === false) {
                         this.registration_available = false
-                        this.events = { symposium: null, workshop: [] }
+                        this.events = { symposium: null, workshop: [], accommodations: [] }
                         this.data_raw.symposium = false
                         this.data_raw.workshop = false
                         this.pricing = {
@@ -373,7 +444,7 @@ export default {
                     this.registration_available = true
                     this.events = data.result.items
                     if(this.events.symposium){
-                        this.form.symposium = this.events.symposium['id'];
+                        this.form.symposium = this.events.symposium['slug'];
                     } else {
                         this.data_raw.symposium = false
                     }
@@ -418,23 +489,36 @@ export default {
                     }
                 })
         },
-        selectWorkshop(id, first) {
-            if (first.available) {
-                if (this.form.workshop !== id) {
-                    this.form.workshop = id
-                } else {
-                    this.form.workshop = ''
-                }
-            } else {
-                this.form.workshop = ''
+        workshopSlot(ws) {
+            return ws.session === 'morning' ? 'workshop_first' : 'workshop_second'
+        },
+        isWorkshopSelected(ws) {
+            return this.form[this.workshopSlot(ws)] === ws.slug
+        },
+        selectWorkshop(ws) {
+            if (!ws.available) {
+                return
             }
+
+            // one workshop per session — picking another in the same slot replaces it
+            let slot = this.workshopSlot(ws)
+            this.form[slot] = this.form[slot] === ws.slug ? null : ws.slug
+
+            this.calculatePrice()
+        },
+        selectAccommodation(acm) {
+            if (!acm.available) {
+                return
+            }
+
+            this.form.accommodation = this.form.accommodation === acm.slug ? null : acm.slug
             this.calculatePrice()
         },
         selectSymposium() {
             if (this.form.symposium) {
                 this.form.symposium = ''
             } else {
-                this.form.symposium = this.events.symposium.id
+                this.form.symposium = this.events.symposium.slug
             }
             this.calculatePrice()
         },
@@ -442,8 +526,21 @@ export default {
             this.member_modal.show()
         },
         toPayment() {
-            if (!this.form.symposium && !this.form.workshop) {
-                this.toaster({ title: "Please select at least one event", icon: 'warning' })
+            let workshops = [this.form.workshop_first, this.form.workshop_second].filter(Boolean)
+
+            if (!this.form.symposium && workshops.length === 0) {
+                this.toaster({ title: "Please select at least one event", icon: 'warning', dismissible: true })
+                return
+            }
+
+            // workshops are only sold alongside the symposium, and only as a pair
+            if (workshops.length > 0 && !this.form.symposium) {
+                this.toaster({ title: "Workshops are only available together with the Symposium", icon: 'warning', dismissible: true })
+                return
+            }
+
+            if (workshops.length === 1) {
+                this.toaster({ title: "Please select one morning and one afternoon workshop", icon: 'warning', dismissible: true })
                 return
             }
 
@@ -451,7 +548,10 @@ export default {
             this.authPost('pub/create-payment-jcu26', {
                 items: {
                     symposium: this.form.symposium,
-                    workshop: this.form.workshop,
+                    workshop_first: this.form.workshop_first,
+                    workshop_second: this.form.workshop_second,
+                    accommodation: this.form.accommodation,
+                    accommodation_tag: this.form.accommodation_tag,
                 },
                 props: {
                     nik: this.form.nik,

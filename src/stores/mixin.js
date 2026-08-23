@@ -188,12 +188,15 @@ const mixin = {
 			}
 
 		},
-		toaster({ title = 'Success!', icon = 'success' }) {
+		// dismissible: true keeps the toast on screen until the user closes it,
+		// for messages they need to act on rather than just be informed of.
+		toaster({ title = 'Success!', icon = 'success', dismissible = false }) {
 			Swal.fire({
 				toast: true,
 				position: 'top',
 				showConfirmButton: false,
-				timer: 2000,
+				showCloseButton: dismissible,
+				timer: dismissible ? undefined : 2000,
 				timerProgressBar: false,
 				icon: icon,
 				title: title,
