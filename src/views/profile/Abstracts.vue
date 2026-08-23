@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex justify-between mb-4">
-            <div class="text-2xl font-bold text-slate-900 mb-3" id="edit-add">Abstracts</div>
+            <div class="text-2xl font-bold text-indigo-900 mb-3" id="edit-add">Abstracts</div>
             <div>
                 <button @click="addNew" v-if="is_open"
                     class="text-white bg-gradient-to-r from-violet-600 to-teal-500 hover:shadow-lg hover:shadow-violet-200 font-medium rounded-full text-base px-8 py-2.5 text-center mr-3 md:mr-0 transition-shadow duration-200">
@@ -15,8 +15,8 @@
         </div>
         <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/70 ring-1 ring-slate-100 p-6 mb-4" v-if="open_form">
             <div class="mb-4">
-                <b class="text-slate-900" v-if="!edit_mode">Add New Abstract</b>
-                <b class="text-slate-900" v-if="edit_mode">Edit Abstract</b>
+                <b class="text-indigo-900" v-if="!edit_mode">Add New Abstract</b>
+                <b class="text-indigo-900" v-if="edit_mode">Edit Abstract</b>
             </div>
             <div>
                 <label class="text-sm font-medium text-slate-700">Author(s)</label>
@@ -246,7 +246,7 @@
                 <div class="relative bg-white rounded-2xl shadow-xl">
                     <!-- Modal header -->
                     <div class="flex items-start justify-between p-4 border-b border-slate-100 rounded-t-2xl">
-                        <h3 class="text-xl font-semibold text-slate-900">
+                        <h3 class="text-xl font-semibold text-indigo-900">
                             Add Author
                         </h3>
                         <button type="button" @click="author_modal.hide()"

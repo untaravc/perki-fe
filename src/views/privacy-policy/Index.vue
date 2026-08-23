@@ -14,7 +14,7 @@
                 class="inline-flex items-center gap-2 mb-4 rounded-full bg-gradient-to-r from-violet-100 to-teal-100 text-violet-700 py-1.5 px-5 text-sm font-medium">
                 Legal
             </div>
-            <div class="text-4xl font-bold text-slate-900">
+            <div class="text-4xl font-bold text-indigo-900">
                 Privacy Policy
             </div>
             <div class="text-sm text-slate-500 mt-2">Last updated: 1 August 2026</div>
@@ -28,7 +28,7 @@
                 below.
             </p>
 
-            <h2 class="text-xl font-bold text-slate-900 mt-8 mb-3">1. Information We Collect</h2>
+            <h2 class="text-xl font-bold text-indigo-900 mt-8 mb-3">1. Information We Collect</h2>
             <p class="text-slate-600 leading-relaxed mb-2">When you register, submit an abstract, or complete a
                 payment, we may collect:</p>
             <ul class="list-disc ml-5 text-slate-600 space-y-1 mb-3">
@@ -39,7 +39,7 @@
                 <li>Payment and transaction records related to event registration</li>
             </ul>
 
-            <h2 class="text-xl font-bold text-slate-900 mt-8 mb-3">2. How We Use Your Information</h2>
+            <h2 class="text-xl font-bold text-indigo-900 mt-8 mb-3">2. How We Use Your Information</h2>
             <ul class="list-disc ml-5 text-slate-600 space-y-1 mb-3">
                 <li>To process and confirm your event registration and payment</li>
                 <li>To issue attendance certificates and SKP learning credits</li>
@@ -49,7 +49,7 @@
                 <li>To respond to your inquiries and provide support</li>
             </ul>
 
-            <h2 class="text-xl font-bold text-slate-900 mt-8 mb-3">3. Sharing Your Information</h2>
+            <h2 class="text-xl font-bold text-indigo-900 mt-8 mb-3">3. Sharing Your Information</h2>
             <p class="text-slate-600 leading-relaxed mb-3">
                 We do not sell your personal data to third parties. Your NIK and related learning data may be shared
                 with the Ministry of Health's Plataran Sehat / SATUSEHAT platform solely for the purpose of issuing
@@ -58,14 +58,14 @@
                 gateway strictly to complete your transaction.
             </p>
 
-            <h2 class="text-xl font-bold text-slate-900 mt-8 mb-3">4. Data Storage &amp; Security</h2>
+            <h2 class="text-xl font-bold text-indigo-900 mt-8 mb-3">4. Data Storage &amp; Security</h2>
             <p class="text-slate-600 leading-relaxed mb-3">
                 We take reasonable technical and organizational measures to protect your personal information from
                 unauthorized access, alteration, or disclosure. Your session is kept using your browser's local
                 storage so you remain signed in between visits; you can sign out at any time from your account menu.
             </p>
 
-            <h2 class="text-xl font-bold text-slate-900 mt-8 mb-3">5. Your Rights</h2>
+            <h2 class="text-xl font-bold text-indigo-900 mt-8 mb-3">5. Your Rights</h2>
             <p class="text-slate-600 leading-relaxed mb-3">
                 You may access and update most of your information at any time from your
                 <router-link to="/profile/info" class="text-violet-600 hover:text-violet-700 font-medium">account
@@ -73,13 +73,13 @@
                 please contact the organizing committee using the details below.
             </p>
 
-            <h2 class="text-xl font-bold text-slate-900 mt-8 mb-3">6. Changes to This Policy</h2>
+            <h2 class="text-xl font-bold text-indigo-900 mt-8 mb-3">6. Changes to This Policy</h2>
             <p class="text-slate-600 leading-relaxed mb-3">
                 We may update this Privacy Policy from time to time to reflect changes in our practices. Any changes
                 will be posted on this page with a revised "last updated" date.
             </p>
 
-            <h2 class="text-xl font-bold text-slate-900 mt-8 mb-3">7. Contact Us</h2>
+            <h2 class="text-xl font-bold text-indigo-900 mt-8 mb-3">7. Contact Us</h2>
             <p class="text-slate-600 leading-relaxed">
                 If you have any questions about this Privacy Policy or how your data is handled, please reach out
                 through our

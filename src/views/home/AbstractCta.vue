@@ -9,7 +9,7 @@
                         <unicon name="file-alt" fill="white" width="24"></unicon>
                     </div>
                     <div>
-                        <div class="font-semibold text-2xl text-slate-900">
+                        <div class="font-semibold text-2xl text-indigo-900">
                             Abstract Submission
                         </div>
                         <div class="text-sm text-slate-500 mt-1">

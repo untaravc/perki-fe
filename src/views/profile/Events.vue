@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-2xl font-bold text-slate-900 mb-3">My Event</div>
+        <div class="text-2xl font-bold text-indigo-900 mb-3">My Event</div>
         <div v-if="data_content.length === 0" class="p-6 text-center italic text-slate-400 bg-white rounded-3xl shadow-xl shadow-slate-200/70 ring-1 ring-slate-100">
             no data
         </div>

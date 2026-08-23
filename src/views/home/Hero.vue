@@ -9,7 +9,7 @@
                             <unicon name="schedule" width="16" height="16" fill="currentColor"></unicon>
                             {{ data_content[index]['date'] }}
                         </div>
-                        <h1 class="font-bold text-slate-900 leading-[1.1] mb-5"
+                        <h1 class="font-bold text-indigo-900 leading-[1.1] mb-5"
                             :class="data_content[index]['title'] && data_content[index]['title'].length > 30 ? 'text-3xl lg:text-5xl' : 'text-4xl lg:text-6xl'">
                             {{ data_content[index]['title'] }}
                         </h1>

@@ -18,21 +18,21 @@
                 </div>
                 <div class="md:col-span-3 p-6 md:p-8 flex items-center justify-center">
                     <div class="grid grid-cols-4 gap-3 sm:gap-6 w-full">
-                        <div class="text-center rounded-2xl bg-violet-50 py-4 px-2">
-                            <div class="text-3xl sm:text-4xl font-bold text-violet-600 tabular-nums">{{ days }}</div>
-                            <div class="text-xs sm:text-sm text-slate-500 mt-1">Days</div>
+                        <div class="text-center rounded-2xl bg-cream-100 ring-1 ring-amber-200/60 py-4 px-2">
+                            <div class="text-3xl sm:text-4xl font-extrabold text-indigo-800 tabular-nums">{{ days }}</div>
+                            <div class="text-xs sm:text-sm font-medium uppercase tracking-wide text-indigo-900/60 mt-1">Days</div>
                         </div>
-                        <div class="text-center rounded-2xl bg-fuchsia-50 py-4 px-2">
-                            <div class="text-3xl sm:text-4xl font-bold text-fuchsia-500 tabular-nums">{{ hours }}</div>
-                            <div class="text-xs sm:text-sm text-slate-500 mt-1">Hours</div>
+                        <div class="text-center rounded-2xl bg-cream-100 ring-1 ring-amber-200/60 py-4 px-2">
+                            <div class="text-3xl sm:text-4xl font-extrabold text-indigo-800 tabular-nums">{{ hours }}</div>
+                            <div class="text-xs sm:text-sm font-medium uppercase tracking-wide text-indigo-900/60 mt-1">Hours</div>
                         </div>
-                        <div class="text-center rounded-2xl bg-sky-50 py-4 px-2">
-                            <div class="text-3xl sm:text-4xl font-bold text-sky-500 tabular-nums">{{ minutes }}</div>
-                            <div class="text-xs sm:text-sm text-slate-500 mt-1">Minutes</div>
+                        <div class="text-center rounded-2xl bg-cream-100 ring-1 ring-amber-200/60 py-4 px-2">
+                            <div class="text-3xl sm:text-4xl font-extrabold text-indigo-800 tabular-nums">{{ minutes }}</div>
+                            <div class="text-xs sm:text-sm font-medium uppercase tracking-wide text-indigo-900/60 mt-1">Minutes</div>
                         </div>
-                        <div class="text-center rounded-2xl bg-teal-50 py-4 px-2">
-                            <div class="text-3xl sm:text-4xl font-bold text-teal-500 tabular-nums">{{ seconds }}</div>
-                            <div class="text-xs sm:text-sm text-slate-500 mt-1">Seconds</div>
+                        <div class="text-center rounded-2xl bg-cream-100 ring-1 ring-amber-200/60 py-4 px-2">
+                            <div class="text-3xl sm:text-4xl font-extrabold text-indigo-800 tabular-nums">{{ seconds }}</div>
+                            <div class="text-xs sm:text-sm font-medium uppercase tracking-wide text-indigo-900/60 mt-1">Seconds</div>
                         </div>
                     </div>
                 </div>

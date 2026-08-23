@@ -34,60 +34,50 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="data_raw.workshop && count < 1" class="mb-3">
-                        <div class="font-semibold text-blue-900 mb-1">Workshops</div>
-                        <div class="text-xs text-slate-600 mb-2">
-                            Workshops are sold as a pair — pick one morning and one afternoon session.
+                    <div v-if="data_raw.workshop && count < 1" class="mb-4">
+                        <div class="font-semibold text-indigo-900 mb-1">Workshops</div>
+                        <div class="text-xs text-slate-600 mb-3">
+                            The two sessions run <span class="font-semibold text-blue-700">in parallel</span> — within
+                            one session all workshops happen at the same time, so you can only attend one of them.
+                            Pick one workshop from each session.
                         </div>
 
-                        <div class="text-sm font-semibold text-slate-700 mt-3 mb-1">Morning (08.00 &ndash; 11.00)</div>
-                        <div class="grid gap-2 md:grid-cols-1">
-                            <div v-for="ws in morningWorkshops" :key="ws.id" @click="selectWorkshop(ws)"
-                                :class="isWorkshopSelected(ws) ? 'bg-blue-200' : 'bg-blue-50'"
-                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200">
-                                <div class="mb-3">
-                                <div class="flex justify-between items-center">
+                        <div class="grid gap-3 md:grid-cols-2">
+                            <div v-for="session in workshopSessions" :key="session.slot"
+                                class="rounded-xl border border-indigo-100 bg-white/60 overflow-hidden">
+                                <div class="flex items-center justify-between bg-indigo-800 px-4 py-2 text-white">
                                     <div>
-                                        <div class="text-sm italic" v-if="!ws.available">Full Booked</div>
-                                        <div class="text-sm italic" v-else>{{ ws.quota - ws.transactions_count }} available</div>
+                                        <div class="text-sm font-bold uppercase tracking-wide">{{ session.name }}</div>
+                                        <div class="text-xs text-white/80">{{ session.time }}</div>
                                     </div>
-                                    <div class="text-xs text-blue-900" v-if="ws.skp_tag">{{ ws.skp_tag }}</div>
-                                </div>
-                                <div class="font-semibold text-blue-900 flex">
-                                    <div v-if="ws.available" class="flex items-center">
-                                        <unicon v-if="isWorkshopSelected(ws)" name="check-square" width="20" height="20" fill="#7f1f28"></unicon>
-                                        <unicon v-else name="square" width="20" height="20" fill="#7f1f28"></unicon>
+                                    <div class="text-xs rounded-full bg-white/15 px-2 py-1">
+                                        {{ form[session.slot] ? '1 selected' : 'choose 1' }}
                                     </div>
-                                    <div class="ml-1">{{ ws.name }}</div>
                                 </div>
-                                <div class="text-xs mb-1">{{ $filters.formatDayDateTime(ws.date_start) }}</div>
-                                <div class="text-xs mb-1 italic">{{ ws.title }}</div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="text-sm font-semibold text-slate-700 mt-4 mb-1">Afternoon (13.00 &ndash; 16.00)</div>
-                        <div class="grid gap-2 md:grid-cols-1">
-                            <div v-for="ws in afternoonWorkshops" :key="ws.id" @click="selectWorkshop(ws)"
-                                :class="isWorkshopSelected(ws) ? 'bg-blue-200' : 'bg-blue-50'"
-                                class="p-4 border first:rounded-t-lg last:rounded-bl-lg last:rounded-br-lg cursor-pointer hover:bg-blue-200">
-                                <div class="mb-3">
-                                <div class="flex justify-between items-center">
-                                    <div>
-                                        <div class="text-sm italic" v-if="!ws.available">Full Booked</div>
-                                        <div class="text-sm italic" v-else>{{ ws.quota - ws.transactions_count }} available</div>
+                                <div class="p-2 space-y-2">
+                                    <div v-for="ws in session.items" :key="ws.id" @click="selectWorkshop(ws)"
+                                        :class="[
+                                            isWorkshopSelected(ws) ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-500' : 'border-slate-200 bg-white',
+                                            ws.available ? 'cursor-pointer hover:border-blue-400' : 'opacity-50 cursor-not-allowed'
+                                        ]"
+                                        class="rounded-lg border p-3 transition-colors">
+                                        <div class="flex items-start gap-2">
+                                            <div class="pt-0.5 shrink-0" v-if="ws.available">
+                                                <unicon v-if="isWorkshopSelected(ws)" name="check-square" width="18" height="18" fill="#a5121f"></unicon>
+                                                <unicon v-else name="square" width="18" height="18" fill="#94a3b8"></unicon>
+                                            </div>
+                                            <div class="min-w-0">
+                                                <div class="font-semibold text-sm text-indigo-900">{{ ws.name }}</div>
+                                                <div class="text-xs text-slate-600 mt-0.5">{{ ws.title }}</div>
+                                                <div class="mt-1 flex items-center gap-2 text-xs">
+                                                    <span v-if="!ws.available" class="italic text-slate-500">Full Booked</span>
+                                                    <span v-else class="text-slate-500">{{ ws.quota - ws.transactions_count }} available</span>
+                                                    <span class="text-indigo-700" v-if="ws.skp_tag">{{ ws.skp_tag }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="text-xs text-blue-900" v-if="ws.skp_tag">{{ ws.skp_tag }}</div>
-                                </div>
-                                <div class="font-semibold text-blue-900 flex">
-                                    <div v-if="ws.available" class="flex items-center">
-                                        <unicon v-if="isWorkshopSelected(ws)" name="check-square" width="20" height="20" fill="#7f1f28"></unicon>
-                                        <unicon v-else name="square" width="20" height="20" fill="#7f1f28"></unicon>
-                                    </div>
-                                    <div class="ml-1">{{ ws.name }}</div>
-                                </div>
-                                <div class="text-xs mb-1">{{ $filters.formatDayDateTime(ws.date_start) }}</div>
-                                <div class="text-xs mb-1 italic">{{ ws.title }}</div>
                                 </div>
                             </div>
                         </div>
@@ -412,11 +402,24 @@ export default {
         }
     },
     computed: {
-        morningWorkshops() {
-            return (this.events.workshop || []).filter(ws => ws.session === 'morning')
-        },
-        afternoonWorkshops() {
-            return (this.events.workshop || []).filter(ws => ws.session === 'afternoon')
+        // The eight workshops run as two parallel blocks of four. Everything inside a
+        // block is simultaneous, so only one workshop per block can be attended.
+        workshopSessions() {
+            let all = this.events.workshop || []
+            return [
+                {
+                    slot: 'workshop_first',
+                    name: 'Session 1 — Morning',
+                    time: '08.00 – 11.00, 1 October 2026',
+                    items: all.filter(ws => ws.session === 'morning'),
+                },
+                {
+                    slot: 'workshop_second',
+                    name: 'Session 2 — Afternoon',
+                    time: '13.00 – 16.00, 1 October 2026',
+                    items: all.filter(ws => ws.session === 'afternoon'),
+                },
+            ]
         },
     },
     methods: {

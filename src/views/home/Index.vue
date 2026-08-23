@@ -18,7 +18,7 @@
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
         <Schedule></Schedule>
-        <!-- <Pricing></Pricing> -->
+        <Pricing></Pricing>
         <!-- <div class="bg-amber-50">
             <Speakers></Speakers>
         </div> -->

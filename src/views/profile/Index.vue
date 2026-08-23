@@ -11,7 +11,7 @@
 
         <div class="py-8" style="min-height: calc(100vh - 195px);">
             <div class="flex py-6">
-                <div class="text-2xl font-bold text-slate-900">
+                <div class="text-2xl font-bold text-indigo-900">
                     My Account
                 </div>
             </div>

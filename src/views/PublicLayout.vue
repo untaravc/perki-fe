@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gradient-to-br from-cream-50 to-cream-200">
+    <div class="jcu-ground">
         <Header></Header>
         <router-view></router-view>
         <Footer></Footer>

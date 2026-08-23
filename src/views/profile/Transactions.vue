@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-2xl font-bold text-slate-900 mb-3">Transaction</div>
+        <div class="text-2xl font-bold text-indigo-900 mb-3">Transaction</div>
         <div v-if="data_content.length === 0" class="p-6 text-center italic text-slate-400 bg-white rounded-3xl shadow-xl shadow-slate-200/70 ring-1 ring-slate-100">
             no data
         </div>
@@ -62,7 +62,7 @@
 <!--                    </div>-->
                 </div>
                 <div>
-                    <div class="font-bold text-slate-900 text-right mb-2">
+                    <div class="font-bold text-indigo-900 text-right mb-2">
                         {{ $filters.currency(trx.total) }}
                     </div>
                     <router-link v-if="trx.status === 100"

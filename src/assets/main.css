@@ -1,6 +1,57 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 @import url('./style.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── Jogja Cardiology Update 2026 — poster design language ─────────────────
+   The registration-fee poster is built from three repeating parts: a warm
+   cream ground carrying a faint gold batik watermark, a navy → crimson
+   gradient pill, and crimson display headings over navy section labels. */
+
+@layer components {
+  /* The signature pill: label on the left, value on the right. */
+  .jcu-pill {
+    @apply flex items-center justify-between gap-4 rounded-full
+           bg-gradient-to-r from-indigo-800 via-indigo-700 to-blue-700
+           px-6 py-3 text-white shadow-sm md:px-8 md:py-4;
+  }
+
+  .jcu-pill-label {
+    @apply text-base font-bold leading-tight md:text-xl;
+  }
+
+  .jcu-pill-value {
+    @apply shrink-0 text-base font-bold tabular-nums md:text-xl;
+  }
+
+  /* Crimson display heading, as used for "REGISTRATION FEE". */
+  .jcu-heading {
+    @apply text-center font-extrabold uppercase tracking-tight text-blue-500;
+  }
+
+  /* Navy section label sitting above a group of pills. */
+  .jcu-eyebrow {
+    @apply text-center text-lg font-extrabold uppercase tracking-wide text-indigo-800 md:text-xl;
+  }
+
+  /* Solid crimson call to action. */
+  .jcu-cta {
+    @apply inline-flex items-center justify-center gap-2 rounded-full
+           bg-blue-500 px-10 py-3 text-lg font-extrabold uppercase
+           tracking-wide text-white transition-colors duration-200
+           hover:bg-blue-600;
+  }
+}
+
+/* Cream ground with the poster's faint gold ornament. Kept as a very low
+   opacity radial wash so body copy stays legible over it. */
+.jcu-ground {
+  background-color: #fdfaf3;
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(212, 167, 67, 0.10) 0, transparent 38%),
+    radial-gradient(circle at 85% 30%, rgba(212, 167, 67, 0.08) 0, transparent 42%),
+    radial-gradient(circle at 50% 88%, rgba(212, 167, 67, 0.09) 0, transparent 45%);
+  background-attachment: fixed;
+}

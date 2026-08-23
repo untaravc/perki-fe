@@ -9,36 +9,40 @@ module.exports = {
     extend:
     {
       colors: {
-        // Poster palette — Jogja Cardiology Update 2026
-        // Primary: deep maroon (mapped onto `blue`)
+        // ── Jogja Cardiology Update 2026 ────────────────────────────────────
+        // Taken from the registration-fee poster: a deep royal navy and a
+        // crimson red, joined left-to-right in the signature gradient pill,
+        // over a warm cream ground with antique-gold ornament.
+
+        // Crimson (poster pill right edge / "REGISTRATION FEE" heading)
         blue: {
-          50: '#fbf4f4',
-          100: '#f7e7e8',
-          200: '#efd0d2',
-          300: '#e2adb0',
-          400: '#cf8085',
-          500: '#bc5860',
-          600: '#a73c44',
-          700: '#9b1c22',
-          800: '#7f1f28',
-          900: '#641920',
-          950: '#3d0e13'
+          50: '#fdf3f3',
+          100: '#fbe3e4',
+          200: '#f8cccd',
+          300: '#f2a5a8',
+          400: '#e9737a',
+          500: '#e01b24',
+          600: '#c2151d',
+          700: '#a5121f',
+          800: '#87101a',
+          900: '#6d0f16',
+          950: '#3f0509'
         },
-        // Secondary: navy blue (mapped onto `indigo`) — poster "CARDIOLOGY UPDATE"
+        // Royal navy (poster pill left edge / section labels)
         indigo: {
-          50: '#f1f6fb',
-          100: '#dde9f4',
-          200: '#c0d6ea',
-          300: '#93b7d7',
-          400: '#5f8fbd',
-          500: '#3d6da0',
-          600: '#2d5583',
-          700: '#26466a',
-          800: '#1e3a5f',
-          900: '#172c48',
-          950: '#101d30'
+          50: '#eef2fa',
+          100: '#d9e2f4',
+          200: '#b7c8e9',
+          300: '#8aa5d9',
+          400: '#5a7cc4',
+          500: '#3b5cab',
+          600: '#2c468d',
+          700: '#243872',
+          800: '#1b2b66',
+          900: '#152150',
+          950: '#0b1230'
         },
-        // Antique gold (mapped onto `yellow` and `amber`) — poster ornaments & "JOGJA"
+        // Antique gold — logo ornament and rules
         yellow: {
           50: '#fbf7eb',
           100: '#f5ead0',
@@ -65,41 +69,69 @@ module.exports = {
           900: '#5c4222',
           950: '#362512'
         },
-        // Cream / sand — poster background
+        // Cream / sand — poster ground
         cream: {
-          50: '#fdfbf6',
-          100: '#f8f2e6',
-          200: '#f1e8d4',
-          300: '#e6d7b8',
-          400: '#d8c090',
+          50: '#fdfaf3',
+          100: '#faf4e8',
+          200: '#f3e9d6',
+          300: '#e8d9bb',
+          400: '#d9c294',
           500: '#c9a860'
         },
-        // Warm rose tones that harmonize with maroon (purple/cyan aliases)
-        purple: {
-          50: '#fdf8f8',
-          100: '#f7e8e8',
-          200: '#edd2d3',
-          300: '#ddb0b2',
-          400: '#c9888c',
-          500: '#b16469',
-          600: '#9d4c51',
-          700: '#8a3b40',
-          800: '#742f35',
-          900: '#5f262b',
-          950: '#391518'
+        // Aliases so legacy class names stay on-brand:
+        // violet + cyan resolve to navy, teal + purple to crimson, which keeps
+        // every existing `from-violet-… to-teal-…` gradient reading navy → crimson.
+        violet: {
+          50: '#eef2fa',
+          100: '#d9e2f4',
+          200: '#b7c8e9',
+          300: '#8aa5d9',
+          400: '#5a7cc4',
+          500: '#3b5cab',
+          600: '#2c468d',
+          700: '#243872',
+          800: '#1b2b66',
+          900: '#152150',
+          950: '#0b1230'
         },
         cyan: {
-          50: '#faf7f8',
-          100: '#f3ecee',
-          200: '#e8dadd',
-          300: '#d9bcc1',
-          400: '#c89ca2',
-          500: '#b47b83',
-          600: '#a1616a',
-          700: '#8f4b54',
-          800: '#763e45',
-          900: '#613238',
-          950: '#3b1d22'
+          50: '#eef2fa',
+          100: '#d9e2f4',
+          200: '#b7c8e9',
+          300: '#8aa5d9',
+          400: '#5a7cc4',
+          500: '#3b5cab',
+          600: '#2c468d',
+          700: '#243872',
+          800: '#1b2b66',
+          900: '#152150',
+          950: '#0b1230'
+        },
+        teal: {
+          50: '#fdf3f3',
+          100: '#fbe3e4',
+          200: '#f8cccd',
+          300: '#f2a5a8',
+          400: '#e9737a',
+          500: '#e01b24',
+          600: '#c2151d',
+          700: '#a5121f',
+          800: '#87101a',
+          900: '#6d0f16',
+          950: '#3f0509'
+        },
+        purple: {
+          50: '#fdf3f3',
+          100: '#fbe3e4',
+          200: '#f8cccd',
+          300: '#f2a5a8',
+          400: '#e9737a',
+          500: '#e01b24',
+          600: '#c2151d',
+          700: '#a5121f',
+          800: '#87101a',
+          900: '#6d0f16',
+          950: '#3f0509'
         }
       },
       fontFamily: {

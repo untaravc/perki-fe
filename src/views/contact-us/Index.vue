@@ -14,7 +14,7 @@
                 class="inline-flex items-center gap-2 mb-4 rounded-full bg-gradient-to-r from-violet-100 to-teal-100 text-violet-700 py-1.5 px-5 text-sm font-medium">
                 Get in Touch
             </div>
-            <div class="text-4xl font-bold text-slate-900">
+            <div class="text-4xl font-bold text-indigo-900">
                 Contact Us
             </div>
         </div>
@@ -34,11 +34,11 @@
                         <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-teal-500 text-white shadow-md shadow-violet-100">
                             <unicon name="info-circle" fill="white" width="20"></unicon>
                         </div>
-                        <div class="text-2xl font-bold text-slate-900">For more information</div>
+                        <div class="text-2xl font-bold text-indigo-900">For more information</div>
                     </div>
 
                     <div class="mb-3">
-                        <div class="text-lg font-bold text-slate-900">Perki Jogja</div>
+                        <div class="text-lg font-bold text-indigo-900">Perki Jogja</div>
                     </div>
                     <div class="mb-5 flex items-start gap-2 text-slate-600">
                         <unicon name="location-point" width="18" class="mt-0.5 shrink-0" fill="currentColor"></unicon>

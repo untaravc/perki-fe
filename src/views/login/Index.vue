@@ -15,19 +15,19 @@
                     <img src="https://firebasestorage.googleapis.com/v0/b/unt-dev.firebasestorage.app/o/Perki%2FJCU26%2Flogo_jcu26.png?alt=media&token=35d5c58c-1c43-47fc-8fe0-9b611950eaba"
                         alt="" class="h-16 mb-4">
                 </div>
-                <div class="font-bold text-2xl text-slate-900">Sign In</div>
+                <div class="font-bold text-2xl text-indigo-900">Sign In</div>
                 <div class="text-sm text-slate-500 mb-5">Sign in with your account or Google.</div>
                 <div class="mt-3">
                     <label for="email" class="block mb-2 text-sm font-medium text-slate-700">E-Mail <span
                             class="text-red-500">*</span></label>
                     <input type="email" id="email" placeholder="ex. mail@example.com" v-model="form.email"
-                        class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                        class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 </div>
                 <div class="mt-3">
                     <label for="password" class="block mb-2 text-sm font-medium text-slate-700">Password <span
                             class="text-red-500">*</span></label>
                     <input type="password" id="password" placeholder="********" v-model="form.password"
-                        class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                        class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 </div>
                 <div class="mt-5">
                     <button @click="login" :disabled="disabled"

@@ -9,8 +9,8 @@
             </a>
             <div class="flex md:order-2 items-center">
                 <router-link to="/register"
-                    class="flex items-center text-white bg-gradient-to-r from-violet-600 to-teal-500 hover:shadow-lg hover:shadow-violet-200 focus:ring-4 focus:outline-none
-                    focus:ring-violet-200 font-normal md:font-medium rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3 transition-shadow duration-200">
+                    class="flex items-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none
+                    focus:ring-blue-200 font-semibold uppercase tracking-wide rounded-full text-sm md:text-base px-4 md:px-8 py-1 md:py-2.5 text-center mr-3 transition-colors duration-200">
                     Register
                 </router-link>
                 <router-link to="/profile/info" v-if="has_token"

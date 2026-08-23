@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-2xl font-bold text-slate-900 mb-3">Profile</div>
+        <div class="text-2xl font-bold text-indigo-900 mb-3">Profile</div>
         <div class="p-6 bg-white rounded-3xl shadow-xl shadow-slate-200/70 ring-1 ring-slate-100 mb-4">
             <div class="grid gap-2 grid-cols-5">
                 <div>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-span-4 pl-4">
                     <div class="flex justify-between">
-                        <div class="text-2xl font-bold mb-3 text-slate-900">{{ profile.name }}</div>
+                        <div class="text-2xl font-bold mb-3 text-indigo-900">{{ profile.name }}</div>
                     </div>
                     <div class="text-sm flex items-center mb-1 text-slate-600">
                         <unicon name="envelope" height="16px" fill="#94a3b8"></unicon>
@@ -54,7 +54,7 @@
                 <label for="name" class="block mb-2 text-sm font-medium text-slate-700">Name<span
                         class="text-red-500">*</span></label>
                 <input type="text" id="name" placeholder="ex. Jhon Doe" autofocus v-model="form.name"
-                    class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 <small class="text-xs text-red-500 italic" v-if="parseErrors('name')">
                     {{ parseErrors('name', 'val') }}
                 </small>
@@ -63,7 +63,7 @@
                 <label for="phone" class="block mb-2 text-sm font-medium text-slate-700">Phone<span
                         class="text-red-500">*</span></label>
                 <input type="text" id="phone" autofocus v-model="form.phone"
-                    class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 <small class="text-xs text-red-500 italic" v-if="parseErrors('phone')">
                     {{ parseErrors('phone', 'val') }}
                 </small>
@@ -72,7 +72,7 @@
                 <label for="address" class="block mb-2 text-sm font-medium text-slate-700">Institution<span
                         class="text-red-500">*</span></label>
                 <input type="text" id="address" autofocus v-model="form.institution"
-                    class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 <small class="text-xs text-red-500 italic" v-if="parseErrors('institution')">
                     {{ parseErrors('institution', 'val') }}
                 </small>
@@ -81,7 +81,7 @@
                 <label for="nik" class="block mb-2 text-sm font-medium text-slate-700">NIK<span
                         class="text-red-500">*</span></label>
                 <input type="text" id="nik" autofocus v-model="form.nik"
-                    class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 <small class="text-xs text-red-500 italic" v-if="parseErrors('nik')">
                     {{ parseErrors('nik', 'val') }}
                 </small>
@@ -90,7 +90,7 @@
                 <label for="city" class="block mb-2 text-sm font-medium text-slate-700">City<span
                         class="text-red-500">*</span></label>
                 <input type="text" id="city" autofocus v-model="form.city"
-                    class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 <small class="text-xs text-red-500 italic" v-if="parseErrors('city')">
                     {{ parseErrors('city', 'val') }}
                 </small>
@@ -99,7 +99,7 @@
             <div class="mb-3">
                 <label for="password" class="block mb-2 text-sm font-medium text-slate-700">Update Password</label>
                 <input type="password" id="password" autofocus v-model="form.password"
-                    class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 <div class="text-xs italic text-slate-500">Leave blank if you don't want to update the password</div>
                 <small class="text-xs text-red-500 italic" v-if="parseErrors('password')">
                     {{ parseErrors('password', 'val') }}
@@ -109,7 +109,7 @@
                 <label for="password_confirmation" class="block mb-2 text-sm font-medium text-slate-700">Confirm New
                     Password</label>
                 <input type="password" id="password_confirmation" autofocus v-model="form.password_confirmation"
-                    class="bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
+                    class="bg-slate-50 border border-slate-200 text-indigo-900 text-sm rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2.5 transition-colors">
                 <small class="text-xs text-red-500 italic" v-if="parseErrors('password_confirmation')">
                     {{ parseErrors('password_confirmation', 'val') }}
                 </small>
