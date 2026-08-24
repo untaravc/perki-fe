@@ -47,6 +47,35 @@
             </div>
 
             <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/70 ring-1 ring-slate-100 p-6 md:p-8 mb-6">
+                <div class="font-semibold text-xl text-indigo-900 mb-4">How to Register</div>
+                <ol class="list-decimal ml-5 space-y-2 text-sm text-slate-600">
+                    <li>
+                        Register your CORLIMPIADE team at
+                        <a class="text-violet-600 font-semibold" target="_blank"
+                            href="https://jcu.perki-jogja.com/corlimpiade">jcu.perki-jogja.com/corlimpiade</a>
+                        using the same email addresses that each member will use to register for Jogja Cardiology
+                        Update 2026.
+                    </li>
+                    <li>
+                        Each team member will receive a voucher that provides a 20% discount and is linked to their
+                        registered email address. The voucher will be automatically applied to either the Symposium
+                        Only or Symposium + Workshop package.
+                    </li>
+                    <li>Select your preferred package and complete the registration and payment through the Register
+                        menu.</li>
+                    <li>Your team will be officially registered once all three members have completed their
+                        payments. The final list of registered teams will be announced on September 28th, 2026.</li>
+                    <li>A technical meeting for all registered teams will be held on September 29th, 2026. Further
+                        details will be shared with the team members.</li>
+                </ol>
+                <div class="mt-4 text-sm text-slate-500">
+                    For further information or assistance, please contact
+                    <a class="text-violet-600 font-semibold" target="_blank" href="https://wa.me/628981817890">dr.
+                        Zizi at +62 898-1817-890</a>.
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/70 ring-1 ring-slate-100 p-6 md:p-8 mb-6">
                 <div class="font-semibold text-xl text-indigo-900 mb-4">Terms &amp; Conditions</div>
                 <ol class="list-decimal ml-5 space-y-2 text-sm text-slate-600">
                     <li v-for="(term, i) in terms" :key="i">{{ term }}</li>
@@ -177,7 +206,7 @@ export default {
             team: null,
             timeline: [
                 { date: '25th August 2026', label: 'Open Registration', icon: 'file-alt' },
-                { date: '30th September 2026', label: 'Closed Registration', icon: 'file-upload' },
+                { date: '27th September 2026', label: 'Closed Registration', icon: 'file-upload' },
                 { date: '2nd October 2026', label: 'Qualification Round', icon: 'users-alt' },
                 { date: '3rd October 2026', label: 'Final Round for 5 Best Teams', icon: 'podium' },
             ],
