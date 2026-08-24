@@ -11,6 +11,7 @@ import Guidance from '../views/guidance/Index.vue'
 import Plataran from '../views/guidance/Plataran.vue'
 import Venue from '../views/venue/Index.vue'
 import AbstractGuide from '../views/abstracts/Guide.vue'
+import Corlimpiade from '../views/corlimpiade/Index.vue'
 import Abstracts from '../views/abstracts/Index.vue'
 import AbstractsShow from '../views/abstracts/Show.vue'
 import CheckTransaction from '../views/check_transaction/Index.vue'
@@ -119,6 +120,16 @@ const router = createRouter({
 					meta: {
 						title: `Plataran Sehat Registration | ${SITE_TITLE}`,
 						description: 'Registration information for the Plataran Sehat event at Jogja Cardiology Update 2026.',
+						prerender: true,
+					},
+				},
+				{
+					path: '/corlimpiade',
+					name: 'corlimpiade',
+					component: Corlimpiade,
+					meta: {
+						title: `CORLIMPIADE | ${SITE_TITLE}`,
+						description: 'CORLIMPIADE JCU 2026 — Cardiovascular Olympiad for General Practitioners and Medical Students. Register your team of 3 and get a 20% discount on JCU 2026 registration.',
 						prerender: true,
 					},
 				},
@@ -322,6 +333,12 @@ const router = createRouter({
 				el: to.hash,
 				behavior: 'smooth',
 			}
+		}
+		if (savedPosition) {
+			return savedPosition
+		}
+		if (to.path !== from.path) {
+			return { top: 0 }
 		}
 	}
 })

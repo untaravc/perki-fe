@@ -241,6 +241,12 @@
                                 <div class="text-slate-500">{{ $filters.currency(pricing.package_discount) }}</div>
                             </div>
                         </div>
+                        <div class="text-sm" v-if="pricing.corlimpiade_discount">
+                            <div class="flex justify-between  my-1">
+                                <div class="text-slate-500">CORLIMPIADE Discount (20%)</div>
+                                <div class="text-slate-500">{{ $filters.currency(pricing.corlimpiade_discount) }}</div>
+                            </div>
+                        </div>
                         <div class="text-sm border-t border-black">
                             <div class="flex justify-between  my-1">
                                 <div class="font-semibold">TOTAL</div>
@@ -395,6 +401,7 @@ export default {
                 items: '',
                 subtotal: '',
                 package_discount: '',
+                corlimpiade_discount: 0,
                 voucher_validation: '',
                 discount_amount: 0,
                 total: '',
@@ -402,6 +409,11 @@ export default {
         }
     },
     computed: {
+        // Specialist price tier — the only tier the registration fee poster sells a
+        // "Workshop Only (2 Workshops)" SKU to, so only these can skip the Symposium.
+        isWorkshopOnlyEligible() {
+            return ['DRSP', 'PRKI', 'SPOG', 'SPPD', 'OTHR'].includes(this.transaction.job_type_code)
+        },
         // The eight workshops run as two parallel blocks of four. Everything inside a
         // block is simultaneous, so only one workshop per block can be attended.
         workshopSessions() {
@@ -437,6 +449,7 @@ export default {
                             items: [],
                             subtotal: 0,
                             package_discount: 0,
+                            corlimpiade_discount: 0,
                             voucher_validation: '',
                             discount_amount: 0,
                             total: 0,
@@ -536,8 +549,9 @@ export default {
                 return
             }
 
-            // workshops are only sold alongside the symposium, and only as a pair
-            if (workshops.length > 0 && !this.form.symposium) {
+            // Workshops without the Symposium ("Workshop Only") is a Specialist-tier SKU —
+            // every other job type still needs the Symposium alongside its workshops.
+            if (workshops.length > 0 && !this.form.symposium && !this.isWorkshopOnlyEligible) {
                 this.toaster({ title: "Workshops are only available together with the Symposium", icon: 'warning', dismissible: true })
                 return
             }

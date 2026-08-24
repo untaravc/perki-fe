@@ -14,6 +14,7 @@
         <!-- <EventCta></EventCta> -->
         <TimerPage></TimerPage>
         <AbstractCta></AbstractCta>
+        <CorlimpiadeCta></CorlimpiadeCta>
         <WelcomeMessage></WelcomeMessage>
         <!-- <Menu></Menu> -->
         <!-- <Video></Video> -->
@@ -36,6 +37,7 @@ import Pricing from "./PricingCol.vue";
 import TimerPage from "./Timer.vue";
 import Venue from "./Venue.vue";
 import AbstractCta from "./AbstractCta.vue";
+import CorlimpiadeCta from "./CorlimpiadeCta.vue";
 export default {
     components: {
         Pricing,
@@ -46,6 +48,7 @@ export default {
         Venue,
         WelcomeMessage,
         AbstractCta,
+        CorlimpiadeCta,
     }
 }
 </script>
