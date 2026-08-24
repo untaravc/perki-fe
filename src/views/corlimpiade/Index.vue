@@ -57,15 +57,15 @@
                         Update 2026.
                     </li>
                     <li>
-                        Each team member will receive a voucher that provides a 20% discount and is linked to their
-                        registered email address. The voucher will be automatically applied to either the Symposium
-                        Only or Symposium + Workshop package.
+                        Each team member will receive a voucher that provides a 20% discount that will be
+                        automatically applied at the payment page when registering for either the Symposium Only or
+                        Symposium + Workshop package.
                     </li>
                     <li>Select your preferred package and complete the registration and payment through the Register
                         menu.</li>
                     <li>Your team will be officially registered once all three members have completed their
                         payments. The final list of registered teams will be announced on September 28th, 2026.</li>
-                    <li>A technical meeting for all registered teams will be held on September 29th, 2026. Further
+                    <li>A technical meeting for all registered teams will be held on September 30th, 2026. Further
                         details will be shared with the team members.</li>
                 </ol>
                 <div class="mt-4 text-sm text-slate-500">
