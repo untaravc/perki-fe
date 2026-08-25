@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="text-xs mb-1">
-                                Friday, May 1st, 08:00-12:00
+                                Friday, October 2nd - Saturday, October 3rd 2026
                             </div>
                             <div class="text-xs mb-1 italic">
                                 {{ events.symposium.title }}

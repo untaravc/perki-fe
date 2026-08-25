@@ -205,8 +205,8 @@ export default {
             disabled: false,
             team: null,
             timeline: [
-                { date: '25th August 2026', label: 'Open Registration', icon: 'file-alt' },
-                { date: '27th September 2026', label: 'Closed Registration', icon: 'file-upload' },
+                { date: '25th August – 27th September 2026', label: 'Registration Period', icon: 'file-alt' },
+                { date: '30th September 2026', label: 'Technical Meeting', icon: 'meeting-board' },
                 { date: '2nd October 2026', label: 'Qualification Round', icon: 'users-alt' },
                 { date: '3rd October 2026', label: 'Final Round for 5 Best Teams', icon: 'podium' },
             ],
