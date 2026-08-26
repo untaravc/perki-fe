@@ -215,7 +215,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="text-center rounded-lg my-2 relative">
+                <div class="text-center rounded-lg my-2 relative" v-if="false">
                     <label :for="'poster_upload' + data.id">
                         <div
                             class="bg-slate-50 border border-dashed border-slate-300 hover:border-violet-300 p-3 w-full cursor-pointer rounded-xl flex justify-center items-center relative transition-colors">
