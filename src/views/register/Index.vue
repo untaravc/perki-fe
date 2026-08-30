@@ -196,6 +196,7 @@ export default {
             data_valid: false,
             form: {
                 id: '',
+                logged_user_id: '',
                 name: '',
                 phone: '',
                 email: '',
@@ -226,6 +227,11 @@ export default {
                         let res = data.result
                         this.logged_in = true;
 
+                        // Tell /pub/register this is an already-logged-in user so it
+                        // creates the event draft transaction instead of rejecting the
+                        // e-mail as "already registered".
+                        this.form.logged_user_id = res.id
+
                         this.form.name = res.name
                         this.form.email = res.email
                         this.form.city = res.city
@@ -238,9 +244,18 @@ export default {
                     }
                 })
         },
+        // Only send logged_user_id when we actually have one — the API treats the
+        // key being present (even empty) as "this is a logged-in user".
+        registerPayload() {
+            let payload = { ...this.form }
+            if (!payload.logged_user_id) {
+                delete payload.logged_user_id
+            }
+            return payload
+        },
         registerEmail() {
             this.disabled = true
-            this.apiPost('pub/register', this.form)
+            this.apiPost('pub/register', this.registerPayload())
                 .then((data) => {
                     this.disabled = false
                     if (data.success) {
@@ -251,13 +266,17 @@ export default {
                             localStorage.setItem('perki_user_token', data.result.token)
                         }
 
-                        if (trx) {
-                            this.$router.push('/register/event?transaction_number=' + trx.number);
-                        }
+                        this.emitter.emit("update-header");
+
+                        // A caller-supplied return url wins (e.g. "register to submit an
+                        // abstract"); otherwise always continue to Select Event.
                         if (this.$route.query.url) {
                             this.$router.push(this.$route.query.url);
+                        } else if (trx) {
+                            this.$router.push('/register/event?transaction_number=' + trx.number);
+                        } else {
+                            this.$router.push('/register/event');
                         }
-                        this.emitter.emit("update-header");
                     } else {
                         if (data.error === 422) {
                             this.form_errors = data.errors
@@ -277,7 +296,7 @@ export default {
         // kept for future use — registerEmail (above) is the live handler.
         registerEmailToProfile() {
             this.disabled = true
-            this.apiPost('pub/register', this.form)
+            this.apiPost('pub/register', this.registerPayload())
                 .then((data) => {
                     this.disabled = false
                     if (data.success) {

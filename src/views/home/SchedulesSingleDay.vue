@@ -3,8 +3,13 @@
         <div class="jcu-heading text-4xl md:text-5xl mb-1">
             Schedule
         </div>
-        <div class="text-small text-slate-600 mb-5 text-center">
+        <div class="text-small text-slate-600 mb-3 text-center">
             Jogja Cardiology Update 2026 in conjunction with The 9th Jogja International Cardiovascular Topic Series and 6th Intension Summit
+        </div>
+        <div class="text-center mb-5">
+            <span class="inline-block rounded-full bg-blue-100 text-blue-900 text-sm font-semibold px-4 py-1.5">
+                {{ displayDate }}
+            </span>
         </div>
         <div class="grid" :class="showSymposium ? 'grid-cols-2' : 'grid-cols-1'">
             <div v-if="showSymposium" @click="selected = 1"
@@ -107,6 +112,12 @@ export default {
                 workshops: [],
             },
         }
+    },
+    computed: {
+        // Symposium runs 2-3 Oct 2026; the workshops all run on 1 Oct 2026.
+        displayDate() {
+            return this.selected === 1 ? '2 - 3 October 2026' : '1 October 2026'
+        },
     },
     methods: {
         getRoomItems(room) {
