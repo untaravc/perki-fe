@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         loadSpeaker() {
-            this.apiGet('pub/committee', { ref: 2026 })
+            this.apiGet('pub/committee', { section: 'jcu26' })
                 .then((data) => {
                     this.data_content = data.result
                 })

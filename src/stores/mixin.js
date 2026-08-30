@@ -1,5 +1,33 @@
 import Swal from 'sweetalert2'
 
+// Every apiGet/apiPost/authGet/authPost/authPatch/authDelete call resolves to this
+// shape (never throws, never returns '' / {}), so call sites can rely on
+// `data.success`, `data.result`, `data.message` and `data.errors` unconditionally.
+// Hybrid bodies (e.g. the paginated `pub/posters` response) keep their extra
+// top-level keys via the spread.
+function normalizeResponse(body, statusCode) {
+	const b = (body && typeof body === 'object') ? body : {}
+	const ok = statusCode >= 200 && statusCode < 300
+	return {
+		...b,
+		success: typeof b.success === 'boolean' ? b.success : ok,
+		message: b.message ?? null,
+		result: ('result' in b) ? b.result : null,
+		errors: b.errors ?? null,
+		error: b.error ?? (statusCode >= 400 ? statusCode : undefined),
+		status_code: statusCode,
+	}
+}
+
+function authHeaders(extra) {
+	const token = localStorage.getItem('perki_user_token')
+	const headers = { Accept: 'application/json', ...(extra || {}) }
+	if (token) {
+		headers.Authorization = 'Bearer ' + token
+	}
+	return headers
+}
+
 const mixin = {
 	data() {
 		return {
@@ -42,151 +70,56 @@ const mixin = {
 		}
 	},
 	methods: {
-		async apiGet(uri, params) {
-			let response = '';
-			await this.$axios.get(this.base_api + uri, {
-				params: params,
-			}).then(({ data }) => {
-				response = data;
-			}).catch((e) => {
-				let rc = e.response.status;
-				if (rc === 401) {
-					window.location = '/login'
-				}
-			})
-
-			return response;
-		},
-		async apiPost(uri, data = {}) {
-			let response = '';
-			await this.$axios.post(this.base_api + uri, data, this.setHeader())
-				.then(({ data }) => {
-					response = data;
-				}).catch((e) => {
-					let rc = e.response.status;
-					if (rc === 401) {
-						window.location = '/login'
-						localStorage.removeItem('perki_user_token');
-					} else if (rc === 422) {
-						response = e.response.data
-					} else {
-						response = e.response.data
-					}
+		// Single entry point for every API call. Success and error both resolve to
+		// the normalized envelope; a 401 (HTTP or `{ code: 401 }` body) clears the
+		// token and redirects to /login.
+		async apiRequest(method, uri, { params, data } = {}) {
+			try {
+				const res = await this.$axios({
+					method,
+					url: this.base_api + uri,
+					params,
+					data,
+					headers: authHeaders(),
 				})
-
-			return response;
-		},
-		async authGet(uri, params) {
-			let response = '';
-			let token = localStorage.getItem('perki_user_token')
-			await this.$axios.get(this.base_api + uri, {
-				params: params,
-				headers: {
-					Authorization: 'Bearer ' + token,
-					Accept: "application/json",
-					"access-control-allow-origin": "*"
-				},
-			}).then(({ data }) => {
-				if (data.code == 401) {
+				const norm = normalizeResponse(res.data, res.status)
+				if (norm.code === 401 || norm.code === '401') {
+					localStorage.removeItem('perki_user_token')
 					window.location = '/login'
-					localStorage.removeItem('perki_user_token');
-				} else {
-					response = data;
+					norm.success = false
 				}
-			}).catch((e) => {
-				let rc = e.response.status;
+				return norm
+			} catch (e) {
+				const rc = e.response ? e.response.status : 0
 				if (rc === 401) {
+					localStorage.removeItem('perki_user_token')
 					window.location = '/login'
-					localStorage.removeItem('perki_user_token');
-				} else if (rc === 422) {
-					response = e.response.data
 				}
-			})
-
-			return response;
+				const norm = normalizeResponse(e.response ? e.response.data : null, rc)
+				norm.success = false
+				return norm
+			}
 		},
-		async authPost(uri, data) {
-			let response = {};
-			let token = localStorage.getItem('perki_user_token')
-			await this.$axios.post(this.base_api + uri, data, {
-				headers: {
-					Authorization: 'Bearer ' + token
-				}
-			}).then(({ data }) => {
-				response = data;
-			}).catch((e) => {
-				let rc = e.response.status;
-				if (rc === 401) {
-					window.location = '/login'
-					localStorage.removeItem('perki_user_token');
-				} else if (rc === 422) {
-					response = e.response.data
-				}
-				return response;
-			})
-
-			return response;
+		apiGet(uri, params) {
+			return this.apiRequest('get', uri, { params })
 		},
-		async authPatch(uri, data) {
-			let patchData = Object.assign({}, data)
-
-			let response = '';
-			let token = localStorage.getItem('perki_user_token')
-			await this.$axios.patch(this.base_api + uri, patchData, {
-				headers: {
-					Authorization: 'Bearer ' + token
-				}
-			}).then(({ data }) => {
-				response = data;
-			}).catch((e) => {
-				let rc = e.response.status;
-				if (rc === 401) {
-					window.location = '/login'
-					localStorage.removeItem('perki_user_token');
-				} else if (rc === 422) {
-					response = e.response.data
-				}
-			})
-
-			return response;
+		apiPost(uri, data = {}) {
+			return this.apiRequest('post', uri, { data })
 		},
-		async authDelete(uri, data) {
-			let response = '';
-			let deleteData = Object.assign({}, data)
-			let token = localStorage.getItem('perki_user_token')
-			console.log(data)
-			await this.$axios.delete(this.base_api + uri, {
-				headers: {
-					Authorization: 'Bearer ' + token
-				},
-				data: deleteData
-			}).then(({ data }) => {
-				response = data;
-			}).catch((e) => {
-				let rc = e.response.status;
-				if (rc === 401) {
-					window.location = '/login'
-					localStorage.removeItem('perki_user_token');
-				} else if (rc === 422) {
-					response = e.response.data
-				}
-			})
-
-			return response;
+		authGet(uri, params) {
+			return this.apiRequest('get', uri, { params })
+		},
+		authPost(uri, data = {}) {
+			return this.apiRequest('post', uri, { data })
+		},
+		authPatch(uri, data = {}) {
+			return this.apiRequest('patch', uri, { data })
+		},
+		authDelete(uri, data = {}) {
+			return this.apiRequest('delete', uri, { data })
 		},
 		setHeader() {
-			let ls_token = localStorage.perki_user_token
-			if (ls_token) {
-				return {
-					headers: {
-						Authorization: 'Bearer ' + ls_token,
-						Accept: 'application/json'
-					}
-				}
-			} else {
-				return {}
-			}
-
+			return { headers: authHeaders() }
 		},
 		// dismissible: true keeps the toast on screen until the user closes it,
 		// for messages they need to act on rather than just be informed of.

@@ -46,7 +46,7 @@ async function fetchPosterIds() {
 	let page = 1
 	let lastPage = 1
 	do {
-		const res = await fetch(`${API_BASE}pub/posters?type=abstract&year=2026&category=&page=${page}`)
+		const res = await fetch(`${API_BASE}pub/posters?type=abstract&section=jcu26&category=&page=${page}`)
 		const data = await res.json()
 		for (const poster of data.data || []) {
 			if (poster.status === 1) ids.push(poster.id)

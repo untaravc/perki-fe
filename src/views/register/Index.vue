@@ -208,7 +208,6 @@ export default {
                 identity_photo: '',
                 nik: '',
                 section: 'jcu26',
-                ref: 2026,
             },
             form_errors: []
         }

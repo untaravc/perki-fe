@@ -77,7 +77,7 @@ export default {
             filter: {
                 type: 'abstract',
                 category: '',
-                year: 2026,
+                section: 'jcu26',
                 page: 1
             }
         }

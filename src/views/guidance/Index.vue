@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         loadEvents() {
-            this.apiGet('pub/guidance?ref=2026')
+            this.apiGet('pub/guidance?section=jcu26')
                 .then((data) => {
                     this.data_content = data.result
                 })

@@ -43,7 +43,7 @@ export default {
             data_content: {},
             filter: {
                 type: 'abstract',
-                year: 2026
+                section: 'jcu26'
             }
         }
     },
