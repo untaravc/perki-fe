@@ -13,7 +13,8 @@
             <div class="p-6 sm:p-8 bg-white rounded-3xl shadow-xl shadow-slate-200/70 ring-1 ring-slate-100">
                 <div class="font-bold text-2xl text-indigo-900">Collective Registration</div>
                 <div class="text-sm text-slate-500">
-                    Register a group of participants for the <b>{{ symposium.name || 'Symposium' }}</b>.
+                    Register a group of at least {{ min_members }} participants for the
+                    <b>{{ symposium.name || 'Symposium' }}</b>.
                     One single bill is issued to your account (<span class="text-violet-600">{{ payer.email }}</span>).
                 </div>
 
@@ -125,6 +126,10 @@
                                     <BtnLoader v-if="disabled"></BtnLoader>
                                     <span v-if="!disabled">Proceed to Payment</span>
                                 </button>
+                                <div class="text-xs text-slate-500 text-center" v-if="validRows.length < min_members">
+                                    A collective registration needs at least {{ min_members }} participants
+                                    ({{ min_members - validRows.length }} more to go).
+                                </div>
                                 <div class="text-xs text-red-500 text-center" v-if="seats_left !== null && validRows.length > seats_left">
                                     Not enough symposium seats for {{ validRows.length }} participants.
                                 </div>
@@ -142,12 +147,17 @@ export default {
     data() {
         return {
             disabled: false,
+            min_members: 3,
             job_types: [],
             prices: {},
             symposium: {},
             payer: {},
             seats_left: null,
-            rows: [{ job_type_code: '', nik: '', name: '', email: '' }],
+            rows: [
+                { job_type_code: '', nik: '', name: '', email: '' },
+                { job_type_code: '', nik: '', name: '', email: '' },
+                { job_type_code: '', nik: '', name: '', email: '' },
+            ],
             form_errors: {},
         }
     },
@@ -159,7 +169,7 @@ export default {
             return this.validRows.reduce((sum, r) => sum + this.rowPrice(r), 0)
         },
         canSubmit() {
-            if (this.validRows.length === 0) return false
+            if (this.validRows.length < this.min_members) return false
             if (this.seats_left !== null && this.validRows.length > this.seats_left) return false
             return true
         },
@@ -214,8 +224,8 @@ export default {
         submit() {
             this.form_errors = {}
 
-            if (this.validRows.length === 0) {
-                this.toaster({ title: 'Add at least one complete participant', icon: 'warning', dismissible: true })
+            if (this.validRows.length < this.min_members) {
+                this.toaster({ title: 'A collective registration needs at least ' + this.min_members + ' complete participants', icon: 'warning', dismissible: true })
                 return
             }
 

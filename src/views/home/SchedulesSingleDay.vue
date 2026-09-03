@@ -149,13 +149,13 @@
 export default {
     data() {
         return {
-            // 'd1' = Symposium 2 Oct, 'd2' = Symposium 3 Oct, 'ws' = Workshops 1 Oct
-            selected: 'd1',
+            // 'ws' = Workshops 1 Oct, 'd1' = Symposium 2 Oct, 'd2' = Symposium 3 Oct
+            selected: 'ws',
             show: false,
             tabs: [
-                { key: 'd1', label: 'SYMPOSIUM D-1', rounded: 'rounded-tl-lg' },
-                { key: 'd2', label: 'SYMPOSIUM D-2', rounded: '' },
-                { key: 'ws', label: 'WORKSHOP', rounded: 'rounded-tr-lg' },
+                { key: 'ws', label: 'WORKSHOP', rounded: 'rounded-tl-lg' },
+                { key: 'd1', label: 'SYMPOSIUM D-1', rounded: '' },
+                { key: 'd2', label: 'SYMPOSIUM D-2', rounded: 'rounded-tr-lg' },
             ],
             schedule: {
                 symposium: [],
