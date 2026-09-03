@@ -4,9 +4,12 @@ import HomeView from '../views/home/Index.vue'
 import Register from '../views/register/Index.vue'
 import Login from '../views/login/Index.vue'
 import SelectEvent from '../views/register/SelectEvent.vue'
+import CollectiveRegister from '../views/register/Collective.vue'
 import Payment from '../views/payment/Index.vue'
 import Schedule from '../views/schedule/Index.vue'
 import Speakers from '../views/speakers/Index.vue'
+import SpeakerSessions from '../views/speakers/Sessions.vue'
+import SpeakerSessionsMatrix from '../views/speakers/SessionsMatrix.vue'
 import Guidance from '../views/guidance/Index.vue'
 import Plataran from '../views/guidance/Plataran.vue'
 import Venue from '../views/venue/Index.vue'
@@ -173,6 +176,15 @@ const router = createRouter({
 					},
 				},
 				{
+					path: '/register/collective',
+					name: 'collective-register',
+					component: CollectiveRegister,
+					meta: {
+						title: `Collective Registration | ${SITE_TITLE}`,
+						noindex: true,
+					},
+				},
+				{
 					path: '/payment',
 					name: 'payment',
 					component: Payment,
@@ -219,6 +231,24 @@ const router = createRouter({
 						title: `Speakers | ${SITE_TITLE}`,
 						description: 'Meet the invited speakers of Jogja Cardiology Update 2026, Royal Ambarrukmo Hotel, Yogyakarta, 1-3 October 2026.',
 						prerender: true,
+					},
+				},
+				{
+					path: '/speaker-sessions/:slug',
+					name: 'speaker-sessions',
+					component: SpeakerSessions,
+					meta: {
+						title: `Speaker | ${SITE_TITLE}`,
+						description: 'A speaker in the Jogja Cardiology Update 2026 scientific programme and the sessions they take part in.',
+					},
+				},
+				{
+					path: '/speaker-sessions-matrics',
+					name: 'speaker-sessions-matrics',
+					component: SpeakerSessionsMatrix,
+					meta: {
+						title: `Speakers & Sessions | ${SITE_TITLE}`,
+						description: 'Every speaker and moderator in the Jogja Cardiology Update 2026 programme, with the sessions they take part in.',
 					},
 				},
 				{

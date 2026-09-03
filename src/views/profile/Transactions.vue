@@ -50,16 +50,18 @@
                             </li>
                         </ul>
                     </div>
-<!--                    <div v-if="trx.transaction_children && trx.transaction_children.length > 0">-->
-<!--                        <div class="font-semibold">Collective Registration</div>-->
-<!--                        <div class="text-sm" v-for="child in trx.transaction_children">-->
-<!--                            <i>{{ child.user_name }}</i>-->
-<!--                            <div class="flex justify-between text-slate-500">-->
-<!--                                <div>{{ child.user_email }}</div>-->
-<!--                                <div>{{ child.nik }}</div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div v-if="trx.transaction_children && trx.transaction_children.length > 0" class="ml-4 mb-2">
+                        <div class="font-semibold text-sm text-indigo-900">
+                            Collective Registration ({{ trx.transaction_children.length }})
+                        </div>
+                        <div class="text-sm" v-for="child in trx.transaction_children" :key="child.id">
+                            <i>{{ child.user_name }}</i>
+                            <div class="flex justify-between text-slate-500 text-xs">
+                                <div>{{ child.user_email }}</div>
+                                <div>{{ child.nik }}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <div class="font-bold text-indigo-900 text-right mb-2">

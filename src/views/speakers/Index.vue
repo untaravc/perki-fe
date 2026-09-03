@@ -3,9 +3,15 @@
         <div class="text-4xl font-bold mb-1 text-center">
             SPEAKERS
         </div>
-        <div class="text-small text-slate-700 mb-5 text-center">
+        <div class="text-small text-slate-700 mb-3 text-center">
             The speakers are experts in Cardiology and Vascular Medicine as well as related fields local and national
             level
+        </div>
+        <div class="text-center mb-5">
+            <router-link :to="{ name: 'speaker-sessions-matrics' }"
+                class="inline-flex items-center gap-1 text-sm font-semibold text-blue-700 hover:underline">
+                View speakers &amp; sessions matrix &rarr;
+            </router-link>
         </div>
         <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
             <div class="group" v-for="data in data_content">

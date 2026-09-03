@@ -60,9 +60,18 @@
                         <ul class="list-disc">
                             <li class="text-sm" v-for="detail in transaction.transaction_details">
                                 {{ detail.event_name }}
-                                <span class="italic text-rose-500">{{ $filters.formatDateTime(detail.event.date_start)
+                                <span class="italic text-rose-500" v-if="detail.event">{{ $filters.formatDateTime(detail.event.date_start)
                                     }}</span>
                                 <div class="text-xs" v-if="detail.event">{{ detail.event.title }}</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-left mt-2" v-if="transaction.users && transaction.users.length">
+                        <div class="text-sm font-semibold">Collective Participants ({{ transaction.users.length }})</div>
+                        <ul class="list-disc ml-4">
+                            <li class="text-sm" v-for="p in transaction.users" :key="p.id">
+                                {{ p.user_name }}
+                                <div class="text-xs text-slate-500">{{ p.user_email }} · {{ p.nik }}</div>
                             </li>
                         </ul>
                     </div>

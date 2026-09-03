@@ -54,6 +54,12 @@
                             </div>
                         </router-link>
 
+                        <router-link to="/register/collective" @click="active = ''"
+                            class="flex items-center gap-2 my-1 px-3 py-2.5 rounded-xl cursor-pointer transition-colors text-slate-600 hover:bg-slate-50">
+                            <unicon name="users-alt" height="20px" fill="#94a3b8"></unicon>
+                            <div>Collective Registration</div>
+                        </router-link>
+
                         <div class="border-t border-slate-100 mt-2 pt-2">
                             <div class="flex items-center gap-2 px-3 py-2.5 rounded-xl cursor-pointer text-red-500 hover:bg-red-50 transition-colors"
                                 @click="logout">
