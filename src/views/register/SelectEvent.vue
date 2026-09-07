@@ -369,7 +369,7 @@ export default {
                 plataran_img: '',
             },
             bed_types: [
-                { value: 'twin', label: 'Twin Bed', quota: 10 },
+                { value: 'twin', label: 'Twin Bed', quota: 4 },
                 { value: 'double', label: 'Double Bed', quota: 5 },
             ],
             users: [
