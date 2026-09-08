@@ -253,6 +253,9 @@ export default {
             return payload
         },
         registerEmail() {
+            if (!this.validateForm()) {
+                return
+            }
             this.disabled = true
             this.apiPost('pub/register', this.registerPayload())
                 .then((data) => {
@@ -326,6 +329,19 @@ export default {
                     this.disabled = false
                 })
         },
+        // Client-side checks that must pass before we hit /pub/register.
+        // Server-side validation still runs; this just gives instant feedback.
+        validateForm() {
+            let errors = {}
+
+            // Student members (MHSA) are required to upload their student card photo.
+            if ((this.form.job_type_code === 'MHSA' || this.form.job_type_code === 'COAS') && !this.form.identity_photo) {
+                errors.identity_photo = ['Please upload your Student Card Photo.']
+            }
+
+            this.form_errors = errors
+            return Object.keys(errors).length === 0
+        },
         parseErrors(field, type = 'status') {
             let has = false;
             let message = '';
@@ -351,6 +367,8 @@ export default {
                 this.apiPost('pub/upload-file', form_data)
                     .then((data) => {
                         this.form.identity_photo = data.result.link;
+                        // photo attached — drop the "required" error if it was showing
+                        this.form_errors = { ...this.form_errors, identity_photo: null };
                         this.upload_loader = false;
                     }).catch((e) => {
                         this.upload_loader = false;
