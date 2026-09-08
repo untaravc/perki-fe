@@ -32,7 +32,7 @@
                             <div class="grid grid-cols-12 gap-2 gap-y-3">
                                 <div class="col-span-12 sm:col-span-6">
                                     <label class="block text-xs font-medium text-slate-500 mb-1">Job Type</label>
-                                    <select v-model="row.job_type_code"
+                                    <select v-model="row.job_type_code" @change="onJobType(i)"
                                         class="bg-white border border-slate-200 text-indigo-900 text-sm rounded-lg focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2">
                                         <option value="">Job type</option>
                                         <option v-for="job in job_types" :key="job.code" :value="job.code">
@@ -68,6 +68,43 @@
                                         {{ parseError(i, 'email') }}
                                     </small>
                                 </div>
+
+                                <!-- optional workshop pair (one morning + one afternoon), priced per job type -->
+                                <div class="col-span-12" v-if="workshops.length">
+                                    <div v-if="rowWorkshopEligible(row)">
+                                        <label class="block text-xs font-medium text-slate-500 mb-1">
+                                            Workshops <span class="text-slate-400">(optional — pick one from each session)</span>
+                                        </label>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                            <select v-model="row.workshop_first"
+                                                class="bg-white border border-slate-200 text-indigo-900 text-sm rounded-lg focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2">
+                                                <option value="">No morning workshop</option>
+                                                <option v-for="w in morningWorkshops" :key="w.slug" :value="w.slug"
+                                                    :title="w.title" :disabled="!w.available && row.workshop_first !== w.slug">
+                                                    {{ w.name }}{{ w.available ? '' : ' — full' }}
+                                                </option>
+                                            </select>
+                                            <select v-model="row.workshop_second"
+                                                class="bg-white border border-slate-200 text-indigo-900 text-sm rounded-lg focus:ring-2 focus:ring-violet-200 focus:border-violet-400 block w-full p-2">
+                                                <option value="">No afternoon workshop</option>
+                                                <option v-for="w in afternoonWorkshops" :key="w.slug" :value="w.slug"
+                                                    :title="w.title" :disabled="!w.available && row.workshop_second !== w.slug">
+                                                    {{ w.name }}{{ w.available ? '' : ' — full' }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <small class="text-xs text-violet-600" v-if="rowWantsWorkshop(row)">
+                                            + {{ $filters.currency(workshopPairPrice(row)) }} workshop pair
+                                        </small>
+                                        <small class="text-xs text-amber-600 italic"
+                                            v-else-if="row.workshop_first || row.workshop_second">
+                                            Pick one morning and one afternoon workshop, or clear both.
+                                        </small>
+                                    </div>
+                                    <div v-else-if="row.job_type_code" class="text-xs text-slate-400 italic">
+                                        Workshops are not available for this job type.
+                                    </div>
+                                </div>
                             </div>
                             <div class="flex justify-between items-center mt-2">
                                 <div class="text-xs text-slate-500">
@@ -93,7 +130,7 @@
                         <div class="text-xs p-3 bg-violet-50 border border-violet-100 rounded-lg mt-3 text-slate-600">
                             NIK is needed to invite each participant into Plataran Sehat. Use the same email each
                             participant registered to their Plataran Sehat account. Collective registration covers the
-                            Symposium only.
+                            Symposium, plus an optional workshop pair (one morning + one afternoon) per participant.
                         </div>
                     </div>
 
@@ -106,9 +143,14 @@
                             <div class="text-sm italic mb-3 break-all">{{ payer.email }}</div>
 
                             <div class="border-t pt-2 text-sm">
-                                <div class="flex justify-between my-1" v-for="(row, i) in validRows" :key="i">
-                                    <div class="truncate mr-2">{{ row.name }}</div>
-                                    <div class="whitespace-nowrap">{{ $filters.currency(rowPrice(row)) }}</div>
+                                <div class="my-1" v-for="(row, i) in validRows" :key="i">
+                                    <div class="flex justify-between">
+                                        <div class="truncate mr-2">{{ row.name }}</div>
+                                        <div class="whitespace-nowrap">{{ $filters.currency(rowPrice(row)) }}</div>
+                                    </div>
+                                    <div v-if="rowWantsWorkshop(row)" class="text-xs text-slate-400 pl-2">
+                                        incl. workshop pair {{ $filters.currency(workshopPairPrice(row)) }}
+                                    </div>
                                 </div>
                                 <div v-if="validRows.length === 0" class="italic text-slate-400 my-1">
                                     No complete participant yet
@@ -150,13 +192,15 @@ export default {
             min_members: 3,
             job_types: [],
             prices: {},
+            workshops: [],
+            workshop_prices: {},
             symposium: {},
             payer: {},
             seats_left: null,
             rows: [
-                { job_type_code: '', nik: '', name: '', email: '' },
-                { job_type_code: '', nik: '', name: '', email: '' },
-                { job_type_code: '', nik: '', name: '', email: '' },
+                { job_type_code: '', nik: '', name: '', email: '', workshop_first: '', workshop_second: '' },
+                { job_type_code: '', nik: '', name: '', email: '', workshop_first: '', workshop_second: '' },
+                { job_type_code: '', nik: '', name: '', email: '', workshop_first: '', workshop_second: '' },
             ],
             form_errors: {},
         }
@@ -168,15 +212,47 @@ export default {
         subtotal() {
             return this.validRows.reduce((sum, r) => sum + this.rowPrice(r), 0)
         },
+        morningWorkshops() {
+            return this.workshops.filter(w => w.session === 'morning')
+        },
+        afternoonWorkshops() {
+            return this.workshops.filter(w => w.session === 'afternoon')
+        },
+        // A workshop pair must be complete (one morning + one afternoon) and only
+        // picked for a job type that has a workshop price.
+        workshopIssues() {
+            return this.rows.some(r => {
+                let picked = !!r.workshop_first || !!r.workshop_second
+                let half = (!!r.workshop_first) !== (!!r.workshop_second)
+                return (picked && !this.rowWorkshopEligible(r)) || half
+            })
+        },
         canSubmit() {
             if (this.validRows.length < this.min_members) return false
             if (this.seats_left !== null && this.validRows.length > this.seats_left) return false
+            if (this.workshopIssues) return false
             return true
         },
     },
     methods: {
         newRow() {
-            return { job_type_code: '', nik: '', name: '', email: '' }
+            return { job_type_code: '', nik: '', name: '', email: '', workshop_first: '', workshop_second: '' }
+        },
+        workshopPairPrice(row) {
+            return this.workshop_prices[row.job_type_code] || 0
+        },
+        rowWorkshopEligible(row) {
+            return this.workshopPairPrice(row) > 0
+        },
+        rowWantsWorkshop(row) {
+            return !!(row.workshop_first && row.workshop_second)
+        },
+        onJobType(i) {
+            // Clear any workshop pick a now-ineligible job type can no longer take.
+            if (!this.rowWorkshopEligible(this.rows[i])) {
+                this.rows[i].workshop_first = ''
+                this.rows[i].workshop_second = ''
+            }
         },
         digits(v) {
             return (v || '').replace(/\D/g, '')
@@ -192,7 +268,11 @@ export default {
             if (this.rows.length === 0) this.rows.push(this.newRow())
         },
         rowPrice(row) {
-            return this.prices[row.job_type_code] || 0
+            let price = this.prices[row.job_type_code] || 0
+            if (this.rowWantsWorkshop(row)) {
+                price += this.workshopPairPrice(row)
+            }
+            return price
         },
         parseError(i, field) {
             let key = 'people.' + i + '.' + field
@@ -216,6 +296,8 @@ export default {
                     }
                     this.job_types = data.result.job_types
                     this.prices = data.result.prices
+                    this.workshops = data.result.workshops || []
+                    this.workshop_prices = data.result.workshop_prices || {}
                     this.symposium = data.result.symposium
                     this.payer = data.result.payer
                     this.seats_left = data.result.seats_left
@@ -229,6 +311,11 @@ export default {
                 return
             }
 
+            if (this.workshopIssues) {
+                this.toaster({ title: 'Each participant taking workshops needs one morning and one afternoon pick.', icon: 'warning', dismissible: true })
+                return
+            }
+
             let people = this.rows
                 .filter(r => r.job_type_code || r.nik || r.name || r.email)
                 .map(r => ({
@@ -236,6 +323,8 @@ export default {
                     nik: this.digits(r.nik),
                     name: r.name.trim(),
                     email: r.email.trim().toLowerCase(),
+                    workshop_first: r.workshop_first || null,
+                    workshop_second: r.workshop_second || null,
                 }))
 
             this.disabled = true
