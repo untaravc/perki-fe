@@ -72,6 +72,13 @@
                             <li class="text-sm" v-for="p in transaction.users" :key="p.id">
                                 {{ p.user_name }}
                                 <div class="text-xs text-slate-500">{{ p.user_email }} · {{ p.nik }}</div>
+                                <ul class="list-disc ml-4 mb-1" v-if="p.transaction_details && p.transaction_details.length">
+                                    <li class="text-xs" v-for="detail in p.transaction_details" :key="detail.id">
+                                        {{ detail.event_name }}
+                                        <span class="italic text-rose-500" v-if="detail.event">{{
+                                            $filters.formatDateTime(detail.event.date_start) }}</span>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

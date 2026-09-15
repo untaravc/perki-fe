@@ -54,12 +54,19 @@
                         <div class="font-semibold text-sm text-indigo-900">
                             Collective Registration ({{ trx.transaction_children.length }})
                         </div>
-                        <div class="text-sm" v-for="child in trx.transaction_children" :key="child.id">
+                        <div class="text-sm mt-1" v-for="child in trx.transaction_children" :key="child.id">
                             <i>{{ child.user_name }}</i>
                             <div class="flex justify-between text-slate-500 text-xs">
                                 <div>{{ child.user_email }}</div>
                                 <div>{{ child.nik }}</div>
                             </div>
+                            <ul class="list-disc ml-4" v-if="child.transaction_details && child.transaction_details.length">
+                                <li class="text-xs" v-for="detail in child.transaction_details" :key="detail.id">
+                                    {{ detail.event_name }}
+                                    <span class="italic text-slate-500" v-if="detail.event">{{
+                                        $filters.formatDateTime(detail.event.date_start) }}</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
