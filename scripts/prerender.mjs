@@ -6,14 +6,13 @@ import puppeteer from 'puppeteer'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const distDir = path.resolve(__dirname, '../dist')
-const API_BASE = 'https://src.perki-jogja.com/api/'
 const SITE_URL = 'https://jcu.perki-jogja.com'
 
-// Keep in sync with `meta: { prerender: true }` routes in src/router/index.js
+// Keep in sync with `meta: { prerender: true }` routes in src/router/index.js.
+// Dynamic per-id routes (e.g. /posters/:id) are intentionally excluded — they're
+// too numerous/frequently-changing to prerender and are fine served client-side.
 const STATIC_ROUTES = [
-	'/', '/events', '/register', '/contact-us', '/privacy-policy', '/terms-conditions',
-	'/guidance', '/plataran', '/videos', '/schedule', '/committee', '/speakers',
-	'/venue', '/abstracts', '/posters',
+	'/', '/events', '/register', '/contact-us',
 ]
 
 const MIME = {
@@ -41,22 +40,6 @@ function startServer() {
 	return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve(server)))
 }
 
-async function fetchPosterIds() {
-	const ids = []
-	let page = 1
-	let lastPage = 1
-	do {
-		const res = await fetch(`${API_BASE}pub/posters?type=abstract&section=jcu26&category=&page=${page}`)
-		const data = await res.json()
-		for (const poster of data.data || []) {
-			if (poster.status === 1) ids.push(poster.id)
-		}
-		lastPage = data.last_page || 1
-		page++
-	} while (page <= lastPage)
-	return ids
-}
-
 function routeToFile(route) {
 	if (route === '/') return path.join(distDir, 'index.html')
 	return path.join(distDir, route.replace(/^\//, ''), 'index.html')
@@ -68,14 +51,7 @@ async function main() {
 		process.exit(1)
 	}
 
-	console.log('Fetching poster IDs for /posters/:id prerendering...')
-	const posterIds = await fetchPosterIds().catch((err) => {
-		console.warn('Could not fetch poster list, skipping /posters/:id prerender:', err.message)
-		return []
-	})
-
-	const routes = [...STATIC_ROUTES, ...posterIds.map((id) => `/posters/${id}`)]
-
+	const routes = STATIC_ROUTES
 	const server = await startServer()
 	const { port } = server.address()
 	const baseUrl = `http://127.0.0.1:${port}`

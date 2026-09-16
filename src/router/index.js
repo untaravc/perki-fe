@@ -200,7 +200,7 @@ const router = createRouter({
 					meta: {
 						title: `Videos | ${SITE_TITLE}`,
 						description: 'Watch videos from Jogja Cardiology Update 2026.',
-						prerender: true,
+						// prerender: true,
 					},
 				},
 				{
@@ -287,7 +287,7 @@ const router = createRouter({
 					meta: {
 						title: `Poster | ${SITE_TITLE}`,
 						description: SITE_DESCRIPTION,
-						prerender: true,
+						// Dynamic per-id page — excluded from prerendering (see scripts/prerender.mjs).
 					},
 				},
 				{
