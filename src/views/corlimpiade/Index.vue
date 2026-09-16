@@ -95,6 +95,11 @@
 
                 <div v-else-if="loading_team" class="text-sm text-slate-400 italic">Loading...</div>
 
+                <div v-else-if="!team && !open"
+                    class="rounded-xl bg-slate-50 ring-1 ring-slate-100 p-4 text-sm text-slate-700">
+                    Registration is closed. The CORLIMPIADE team quota has been reached.
+                </div>
+
                 <div v-else-if="team">
                     <div class="rounded-xl bg-emerald-50 ring-1 ring-emerald-100 p-4 mb-4 text-sm text-emerald-700">
                         Your team <b>{{ team.name }}</b> is registered. Status: <b>{{ statusLabel(team.status) }}</b>.
@@ -204,6 +209,7 @@ export default {
             loading_team: true,
             disabled: false,
             team: null,
+            open: true,
             timeline: [
                 { date: '25th August – 27th September 2026', label: 'Registration Period', icon: 'file-alt' },
                 { date: '30th September 2026', label: 'Technical Meeting', icon: 'meeting-board' },
@@ -260,6 +266,7 @@ export default {
             this.authGet('pub/groups-ekg', { section: 'jcu26' })
                 .then((data) => {
                     this.team = (data && data.success !== false) ? data.result : null
+                    this.open = data ? data.open !== false : true
                     this.loading_team = false
                 })
         },
@@ -296,6 +303,9 @@ export default {
                     this.toaster({ title: 'Team registered successfully' })
                     this.loadTeam()
                 } else {
+                    if (data.open === false) {
+                        this.open = false
+                    }
                     this.toaster({ title: data.message || 'Failed to register team', icon: 'warning', dismissible: true })
                 }
             }).catch(() => {
