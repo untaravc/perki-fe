@@ -128,26 +128,31 @@
                             <label class="text-sm font-medium text-slate-700">Team Name</label>
                             <input type="text" v-model="form.name"
                                 class="block w-full mt-1 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                            <div v-if="fieldError('name')" class="text-xs text-rose-600 mt-1">{{ fieldError('name') }}</div>
                         </div>
                         <div>
                             <label class="text-sm font-medium text-slate-700">Institution</label>
                             <input type="text" v-model="form.institution"
                                 class="block w-full mt-1 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                            <div v-if="fieldError('institution')" class="text-xs text-rose-600 mt-1">{{ fieldError('institution') }}</div>
                         </div>
                         <div>
                             <label class="text-sm font-medium text-slate-700">Contact Email</label>
                             <input type="text" v-model="form.email"
                                 class="block w-full mt-1 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                            <div v-if="fieldError('email')" class="text-xs text-rose-600 mt-1">{{ fieldError('email') }}</div>
                         </div>
                         <div>
                             <label class="text-sm font-medium text-slate-700">Contact Phone / WhatsApp</label>
                             <input type="text" v-model="form.phone"
                                 class="block w-full mt-1 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                            <div v-if="fieldError('phone')" class="text-xs text-rose-600 mt-1">{{ fieldError('phone') }}</div>
                         </div>
                         <div class="md:col-span-2">
                             <label class="text-sm font-medium text-slate-700">Address</label>
                             <input type="text" v-model="form.address"
                                 class="block w-full mt-1 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                            <div v-if="fieldError('address')" class="text-xs text-rose-600 mt-1">{{ fieldError('address') }}</div>
                         </div>
                     </div>
 
@@ -156,15 +161,27 @@
                         class="rounded-xl border border-slate-200 p-4 mb-3">
                         <div class="text-sm font-semibold text-indigo-900 mb-2">Member {{ i + 1 }}</div>
                         <div class="grid md:grid-cols-2 gap-3">
-                            <input type="text" v-model="member.user_name" placeholder="Full Name"
-                                class="block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
-                            <input type="text" v-model="member.institution" placeholder="Institution"
-                                class="block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
-                            <input type="text" v-model="member.email"
-                                placeholder="Email (must match JCU 2026 registration)"
-                                class="block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
-                            <input type="text" v-model="member.phone" placeholder="Phone / WhatsApp"
-                                class="block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                            <div>
+                                <input type="text" v-model="member.user_name" placeholder="Full Name"
+                                    class="block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                                <div v-if="memberError(i, 'user_name')" class="text-xs text-rose-600 mt-1">{{ memberError(i, 'user_name') }}</div>
+                            </div>
+                            <div>
+                                <input type="text" v-model="member.institution" placeholder="Institution"
+                                    class="block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                                <div v-if="memberError(i, 'institution')" class="text-xs text-rose-600 mt-1">{{ memberError(i, 'institution') }}</div>
+                            </div>
+                            <div>
+                                <input type="text" v-model="member.email"
+                                    placeholder="Email (must match JCU 2026 registration)"
+                                    class="block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                                <div v-if="memberError(i, 'email')" class="text-xs text-rose-600 mt-1">{{ memberError(i, 'email') }}</div>
+                            </div>
+                            <div>
+                                <input type="text" v-model="member.phone" placeholder="Phone / WhatsApp"
+                                    class="block w-full bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
+                                <div v-if="memberError(i, 'phone')" class="text-xs text-rose-600 mt-1">{{ memberError(i, 'phone') }}</div>
+                            </div>
                             <select v-model="member.flag"
                                 class="block w-full md:col-span-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-200 focus:border-violet-400 p-2.5 transition-colors">
                                 <option value="">Participant Type (optional)</option>
@@ -226,6 +243,7 @@ export default {
                 'The decision made by the organizing committee and the panel of judges are final.',
             ],
             form: this.emptyForm(),
+            form_errors: {},
         }
     },
     methods: {
@@ -273,9 +291,17 @@ export default {
         validEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email || '')
         },
+        fieldError(key) {
+            return (this.form_errors && this.form_errors[key]) ? this.form_errors[key][0] : ''
+        },
+        memberError(i, field) {
+            return this.fieldError(`members.${i}.${field}`)
+        },
         submitTeam() {
+            this.form_errors = {}
+
             if (!this.form.name || !this.form.address || !this.validEmail(this.form.email) || !this.form.phone) {
-                this.toaster({ title: 'Please fill in the team details', icon: 'warning', dismissible: true })
+                this.toaster({ title: 'Please fill in the team name, address, a valid contact email, and phone number', icon: 'warning', dismissible: true })
                 return
             }
 
@@ -302,14 +328,19 @@ export default {
                 if (data.success) {
                     this.toaster({ title: 'Team registered successfully' })
                     this.loadTeam()
+                } else if (data.error === 422 && data.errors) {
+                    this.form_errors = data.errors
+                    let detail = Object.values(data.errors).flat().join(' ')
+                    this.toaster({ title: data.message || detail || 'Please check the highlighted fields', icon: 'warning', dismissible: true })
                 } else {
                     if (data.open === false) {
                         this.open = false
                     }
-                    this.toaster({ title: data.message || 'Failed to register team', icon: 'warning', dismissible: true })
+                    this.toaster({ title: data.message || `Failed to register team (error ${data.error || 'unknown'})`, icon: 'warning', dismissible: true })
                 }
             }).catch(() => {
                 this.disabled = false
+                this.toaster({ title: 'Network error, please check your connection and try again', icon: 'error', dismissible: true })
             })
         },
     },

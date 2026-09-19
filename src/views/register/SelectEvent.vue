@@ -83,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div v-if="events.accommodations && events.accommodations.length" class="mb-3">
+                    <div v-if="false && events.accommodations && events.accommodations.length" class="mb-3">
                         <div class="font-semibold text-blue-900 mb-1">Add on: Deluxe Room</div>
                         <div class="text-xs text-slate-600 mb-2">
                             Royal Ambarukmo Hotel Yogyakarta &mdash; 1&ndash;2 persons, non-smoking.
@@ -414,6 +414,14 @@ export default {
         isWorkshopOnlyEligible() {
             return ['DRSP', 'PRKI', 'SPOG', 'SPPD', 'OTHR'].includes(this.transaction.job_type_code)
         },
+        // Special condition: Nurses may register for Workshop 4 alone — no
+        // Symposium, no paired morning workshop — at a fixed Rp500.000.
+        isNurseWs4Only() {
+            return this.transaction.job_type_code === 'NURS'
+                && !this.form.symposium
+                && !this.form.workshop_first
+                && this.form.workshop_second === 'jcu26-ws-4'
+        },
         // The eight workshops run as two parallel blocks of four. Everything inside a
         // block is simultaneous, so only one workshop per block can be attended.
         workshopSessions() {
@@ -496,6 +504,11 @@ export default {
                 users: this.users,
             })
                 .then((data) => {
+                    if (!data.success) {
+                        this.toaster({ title: data.message || 'Unable to calculate price.', icon: 'warning', dismissible: true })
+                        return
+                    }
+
                     this.pricing = data.result
 
                     if (data.message) {
@@ -551,12 +564,13 @@ export default {
 
             // Workshops without the Symposium ("Workshop Only") is a Specialist-tier SKU —
             // every other job type still needs the Symposium alongside its workshops.
-            if (workshops.length > 0 && !this.form.symposium && !this.isWorkshopOnlyEligible) {
+            // Exception: Nurses registering for Workshop 4 alone (see isNurseWs4Only).
+            if (workshops.length > 0 && !this.form.symposium && !this.isWorkshopOnlyEligible && !this.isNurseWs4Only) {
                 this.toaster({ title: "Workshops are only available together with the Symposium", icon: 'warning', dismissible: true })
                 return
             }
 
-            if (workshops.length === 1) {
+            if (workshops.length === 1 && !this.isNurseWs4Only) {
                 this.toaster({ title: "Please select one morning and one afternoon workshop", icon: 'warning', dismissible: true })
                 return
             }

@@ -157,9 +157,14 @@
                                 </div>
                             </div>
 
+                            <div class="border-t pt-2 text-sm flex justify-between text-emerald-600" v-if="groupDiscount > 0">
+                                <div>Group discount ({{ drgnFreeCount }} free)</div>
+                                <div>-{{ $filters.currency(groupDiscount) }}</div>
+                            </div>
+
                             <div class="border-t border-black mt-2 pt-2 text-sm flex justify-between font-semibold">
                                 <div>TOTAL ({{ validRows.length }})</div>
-                                <div>{{ $filters.currency(subtotal) }}</div>
+                                <div>{{ $filters.currency(total) }}</div>
                             </div>
 
                             <div class="mt-4">
@@ -212,6 +217,21 @@ export default {
         subtotal() {
             return this.validRows.reduce((sum, r) => sum + this.rowPrice(r), 0)
         },
+        // Group promo: every 5 General Practitioner-tier (DRGN — includes Nurses,
+        // who share the DRGN rate) participants in the batch, the Symposium fee for
+        // 1 of them is waived. "buy 4, get 1 free". Mirrors
+        // CollectiveTransactionJcu26Controller::create_payment().
+        drgnFreeCount() {
+            let drgnCount = this.validRows.filter(r => this.tierOf(r.job_type_code) === 'DRGN').length
+            return Math.floor(drgnCount / 5)
+        },
+        groupDiscount() {
+            if (this.drgnFreeCount <= 0) return 0
+            return this.drgnFreeCount * (this.prices['DRGN'] || 0)
+        },
+        total() {
+            return this.subtotal - this.groupDiscount
+        },
         morningWorkshops() {
             return this.workshops.filter(w => w.session === 'morning')
         },
@@ -243,6 +263,11 @@ export default {
         },
         rowWorkshopEligible(row) {
             return this.workshopPairPrice(row) > 0
+        },
+        tierOf(code) {
+            if (['DRSP', 'PRKI', 'SPOG', 'SPPD', 'OTHR'].includes(code)) return 'DRSP'
+            if (code === 'MHSA') return 'MHSA'
+            return 'DRGN'
         },
         rowWantsWorkshop(row) {
             return !!(row.workshop_first && row.workshop_second)

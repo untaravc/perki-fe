@@ -24,6 +24,8 @@ import TermsConditions from '../views/terms-conditions/Index.vue'
 
 import Profile from '../views/profile/Index.vue'
 import Events from '../views/events/Index.vue'
+import EventShow from '../views/events/Show.vue'
+import CorlimpiadeTeams from '../views/corlimpiade/Teams.vue'
 import ProfileInfo from '../views/profile/Info.vue'
 import ProfileEvents from '../views/profile/Events.vue'
 import ProfileTransactions from '../views/profile/Transactions.vue'
@@ -137,6 +139,16 @@ const router = createRouter({
 					},
 				},
 				{
+					path: '/corlimpiade-teams',
+					name: 'corlimpiade-teams',
+					component: CorlimpiadeTeams,
+					meta: {
+						title: `CORLIMPIADE Teams | ${SITE_TITLE}`,
+						description: 'Registered CORLIMPIADE JCU 2026 teams and their members.',
+						prerender: true,
+					},
+				},
+				{
 					path: '/login',
 					name: 'login',
 					component: Login,
@@ -211,6 +223,16 @@ const router = createRouter({
 						title: `Schedule | ${SITE_TITLE}`,
 						description: 'View the full scientific programme and schedule for Jogja Cardiology Update 2026, Royal Ambarrukmo Hotel, Yogyakarta, 1-3 October 2026.',
 						prerender: true,
+					},
+				},
+				{
+					path: '/event/:id',
+					name: 'event-detail',
+					component: EventShow,
+					meta: {
+						title: `Event | ${SITE_TITLE}`,
+						description: SITE_DESCRIPTION,
+						// Dynamic per-id page — excluded from prerendering (see scripts/prerender.mjs).
 					},
 				},
 				{
