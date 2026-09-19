@@ -215,15 +215,15 @@
                         </button>
                     </div>
                 </div>
-                <div class="text-center rounded-lg my-2 relative" v-if="false">
+                <div class="text-center rounded-lg my-2 relative" v-if="data.can_upload_poster">
                     <label :for="'poster_upload' + data.id">
                         <div
                             class="bg-slate-50 border border-dashed border-slate-300 hover:border-violet-300 p-3 w-full cursor-pointer rounded-xl flex justify-center items-center relative transition-colors">
                             <page-loading v-model:active="upload_loader" loader="dots" :is-full-page="false" />
                             <div v-if="!upload_loader">
                                 <unicon name="file" fill="#94a3b8"></unicon>
-                                <div class="text-sm italic text-slate-500" v-if="!show_poster">Add poster</div>
-                                <div class="text-sm italic text-slate-500" v-if="show_poster">Update poster</div>
+                                <div class="text-sm italic text-slate-500" v-if="!data.image">Add poster</div>
+                                <div class="text-sm italic text-slate-500" v-if="data.image">Update poster</div>
                             </div>
                         </div>
                     </label>
@@ -356,7 +356,6 @@ export default {
             is_open: false,
             upload_loader: false,
             open_form: false,
-            show_poster: false,
             author_modal: '',
             attachment_modal: '',
             modal_image_src: '',
@@ -651,7 +650,6 @@ export default {
                     const file_name = generateFileName('Posters', file)
                     const link = await upload(file_name, file)
                     this.updatePoster(post_id, link)
-                    this.show_poster = true
                 } finally {
                     this.upload_loader = false;
                 }

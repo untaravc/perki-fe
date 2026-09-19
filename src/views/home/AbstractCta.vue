@@ -18,9 +18,9 @@
                     </div>
                 </div>
                 <div class="md:col-span-1 flex md:justify-end">
-                    <router-link to="/abstracts"
+                    <router-link to="/posters"
                         class="group inline-flex items-center gap-2 w-full md:w-auto justify-center bg-gradient-to-r from-violet-600 to-teal-500 hover:shadow-lg hover:shadow-violet-200 text-white font-medium rounded-full text-base px-8 py-3 text-center transition-all duration-200">
-                        <span>Guideline</span>
+                        <span>Poster Board</span>
                         <unicon name="arrow-right" fill="white" width="18"
                             class="transition-transform duration-200 group-hover:translate-x-1"></unicon>
                     </router-link>
